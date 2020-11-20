@@ -8,5 +8,5 @@
 tbd
 #### Bruger til teste:
 TBD
-### WEBPAGE: http://solidcode.xyz/ PROJECT PAGE: http://solidcode.xyz/TOBEDECIDED
+### WEBPAGE: http://solidcode.xyz/ PROJECT PAGE: http://solidcode.xyz/TOBEDECIDED #no ssl yet
 
