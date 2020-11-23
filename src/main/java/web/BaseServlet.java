@@ -18,6 +18,7 @@ public class BaseServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
     }
 
+
     public void render(String content, HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
         log(request,"page-loaded");
         request.getRequestDispatcher(content).forward(request,response);
