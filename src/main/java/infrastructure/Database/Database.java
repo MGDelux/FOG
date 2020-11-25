@@ -1,4 +1,4 @@
-package infrastructure;
+package infrastructure.Database;
 
 import infrastructure.Exceptions.DBError;
 

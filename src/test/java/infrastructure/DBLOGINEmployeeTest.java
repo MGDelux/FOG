@@ -1,6 +1,8 @@
 package infrastructure;
 
 import Repoistory.Employee.Exceptions.loginError;
+import infrastructure.Database.DBEmployee;
+import infrastructure.Database.Database;
 import infrastructure.Exceptions.DBError;
 import junit.framework.TestCase;
 

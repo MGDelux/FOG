@@ -15,27 +15,27 @@ public class UsersAPI {
     private final EmployeeRepo employeeRepo;
     private final UserRepo userRepo;
 
-    public UsersAPI(EmployeeRepo employeeRepo, UserRepo userRepo){
+    public  UsersAPI(EmployeeRepo employeeRepo, UserRepo userRepo){
         this.employeeRepo = employeeRepo;
         this.userRepo = userRepo;
     }
 
-    public Employee createSalesManEmployee(String email, String password) throws SQLException {
+    public synchronized Employee createSalesManEmployee(String email, String password) throws SQLException {
         byte[] salt = Employee.genereateSalt();
         return employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN,0,email,salt, Employee.calculateSecret(salt,password)));
     }
-    public Employee  createAdminEmployee(String email, String password) throws SQLException {
+    public synchronized Employee  createAdminEmployee(String email, String password) throws SQLException {
         byte[] salt = Employee.genereateSalt();
         return employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN,0,email,salt, Employee.calculateSecret(salt,password)));
     }
 
 
     //WIP
-    public User AddCustomer(String email, int zip, String city, String adress, int phoneNr) {
+    public synchronized User AddCustomer(String email, int zip, String city, String adress, int phoneNr) {
        return userRepo.createUser(new User(0,email,zip,city,adress,phoneNr));
     }
 
-    public Employee login(String email) throws DBError, loginError, SQLException {
+    public synchronized  Employee login(String email) throws DBError, loginError, SQLException {
        return employeeRepo.login(email);
     }
 }
