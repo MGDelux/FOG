@@ -1,8 +1,8 @@
 package infrastructure;
 
 import domain.Employees.Employee;
-import infrastructure.Database.DBEmployee;
-import infrastructure.Database.Database;
+import infrastructure.DatabaseConnector.Database;
+import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.Exceptions.DBError;
 import junit.framework.TestCase;
 
