@@ -9,13 +9,10 @@
         <module name="FOG" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="FOG" target="10" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="FOG" options="-endorseddirs C:\Users\melo-\IdeaProjects\FOG\target/endorsed" />
+      <module name="FOG" options="-endorseddirs C:\Users\mathi\IdeaProjects\FOG\target/endorsed" />
     </option>
   </component>
 </project>

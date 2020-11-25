@@ -6,6 +6,7 @@ import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
+
 import java.sql.SQLException;
 
 /**
@@ -20,7 +21,7 @@ public class UsersAPI {
         this.userRepo = userRepo;
     }
 
-    public synchronized Employee createSalesManEmployee(String email, String password) throws SQLException {
+    public synchronized Employee createSalesManEmployee(String email, String password) throws SQLException, SQLException {
         byte[] salt = Employee.genereateSalt();
         return employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN,0,email,salt, Employee.calculateSecret(salt,password)));
     }

@@ -1,8 +1,9 @@
-package infrastructure.Database;
+package infrastructure.DatabaseEmployees;
 
 import Repoistory.Employee.EmployeeRepo;
 import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
+import infrastructure.DatabaseConnector.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
