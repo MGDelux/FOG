@@ -19,4 +19,5 @@ public class Index extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         render("/WEB-INF/pages/index.jsp", resp, req);
     }
+
 }

@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+}
+
+.bg {
+    height: 100%;
+
+}
+.bg::before{
+    content: "";
+    background-image: url("https://f.nordiskemedier.dk/2kum1e1405a2dvgb.jpg");
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    top: 425px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+
+}
+
+.headerImage{
+    width: 1900px;
+    height: 400px;
+}
+
+.navbar{
+    border-top: 1px solid #000000;
+    background: -webkit-linear-gradient(to top, #007BFF, #000000);
+    background: linear-gradient(to bottom, #007BFF, #000000);
+    color: white;
+}
+.container1{
+    position: relative;
+    border-bottom: 1px solid black;
+    border-bottom-style: groove;
+}
+.container2{
+    position: relative;
+}
+
+.brødtekst{
+    position: relative;
+
+}
+
+.p{
+    position: relative;
+}
+
+.footer {
+    border-top: 1px solid #000000;
+    background: -webkit-linear-gradient(to top, #007BFF, #000000); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #007BFF, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+
+}
+
+.footer a{
+    float: left;
+    padding: 4px 4px;
+    color: #f2f2f2;
+    text-decoration: none;
+    text-align: left;
+    font-size: 17px;
+}
+.footer a:hover{
+    color: red;
+}
+.footer .secret {
+    float: right;
+}
