@@ -1,4 +1,4 @@
-package Repoistory.DB;
+package infrastructure.Exceptions;
 
 /**
  * CREATED BY mathi @ 23-11-2020 - 15:51

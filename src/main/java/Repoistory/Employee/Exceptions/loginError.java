@@ -1,4 +1,4 @@
-package domain;
+package Repoistory.Employee.Exceptions;
 
 /**
  * CREATED BY mathi @ 25-11-2020 - 10:36

@@ -1,6 +1,6 @@
 package Repoistory.Employee;
 
-import domain.Employee;
+import domain.Employees.Employee;
 
 import java.sql.SQLException;
 

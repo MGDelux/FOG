@@ -1,7 +1,7 @@
 package infrastructure;
 
-import Repoistory.DB.DBError;
-import domain.loginError;
+import Repoistory.Employee.Exceptions.loginError;
+import infrastructure.Exceptions.DBError;
 import junit.framework.TestCase;
 
 import java.sql.SQLException;

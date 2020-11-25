@@ -1,7 +1,7 @@
 package Repoistory.Employee;
 
-import domain.Employee;
-import domain.loginError;
+import domain.Employees.Employee;
+import Repoistory.Employee.Exceptions.loginError;
 
 import java.sql.SQLException;
 

@@ -1,4 +1,4 @@
-package domain;
+package domain.Users;
 
 /**
  * CREATED BY mathi @ 23-11-2020 - 15:18

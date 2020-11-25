@@ -1,6 +1,6 @@
 package infrastructure;
 
-import Repoistory.DB.DBError;
+import infrastructure.Exceptions.DBError;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

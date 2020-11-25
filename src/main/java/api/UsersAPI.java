@@ -1,11 +1,11 @@
 package api;
 
-import Repoistory.DB.DBError;
+import infrastructure.Exceptions.DBError;
 import Repoistory.Employee.EmployeeRepo;
 import Repoistory.User.UserRepo;
-import domain.Employee;
-import domain.User;
-import domain.loginError;
+import domain.Employees.Employee;
+import domain.Users.User;
+import Repoistory.Employee.Exceptions.loginError;
 import java.sql.SQLException;
 
 /**
@@ -32,7 +32,7 @@ public class UsersAPI {
 
     //WIP
     public User AddCustomer(String email, int zip, String city, String adress, int phoneNr) {
-        return new User(0,email,zip,city,adress,phoneNr);
+       return userRepo.createUser(new User(0,email,zip,city,adress,phoneNr));
     }
 
     public Employee login(String email) throws DBError, loginError, SQLException {

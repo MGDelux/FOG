@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  domain.User: mathi
+  domain.Users.User: mathi
   Date: 19-11-2020
   Time: 14:50
   To change this template use File | Settings | File Templates.
