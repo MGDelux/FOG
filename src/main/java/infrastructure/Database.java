@@ -13,6 +13,7 @@ public class Database {
     private static String URL = "jdbc:mysql://localhost/FOG?serverTimezone=CET";
     private static String USER = "FOG";
     private static String  PASS = "pass";
+    public static String version = "1.1";
     public Database() throws DBError {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
