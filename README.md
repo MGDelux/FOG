@@ -1,6 +1,6 @@
-# Cupcake
+# FOG
 ## Check Releases for Rapport og .war fil
-### by gruppe Jumbo Snegl 
+### by gruppe SolidCode
 <Emil,Janus,Mathias>
 @Tenz331 @Janussr
 
