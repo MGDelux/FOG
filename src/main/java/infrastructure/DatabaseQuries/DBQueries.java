@@ -41,4 +41,18 @@ public class DBQueries implements QueriesRepo {
             return null;
     }
 
+    @Override
+    public Iterable<Queries> getAllQuires() {
+        return null;
+    }
+
+    @Override
+    public Queries getSpecificQuire(int id) {
+        return null;
+    }
+
+    @Override
+    public Queries deleteSpecificQuire(int id) {
+        return null;
+    }
 }

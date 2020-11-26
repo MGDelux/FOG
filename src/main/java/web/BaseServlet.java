@@ -28,7 +28,7 @@ public class BaseServlet extends HttpServlet {
 
     private static FOGAPI initAPI() {
         Database db = new Database();
-        return new FOGAPI(new DBEmployee(db), new DBUser(), new DBCarport(), new DBMaterials(), new DBQueries());
+        return new FOGAPI(new DBEmployee(db), new DBUser(), new DBCarport(), new DBMaterials(), new DBQueries(db));
     }
 
 
