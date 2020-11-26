@@ -97,8 +97,8 @@ public class DBEmployee implements EmployeeRepo {
          smt.setBytes(3,employee.getSalt());
          smt.setBytes(4,employee.getSecret());
          smt.executeUpdate();
-     } catch (SQLException throwables) {
-         throwables.printStackTrace();
+     } finally {
+         db.closeConnection();
      }
      return employee;
     }
