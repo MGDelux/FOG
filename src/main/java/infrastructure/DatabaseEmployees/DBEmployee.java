@@ -5,10 +5,7 @@ import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import infrastructure.DatabaseConnector.Database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +18,6 @@ public class DBEmployee implements EmployeeRepo {
         this.db = db;
     }
 
-    private Employee.Role role;
 
     @Override
     public Iterable<Employee> getAllEmployees() throws SQLException {
@@ -56,9 +52,7 @@ public class DBEmployee implements EmployeeRepo {
         try {
             ps.setString(1, mail);
             ResultSet resultSet = ps.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else return false;
+                return resultSet.next();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             return false;
@@ -72,9 +66,9 @@ public class DBEmployee implements EmployeeRepo {
     @Override
     public Employee login(String email) throws loginError, SQLException {
         PreparedStatement preparedStatement;
-        String SQL = "SELECT * FROM medarbejder WHERE email = ?";
+        String sql = "SELECT * FROM medarbejder WHERE email = ?";
         Connection conn = db.connect();
-        preparedStatement = conn.prepareStatement(SQL);
+        preparedStatement = conn.prepareStatement(sql);
         try {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -96,8 +90,8 @@ public class DBEmployee implements EmployeeRepo {
     @Override
     public Employee createEmployee(Employee employee) throws SQLException {
      try (Connection connection = db.connect()) {
-         String SQL = "INSERT INTO medarbejder (Email,Role,salt,secret) VALUES (?,?,?,?)";
-         var smt = connection.prepareStatement(SQL,PreparedStatement.RETURN_GENERATED_KEYS);
+         String sql = "INSERT INTO medarbejder (Email,Role,salt,secret) VALUES (?,?,?,?)";
+         var smt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
          smt.setString(1,employee.getEmail());
          smt.setString(2,employee.getRole().toString());
          smt.setBytes(3,employee.getSalt());

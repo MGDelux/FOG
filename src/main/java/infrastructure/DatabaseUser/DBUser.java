@@ -1,20 +1,26 @@
 package infrastructure.DatabaseUser;
-
 import Repoistory.User.UserRepo;
 import domain.Users.User;
+import java.sql.SQLException;
 
 /**
  * CREATED BY mathi @ 23-11-2020 - 16:37
  **/
 public class DBUser implements UserRepo {
 
+
     @Override
-    public User createUser(User user) {
+    public User addNewCustomer(User user) {
         return null;
     }
 
     @Override
-    public User addNewCustomer(int id, String email, int zipCode, String city, String adress, int phoneNR) {
+    public Iterable<User> getAllUsers() throws SQLException {
         return null;
+    }
+
+    @Override
+    public boolean checkIfUsersIsInSystem(String mail) throws SQLException {
+        return false;
     }
 }

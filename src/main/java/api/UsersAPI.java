@@ -33,7 +33,7 @@ public class UsersAPI {
 
     //WIP
     public synchronized User AddCustomer(String email, int zip, String city, String adress, int phoneNr) {
-       return userRepo.createUser(new User(0,email,zip,city,adress,phoneNr));
+       return userRepo.addNewCustomer(new User(0,email,zip,city,adress,phoneNr));
     }
 
     public synchronized  Employee login(String email) throws DBError, loginError, SQLException {
