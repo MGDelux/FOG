@@ -14,14 +14,13 @@ public class Database {
     private static String USER = "FOG";
     private static String  PASS = "pass";
     public static String version = "1.1";
-    public Database() throws DBError {
+    public Database(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new DBError(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
-
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);
     }

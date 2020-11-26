@@ -28,11 +28,11 @@ public class Mail {
         Session session = Session.getInstance(properties, auth);
         Message msg = new MimeMessage(session);
         msg.setFrom(new InternetAddress(username));
-        InternetAddress[] toAddresses = { new InternetAddress(toAdress) };
+        InternetAddress[] toAddresses = {new InternetAddress(toAdress)};
         msg.setRecipients(Message.RecipientType.TO, toAddresses);
         msg.setSubject(subject);
         msg.setSentDate(new Date());
-        msg.setContent(message,"text/html; charset=utf-8");
+        msg.setContent(message, "text/html; charset=utf-8");
         Transport.send(msg);
 
     }
