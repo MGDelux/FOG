@@ -4,7 +4,6 @@ import Repoistory.Carporte.CarpoteRepo;
 import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
 import domain.Queries.Queries;
-import infrastructure.DatabaseQuries.DBQueries;
 import Repoistory.Employee.EmployeeRepo;
 import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
@@ -46,8 +45,14 @@ public class FOGAPI {
        return userRepo.addNewCustomer(new User(0,email,zip,city,adress,phoneNr));
     }
 
-    public Employee login(String email) throws loginError, SQLException {
-       return employeeRepo.login(email);
+    public Employee login(String email, String password) throws loginError, SQLException {
+       Employee tempEmployee = employeeRepo.login(email);
+       if (tempEmployee.isPasswordCorrect(password)){
+           return tempEmployee;
+       }else {
+           throw new loginError("password incorrect");
+
+       }
     }
     public Queries newQuerie(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength){
         return queriesRepo.newQuerie(user, carPortWidth, cartPortLength, roofType, shedWidth, shedLength);

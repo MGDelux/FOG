@@ -11,6 +11,22 @@ public class DBQueries implements QueriesRepo {
     @Override
     public Queries newQuerie(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength) {
         // we only need the Users ID (INT) nothing else from 'user' tyvm
+
+        return null;
+    }
+
+    @Override
+    public Iterable<Queries> getAllQuires() {
+        return null;
+    }
+
+    @Override
+    public Queries getSpecificQuire(int id) {
+        return null;
+    }
+
+    @Override
+    public Queries deleteSpecificQuire(int id) {
         return null;
     }
 }
