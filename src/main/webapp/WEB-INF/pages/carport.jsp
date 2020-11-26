@@ -12,9 +12,13 @@
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/e79609ac4a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <style>
         <jsp:include page="../../css/carport.css"/>
     </style>
@@ -164,41 +168,48 @@
         </form>
     </div>
     <br>
-    <div align="center" class="container2">
-        <div class="col-xs-4">
-            <label for="name"><Strong>Navn:</Strong></label>
-            <input type="name" class="form-control" id="name" style="width: 400px">
-        </div>
-
-        <div class="form-group">
-            <label for="Adresse"><Strong>Adresse:</Strong></label>
-            <input type="text" class="form-control" id="Adresse" style="width: 400px">
-        </div>
-
-        <div class="form-group">
-            <label for="Postnummer"><Strong>Postnummer:</Strong></label>
-            <input type="number" class="form-control" id="Postnummer" style="width: 400px">
-        </div>
-
-        <div class="form-group">
-            <label for="By"><Strong>By:</Strong></label>
-            <input type="text" class="form-control" id="By" style="width: 400px">
-        </div>
-
-        <div class="form-group">
-            <label for="Telefon"><Strong>Telefon:</Strong></label>
-            <input type="tel" class="form-control" id="Telefon" style="width: 400px">
-        </div>
-
-        <div class="form-group">
-            <label for="Email"><Strong>Email:</Strong></label>
-            <input type="email" class="form-control" id="Email" style="width: 400px">
-        </div>
-
-        <div class="form-group">
-            <label for="Bemærkning"><Strong>Evt. Bemærkning:</Strong></label>
-            <input type="Bemærkning" class="form-control" id="Bemærkning" style="width: 400px">
-        </div>
+    <div align="center" class="container2" >
+        <form>
+            <div class="form-row  div-wrapper d-flex justify-content-center">
+                <div class="form-group col-md-4">
+                    <label for="Email"><strong>Email</strong></label>
+                    <input type="email" class="form-control" id="Email" placeholder="Email">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="password"><strong>Password</strong></label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
+                <div class="form-group col-md-4">
+                    <label for="inputAddress"><strong>Address</strong></label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Nørrebrogade">
+                 </div>
+                 <div class="form-group col-md-4">
+                     <label for="address"><strong>Address 2</strong></label>
+                     <input type="text" class="form-control" id="address" placeholder="Opgang, studie, eller sal">
+                </div>
+            </div>
+            <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
+                <div class="form-group col-md-2">
+                    <label for="by"><strong>By</strong></label>
+                    <input type="text" class="form-control" id="by" placeholder="By">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="postnummer"><strong>Postnummer</strong></label>
+                    <input type="text" class="form-control" id="postnummer" placeholder="Postnummer">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Send forespørgsel</button>
+        </form>
 
     </div>
 </div>
@@ -207,6 +218,7 @@
     <div class="footer">
         <a> SolidCODE: Emil, Janus og Mathias </a>
         <a href="https://github.com/MGDelux/FOG">| Github |</a>
+        <a href="${pageContext.request.contextPath}/adminpage/">Adminpage |</a>
     </div>
 </footer>
 </html>

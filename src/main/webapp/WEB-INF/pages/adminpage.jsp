@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Emil
-  Date: 23-11-2020
-  Time: 16:37
+  Date: 26-11-2020
+  Time: 11:21
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <style>
-        <jsp:include page="../../css/index.css"/>
+        <jsp:include page="../../css/admin.css"/>
     </style>
     <title>FOG HOMEPAGE</title>
     <div class="HeaderImage">
@@ -29,28 +29,68 @@
 <body>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">FOG</a>
-<ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
-    </li>
-</ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
+        </li>
+    </ul>
 
 </nav>
 <div class="bg">
     <div class="brødtekst">
-         <h1>Welcome to Our Company</h1>
-         <p>Ipsalum</p>
+        <h1>Adminpage</h1>
     </div>
+    <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">kunde</th>
+            <th scope="col">Forespørgsel</th>
+            <th scope="col">Sælger</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Carport</td>
+            <td>Janus</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Carport</td>
+            <td>Janus</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>Carport</td>
+            <td>Janus</td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Larry</td>
+            <td>Carport</td>
+            <td>Janus</td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Larry</td>
+            <td>Carport</td>
+            <td>Janus</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 <footer>
     <div class="footer">
         <a> SolidCODE: Emil, Janus og Mathias </a>
         <a href="https://github.com/MGDelux/FOG">| Github |</a>
-        <a href="${pageContext.request.contextPath}/adminpage/">Adminpage |</a>
     </div>
 </footer>
 </html>

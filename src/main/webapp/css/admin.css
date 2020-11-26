@@ -1,5 +1,7 @@
+
 body, html {
     height: 100%;
+    background-color: black;
 }
 
 .bg {
@@ -32,17 +34,7 @@ body, html {
     background: linear-gradient(to bottom, #007BFF, #000000);
     color: white;
 }
-.container1{
-    position: relative;
-    border-bottom: 1px solid black;
-    border-bottom-style: groove;
-}
-.container2{
-    position: relative;
-}
-
-.form-group{
-    position: center;
+.navbar-brand{
 
 }
 
@@ -51,8 +43,9 @@ body, html {
 
 }
 
-.p{
+.table{
     position: relative;
+    margin-left: 75px;
 }
 
 .footer {
@@ -78,6 +71,6 @@ body, html {
 .footer a:hover{
     color: red;
 }
-.footer .secret {
+.footer .secret{
     float: right;
 }
