@@ -75,7 +75,7 @@ public class DBEmployee implements EmployeeRepo {
             if (resultSet.next()) {
                return parseEmployees(resultSet);
             } else {
-                throw new loginError("Login Error ");
+                throw new loginError("Error in the login process");
             }
 
         } catch (SQLException e) {
@@ -89,15 +89,18 @@ public class DBEmployee implements EmployeeRepo {
 
     @Override
     public Employee createEmployee(Employee employee) throws SQLException {
+        String sql = "INSERT INTO medarbejder (Email,Role,salt,secret) VALUES (?,?,?,?)";
+
      try (Connection connection = db.connect()) {
-         String sql = "INSERT INTO medarbejder (Email,Role,salt,secret) VALUES (?,?,?,?)";
          var smt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
          smt.setString(1,employee.getEmail());
          smt.setString(2,employee.getRole().toString());
          smt.setBytes(3,employee.getSalt());
          smt.setBytes(4,employee.getSecret());
          smt.executeUpdate();
-     } finally {
+     } catch (SQLException e){
+         e.printStackTrace();
+     }finally {
          db.closeConnection();
      }
      return employee;
