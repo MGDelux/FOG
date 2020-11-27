@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 /**
  * CREATED BY mathi @ 19-11-2020 - 14:22
  **/
+
 public class BaseServlet extends HttpServlet {
     protected static final FOGAPI API;
 
@@ -28,7 +29,7 @@ public class BaseServlet extends HttpServlet {
 
     private static FOGAPI initAPI() {
         Database db = new Database();
-        return new FOGAPI(new DBEmployee(db), new DBUser(), new DBCarport(), new DBMaterials(), new DBQueries(db));
+        return new FOGAPI(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
     }
 
 

@@ -68,6 +68,7 @@ public class DBQueries implements QueriesRepo {
         String SQL = "SELECT * FROM forespørgsler WHERE ForeSpørglse_Id = ? ";
         PreparedStatement preparedStatement;
         Connection connection= db.connect(); preparedStatement = connection.prepareStatement(SQL);
+
         try{
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();

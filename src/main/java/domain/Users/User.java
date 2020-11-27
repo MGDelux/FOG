@@ -22,7 +22,6 @@ public class User {
     public int getId() {
         return id;
     }
-
     public String getEmail() {
         return email;
     }
@@ -32,11 +31,9 @@ public class User {
     public String getCity() {
         return city;
     }
-
     public String getAddress() {
         return address;
     }
-
     public int getPhoneNr() {
         return phoneNr;
     }
