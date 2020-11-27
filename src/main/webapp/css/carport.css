@@ -28,8 +28,8 @@ body, html {
 
 .navbar{
     border-top: 1px solid #000000;
-    background: -webkit-linear-gradient(to top, #007BFF, #000000);
-    background: linear-gradient(to bottom, #007BFF, #000000);
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgba(5,53,172,1) 91%);
     color: white;
 }
 .container1{
@@ -57,8 +57,8 @@ body, html {
 
 .footer {
     border-top: 1px solid #000000;
-    background: -webkit-linear-gradient(to top, #007BFF, #000000); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #007BFF, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgba(5,53,172,1) 91%);
     position: fixed;
     left: 0;
     bottom: 0;

@@ -23,7 +23,7 @@ public class DBEmployee implements EmployeeRepo {
     public Iterable<Employee> getAllEmployees() throws SQLException {
         ArrayList<Employee> employees = new ArrayList<>();
         try (Connection connection = db.connect()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM medarbejder ");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM medarbejder");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 employees.add(parseEmployees(resultSet));
