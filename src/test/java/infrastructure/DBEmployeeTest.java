@@ -1,5 +1,6 @@
 package infrastructure;
 
+import Repoistory.Employee.Exceptions.EmployeeError;
 import domain.Employees.Employee;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
@@ -28,7 +29,7 @@ public class DBEmployeeTest extends TestCase {
             DBEmployee dbEmployee = new DBEmployee(db);
             dbEmployee.createEmployee(employee1);
             dbEmployee.createEmployee(employee2);
-        }catch (SQLException e){
+        }catch (SQLException | EmployeeError e){
             System.out.println(e);
         }
     }

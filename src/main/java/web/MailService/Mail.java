@@ -21,8 +21,7 @@ public class Mail {
         properties.put("mail.smtp.starttls.enable", "true");
         Authenticator auth = new Authenticator() {
             @Override
-            public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+            public PasswordAuthentication getPasswordAuthentication() { return new PasswordAuthentication(username, password);
             }
         };
         Session session = Session.getInstance(properties, auth);

@@ -1,6 +1,7 @@
 package api;
 
 import Repoistory.Carporte.CarpoteRepo;
+import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
 import domain.Queries.Queries;
@@ -33,12 +34,12 @@ public class FOGAPI {
         return employeeRepo.checkMail(email);
     }
 
-    public Employee createSalesManEmployee(String email, String password) throws SQLException {
+    public Employee createSalesManEmployee(String email, String password) throws SQLException, EmployeeError {
         byte[] salt = Employee.genereateSalt();
         return employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
-    public Employee createAdminEmployee(String email, String password) throws SQLException {
+    public Employee createAdminEmployee(String email, String password) throws SQLException, EmployeeError {
         byte[] salt = Employee.genereateSalt();
         return employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
@@ -48,7 +49,7 @@ public class FOGAPI {
         return userRepo.addNewCustomer(new User(0, email, zip, city, adress, phoneNr));
     }
 
-    public Employee login(String email, String password) throws loginError, SQLException {
+    public Employee login(String email, String password) throws loginError, SQLException, EmployeeError {
         Employee tempEmployee = employeeRepo.login(email);
         if (tempEmployee.isPasswordCorrect(password)) {
             return tempEmployee;

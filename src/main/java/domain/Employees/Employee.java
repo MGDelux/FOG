@@ -1,5 +1,7 @@
 package domain.Employees;
 
+import Repoistory.Employee.Exceptions.EmployeeError;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
@@ -53,38 +55,20 @@ public class Employee {
         return salt;
     }
 
-    public static byte[] calculateSecret(byte[] salt, String password) {
+    public static byte[] calculateSecret(byte[] salt, String password) throws EmployeeError {
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt,
                 PASSWORD_ITTERATIONS, PASSWORD_LENGTH);
         try {
             return PASSWORD_FACTORY.generateSecret(spec).getEncoded();
         } catch (InvalidKeySpecException e) {
-            throw new RuntimeException(e);
+            throw new EmployeeError("ERROR: "+ e);
         }
     }
 
-    public static String byteArrayToHex(byte[] a) {
-        StringBuilder sb = new StringBuilder(a.length * 2);
-        for (byte b : a) {
-            sb.append(String.format("%02x", b));
-        }
-        return sb.toString();
-    }
 
-    public static SecretKeyFactory getPasswordFactory() {
-        return PASSWORD_FACTORY;
-    }
 
-    public boolean isPasswordCorrect(String password) {
+    public boolean isPasswordCorrect(String password) throws EmployeeError {
         return Arrays.equals(this.secret, calculateSecret(salt, password));
-    }
-
-    public static int getPasswordItterations() {
-        return PASSWORD_ITTERATIONS;
-    }
-
-    public static int getPasswordLength() {
-        return PASSWORD_LENGTH;
     }
 
     public Role getRole() {
