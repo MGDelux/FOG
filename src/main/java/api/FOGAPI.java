@@ -9,7 +9,6 @@ import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
-
 import java.sql.SQLException;
 
 /**
@@ -30,31 +29,48 @@ public class FOGAPI {
         this.queriesRepo = queriesRepo;
     }
 
-
-    public  Employee createSalesManEmployee(String email, String password) throws SQLException {
-        byte[] salt = Employee.genereateSalt();
-        return employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN,0,email,salt, Employee.calculateSecret(salt,password)));
+    public boolean checkEmail(String email) throws SQLException {
+        return employeeRepo.checkMail(email);
     }
-    public  Employee  createAdminEmployee(String email, String password) throws SQLException {
+
+    public Employee createSalesManEmployee(String email, String password) throws SQLException {
         byte[] salt = Employee.genereateSalt();
-        return employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN,0,email,salt, Employee.calculateSecret(salt,password)));
+        return employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN, 0, email, salt, Employee.calculateSecret(salt, password)));
+    }
+
+    public Employee createAdminEmployee(String email, String password) throws SQLException {
+        byte[] salt = Employee.genereateSalt();
+        return employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
     //WIP
-    public  User addCustomer(String email, int zip, String city, String adress, int phoneNr) {
-       return userRepo.addNewCustomer(new User(0,email,zip,city,adress,phoneNr));
+    public User addCustomer(String email, int zip, String city, String adress, int phoneNr) {
+        return userRepo.addNewCustomer(new User(0, email, zip, city, adress, phoneNr));
     }
 
     public Employee login(String email, String password) throws loginError, SQLException {
-       Employee tempEmployee = employeeRepo.login(email);
-       if (tempEmployee.isPasswordCorrect(password)){
-           return tempEmployee;
-       }else {
-           throw new loginError("password incorrect");
+        Employee tempEmployee = employeeRepo.login(email);
+        if (tempEmployee.isPasswordCorrect(password)) {
+            return tempEmployee;
+        } else {
+            throw new loginError("password incorrect");
 
-       }
+        }
     }
+
     public Queries newQuery(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
         return queriesRepo.newQuery(user, carPortWidth, cartPortLength, roofType, shedWidth, shedLength);
+    }
+
+    public Queries getQuery(int id) throws SQLException {
+        return queriesRepo.getSpecificQuire(id);
+    }
+
+    public Iterable<Queries> getAllQueries() {
+        return queriesRepo.getAllQuires();
+    }
+
+    public void deleteQurey(int id) {
+        queriesRepo.deleteSpecificQuire(id);
     }
 }
