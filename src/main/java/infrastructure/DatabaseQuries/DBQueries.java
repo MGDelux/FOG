@@ -5,11 +5,8 @@ import domain.Queries.Queries;
 import domain.Users.User;
 import infrastructure.DatabaseConnector.Database;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * CREATED BY mathias @ 26-11-2020 - 10:59
@@ -21,7 +18,7 @@ public class DBQueries implements QueriesRepo {
     }
 
     @Override
-    public Queries newQuerie(User user, int carPortWidth, int carPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
+    public Queries newQuery(User user, int carPortWidth, int carPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
         // we only need the Users ID (INT) nothing else from 'user' tyvm
 
         try (Connection connection = db.connect()) {
@@ -40,15 +37,46 @@ public class DBQueries implements QueriesRepo {
 
             return null;
     }
-
-    @Override
-    public Iterable<Queries> getAllQuires() {
-        return null;
+    private Queries ParseQueries(ResultSet set) throws SQLException{
+        return new Queries(
+                set.getInt("forespørgsler.kunde"),
+                set.getInt("forespørgsler.Carport_Bredde"),
+                set.getInt("forespørgsler.Carport_Længde"),
+                set.getString("forespørgsler.Tag_Type"),
+                set.getInt("forespørgsler.Redskabsrum_Bredde"),
+                set.getInt("forespørgsler.Redskabsrum_Længde"));
     }
 
     @Override
-    public Queries getSpecificQuire(int id) {
-        return null;
+    public Iterable<Queries> getAllQuires() {
+        ArrayList<Queries> queries = new ArrayList<>();
+        try (Connection connection = db.connect()){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM forespørgsler");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                queries.add(ParseQueries(resultSet));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return queries;
+    }
+
+
+    @Override
+    public Queries getSpecificQuire(int id) throws SQLException {
+        String SQL = "SELECT * FROM forespørgsler WHERE ForeSpørglse_Id = ? ";
+        PreparedStatement preparedStatement;
+        Connection connection= db.connect(); preparedStatement = connection.prepareStatement(SQL);
+        try{
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return ParseQueries(resultSet);
+
+        }finally {
+            connection.close();
+            preparedStatement.close();
+        }
     }
 
     @Override

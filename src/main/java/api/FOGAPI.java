@@ -54,7 +54,7 @@ public class FOGAPI {
 
        }
     }
-    public Queries newQuerie(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength){
-        return queriesRepo.newQuerie(user, carPortWidth, cartPortLength, roofType, shedWidth, shedLength);
+    public Queries newQuery(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
+        return queriesRepo.newQuery(user, carPortWidth, cartPortLength, roofType, shedWidth, shedLength);
     }
 }

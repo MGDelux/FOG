@@ -59,15 +59,54 @@
             <tbody>
             <!-- table  Buttom bliver populated/-->
                 <tr>
-                    <td></td>
+
                 </tr>
             </tbody>
         </table>
-        <form method="post">
+        <form method="post" style="text-align: center">
+            <select class="custom-select">
+                <option selected>Carport Bredde</option>
+                <option value="240 ">240 cm</option>
+                <option value="270 ">270 cm</option>
+                <option value="300 ">300 cm</option>
+                <option value="330 ">330 cm</option>
+                <option value="360 ">360 cm</option>
+                <option value="390 ">390 cm</option>
+                <option value="420 ">420 cm</option>
+                <option value="450 ">450 cm</option>
+                <option value="480 ">480 cm</option>
+                <option value="480 ">480 cm</option>
+                <option value="510 ">510 cm</option>
+                <option value="540 ">540 cm</option>
+                <option value="570 ">570 cm</option>
+                <option value="600 ">600 cm</option>
+                <option value="630 ">630 cm</option>
+                <option value="660 ">660 cm</option>
+                <option value="690 ">690 cm</option>
+                <option value="720 ">720 cm</option>
+                <option value="750 ">750 cm</option>
+            </select>
             <div class="Carport-bredde">
                 <select class="Carport-bredde" name="Carport-bredde">
-                    <option>1</option>
-                    <option>2</option>
+                    <option value="240 cm">240 cm</option>
+                    <option value="270 cm">270 cm</option>
+                    <option value="300 cm">300 cm</option>
+                    <option value="330 cm">330 cm</option>
+                    <option value="360 cm">360 cm</option>
+                    <option value="390 cm">390 cm</option>
+                    <option value="420 cm">420 cm</option>
+                    <option value="450 cm">450 cm</option>
+                    <option value="480 cm">480 cm</option>
+                    <option value="480 cm">480 cm</option>
+                    <option value="510 cm">510 cm</option>
+                    <option value="540 cm">540 cm</option>
+                    <option value="570 cm">570 cm</option>
+                    <option value="600 cm">600 cm</option>
+                    <option value="630 cm">630 cm</option>
+                    <option value="660 cm">660 cm</option>
+                    <option value="690 cm">690 cm</option>
+                    <option value="720 cm">720 cm</option>
+                    <option value="750 cm">750 cm</option>
                 </select>
             </div>
         </form>
@@ -89,6 +128,28 @@
             </tbody>
         </table>
         <form method="post">
+            <select class="custom-select">
+                <option selected>Carport længde</option>
+                <option value="240 cm">240 cm</option>
+                <option value="270 cm">270 cm</option>
+                <option value="300 cm">300 cm</option>
+                <option value="330 cm">330 cm</option>
+                <option value="360 cm">360 cm</option>
+                <option value="390 cm">390 cm</option>
+                <option value="420 cm">420 cm</option>
+                <option value="450 cm">450 cm</option>
+                <option value="480 cm">480 cm</option>
+                <option value="510 cm">510 cm</option>
+                <option value="540 cm">540 cm</option>
+                <option value="570 cm">570 cm</option>
+                <option value="600 cm">600 cm</option>
+                <option value="630 cm">630 cm</option>
+                <option value="660 cm">660 cm</option>
+                <option value="690 cm">690 cm</option>
+                <option value="720 cm">720 cm</option>
+                <option value="750 cm">750 cm</option>
+                <option value="780 cm">780 cm</option>
+            </select>
             <div class="Carport-længde">
                 <select class="Carport-længde" name="Carport-længde">
                     <option>1</option>
@@ -121,6 +182,14 @@
         </form>
 
         <h2>Redskabsrum:</h2>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Ja tak
+                </label>
+            </div>
+        </div>
         <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
         <p><Strong>Redskabsrum bredde:</Strong></p>
         <table id="Redskabsrum-bredde" border="1" title="">
@@ -203,14 +272,7 @@
                     <input type="text" class="form-control" id="postnummer" placeholder="Postnummer">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
-                </div>
-            </div>
+
             <button type="submit" class="btn btn-primary">Send forespørgsel</button>
         </form>
 

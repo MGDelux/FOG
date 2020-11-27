@@ -6,15 +6,15 @@ import domain.Users.User;
  * CREATED BY mathias @ 26-11-2020 - 10:50
  **/
 public class Queries {
-    private User user;
+    private int userId;
     private int carPortWidth;
     private int cartPortLength;
     private String roofType;
     private int shedWidth;
     private int shedLength;
 
-    public Queries(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength) {
-        this.user = user;
+    public Queries(int useriD, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength) {
+        this.userId = useriD;
         this.carPortWidth = carPortWidth;
         this.cartPortLength = cartPortLength;
         this.roofType = roofType;
@@ -22,12 +22,12 @@ public class Queries {
         this.shedLength = shedLength;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getCarPortWidth() {
@@ -73,7 +73,7 @@ public class Queries {
     @Override
     public String toString() {
         return "Queries{" +
-                "user=" + user +
+                "user=" + userId +
                 ", carPortWidth=" + carPortWidth +
                 ", cartPortLength=" + cartPortLength +
                 ", roofType='" + roofType + '\'' +
