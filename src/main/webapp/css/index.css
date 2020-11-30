@@ -6,21 +6,7 @@ body, html {
 
 .bg {
     height: 100%;
-
-}
-.bg::before{
-    content: "";
-    background-image: url("https://f.nordiskemedier.dk/2kum1e1405a2dvgb.jpg");
-    height: 100%;
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.7;
-    top: 425px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-
+    width: 100%;
 }
 
 .headerImage{
@@ -48,6 +34,12 @@ body, html {
 
 .p{
     position: relative;
+}
+
+.headerImage{
+    width: 1900px;
+    height: 400px;
+    float: inside;
 }
 
 .footer {
