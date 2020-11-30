@@ -2,8 +2,10 @@ package infrastructure;
 
 import Repoistory.Employee.Exceptions.EmployeeError;
 import domain.Employees.Employee;
+import domain.Users.User;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
+import infrastructure.DatabaseUser.DBUser;
 import infrastructure.Exceptions.DBError;
 import junit.framework.TestCase;
 
@@ -20,8 +22,6 @@ public class DBEmployeeTest extends TestCase {
 
     public void testCreateEmployee() throws DBError, SQLException {
         try {
-
-
             byte[] salt = Employee.genereateSalt();
             Employee employee1 = new Employee(Employee.Role.SALESMAN, 0, "mathias@mail.com", salt, Employee.calculateSecret(salt, "1234"));
             Employee employee2 = new Employee(Employee.Role.ADMIN, 1, "admin@mail.com", salt, Employee.calculateSecret(salt, "kage"));
@@ -33,4 +33,5 @@ public class DBEmployeeTest extends TestCase {
             System.out.println(e);
         }
     }
+
 }
