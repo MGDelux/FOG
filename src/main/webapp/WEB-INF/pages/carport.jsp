@@ -19,6 +19,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script>
+        function myFunction() {
+            var checkBox = document.getElementById("gridCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true){
+                text.style.display = "block";
+                $("#text").removeClass('d-none');
+            } else {
+                text.style.display = "none";
+                $("#text").addClass('d-none');
+            }
+        }
+    </script>
     <style>
         <jsp:include page="../../css/carport.css"/>
     </style>
@@ -131,22 +144,23 @@
             </div>
         </form>
 
+
+
         <h2>Redskabsrum:</h2>
         <div class="form-group">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Ja tak
-                </label>
+                <input class="form-check-input" type="checkbox" id="gridCheck" onclick="myFunction()">
+                <label class="form-check-label" for="gridCheck">Ja tak</label>
             </div>
         </div>
-        <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
+        <div class="d-none" style="desplay:none" id="text">
+            <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
         <p><Strong>Redskabsrum bredde:</Strong></p>
         <table id="Redskabsrum-bredde" border="1" title="">
         </table>
         <form method="post">
             <div class="Redskabsrum-bredde col-xs-4">
-                <select class="Redskabsrum-bredde" name="Redskabsrum-bredde">
+                <select style="desplay:none" id="text3" class="Redskabsrum-bredde" name="Redskabsrum-bredde">
                     <option value="240 cm">240 cm</option>
                     <option value="270 cm">270 cm</option>
                     <option value="300 cm">300 cm</option>
@@ -160,21 +174,6 @@
         </form>
 
         <p><Strong>Redskabsrum-længde:</Strong></p>
-        <table id="Redskabsrum-længde" border="1" title="">
-            <thead>
-            <!-- table rows id,name og pris laves/-->
-            <tr>
-                <th></th>
-            </tr>
-
-            </thead>
-            <tbody>
-            <!-- table  Buttom bliver populated/-->
-            <tr>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
         <form method="post">
             <div class="Redskabsrum-længde col-xs-4">
                 <select class="Redskabsrum-længde" name="Redskabsrum-længde">
@@ -189,8 +188,10 @@
                 </select>
             </div>
         </form>
+        </div>
         <button name="placeOrder" type="submit" class="btn btn-primary">Bestil carport</button>
     </div>
+
 
 </div>
 </body>
