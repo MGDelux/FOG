@@ -48,138 +48,61 @@
         <h1>Bestil din skrædersyet carport her!</h1>
         <h3>Carporte med fladt tag:</h3>
         <p><Strong>Carport bredde:</strong></p>
-        <table id="Carport-bredde" border="1" title="">
-            <thead>
-            <!-- table rows id,name og pris laves/-->
-            <tr>
-                <th></th>
-            </tr>
-
-            </thead>
-            <tbody>
-            <!-- table  Buttom bliver populated/-->
-                <tr>
-
-                </tr>
-            </tbody>
         </table>
-        <form method="post" style="text-align: center">
-            <select class="custom-select">
+        <form method="post" >
+            <select name="CarportWidth" class="custom-select" required>
                 <option selected>Carport Bredde</option>
-                <option value="240 ">240 cm</option>
-                <option value="270 ">270 cm</option>
-                <option value="300 ">300 cm</option>
-                <option value="330 ">330 cm</option>
-                <option value="360 ">360 cm</option>
-                <option value="390 ">390 cm</option>
-                <option value="420 ">420 cm</option>
-                <option value="450 ">450 cm</option>
-                <option value="480 ">480 cm</option>
-                <option value="480 ">480 cm</option>
-                <option value="510 ">510 cm</option>
-                <option value="540 ">540 cm</option>
-                <option value="570 ">570 cm</option>
-                <option value="600 ">600 cm</option>
-                <option value="630 ">630 cm</option>
-                <option value="660 ">660 cm</option>
-                <option value="690 ">690 cm</option>
-                <option value="720 ">720 cm</option>
-                <option value="750 ">750 cm</option>
+                <option value="240">240 cm</option>
+                <option value="270">270 cm</option>
+                <option value="300">300 cm</option>
+                <option value="330">330 cm</option>
+                <option value="360">360 cm</option>
+                <option value="390">390 cm</option>
+                <option value="420">420 cm</option>
+                <option value="450">450 cm</option>
+                <option value="480">480 cm</option>
+                <option value="480">480 cm</option>
+                <option value="510">510 cm</option>
+                <option value="540">540 cm</option>
+                <option value="570">570 cm</option>
+                <option value="60">600 cm</option>
+                <option value="630">630 cm</option>
+                <option value="660">660 cm</option>
+                <option value="690">690 cm</option>
+                <option value="720">720 cm</option>
+                <option value="750">750 cm</option>
             </select>
-            <div class="Carport-bredde">
-                <select class="Carport-bredde" name="Carport-bredde">
-                    <option value="240 cm">240 cm</option>
-                    <option value="270 cm">270 cm</option>
-                    <option value="300 cm">300 cm</option>
-                    <option value="330 cm">330 cm</option>
-                    <option value="360 cm">360 cm</option>
-                    <option value="390 cm">390 cm</option>
-                    <option value="420 cm">420 cm</option>
-                    <option value="450 cm">450 cm</option>
-                    <option value="480 cm">480 cm</option>
-                    <option value="480 cm">480 cm</option>
-                    <option value="510 cm">510 cm</option>
-                    <option value="540 cm">540 cm</option>
-                    <option value="570 cm">570 cm</option>
-                    <option value="600 cm">600 cm</option>
-                    <option value="630 cm">630 cm</option>
-                    <option value="660 cm">660 cm</option>
-                    <option value="690 cm">690 cm</option>
-                    <option value="720 cm">720 cm</option>
-                    <option value="750 cm">750 cm</option>
-                </select>
-            </div>
-        </form>
-
-        <p><Strong>Carport længde:</Strong></p>
-        <table id="Carport-længde" border="1" title="">
-            <thead>
-            <!-- table rows id,name og pris laves/-->
-            <tr>
-                <th></th>
-            </tr>
-
-            </thead>
-            <tbody>
-            <!-- table  Buttom bliver populated/-->
-            <tr>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        <form method="post">
-            <select class="custom-select">
+            <p><Strong>Carport bredde:</strong></p>
+            <select name="CarportLength" class="custom-select" required>
                 <option selected>Carport længde</option>
-                <option value="240 cm">240 cm</option>
-                <option value="270 cm">270 cm</option>
-                <option value="300 cm">300 cm</option>
-                <option value="330 cm">330 cm</option>
-                <option value="360 cm">360 cm</option>
-                <option value="390 cm">390 cm</option>
-                <option value="420 cm">420 cm</option>
-                <option value="450 cm">450 cm</option>
-                <option value="480 cm">480 cm</option>
-                <option value="510 cm">510 cm</option>
-                <option value="540 cm">540 cm</option>
-                <option value="570 cm">570 cm</option>
-                <option value="600 cm">600 cm</option>
-                <option value="630 cm">630 cm</option>
-                <option value="660 cm">660 cm</option>
-                <option value="690 cm">690 cm</option>
-                <option value="720 cm">720 cm</option>
-                <option value="750 cm">750 cm</option>
-                <option value="780 cm">780 cm</option>
+                <option value="240">240 cm</option>
+                <option value="270">270 cm</option>
+                <option value="300">300 cm</option>
+                <option value="330">330 cm</option>
+                <option value="360">360 cm</option>
+                <option value="390">390 cm</option>
+                <option value="420">420 cm</option>
+                <option value="450">450 cm</option>
+                <option value="480">480 cm</option>
+                <option value="480">480 cm</option>
+                <option value="510">510 cm</option>
+                <option value="540">540 cm</option>
+                <option value="570">570 cm</option>
+                <option value="600">600 cm</option>
+                <option value="630">630 cm</option>
+                <option value="660">660 cm</option>
+                <option value="690">690 cm</option>
+                <option value="720">720 cm</option>
+                <option value="780">780 cm</option>
             </select>
-            <div class="Carport-længde">
-                <select class="Carport-længde" name="Carport-længde">
-                    <option>1</option>
-                </select>
-            </div>
-        </form>
 
         <p><Strong>Carport tag:</Strong></p>
-        <table id="Carport-tag" border="1" title="">
-            <thead>
-            <!-- table rows id,name og pris laves/-->
-            <tr>
-                <th></th>
-            </tr>
-
-            </thead>
-            <tbody>
-            <!-- table  Buttom bliver populated/-->
-            <tr>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        <form method="post">
             <div class="Carport-tag">
-                <select class="Carport-længde" name="Carport-tag">
-                    <option>1</option>
+                <select class="Carport-længde" name="Carport-længde">
+                    <option value="1">FLADT</option>
+                    <option value="2">STIGNING</option>
                 </select>
             </div>
-        </form>
 
         <h2>Redskabsrum:</h2>
         <div class="form-group">
@@ -192,89 +115,59 @@
         </div>
         <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
         <p><Strong>Redskabsrum bredde:</Strong></p>
-        <table id="Redskabsrum-bredde" border="1" title="">
-            <thead>
-            <!-- table rows id,name og pris laves/-->
-            <tr>
-                <th></th>
-            </tr>
 
-            </thead>
-            <tbody>
-            <!-- table  Buttom bliver populated/-->
-            <tr>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        <form method="post">
             <div class="Redskabsrum-bredde">
-                <select class="Redskabsrum-bredde" name="Redskabsrum-bredde">
-                    <option>1</option>
+                <select name="ShedWidth" class="Redskabsrum-bredde" >
+                    <option value="1">ONE</option>
+                    <option value="2">TWO</option>
                 </select>
             </div>
-        </form>
-
         <p><Strong>Redskabsrum-længde:</Strong></p>
-        <table id="Redskabsrum-længde" border="1" title="">
-            <thead>
-            <!-- table rows id,name og pris laves/-->
-            <tr>
-                <th></th>
-            </tr>
-
-            </thead>
-            <tbody>
-            <!-- table  Buttom bliver populated/-->
-            <tr>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        <form method="post">
             <div class="Redskabsrum-længde">
-                <select class="Redskabsrum-længde" name="Redskabsrum-længde">
-                    <option>1</option>
+                <select class="ShedLength" name="ShedLength">
+                    <option value="1">ONE</option>
+                    <option value="2">TWO</option>
+                </select>
                 </select>
             </div>
-        </form>
-    </div>
     <br>
     <div align="center" class="container2" >
-        <form>
             <div class="form-row  div-wrapper d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="Email"><strong>Email</strong></label>
-                    <input type="email" class="form-control" id="Email" placeholder="Email">
+                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="password"><strong>Password</strong></label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <label for="phoneNR"><strong>TLF NR</strong></label>
+                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="Password">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-4">
                     <label for="inputAddress"><strong>Address</strong></label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Nørrebrogade">
+                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Nørrebrogade">
                  </div>
                  <div class="form-group col-md-4">
                      <label for="address"><strong>Address 2</strong></label>
-                     <input type="text" class="form-control" id="address" placeholder="Opgang, studie, eller sal">
+                     <input type="text" class="form-control" name="adress" id="address" placeholder="Opgang, studie, eller sal">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-2">
                     <label for="by"><strong>By</strong></label>
-                    <input type="text" class="form-control" id="by" placeholder="By">
+                    <input type="text" class="form-control" name="by" id="by" placeholder="By">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="postnummer"><strong>Postnummer</strong></label>
-                    <input type="text" class="form-control" id="postnummer" placeholder="Postnummer">
+                    <input type="text" class="form-control" id="postnummer"  name="postnummer" placeholder="Postnummer">
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Send forespørgsel</button>
+            <button type="submit" name="submitQ" class="btn btn-primary">Send forespørgsel</button>
+    </div>
         </form>
+
+
 
     </div>
 </div>

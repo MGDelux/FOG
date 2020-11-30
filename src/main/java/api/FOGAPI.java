@@ -10,6 +10,7 @@ import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
+
 import java.sql.SQLException;
 
 /**
@@ -45,8 +46,23 @@ public class FOGAPI {
     }
 
     //WIP
-    public User addCustomer(String email, int zip, String city, String adress, int phoneNr) {
-        return userRepo.addNewCustomer(new User(0, email, zip, city, adress, phoneNr));
+    public User addCustomer(String email, int zip, String city, String adress, int phoneNr) throws SQLException {
+        int countIds = 1;
+        try {
+            for (User user : getAllUsers()) {
+                countIds = countIds + 1;
+            }
+
+        } catch (NullPointerException e) {
+            e.getMessage();
+        }
+        System.out.println(countIds);
+        return userRepo.addNewCustomer(new User(countIds, email, zip, city, adress, phoneNr));
+    }
+
+    public Iterable<User> getAllUsers() throws SQLException {
+            return userRepo.getAllUsers();
+
     }
 
     public Employee login(String email, String password) throws loginError, SQLException, EmployeeError {
