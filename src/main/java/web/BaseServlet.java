@@ -1,6 +1,6 @@
 package web;
 
-import api.FOGAPI;
+import api.FOG;
 import infrastructure.DatabaseCarport.DBCarport;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
@@ -21,15 +21,15 @@ import java.time.LocalDateTime;
  **/
 
 public class BaseServlet extends HttpServlet {
-    protected static final FOGAPI API;
+    protected static final FOG API;
 
     static {
         API = initAPI();
     }
 
-    private static FOGAPI initAPI() {
+    private static FOG initAPI() {
         Database db = new Database();
-        return new FOGAPI(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
+        return new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
     }
 
 
