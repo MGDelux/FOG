@@ -18,7 +18,7 @@ public class DBQueries implements QueriesRepo {
     }
 
     @Override
-    public Queries newQuery(User user, int carPortWidth, int carPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
+    public synchronized Queries newQuery(User user, int carPortWidth, int carPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
         // we only need the Users ID (INT) nothing else from 'user' tyvm
 
         try (Connection connection = db.connect()) {
@@ -68,16 +68,19 @@ public class DBQueries implements QueriesRepo {
         String SQL = "SELECT * FROM forespørgsler WHERE ForeSpørglse_Id = ? ";
         PreparedStatement preparedStatement;
         Connection connection= db.connect(); preparedStatement = connection.prepareStatement(SQL);
-
         try{
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            return ParseQueries(resultSet);
+            if (resultSet.next()) {
+                return ParseQueries(resultSet);
+            }
 
         }finally {
             connection.close();
             preparedStatement.close();
         }
+        return null;
+
     }
 
     @Override

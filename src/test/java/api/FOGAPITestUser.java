@@ -38,4 +38,5 @@ public class FOGAPITestUser extends TestCase {
         System.out.println(fogapi.getAllUsers());
     }
 
+
 }

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 public interface UserRepo extends UserFactory {
     Iterable<User> getAllUsers() throws SQLException;
     boolean checkIfUsersIsInSystem(String mail) throws SQLException;
+    User getExistingUserInfomation(String email) throws SQLException;
 
 
 }

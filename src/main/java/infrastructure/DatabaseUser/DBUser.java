@@ -18,7 +18,7 @@ public class DBUser implements UserRepo {
     }
 
     @Override
-    public User addNewCustomer(User user) {
+    public synchronized User addNewCustomer(User user) {
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO kunder (Email,Post_Nummer,City,Adresse,TlfNr) VALUES (?,?,?,?,?)";
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -48,18 +48,47 @@ public class DBUser implements UserRepo {
     }
 
     private User parseUsers(ResultSet set) throws SQLException {
-        return new User(
-                set.getInt("kunder.Kunde_Id"),
-                set.getString("kunder.Email"),
-                set.getInt("kunder.Post_Nummer"),
-                set.getString("kunder.City"),
-                set.getString("kunder.Adresse"),
-                set.getInt("kunder.TlfNr")
-        );
+        if (set.next()) {
+            return new User(
+                    set.getInt("kunder.Kunde_Id"),
+                    set.getString("kunder.Email"),
+                    set.getInt("kunder.Post_Nummer"),
+                    set.getString("kunder.City"),
+                    set.getString("kunder.Adresse"),
+                    set.getInt("kunder.TlfNr")
+            );
+        } else throw new SQLException();
     }
 
     @Override
     public boolean checkIfUsersIsInSystem(String mail) throws SQLException {
-        return false;
+        String SQL = "SELECT * FROM kunder WHERE Email = ?";
+        PreparedStatement preparedStatement;
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            preparedStatement.setString(1, mail);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
+    }
+
+    @Override
+    public User getExistingUserInfomation(String email) throws SQLException {
+        String SQL = "SELECT * FROM kunder WHERE Email = ?";
+        PreparedStatement preparedStatement;
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return parseUsers(resultSet);
+        }finally {
+            preparedStatement.close();
+            connection.close();
+        }
     }
 }

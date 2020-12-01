@@ -65,7 +65,7 @@
                 <option value="510">510 cm</option>
                 <option value="540">540 cm</option>
                 <option value="570">570 cm</option>
-                <option value="60">600 cm</option>
+                <option value="600">600 cm</option>
                 <option value="630">630 cm</option>
                 <option value="660">660 cm</option>
                 <option value="690">690 cm</option>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phoneNR"><strong>TLF NR</strong></label>
-                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="Password">
+                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
