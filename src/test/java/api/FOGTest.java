@@ -15,13 +15,13 @@ import java.sql.SQLException;
 /**
  * CREATED BY mathias @ 27-11-2020 - 12:17
  **/
-public class FOGAPITest extends TestCase {
+public class FOGTest extends TestCase {
 
     public void testCreateAdminEmployee() throws EmployeeError, SQLException {
         Database db = new Database();
         try {
-            FOGAPI fogapi = new FOGAPI(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
-            fogapi.createAdminEmployee("mathias@gmail.com", "password");
+            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
+            FOG.createAdminEmployee("mathias@gmail.com", "password");
         } catch (EmployeeError e) {
             e.printStackTrace();
         }
@@ -29,7 +29,7 @@ public class FOGAPITest extends TestCase {
 
     public void testLogin() throws loginError, EmployeeError, SQLException {
         Database db = new Database();
-        FOGAPI fogapi = new FOGAPI(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
-        fogapi.login("mathias@gmail.com", "password");
+        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
+        FOG.login("mathias@gmail.com", "password");
     }
 }
