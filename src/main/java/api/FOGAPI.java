@@ -48,6 +48,17 @@ public class FOGAPI {
     public boolean checkIfNewCustomer(String email) throws SQLException {
         return userRepo.checkIfUsersIsInSystem(email);
     }
+
+    /**
+     * adds a costumer to the database if it does not exist already.
+     * @param email
+     * @param zip
+     * @param city
+     * @param adress
+     * @param phoneNr
+     * @return
+     * @throws SQLException
+     */
     public User addCustomer(String email, int zip, String city, String adress, int phoneNr) throws SQLException {
         if (!checkIfNewCustomer(email)) { //checking if user is in our system by taking the mail and finding if it is in the db already if so just get the infomation instead of making it again
             int countIds = 1; //temp and basic way of assigning "id" to users (only in the app tho does not apply it db , db does it automaticly 'auto_increment')
@@ -55,7 +66,7 @@ public class FOGAPI {
                 for (User user : getAllUsers()) {
                     countIds++; //for every user we have in our db we count +1
                 }
-
+//TODO: Får vi nogensiden nullpointerException, hvorfor?, burde vi få det?
             } catch (NullPointerException e) {
                 e.getMessage();
             }
