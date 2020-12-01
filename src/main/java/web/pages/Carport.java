@@ -42,15 +42,20 @@ public class Carport extends BaseServlet {
                 String shedWidth = req.getParameter("ShedWidth");
                 log(req, "shed: " + shedLength + " w " + shedWidth);
                 log(req, " -> " + carPortLength + " WIDTH " + carPortWidth + " cm  Email: " + eMail + " adress " + address + " city " + city + " zip " + zipCode + " pnr " + phoneNR);
-              //convert to string into Intergers
-               int zipCodeToInt = Integer.parseInt(zipCode);
-                int phoneNrToInt = Integer.parseInt(phoneNR);
-                int carPortWidthToInt = Integer.parseInt(carPortWidth);
-                int carPortLengthToInt = Integer.parseInt(carPortLength);
-                int shedWidthToInt = Integer.parseInt(shedWidth);
-                int shedLengthToInt = Integer.parseInt(shedLength);
-
-                API.newQuery(API.addCustomer(eMail, zipCodeToInt, city, address, phoneNrToInt), carPortWidthToInt, carPortLengthToInt, "flat", shedWidthToInt, shedLengthToInt);
+                //convert to string into Intergers
+                try {
+                    int zipCodeToInt = Integer.parseInt(zipCode);
+                    int phoneNrToInt = Integer.parseInt(phoneNR);
+                    int carPortWidthToInt = Integer.parseInt(carPortWidth);
+                    int carPortLengthToInt = Integer.parseInt(carPortLength);
+                    int shedWidthToInt = Integer.parseInt(shedWidth);
+                    int shedLengthToInt = Integer.parseInt(shedLength);
+                    API.newQuery(API.addCustomer(eMail, zipCodeToInt, city, address, phoneNrToInt), carPortWidthToInt, carPortLengthToInt, "flat", shedWidthToInt, shedLengthToInt);
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+//add possiblle Customer via API to db ect
+                //and added query to system + db
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -1,5 +1,4 @@
 package api;
-
 import Repoistory.Carporte.CarpoteRepo;
 import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Materials.MaterialsRepo;
@@ -31,7 +30,7 @@ public class FOGAPI {
         this.queriesRepo = queriesRepo;
     }
 
-    public boolean checkEmail(String email) throws SQLException {
+    public boolean checkEmployeeEmail(String email) throws SQLException {
         return employeeRepo.checkMail(email);
     }
 
@@ -41,28 +40,34 @@ public class FOGAPI {
     }
 
     public Employee createAdminEmployee(String email, String password) throws SQLException, EmployeeError {
-        byte[] salt = Employee.genereateSalt();
+        byte[] salt = Employee.genereateSalt(); // magic space code stuff
         return employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
     //WIP
+    public boolean checkIfNewCustomer(String email) throws SQLException {
+        return userRepo.checkIfUsersIsInSystem(email);
+    }
     public User addCustomer(String email, int zip, String city, String adress, int phoneNr) throws SQLException {
-        int countIds = 1;
-        try {
-            for (User user : getAllUsers()) {
-                countIds = countIds + 1;
-            }
+        if (!checkIfNewCustomer(email)) { //checking if user is in our system by taking the mail and finding if it is in the db already if so just get the infomation instead of making it again
+            int countIds = 1; //temp and basic way of assigning "id" to users (only in the app tho does not apply it db , db does it automaticly 'auto_increment')
+            try {
+                for (User user : getAllUsers()) {
+                    countIds++; //for every user we have in our db we count +1
+                }
 
-        } catch (NullPointerException e) {
-            e.getMessage();
+            } catch (NullPointerException e) {
+                e.getMessage();
+            }
+            return userRepo.addNewCustomer(new User(countIds, email, zip, city, adress, phoneNr));
         }
-        System.out.println(countIds);
-        return userRepo.addNewCustomer(new User(countIds, email, zip, city, adress, phoneNr));
+        else {
+            return userRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
+        }
     }
 
     public Iterable<User> getAllUsers() throws SQLException {
             return userRepo.getAllUsers();
-
     }
 
     public Employee login(String email, String password) throws loginError, SQLException, EmployeeError {
