@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * CREATED BY mathi @ 23-11-2020 - 14:20
@@ -26,9 +27,16 @@ public class Carport extends BaseServlet {
         getPageInfomation(req);
     }
 
+    /**
+     * get the information out of carport page sent with post
+     * TODO: Mathias i dont understand this shit
+     *
+     * @param req
+     */
     private synchronized void getPageInfomation(HttpServletRequest req) {
+        // TODO: bliver submitQ nogensinde null?
         if (req.getParameter("submitQ") != null) {
-            try {
+
                 log(req, "POST");
                 //getting all page infomation (still missig roof type)
                 String eMail = req.getParameter("Email");
@@ -52,13 +60,14 @@ public class Carport extends BaseServlet {
                     int shedLengthToInt = Integer.parseInt(shedLength);
                     API.newQuery(API.addCustomer(eMail, zipCodeToInt, city, address, phoneNrToInt), carPortWidthToInt, carPortLengthToInt, "flat", shedWidthToInt, shedLengthToInt);
                 }catch (NumberFormatException e){
+                    //TODO: Should we inform the user about this?
                     e.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
 //add possiblle Customer via API to db ect
                 //and added query to system + db
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
 
         }
     }

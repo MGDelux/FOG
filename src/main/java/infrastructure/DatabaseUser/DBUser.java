@@ -3,6 +3,7 @@ package infrastructure.DatabaseUser;
 import Repoistory.User.UserRepo;
 import domain.Users.User;
 import infrastructure.DatabaseConnector.Database;
+import infrastructure.Exceptions.UnexpectedDbError;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -61,18 +62,23 @@ public class DBUser implements UserRepo {
     }
 
     @Override
-    public boolean checkIfUsersIsInSystem(String mail) throws SQLException {
-        String SQL = "SELECT * FROM kunder WHERE Email = ?";
-        PreparedStatement preparedStatement;
-        Connection connection = db.connect();
-        preparedStatement = connection.prepareStatement(SQL);
+    public boolean checkIfUsersIsInSystem(String mail) {
         try {
-            preparedStatement.setString(1, mail);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        } finally {
-            preparedStatement.close();
-            connection.close();
+            String SQL = "SELECT * FROM kunder WHERE Email = ?";
+            PreparedStatement preparedStatement;
+            Connection connection = db.connect();
+            preparedStatement = connection.prepareStatement(SQL);
+            try {
+                preparedStatement.setString(1, mail);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                return resultSet.next();
+            } finally {
+                preparedStatement.close();
+                connection.close();
+            }
+
+        } catch (SQLException throwables) {
+            throw new UnexpectedDbError(throwables);
         }
     }
 
@@ -86,7 +92,7 @@ public class DBUser implements UserRepo {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
             return parseUsers(resultSet);
-        }finally {
+        } finally {
             preparedStatement.close();
             connection.close();
         }
