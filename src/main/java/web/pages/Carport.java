@@ -19,6 +19,8 @@ public class Carport extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         render("/WEB-INF/pages/carport.jsp", resp, req);
+      String range =  req.getParameter("customRange3");
+        System.out.println(range);;
 
     }
 

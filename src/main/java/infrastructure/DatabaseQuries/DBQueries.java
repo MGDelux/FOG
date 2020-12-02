@@ -35,7 +35,7 @@ public class DBQueries implements QueriesRepo {
             db.closeConnection();
         }
 
-            return null;
+            return null; //fix
     }
     private Queries ParseQueries(ResultSet set) throws SQLException{
         return new Queries(

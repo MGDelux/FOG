@@ -23,11 +23,17 @@
         <jsp:include page="../../css/carport.css"/>
     </style>
     <title>Carporte</title>
-    <div class="HeaderImage">
-        <img class="headerImage" src="https://fut.dk/wp-content/uploads/job-manager-uploads/company_logo/Fog_100_logo-1024x512.jpg">
-    </div>
 </head>
 <body>
+<script>
+    var slider = document.getElementById("customRange3");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+</script>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
     <a class="navbar-brand" href="https://www.johannesfog.dk/globalassets/100-ar/fog-100-logo-animation-flip-126.gAif">FOG</a>
     <ul class="navbar-nav">
@@ -43,67 +49,30 @@
     </ul>
 
 </nav>
-<div class="bg">
-    <div align="center" class="container1">
+<div id="wrapper">
         <h1>Bestil din skrædersyet carport her!</h1>
         <h3>Carporte med fladt tag:</h3>
         <p><Strong>Carport bredde:</strong></p>
         </table>
-        <form method="post" >
-            <select name="CarportWidth" class="custom-select" required>
-                <option selected>Carport Bredde</option>
-                <option value="240">240 cm</option>
-                <option value="270">270 cm</option>
-                <option value="300">300 cm</option>
-                <option value="330">330 cm</option>
-                <option value="360">360 cm</option>
-                <option value="390">390 cm</option>
-                <option value="420">420 cm</option>
-                <option value="450">450 cm</option>
-                <option value="480">480 cm</option>
-                <option value="480">480 cm</option>
-                <option value="510">510 cm</option>
-                <option value="540">540 cm</option>
-                <option value="570">570 cm</option>
-                <option value="600">600 cm</option>
-                <option value="630">630 cm</option>
-                <option value="660">660 cm</option>
-                <option value="690">690 cm</option>
-                <option value="720">720 cm</option>
-                <option value="750">750 cm</option>
-            </select>
-            <p><Strong>Carport bredde:</strong></p>
-            <select name="CarportLength" class="custom-select" required>
-                <option selected>Carport længde</option>
-                <option value="240">240 cm</option>
-                <option value="270">270 cm</option>
-                <option value="300">300 cm</option>
-                <option value="330">330 cm</option>
-                <option value="360">360 cm</option>
-                <option value="390">390 cm</option>
-                <option value="420">420 cm</option>
-                <option value="450">450 cm</option>
-                <option value="480">480 cm</option>
-                <option value="480">480 cm</option>
-                <option value="510">510 cm</option>
-                <option value="540">540 cm</option>
-                <option value="570">570 cm</option>
-                <option value="600">600 cm</option>
-                <option value="630">630 cm</option>
-                <option value="660">660 cm</option>
-                <option value="690">690 cm</option>
-                <option value="720">720 cm</option>
-                <option value="780">780 cm</option>
-            </select>
+    <form method="post">
 
+    <input required type="range" class="custom-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
+            <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" />
+            <p><Strong>Carport længde:</strong></p>
+            <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
+            <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" />
         <p><Strong>Carport tag:</Strong></p>
             <div class="Carport-tag">
-                <select class="Carport-længde" name="Carport-længde">
-                    <option value="1">FLADT</option>
-                    <option value="2">STIGNING</option>
-                </select>
-            </div>
-
+                <div class="row">
+                   <div class="column">
+                <input type="checkbox" id="myCheckbox1" />
+                       <label for="myCheckbox1"><img src="https://i.imgur.com/KjEF4L3.jpg" /></label>
+                   </div>
+                    <div class="column">
+                <input type="checkbox" id="myCheckbox2" />
+                <label for="myCheckbox2"><img src="https://i.imgur.com/KjEF4L3.jpg" /></label>
+                    </div>
+                </div>
         <h2>Redskabsrum:</h2>
         <div class="form-group">
             <div class="form-check">
@@ -117,20 +86,28 @@
         <p><Strong>Redskabsrum bredde:</Strong></p>
 
             <div class="Redskabsrum-bredde">
-                <select name="ShedWidth" class="Redskabsrum-bredde" >
-                    <option value="1">ONE</option>
-                    <option value="2">TWO</option>
-                </select>
+                <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
+                <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="240" min="240" max="780" oninput="customRange5.value=amount3.value" />
+
             </div>
         <p><Strong>Redskabsrum-længde:</Strong></p>
             <div class="Redskabsrum-længde">
-                <select class="ShedLength" name="ShedLength">
-                    <option value="1">ONE</option>
-                    <option value="2">TWO</option>
-                </select>
-                </select>
+                    <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
+                    <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="240" min="240" max="780" oninput="customRange6.value=amount4.value" />
+
             </div>
-    <br>
+                <div class="svgshowcase">
+                    <p style="text-align: center"><strong>DIN CARPORTS MÅL:</strong></p>
+                    <div align="center">
+                        <svg width="100" height="100">
+                            <rect x="0" y="0" height="90" width="90"
+                                  style="stroke:#000000; fill: #ff0000"/>
+                            Sorry, your browser does not support inline SVG.
+                        </svg>
+                        <p>THIS WILL BE A BUTTON THAT WILL SHOW THE CARPORT ON A DIFFRENT PAGE MAYBE?</p>
+                    </div>
+                </div>
+    </div>
     <div align="center" class="container2" >
             <div class="form-row  div-wrapper d-flex justify-content-center">
                 <div class="form-group col-md-4">
@@ -164,13 +141,17 @@
             </div>
 
             <button type="submit" name="submitQ" class="btn btn-primary">Send forespørgsel</button>
+        <hr class="solid">
+        <hr class="solid">
+        <hr class="solid">
+
+
     </div>
         </form>
 
 
 
     </div>
-</div>
 </body>
 <footer>
     <div class="footer">
