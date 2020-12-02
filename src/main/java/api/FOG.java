@@ -21,10 +21,10 @@ public class FOG {
     private final CarpoteRepo carpoteRepo;
     private final MaterialsRepo materialsRepo;
     private final QueriesRepo queriesRepo;
-    //TODO: >>!Important BLOCKER<< FIX SQL SCRIPT SO WE CAN ENTER QURIES INTO DB WITH OUT CONSTRAINT ERRORS: -> CHECK / RUN FOGTestNewQuery TEST for error (TEST>API>FOGTestNewQuery>public void testNewQuery() )
+    //TODO: LOCKER<< FIX SQL SCRIPT SO WE CAN ENTER QURIES INTO DB WITH OUT CONSTRAINT ERRORS: -> CHECK / RUN FOGTestNewQuery TEST for error (TEST>API>FOGTestNewQuery>public void testNewQuery() )
     //TODO: !Important FIGURE OUT WHAT MATS ECT WE NEED TO MAKE A CARPORT OUT OF 'WHAT' MATERIALS AND UPDATE SQL SCRIPT TO ACCOMMODATE THESE CHANGES IF NEEDED. and the required logic
-     /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
-      * -mbt */
+    /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
+     * -mbt */
 
     public FOG(EmployeeRepo employeeRepo, UserRepo userRepo, CarpoteRepo carpoteRepo, MaterialsRepo materialsRepo, QueriesRepo queriesRepo) {
         this.employeeRepo = employeeRepo;
@@ -34,7 +34,8 @@ public class FOG {
         this.queriesRepo = queriesRepo;
     }
 
-    public boolean checkEmployeeEmail(String email) throws SQLException {
+    public boolean checkEmployeeEmail(String email) throws SQLException
+     {
         return employeeRepo.checkMail(email);
     }
 
