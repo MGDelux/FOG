@@ -19,23 +19,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script>
+        function myFunction() {
+            var checkBox = document.getElementById("gridCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true){
+                text.style.display = "block";
+                $("#text").removeClass('d-none');
+            } else {
+                text.style.display = "none";
+                $("#text").addClass('d-none');
+            }
+        }
+    </script>
     <style>
         <jsp:include page="../../css/carport.css"/>
     </style>
     <title>Carporte</title>
+    <div class="HeaderImage">
+        <img class="headerImage" src="https://fut.dk/wp-content/uploads/job-manager-uploads/company_logo/Fog_100_logo-1024x512.jpg">
+    </div>
 </head>
 <body>
-<script>
-    var slider = document.getElementById("customRange3");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
-</script>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
-    <a class="navbar-brand" href="https://www.johannesfog.dk/globalassets/100-ar/fog-100-logo-animation-flip-126.gAif">FOG</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">FOG</a>
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
@@ -43,115 +50,150 @@
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/EmailSendingServlet ">Mail test</a>
-        </li>
     </ul>
 
 </nav>
-<div id="wrapper">
+<div class="bg">
+    <div align="center" class="container1">
         <h1>Bestil din skrædersyet carport her!</h1>
         <h3>Carporte med fladt tag:</h3>
         <p><Strong>Carport bredde:</strong></p>
+        <table id="Carport-bredde" border="1" title="">
         </table>
-    <form method="post">
+        <form method="post" style="text-align: center">
+            <div class="form-group col-md-12 col-xs-8 d-flex justify-content-center">
+                <select class="Carport-bredde" name="Carport-bredde">
+                    <option value="240 cm">240 cm</option>
+                    <option value="270 cm">270 cm</option>
+                    <option value="300 cm">300 cm</option>
+                    <option value="330 cm">330 cm</option>
+                    <option value="360 cm">360 cm</option>
+                    <option value="390 cm">390 cm</option>
+                    <option value="420 cm">420 cm</option>
+                    <option value="450 cm">450 cm</option>
+                    <option value="480 cm">480 cm</option>
+                    <option value="480 cm">480 cm</option>
+                    <option value="510 cm">510 cm</option>
+                    <option value="540 cm">540 cm</option>
+                    <option value="570 cm">570 cm</option>
+                    <option value="600 cm">600 cm</option>
+                    <option value="630 cm">630 cm</option>
+                    <option value="660 cm">660 cm</option>
+                    <option value="690 cm">690 cm</option>
+                    <option value="720 cm">720 cm</option>
+                    <option value="750 cm">750 cm</option>
+                </select>
+            </div>
+        </form>
 
-    <input required type="range" class="custom-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
-            <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" />
-            <p><Strong>Carport længde:</strong></p>
-            <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
-            <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" />
+        <p><Strong>Carport længde:</Strong></p>
+        <table id="Carport-længde" border="1" title="">
+        </table>
+        <form method="post">
+            <div class="form-group col-md-12 d-flex justify-content-center">
+                <select class="Carport-længde col-xs-4" name="Carport-længde">
+                    <option value="240 cm">240 cm</option>
+                    <option value="270 cm">270 cm</option>
+                    <option value="300 cm">300 cm</option>
+                    <option value="330 cm">330 cm</option>
+                    <option value="360 cm">360 cm</option>
+                    <option value="390 cm">390 cm</option>
+                    <option value="420 cm">420 cm</option>
+                    <option value="450 cm">450 cm</option>
+                    <option value="480 cm">480 cm</option>
+                    <option value="510 cm">510 cm</option>
+                    <option value="540 cm">540 cm</option>
+                    <option value="570 cm">570 cm</option>
+                    <option value="600 cm">600 cm</option>
+                    <option value="630 cm">630 cm</option>
+                    <option value="660 cm">660 cm</option>
+                    <option value="690 cm">690 cm</option>
+                    <option value="720 cm">720 cm</option>
+                    <option value="750 cm">750 cm</option>
+                    <option value="780 cm">780 cm</option>
+                </select>
+            </div>
+        </form>
+
         <p><Strong>Carport tag:</Strong></p>
-            <div class="Carport-tag">
-                <div class="row">
-                   <div class="column">
-                <input type="checkbox" id="myCheckbox1" />
-                       <label for="myCheckbox1"><img src="https://i.imgur.com/KjEF4L3.jpg" /></label>
-                   </div>
-                    <div class="column">
-                <input type="checkbox" id="myCheckbox2" />
-                <label for="myCheckbox2"><img src="https://i.imgur.com/KjEF4L3.jpg" /></label>
-                    </div>
-                </div>
-        <h2>Redskabsrum:</h2>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Ja tak
-                </label>
+        <table id="Carport-tag" border="1" title="">
+        </table>
+        <form method="post">
+            <div class="form-group col-md-12 d-flex justify-content-center">
+                <select class="Carport-længde col-xs-4" name="Carport-tag">
+                    <option value="240 cm">240 cm</option>
+                    <option value="270 cm">270 cm</option>
+                    <option value="300 cm">300 cm</option>
+                    <option value="330 cm">330 cm</option>
+                    <option value="360 cm">360 cm</option>
+                    <option value="390 cm">390 cm</option>
+                    <option value="420 cm">420 cm</option>
+                    <option value="450 cm">450 cm</option>
+                    <option value="480 cm">480 cm</option>
+                    <option value="510 cm">510 cm</option>
+                    <option value="540 cm">540 cm</option>
+                    <option value="570 cm">570 cm</option>
+                    <option value="600 cm">600 cm</option>
+                    <option value="630 cm">630 cm</option>
+                    <option value="660 cm">660 cm</option>
+                    <option value="690 cm">690 cm</option>
+                    <option value="720 cm">720 cm</option>
+                    <option value="750 cm">750 cm</option>
+                    <option value="780 cm">780 cm</option>
+                </select>
             </div>
-        </div>
-        <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
-        <p><Strong>Redskabsrum bredde:</Strong></p>
-
-            <div class="Redskabsrum-bredde">
-                <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
-                <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="240" min="240" max="780" oninput="customRange5.value=amount3.value" />
-
-            </div>
-        <p><Strong>Redskabsrum-længde:</Strong></p>
-            <div class="Redskabsrum-længde">
-                    <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
-                    <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="240" min="240" max="780" oninput="customRange6.value=amount4.value" />
-
-            </div>
-                <div class="svgshowcase">
-                    <p style="text-align: center"><strong>DIN CARPORTS MÅL:</strong></p>
-                    <div align="center">
-                        <svg width="100" height="100">
-                            <rect x="0" y="0" height="90" width="90"
-                                  style="stroke:#000000; fill: #ff0000"/>
-                            Sorry, your browser does not support inline SVG.
-                        </svg>
-                        <p>THIS WILL BE A BUTTON THAT WILL SHOW THE CARPORT ON A DIFFRENT PAGE MAYBE?</p>
-                    </div>
-                </div>
-    </div>
-    <div align="center" class="container2" >
-            <div class="form-row  div-wrapper d-flex justify-content-center">
-                <div class="form-group col-md-4">
-                    <label for="Email"><strong>Email</strong></label>
-                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="phoneNR"><strong>TLF NR</strong></label>
-                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
-                </div>
-            </div>
-            <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
-                <div class="form-group col-md-4">
-                    <label for="inputAddress"><strong>Address</strong></label>
-                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Nørrebrogade">
-                 </div>
-                 <div class="form-group col-md-4">
-                     <label for="address"><strong>Address 2</strong></label>
-                     <input type="text" class="form-control" name="adress" id="address" placeholder="Opgang, studie, eller sal">
-                </div>
-            </div>
-            <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
-                <div class="form-group col-md-2">
-                    <label for="by"><strong>By</strong></label>
-                    <input type="text" class="form-control" name="by" id="by" placeholder="By">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="postnummer"><strong>Postnummer</strong></label>
-                    <input type="text" class="form-control" id="postnummer"  name="postnummer" placeholder="Postnummer">
-                </div>
-            </div>
-
-            <button type="submit" name="submitQ" class="btn btn-primary">Send forespørgsel</button>
-        <hr class="solid">
-        <hr class="solid">
-        <hr class="solid">
-
-
-    </div>
         </form>
 
 
 
+        <h2>Redskabsrum:</h2>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" onclick="myFunction()">
+                <label class="form-check-label" for="gridCheck">Ja tak</label>
+            </div>
+        </div>
+        <div class="d-none" style="desplay:none" id="text">
+            <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
+        <p><Strong>Redskabsrum bredde:</Strong></p>
+        <table id="Redskabsrum-bredde" border="1" title="">
+        </table>
+        <form method="post">
+            <div class="Redskabsrum-bredde col-xs-4">
+                <select style="desplay:none" id="text3" class="Redskabsrum-bredde" name="Redskabsrum-bredde">
+                    <option value="240 cm">240 cm</option>
+                    <option value="270 cm">270 cm</option>
+                    <option value="300 cm">300 cm</option>
+                    <option value="330 cm">330 cm</option>
+                    <option value="360 cm">360 cm</option>
+                    <option value="390 cm">390 cm</option>
+                    <option value="420 cm">420 cm</option>
+                    <option value="450 cm">450 cm</option>
+                </select>
+            </div>
+        </form>
+
+        <p><Strong>Redskabsrum-længde:</Strong></p>
+        <form method="post">
+            <div class="Redskabsrum-længde col-xs-4">
+                <select class="Redskabsrum-længde" name="Redskabsrum-længde">
+                    <option value="240 cm">240 cm</option>
+                    <option value="270 cm">270 cm</option>
+                    <option value="300 cm">300 cm</option>
+                    <option value="330 cm">330 cm</option>
+                    <option value="360 cm">360 cm</option>
+                    <option value="390 cm">390 cm</option>
+                    <option value="420 cm">420 cm</option>
+                    <option value="450 cm">450 cm</option>
+                </select>
+            </div>
+        </form>
+        </div>
+        <button name="placeOrder" type="submit" class="btn btn-primary">Bestil carport</button>
     </div>
+
+
+</div>
 </body>
 <footer>
     <div class="footer">
