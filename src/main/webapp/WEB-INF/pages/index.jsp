@@ -7,7 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-
 <html>
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,13 +35,19 @@
     <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/foresporgelse/">TESTETSE</a>
+    </li>
 </ul>
 
 </nav>
 <div class="bg">
     <div class="brødtekst">
-         <h1>Welcome to Our Company</h1>
-         <p>Ipsalum</p>
+         <h1>velkommen til Fog</h1>
+         <p>Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
+             Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
+             Køb nu, men få leveret senere når det passer dig.
+         </p>
     </div>
 </div>
 </body>

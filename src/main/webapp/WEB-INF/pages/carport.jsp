@@ -22,6 +22,19 @@
     <style>
         <jsp:include page="../../css/carport.css"/>
     </style>
+    <script>
+        function myFunction() {
+            var checkBox = document.getElementById("gridCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true){
+                text.style.display = "block";
+                $("#text").removeClass('d-none');
+            } else {
+                text.style.display = "none";
+                $("#text").addClass('d-none');
+            }
+        }
+    </script>
     <title>Carporte</title>
 </head>
 <body>
@@ -42,9 +55,6 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/EmailSendingServlet ">Mail test</a>
         </li>
     </ul>
 
@@ -76,12 +86,13 @@
         <h2>Redskabsrum:</h2>
         <div class="form-group">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <input class="form-check-input" type="checkbox" id="gridCheck" onclick="myFunction()">
                 <label class="form-check-label" for="gridCheck">
                     Ja tak
                 </label>
             </div>
         </div>
+    <div class="d-none" style="desplay:none" id="text">
         <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
         <p><Strong>Redskabsrum bredde:</Strong></p>
 
@@ -94,7 +105,7 @@
             <div class="Redskabsrum-længde">
                     <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
                     <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="240" min="240" max="780" oninput="customRange6.value=amount4.value" />
-
+    </div>
             </div>
                 <div class="svgshowcase">
                     <p style="text-align: center"><strong>DIN CARPORTS MÅL:</strong></p>
