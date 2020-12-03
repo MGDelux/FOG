@@ -49,7 +49,6 @@ public class DBUser implements UserRepo {
     }
 
     private User parseUsers(ResultSet set) throws SQLException {
-        if (set.next()) {
             return new User(
                     set.getInt("kunder.Kunde_Id"),
                     set.getString("kunder.Email"),
@@ -58,8 +57,7 @@ public class DBUser implements UserRepo {
                     set.getString("kunder.Adresse"),
                     set.getInt("kunder.TlfNr")
             );
-        } else throw new SQLException();
-    }
+        }
 
     @Override
     public boolean checkIfUsersIsInSystem(String mail) {
@@ -91,8 +89,12 @@ public class DBUser implements UserRepo {
         try {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
-            return parseUsers(resultSet);
-        } finally {
+            if (resultSet.next()) {
+                return parseUsers(resultSet);
+            }else {
+                return null;
+        }
+        }finally {
             preparedStatement.close();
             connection.close();
         }

@@ -8,6 +8,7 @@ import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
 import junit.framework.TestCase;
+import web.MailService.MailService;
 
 import java.sql.SQLException;
 
@@ -19,11 +20,19 @@ public class FOGTestUser extends TestCase {
     public void testAddCustomer() {
         Database db = new Database();
         try {
-            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
-            FOG.addCustomer("mail", 3400, "hillerød", "some where 32", 123432423);
+            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService());
+            FOG.addCustomer("mathias@gmail.com", 3400, "hillerød", "some where 24", 123432423);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void testcheckMail() throws SQLException {
+        Database db = new Database();
+
+        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),new MailService());
+        FOG.checkIfNewCustomer("mailx");
+
     }
     public void  testgetAll() throws SQLException {
         Database db = new Database();
@@ -34,7 +43,7 @@ public class FOGTestUser extends TestCase {
     }
     public void  testGetAll2() throws SQLException {
         Database db = new Database();
-        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
+        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),new MailService());
         System.out.println(FOG.getAllUsers());
     }
 

@@ -7,6 +7,7 @@ import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
+import web.MailService.MailService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ public class BaseServlet extends HttpServlet {
 
     private static FOG initAPI() {
         Database db = new Database();
-        return new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db));
+        return new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService());
     }
 
 
