@@ -1,8 +1,10 @@
 package api;
 import Repoistory.Carporte.CarpoteRepo;
+import Repoistory.Email.EmailRepo;
 import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
+import domain.Email.Email;
 import domain.Queries.Queries;
 import Repoistory.Employee.EmployeeRepo;
 import Repoistory.User.UserRepo;
@@ -10,6 +12,7 @@ import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
 
+import javax.mail.MessagingException;
 import java.sql.SQLException;
 
 /**
@@ -20,18 +23,20 @@ public class FOG {
     private final UserRepo userRepo;
     private final CarpoteRepo carpoteRepo;
     private final MaterialsRepo materialsRepo;
+    private final EmailRepo emailRepo;
     private final QueriesRepo queriesRepo;
     //TODO: LOCKER<< FIX SQL SCRIPT SO WE CAN ENTER QURIES INTO DB WITH OUT CONSTRAINT ERRORS: -> CHECK / RUN FOGTestNewQuery TEST for error (TEST>API>FOGTestNewQuery>public void testNewQuery() )
     //TODO: !Important FIGURE OUT WHAT MATS ECT WE NEED TO MAKE A CARPORT OUT OF 'WHAT' MATERIALS AND UPDATE SQL SCRIPT TO ACCOMMODATE THESE CHANGES IF NEEDED. and the required logic
     /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
      * -mbt */
 
-    public FOG(EmployeeRepo employeeRepo, UserRepo userRepo, CarpoteRepo carpoteRepo, MaterialsRepo materialsRepo, QueriesRepo queriesRepo) {
+    public FOG(EmployeeRepo employeeRepo, UserRepo userRepo, CarpoteRepo carpoteRepo, MaterialsRepo materialsRepo, QueriesRepo queriesRepo, EmailRepo emailRepo) {
         this.employeeRepo = employeeRepo;
         this.userRepo = userRepo;
         this.carpoteRepo = carpoteRepo;
         this.materialsRepo = materialsRepo;
         this.queriesRepo = queriesRepo;
+        this.emailRepo = emailRepo;
     }
 
     public boolean checkEmployeeEmail(String email) throws SQLException
@@ -112,5 +117,9 @@ public class FOG {
 
     public void deleteQurey(int id) {
         queriesRepo.deleteSpecificQuire(id);
+    }
+
+    public Email newMail(String toAdress, String subject, String message) throws MessagingException {
+        return emailRepo.newEmail(new Email(toAdress,subject,message));
     }
 }
