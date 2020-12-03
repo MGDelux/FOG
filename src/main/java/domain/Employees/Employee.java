@@ -49,7 +49,7 @@ public class Employee {
     }
 
     public static byte[] genereateSalt() {
-        SecureRandom random = new SecureRandom();
+        SecureRandom random = new SecureRandom(); //tbh not that complicated just generate some random 16bit bytes
         byte[] salt = new byte[16];
         random.nextBytes(salt);
         return salt;
@@ -61,10 +61,9 @@ public class Employee {
         try {
             return PASSWORD_FACTORY.generateSecret(spec).getEncoded();
         } catch (InvalidKeySpecException e) {
-            throw new EmployeeError("ERROR: "+ e);
+            throw new EmployeeError("ERROR: " + e);
         }
     }
-
 
 
     public boolean isPasswordCorrect(String password) throws EmployeeError {
