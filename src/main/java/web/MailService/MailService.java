@@ -41,7 +41,7 @@ public class MailService implements EmailRepo {
         msg.setRecipients(Message.RecipientType.TO, toAddresses);
         msg.setSubject(email.getSubject());
         msg.setSentDate(new Date());
-        msg.setContent(email.getMessage(), "text/html; charset=utf-8");
+        msg.setContent(email.getMessage(), "text/html; charset=utf-8 ");
         Transport.send(msg);
         return email;
     }

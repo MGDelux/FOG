@@ -99,4 +99,9 @@ public class DBUser implements UserRepo {
             connection.close();
         }
     }
+
+    @Override
+    public User getExistingUserInfomationById(int id) throws SQLException {
+        return null;
+    }
 }

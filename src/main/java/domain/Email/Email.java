@@ -7,7 +7,7 @@ public class Email {
     private final String host = "smtp.gmail.com" ;
     private final String port = "587";
     private final String fromAddress = "solidcodefog@gmail.com";
-    private final String password = "O&4#AL+^SF3,";
+    private final String password = "O&4#AL+^SF3,"; //plain text gang
     private String toAdress;
     private String subject;
     private String message;

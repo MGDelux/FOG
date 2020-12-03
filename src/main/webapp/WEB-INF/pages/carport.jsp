@@ -6,8 +6,6 @@
   Time: 16:37
   To change this template use File | Settings | File Templates.
 --%>
-
-
 <html>
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -38,15 +36,7 @@
     <title>Carporte</title>
 </head>
 <body>
-<script>
-    var slider = document.getElementById("customRange3");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
 
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
-</script>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
     <a class="navbar-brand" href="https://www.johannesfog.dk/globalassets/100-ar/fog-100-logo-animation-flip-126.gAif">FOG</a>
     <ul class="navbar-nav">
