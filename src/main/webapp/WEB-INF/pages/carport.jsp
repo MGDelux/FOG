@@ -65,11 +65,10 @@
         <p><Strong>Carport bredde:</strong></p>
         </table>
     <form method="post">
-
-    <input required type="range" class="custom-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
+    <input required type="range" class="form-control-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
             <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" />
             <p><Strong>Carport længde:</strong></p>
-            <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
+            <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
             <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" />
         <p><Strong>Carport tag:</Strong></p>
             <div class="Carport-tag">
@@ -97,13 +96,13 @@
         <p><Strong>Redskabsrum bredde:</Strong></p>
 
             <div class="Redskabsrum-bredde">
-                <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
+                <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30" id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
                 <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="240" min="240" max="780" oninput="customRange5.value=amount3.value" />
 
             </div>
         <p><Strong>Redskabsrum-længde:</Strong></p>
             <div class="Redskabsrum-længde">
-                    <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
+                    <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
                     <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="240" min="240" max="780" oninput="customRange6.value=amount4.value" />
     </div>
             </div>
