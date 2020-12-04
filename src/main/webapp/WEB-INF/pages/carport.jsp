@@ -45,6 +45,7 @@
 
     slider.oninput = function() {
         output.innerHTML = this.value;
+
     }
 </script>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
