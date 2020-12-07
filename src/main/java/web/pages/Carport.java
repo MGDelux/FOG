@@ -53,21 +53,21 @@ public class Carport extends BaseServlet {
             String eMail = req.getParameter("Email");
             String address = req.getParameter("inputAddress");
             String city = req.getParameter("by");
-            int zipCode = Integer.parseInt(req.getParameter("postnummer"));
-            int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
-            int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
-            int  carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
-            int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
-            int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
-            address = utils.removeHTML(address); //remove html might be redundant
-            city = utils.removeHTML(city);
             try {
+                int zipCode = Integer.parseInt(req.getParameter("postnummer"));
+                int phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
+                int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
+                int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
+                int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
+                int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
+                address = utils.removeHTML(address); //remove html might be redundant
+                city = utils.removeHTML(city);
                 domain.Carport.Carport carport = new domain.Carport.Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
                 Shed shed = new Shed(shedWidth, shedLength);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,shed);
-                sendMail(eMail,phoneNR); //TBA
-                session.setAttribute("Shed",shed);
-                session.setAttribute("Carport",carport);
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, shed);
+                sendMail(eMail, phoneNR); //TBA
+                session.setAttribute("Shed", shed);
+                session.setAttribute("Carport", carport);
 
 
             } catch (NumberFormatException | SQLException | MessagingException e) {
@@ -81,12 +81,12 @@ public class Carport extends BaseServlet {
 
     private void sendMail(String eMail, int phoneNR) throws MessagingException {
         API.newMail(eMail, "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
-                "        <p>Din forspørgelse er blevet registeret og vi sender dig denne mail som bekræftelse på din forspørgelse </p>\n" +
-                "        <h4><strong>Forspørgelse detailer:</strong></h4>\n" +
+                "        <p>Din forspørgelse er blevet registreret og vi sender dig denne mail som bekræftelse på din forspørgelse </p>\n" +
+                "        <h4><strong>Forspørgelses detaljer:</strong></h4>\n" +
                 "<p>Forspørgelse id# " + "T B D " + " </p>" +
                 "        <h5>Kontakt infomationer:</h5>\n" +
                 "<p>TLF NR:" + phoneNR + "</p>\n" +
                 "<p>E-mail: " + eMail + "</p>" +
-                "<p>Du kan bruge dette link til at se din forspørgelse detailjer: *LINK* </p>");
+                "<p>Du kan bruge dette link til at se din forspørgelse detaljer: *LINK* </p>");
     }
 }
