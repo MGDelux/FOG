@@ -53,12 +53,16 @@
         </tr>
         </thead>
         <tbody>
+        <c:forEach items="${Queries}" var="query">
+
         <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Carport</td>
-            <td>Janus</td>
+            <td>${query.useriD}</td>
+            <td>${query.carPortWidth}</td>
+            <td>${query.cartPortLength}</td>
         </tr>
+        </c:forEach>
+
         <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
