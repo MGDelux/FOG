@@ -21,9 +21,9 @@
 <body>
 <div class="wrapper">
     <div class="content">
-        <h1>Tak for din Carport forsprøgelse!</h1>
-        <p>Din forsprøgelse er blevet registeret og du skulle modtage en email bekræftelse snarest og en af vores sælgere vil kontakte dem snarrest.</p>
-        <h4><strong>Forsprøgelse detailer:</strong></h4>
+        <h1>Tak for din carport forspørgelse!</h1>
+        <p>Din forspørgelse er blevet registreret og du modtager en bekræftelse email snarest. En af vores sælgere vil kontakte dem hurtigst muligt.</p>
+        <h4><strong>Forespørgelse detaljer:</strong></h4>
         <h5>Kontakt infomationer:</h5>
         <p>EMAIL: <c:if test="${sessionScope.userEmail != null}">
             ${sessionScope.userEmail.toString()}
@@ -53,7 +53,6 @@
         <p>Hvis infomationen ovenfor ikke er korrekt kan de kontakte os via mail: <a href = "mailto:solidcodefog@gmail.com
 ?subject = vedrforsprøgelse &body = Message">solidcodefog@gmail.com
         </a> </p>  </div>
-    <p>og vi vil promtly slette den og glemme at du eksistere vh. FOG.</p>
 </div>
 </body>
 </html>
