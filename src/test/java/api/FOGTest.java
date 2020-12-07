@@ -9,6 +9,7 @@ import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
 import junit.framework.TestCase;
+import org.junit.Before;
 import web.MailService.MailService;
 
 import java.sql.SQLException;
@@ -18,10 +19,16 @@ import java.sql.SQLException;
  **/
 public class FOGTest extends TestCase {
 
-    public void testCreateAdminEmployee() throws EmployeeError, SQLException {
+    FOG FOG;
+
+    @Before
+    public void setupFOG () {
         Database db = new Database();
+        FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService("hello"));
+    }
+
+    public void testCreateAdminEmployee() throws EmployeeError, SQLException {
         try {
-            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService());
             FOG.createAdminEmployee("mathias@gmail.com", "password");
         } catch (EmployeeError e) {
             e.printStackTrace();
@@ -29,8 +36,6 @@ public class FOGTest extends TestCase {
     }
 
     public void testLogin() throws loginError, EmployeeError, SQLException {
-        Database db = new Database();
-        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService());
         FOG.login("mathias@gmail.com", "password");
     }
 }

@@ -11,7 +11,7 @@ public interface QueriesRepo extends QueriesFactory {
 
     Iterable<Queries> getAllQuires();
 
-    Queries getSpecificQuire(int id) throws SQLException;
+    Queries getSpecificQueryByUserID(int id) throws SQLException;
 
     Queries deleteSpecificQuire(int id);
 }

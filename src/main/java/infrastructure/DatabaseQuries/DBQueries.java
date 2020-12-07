@@ -64,7 +64,7 @@ public class DBQueries implements QueriesRepo {
 
 
     @Override
-    public Queries getSpecificQuire(int id) throws SQLException {
+    public Queries getSpecificQueryByUserID(int id) throws SQLException {
         String SQL = "SELECT * FROM forespørgsler WHERE ForeSpørglse_Id = ? ";
         PreparedStatement preparedStatement;
         Connection connection= db.connect(); preparedStatement = connection.prepareStatement(SQL);
