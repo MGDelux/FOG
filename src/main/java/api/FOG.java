@@ -4,6 +4,7 @@ import Repoistory.Email.EmailRepo;
 import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
+import domain.Carport.Carport;
 import domain.Email.Email;
 import domain.Queries.Queries;
 import Repoistory.Employee.EmployeeRepo;
@@ -11,6 +12,8 @@ import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
+import domain.shed.Shed;
+
 import javax.mail.MessagingException;
 import java.sql.SQLException;
 
@@ -101,8 +104,8 @@ public class FOG {
         }
     }
 
-    public Queries newQuery(User user, int carPortWidth, int cartPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
-        return queriesRepo.newQuery(user, carPortWidth, cartPortLength, roofType, shedWidth, shedLength);
+    public Queries newQuery(User user, Carport carport, Shed shed) throws SQLException {
+        return queriesRepo.newQuery(user, carport,shed );
     }
 
     public Queries getQuery(int id) throws SQLException {

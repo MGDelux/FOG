@@ -1,8 +1,10 @@
 package infrastructure.DatabaseQuries;
 
 import Repoistory.Queries.QueriesRepo;
+import domain.Carport.Carport;
 import domain.Queries.Queries;
 import domain.Users.User;
+import domain.shed.Shed;
 import infrastructure.DatabaseConnector.Database;
 
 import java.sql.*;
@@ -18,18 +20,18 @@ public class DBQueries implements QueriesRepo {
     }
 
     @Override
-    public synchronized Queries newQuery(User user, int carPortWidth, int carPortLength, String roofType, int shedWidth, int shedLength) throws SQLException {
+    public synchronized Queries newQuery(User user, Carport carport, Shed shed) throws SQLException {
         // we only need the Users ID (INT) nothing else from 'user' tyvm
 
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,Redskabsrum_Bredde,Redskabsrum_Længde) VALUES (?,?,?,?,?,?)";
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, carPortWidth);
-            preparedStatement.setInt(3, carPortLength);
-            preparedStatement.setString(4, roofType);
-            preparedStatement.setInt(5, shedWidth);
-            preparedStatement.setInt(6, shedLength);
+            preparedStatement.setInt(2, carport.getLength());
+            preparedStatement.setInt(3, carport.getWidth());
+            preparedStatement.setString(4, carport.getRoof().toString());
+            preparedStatement.setInt(5, shed.getWidth());
+            preparedStatement.setInt(6, shed.getLength());
             preparedStatement.executeUpdate();
         }finally {
             db.closeConnection();

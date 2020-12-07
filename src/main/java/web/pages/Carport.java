@@ -2,6 +2,7 @@ package web.pages;
 
 import api.utils;
 import domain.Queries.Queries;
+import domain.shed.Shed;
 import web.BaseServlet;
 
 import javax.mail.MessagingException;
@@ -38,6 +39,7 @@ public class Carport extends BaseServlet {
      * get the information out of carport page sent with post
      * TODO: Mathias i dont understand this shit
      * fuck you
+     *
      * @param req
      */
     private synchronized void getPageInfomation(HttpServletRequest req) {
@@ -51,12 +53,12 @@ public class Carport extends BaseServlet {
             String eMail = req.getParameter("Email");
             String address = req.getParameter("inputAddress");
             String city = req.getParameter("by");
-            String zipCode = req.getParameter("postnummer");
-            String phoneNR = req.getParameter("phoneNR");
-            String carPortLength = req.getParameter("CarportLength");
-            String carPortWidth = req.getParameter("CarportWidth");
-            String shedLength = req.getParameter("ShedLength");
-            String shedWidth = req.getParameter("ShedWidth");
+            int zipCode = Integer.parseInt(req.getParameter("postnummer"));
+            int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
+            int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
+            int  carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
+            int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
+            int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
             address = utils.removeHTML(address); //remove html might be redundant
             city = utils.removeHTML(city);
             System.out.println("ADRESSE : " + address);
@@ -64,30 +66,23 @@ public class Carport extends BaseServlet {
             log(req, " -> " + carPortLength + " WIDTH " + carPortWidth + " cm  Email: " + eMail + " adress " + address + " city " + city + " zip " + zipCode + " pnr " + phoneNR);
             //convert to string into Intergers
             try {
-                int zipCodeToInt = Integer.parseInt(zipCode);
-                int phoneNrToInt = Integer.parseInt(phoneNR);
-                int carPortWidthToInt = Integer.parseInt(carPortWidth);
-                int carPortLengthToInt = Integer.parseInt(carPortLength);
-                int shedWidthToInt = Integer.parseInt(shedWidth);
-                int shedLengthToInt = Integer.parseInt(shedLength);
 
-                 API.newQuery(API.addCustomer(eMail, zipCodeToInt, city, address, phoneNrToInt), carPortWidthToInt, carPortLengthToInt, "flat", shedWidthToInt, shedLengthToInt);
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), new domain.Carport.Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90), new Shed(shedWidth, shedLength));
                 API.newMail(eMail, "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
                         "        <p>Din forspørgelse er blevet registeret og vi sender dig denne mail som bekræftelse på din forspørgelse </p>\n" +
                         "        <h4><strong>Forspørgelse detailer:</strong></h4>\n" +
-                        "<p>Forspørgelse id# "+ "T B D "+" </p>" +
+                        "<p>Forspørgelse id# " + "T B D " + " </p>" +
                         "        <h5>Kontakt infomationer:</h5>\n" +
-                        "<p>TLF NR:"+ phoneNR + "</p>\n" +
-                        "<p>E-mail: "+ eMail + "</p>"+
+                        "<p>TLF NR:" + phoneNR + "</p>\n" +
+                        "<p>E-mail: " + eMail + "</p>" +
                         "<p>Du kan bruge dette link til at se din forspørgelse detailjer: *LINK* </p>");
                 session.setAttribute("userEmail", eMail);
                 session.setAttribute("userTlf", phoneNR);
-                session.setAttribute("CarportW",carPortWidth);
-                session.setAttribute("CarportL",carPortLength);
-                session.setAttribute("TagType","flat"); //update
-                session.setAttribute("ShedW",shedWidth);
-                session.setAttribute("ShedL",shedLength);
-
+                session.setAttribute("CarportW", carPortWidth);
+                session.setAttribute("CarportL", carPortLength);
+                session.setAttribute("TagType", "flat"); //update
+                session.setAttribute("ShedW", shedWidth);
+                session.setAttribute("ShedL", shedLength);
 
 
             } catch (NumberFormatException | SQLException | MessagingException e) {

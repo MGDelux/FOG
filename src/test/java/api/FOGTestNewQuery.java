@@ -21,6 +21,5 @@ public class FOGTestNewQuery extends TestCase {
         Database db = new Database();
         FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService(System.getenv("EMAIL_PASSWORD")));
         User testUser = new User(3,"mathias@gmail.com", 3400, "hillerød", "some where 24", 123432423);
-        FOG.newQuery(testUser,680,450,"flat",120,240);
     }
 }
