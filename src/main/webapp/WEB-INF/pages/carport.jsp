@@ -34,6 +34,7 @@
                 $("#text").addClass('d-none');
             }
         }
+
     </script>
     <title>Carporte</title>
 </head>
