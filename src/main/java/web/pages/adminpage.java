@@ -21,9 +21,8 @@ import java.util.Queue;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        render("/WEB-INF/pages/adminpage.jsp", resp, req);
-
-        if(getEmployee(req,resp,"NEED TO BE LOGGED IN NERD")==null){
+        if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
+            System.out.println("null");
             ArrayList<Queries> queries = new ArrayList<>();
             setUp(req, resp);
             try {
@@ -35,11 +34,13 @@ import java.util.Queue;
 
             }
             req.setAttribute("Queries",queries);
+            render("/WEB-INF/pages/adminpage.jsp", resp, req);
 
         }else {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);
             session.setAttribute("loggedInMSG","only for employees");
+
 
         }
 

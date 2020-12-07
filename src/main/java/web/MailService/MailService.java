@@ -16,14 +16,10 @@ public class MailService implements EmailRepo {
     private final String host = "smtp.gmail.com" ;
     private final String port = "587";
     private final String fromAddress = "solidcodefog@gmail.com";
-    private final String password; // = "O&4#AL+^SF3,"; //plain text password gang
+    private final String password;
 
     public MailService(String password) {
         this.password = password;
-    }
-
-    public MailService() {
-        password = "Hello";
     }
 
     @Override

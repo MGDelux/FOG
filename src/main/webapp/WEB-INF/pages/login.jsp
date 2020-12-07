@@ -38,7 +38,7 @@
                 ${requestScope.error}
             </c:if></div>
             <div class="error-text"> <c:if test="${sessionScope.loggedin != true}">
-                ${sessionScope.loggedIn}
+                ${sessionScope.loggedInMSG}
             </c:if></div>
         </form>
     </div>
