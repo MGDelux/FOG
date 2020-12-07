@@ -1,7 +1,10 @@
 package web.pages;
 
 import api.utils;
+import com.sun.mail.imap.protocol.UIDSet;
+import domain.Carport.Carport;
 import domain.Queries.Queries;
+import domain.Users.User;
 import domain.shed.Shed;
 import web.BaseServlet;
 
@@ -18,7 +21,7 @@ import java.sql.SQLException;
  * CREATED BY mathias @ 23-11-2020 - 14:20
  **/
 @WebServlet({"/carport", "/carport/*"})
-public class Carport extends BaseServlet {
+public class Carportpage extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,28 +58,44 @@ public class Carport extends BaseServlet {
             String city = req.getParameter("by");
             try {
                 int zipCode = Integer.parseInt(req.getParameter("postnummer"));
-                int phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
-                int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
-                int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
+                int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
+                int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
+                int  carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
                 int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                 int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
                 address = utils.removeHTML(address); //remove html might be redundant
                 city = utils.removeHTML(city);
-                domain.Carport.Carport carport = new domain.Carport.Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
+                Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
                 Shed shed = new Shed(shedWidth, shedLength);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, shed);
-                sendMail(eMail, phoneNR); //TBA
-                session.setAttribute("Shed", shed);
-                session.setAttribute("Carport", carport);
+                User user = getUser(eMail, zipCode, city, address, phoneNR);
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,shed);
+                sendMail(eMail,phoneNR); //TBA
+                session.setAttribute("Customer",user);
+                session.setAttribute("Shed",shed);
+                session.setAttribute("Carport",carport);
 
 
             } catch (NumberFormatException | SQLException | MessagingException e) {
                 //TODO: Should we inform the user about this?
                 /* YES */
+                session.setAttribute("pageError",e.getMessage());
                 e.printStackTrace();
             }
 
         }
+    }
+
+    private User getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
+        int count = 1;
+        try {
+            for (User user : API.getAllUsers()){
+                count++;
+            }
+        }catch (NullPointerException | SQLException e){
+            e.getMessage();
+        }
+        User user;
+        return user = new User(count,eMail,  zipCode,  city,  address,  phoneNR);
     }
 
     private void sendMail(String eMail, int phoneNR) throws MessagingException {
@@ -87,6 +106,6 @@ public class Carport extends BaseServlet {
                 "        <h5>Kontakt infomationer:</h5>\n" +
                 "<p>TLF NR:" + phoneNR + "</p>\n" +
                 "<p>E-mail: " + eMail + "</p>" +
-                "<p>Du kan bruge dette link til at se din forspørgelse detaljer: *LINK* </p>");
+                "<p>Du kan bruge dette link til at se din forspørgelses detaljer: *LINK* </p>");
     }
 }
