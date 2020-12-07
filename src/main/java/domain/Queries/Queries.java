@@ -73,7 +73,7 @@ public class Queries {
     @Override
     public String toString() {
         return "Queries{" +
-                "user=" + userId +
+                "userId=" + userId +
                 ", carPortWidth=" + carPortWidth +
                 ", cartPortLength=" + cartPortLength +
                 ", roofType='" + roofType + '\'' +
