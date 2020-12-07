@@ -32,7 +32,12 @@ public class BaseServlet extends HttpServlet {
 
     private static FOG initAPI() {
         Database db = new Database();
-        return new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService());
+        String password = System.getProperty("fog.email.password");
+        System.out.println(System.getenv("EMAIL_PASSWORD"));
+        System.out.println(password);
+        return new FOG(new DBEmployee(db),
+                new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),
+                new MailService(password));
     }
 
     protected static Employee getEmployee(HttpServletRequest request, HttpServletResponse response, String errorMsg) throws IOException {

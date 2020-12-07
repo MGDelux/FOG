@@ -1,6 +1,7 @@
 package web.pages;
 
 import api.utils;
+import domain.Queries.Queries;
 import web.BaseServlet;
 
 import javax.mail.MessagingException;
@@ -69,12 +70,25 @@ public class Carport extends BaseServlet {
                 int carPortLengthToInt = Integer.parseInt(carPortLength);
                 int shedWidthToInt = Integer.parseInt(shedWidth);
                 int shedLengthToInt = Integer.parseInt(shedLength);
-                session.setAttribute("query", API.newQuery(API.addCustomer(eMail, zipCodeToInt, city, address, phoneNrToInt), carPortWidthToInt, carPortLengthToInt, "flat", shedWidthToInt, shedLengthToInt));
+
+                 API.newQuery(API.addCustomer(eMail, zipCodeToInt, city, address, phoneNrToInt), carPortWidthToInt, carPortLengthToInt, "flat", shedWidthToInt, shedLengthToInt);
                 API.newMail(eMail, "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
-                        "        <p>"+ eMail + " Din forspørgelse er blevet registeret og du skulle modtage en email bekræftelse snarest og en af vores sælgere vil kontakte dem snarrest.</p>\n" +
+                        "        <p>Din forspørgelse er blevet registeret og vi sender dig denne mail som bekræftelse på din forspørgelse </p>\n" +
                         "        <h4><strong>Forspørgelse detailer:</strong></h4>\n" +
-                        "        <h5>Kontakt infomationer:</h5>");
+                        "<p>Forspørgelse id# "+ "T B D "+" </p>" +
+                        "        <h5>Kontakt infomationer:</h5>\n" +
+                        "<p>TLF NR:"+ phoneNR + "</p>\n" +
+                        "<p>E-mail: "+ eMail + "</p>"+
+                        "<p>Du kan bruge dette link til at se din forspørgelse detailjer: *LINK* </p>");
                 session.setAttribute("userEmail", eMail);
+                session.setAttribute("userTlf", phoneNR);
+                session.setAttribute("CarportW",carPortWidth);
+                session.setAttribute("CarportL",carPortLength);
+                session.setAttribute("TagType","flat"); //update
+                session.setAttribute("ShedW",shedWidth);
+                session.setAttribute("ShedL",shedLength);
+
+
 
             } catch (NumberFormatException | SQLException | MessagingException e) {
                 //TODO: Should we inform the user about this?

@@ -28,11 +28,19 @@
         <p>EMAIL: <c:if test="${sessionScope.userEmail != null}">
             ${sessionScope.userEmail.toString()}
             </c:if></p>
-        <p>TLF NR:</p>
+        <p>TLF NR: <c:if test="${sessionScope.userTlf != null}">
+            ${sessionScope.userTlf.toString()}
+        </c:if></p>
         <h5>Carport  specifikationer:</h5>
-        <p>Længde: </p>
-        <p>Brede: </p>
-        <p>Tag: </p>
+        <p>Længde:  <c:if test="${sessionScope.CarportL != null}">
+            ${sessionScope.CarportL.toString()} cm
+        </c:if> </p>
+        <p>Brede:  <c:if test="${sessionScope.CarportW != null}">
+            ${sessionScope.CarportW.toString()} cm
+        </c:if></p>
+        <p>Tag:  <c:if test="${sessionScope.TagType != null}">
+            ${sessionScope.TagType.toString()}
+        </c:if></p>
         <h5>Redskabs rum specifikationer:</h5>
         <p>Redskabs rum?: </p>
         <p>Længde: </p>

@@ -40,7 +40,7 @@ public class FOG {
     }
 
     public boolean checkEmployeeEmail(String email) throws SQLException
-     {
+     {//this is the same as checkIfNewCustomer lol
         return employeeRepo.checkMail(email);
     }
 
@@ -108,7 +108,7 @@ public class FOG {
     }
 
     public Queries getQuery(int id) throws SQLException {
-        return queriesRepo.getSpecificQuire(id);
+        return queriesRepo.getSpecificQueryByUserID(id);
     }
 
     public Iterable<Queries> getAllQueries() {

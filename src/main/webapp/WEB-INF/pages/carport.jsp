@@ -57,10 +57,10 @@
     <form method="post">
 
     <input required type="range" class="custom-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
-            <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" />
+           <label>Bredde:<input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" /></label>
             <p><Strong>Carport længde:</strong></p>
             <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
-            <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" />
+           <label>Længde:  <output disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" /></label>
         <p><Strong>Carport tag:</Strong></p>
             <div class="Carport-tag">
                 <div class="row">
@@ -113,31 +113,31 @@
             <div class="form-row  div-wrapper d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="Email"><strong>Email</strong></label>
-                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
+                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email"required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phoneNR"><strong>TLF NR</strong></label>
-                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
+                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR" maxlength="8" required>
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-4">
                     <label for="inputAddress"><strong>Address</strong></label>
-                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Nørrebrogade">
+                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Nørrebrogade" required>
                  </div>
                  <div class="form-group col-md-4">
                      <label for="address"><strong>Address 2</strong></label>
-                     <input type="text" class="form-control" name="adress" id="address" placeholder="Opgang, studie, eller sal">
+                     <input type="text" class="form-control" name="adress" id="address" placeholder="Opgang, studie, eller sal" required>
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-2">
                     <label for="by"><strong>By</strong></label>
-                    <input type="text" class="form-control" name="by" id="by" placeholder="By">
+                    <input type="text" class="form-control" name="by" id="by" placeholder="By" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="postnummer"><strong>Postnummer</strong></label>
-                    <input type="text" class="form-control" id="postnummer"  name="postnummer" placeholder="Postnummer">
+                    <input type="text" class="form-control" id="postnummer"  name="postnummer" placeholder="Postnummer" required>
                 </div>
             </div>
 
