@@ -4,7 +4,7 @@ import Repoistory.Queries.QueriesRepo;
 import domain.Carport.Carport;
 import domain.Queries.Queries;
 import domain.Users.User;
-import domain.shed.Shed;
+import domain.Shed.Shed;
 import infrastructure.DatabaseConnector.Database;
 
 import java.sql.*;

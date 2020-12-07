@@ -1,4 +1,4 @@
-package domain.shed;
+package domain.Shed;
 
 /**
  * CREATED BY mathias @ 07-12-2020 - 15:18

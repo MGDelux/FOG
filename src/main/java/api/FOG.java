@@ -12,7 +12,7 @@ import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
-import domain.shed.Shed;
+import domain.Shed.Shed;
 
 import javax.mail.MessagingException;
 import java.sql.SQLException;
