@@ -34,10 +34,6 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/foresporgelse/">TESTETSE</a>
-    </li>
 </ul>
 
 </nav>
