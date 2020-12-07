@@ -15,6 +15,7 @@
         <div class="text">
             login
         </div>
+
         <form method="post" >
             <input type="hidden" name="target" value="login">
             <div class="data">
@@ -32,13 +33,14 @@
                 </div>
                 <button type="submit">login</button>
             </div>
+
             <div class="signup-link">
                 Ny Bruger? <a href="${pageContext.request.contextPath}/register/">opret en bruger nu!</a></div>
             <div class="error-text"> <c:if test="${requestScope.error != null}">
                 ${requestScope.error}
             </c:if></div>
             <div class="error-text"> <c:if test="${sessionScope.loggedin != true}">
-                ${sessionScope.loggedIn}
+                ${sessionScope.loggedInMSG}
             </c:if></div>
         </form>
     </div>
