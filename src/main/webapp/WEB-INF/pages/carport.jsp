@@ -37,6 +37,9 @@
 
     </script>
     <title>Carporte</title>
+    <div class="HeaderImage">
+        <img class="headerImage" src="https://fut.dk/wp-content/uploads/job-manager-uploads/company_logo/Fog_100_logo-1024x512.jpg">
+    </div>
 </head>
 <body>
 <script>
@@ -74,14 +77,14 @@
             <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" />
         <p><Strong>Carport tag:</Strong></p>
             <div class="Carport-tag">
-                <div class="row">
+                <div class="row div-wrapper d-flex justify-content-center align-items-center">
                    <div class="column">
-                <input type="checkbox" id="myCheckbox1" />
-                       <label for="myCheckbox1"><img src="https://i.imgur.com/KjEF4L3.jpg" /></label>
+                <input type="radio" id="myRadiobox1" name="radiobox" />
+                       <label for="myRadiobox1"><img src="https://imgur.com/aQmIU5H.jpg" /></label>
                    </div>
                     <div class="column">
-                <input type="checkbox" id="myCheckbox2" />
-                <label for="myCheckbox2"><img src="https://i.imgur.com/KjEF4L3.jpg" /></label>
+                <input type="radio" id="myRadiobox2" name="radiobox" />
+                <label for="myRadiobox2"><img src="https://imgur.com/RLPA3wc.jpg" /></label>
                     </div>
                 </div>
         <h2>Redskabsrum:</h2>

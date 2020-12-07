@@ -46,8 +46,17 @@
              Køb nu, men få leveret senere når det passer dig.
          </p>
         <img class="frontPicture" src="https://media.jardinitis.com/product/almacen-extension-para-garaje-karl-406-m2-sin-pergola-solo-almacen-800x800.jpeg">
+        <p align="center">Klik her og find din nye carport idag.</p>
+
+        <div class="form-row div-wrapper d-flex justify-content-center" align="center" >
+            <form action="${pageContext.request.contextPath}/carport/">
+                <input align="center" class="btn btn-primary" type="submit" value="Gå til carporte" />
+            </form>
+        </div>
+
     </div>
 </div>
+
 </body>
 <footer>
     <div class="footer">

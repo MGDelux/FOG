@@ -53,6 +53,7 @@ public class Carport extends BaseServlet {
             String eMail = req.getParameter("Email");
             String address = req.getParameter("inputAddress");
             String city = req.getParameter("by");
+            try {
             int zipCode = Integer.parseInt(req.getParameter("postnummer"));
             int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
             int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
@@ -61,7 +62,7 @@ public class Carport extends BaseServlet {
             int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
             address = utils.removeHTML(address); //remove html might be redundant
             city = utils.removeHTML(city);
-            try {
+
                 domain.Carport.Carport carport = new domain.Carport.Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
                 Shed shed = new Shed(shedWidth, shedLength);
                 API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,shed);
