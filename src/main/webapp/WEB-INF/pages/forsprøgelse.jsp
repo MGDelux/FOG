@@ -25,8 +25,8 @@
         <p>Din forspørgelse er blevet registreret og du modtager en bekræftelse email snarest. En af vores sælgere vil kontakte dem hurtigst muligt.</p>
         <h4><strong>Forespørgelse detaljer:</strong></h4>
         <h5>Kontakt infomationer:</h5>
-        <p>EMAIL: <c:if test="${sessionScope.userEmail != null}">
-            ${sessionScope.userEmail.toString()}
+        <p>EMAIL: <c:if test="${sessionScope.Customer != null}">
+            ${sessionScope.Customer.email}
             </c:if></p>
         <p>TLF NR: <c:if test="${sessionScope.userTlf != null}">
             ${sessionScope.userTlf.toString()}
