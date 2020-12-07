@@ -20,7 +20,7 @@ public class FOGTestUser extends TestCase {
     public void testAddCustomer() {
         Database db = new Database();
         try {
-            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService());
+            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db), new MailService(System.getenv("EMAIL_PASSWORD")));
             FOG.addCustomer("mathias@gmail.com", 3400, "hillerød", "some where 24", 123432423);
 
         } catch (Exception e) {
@@ -30,7 +30,7 @@ public class FOGTestUser extends TestCase {
     public void testcheckMail() throws SQLException {
         Database db = new Database();
 
-        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),new MailService());
+        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),new MailService(System.getenv("EMAIL_PASSWORD")));
         FOG.checkIfNewCustomer("mailx");
 
     }
@@ -43,7 +43,7 @@ public class FOGTestUser extends TestCase {
     }
     public void  testGetAll2() throws SQLException {
         Database db = new Database();
-        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),new MailService());
+        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),new MailService(System.getenv("EMAIL_PASSWORD")));
         System.out.println(FOG.getAllUsers());
     }
 

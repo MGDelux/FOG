@@ -11,7 +11,6 @@ import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
-
 import javax.mail.MessagingException;
 import java.sql.SQLException;
 
@@ -25,7 +24,6 @@ public class FOG {
     private final MaterialsRepo materialsRepo;
     private final EmailRepo emailRepo;
     private final QueriesRepo queriesRepo;
-    //TODO: LOCKER<< FIX SQL SCRIPT SO WE CAN ENTER QURIES INTO DB WITH OUT CONSTRAINT ERRORS: -> CHECK / RUN FOGTestNewQuery TEST for error (TEST>API>FOGTestNewQuery>public void testNewQuery() )
     //TODO: !Important FIGURE OUT WHAT MATS ECT WE NEED TO MAKE A CARPORT OUT OF 'WHAT' MATERIALS AND UPDATE SQL SCRIPT TO ACCOMMODATE THESE CHANGES IF NEEDED. and the required logic
     /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
      * -mbt */

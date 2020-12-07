@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Database {
     private static String URL = "jdbc:mysql://localhost/FOG?serverTimezone=CET";
     private static String USER = "FOG";
-    private static String  PASS = "Fej69gfx";
+    private static String  PASS = "pass";
     public static String version = "1.1";
     public Database(){
         try {
