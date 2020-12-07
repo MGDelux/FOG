@@ -35,19 +35,17 @@
     <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/foresporgelse/">TESTETSE</a>
-    </li>
 </ul>
 
 </nav>
 <div class="bg">
     <div class="brødtekst">
-         <h1>velkommen til Fog</h1>
-         <p>Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
+         <h1 align="center">Velkommen til Fog</h1>
+         <p align="center">Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
              Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
              Køb nu, men få leveret senere når det passer dig.
          </p>
+        <img class="frontPicture" src="https://media.jardinitis.com/product/almacen-extension-para-garaje-karl-406-m2-sin-pergola-solo-almacen-800x800.jpeg">
     </div>
 </div>
 </body>
