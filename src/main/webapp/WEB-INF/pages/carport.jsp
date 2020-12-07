@@ -6,6 +6,8 @@
   Time: 16:37
   To change this template use File | Settings | File Templates.
 --%>
+
+
 <html>
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -32,11 +34,21 @@
                 $("#text").addClass('d-none');
             }
         }
+
     </script>
     <title>Carporte</title>
 </head>
 <body>
+<script>
+    var slider = document.getElementById("customRange3");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+
+    }
+</script>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
     <a class="navbar-brand" href="https://www.johannesfog.dk/globalassets/100-ar/fog-100-logo-animation-flip-126.gAif">FOG</a>
     <ul class="navbar-nav">
@@ -55,12 +67,11 @@
         <p><Strong>Carport bredde:</strong></p>
         </table>
     <form method="post">
-
-    <input required type="range" class="custom-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
-           <label>Bredde:<input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" /></label>
+    <input required type="range" class="form-control-range" value="240" min="240" max="750" step="30" id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
+            <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750" oninput="customRange3.value=amount.value" />
             <p><Strong>Carport længde:</strong></p>
-            <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
-           <label>Længde:  <output disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" /></label>
+            <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30" id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
+            <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780" oninput="customRange4.value=amount2.value" />
         <p><Strong>Carport tag:</Strong></p>
             <div class="Carport-tag">
                 <div class="row">
@@ -87,13 +98,13 @@
         <p><Strong>Redskabsrum bredde:</Strong></p>
 
             <div class="Redskabsrum-bredde">
-                <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
+                <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30" id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
                 <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="240" min="240" max="780" oninput="customRange5.value=amount3.value" />
 
             </div>
         <p><Strong>Redskabsrum-længde:</Strong></p>
             <div class="Redskabsrum-længde">
-                    <input required type="range" class="custom-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
+                    <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30" id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
                     <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="240" min="240" max="780" oninput="customRange6.value=amount4.value" />
     </div>
             </div>
@@ -113,31 +124,31 @@
             <div class="form-row  div-wrapper d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="Email"><strong>Email</strong></label>
-                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email"required>
+                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phoneNR"><strong>TLF NR</strong></label>
-                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR" maxlength="8" required>
+                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-4">
                     <label for="inputAddress"><strong>Address</strong></label>
-                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Nørrebrogade" required>
+                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="Nørrebrogade">
                  </div>
                  <div class="form-group col-md-4">
                      <label for="address"><strong>Address 2</strong></label>
-                     <input type="text" class="form-control" name="adress" id="address" placeholder="Opgang, studie, eller sal" required>
+                     <input type="text" class="form-control" name="adress" id="address" placeholder="Opgang, studie, eller sal">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-2">
                     <label for="by"><strong>By</strong></label>
-                    <input type="text" class="form-control" name="by" id="by" placeholder="By" required>
+                    <input type="text" class="form-control" name="by" id="by" placeholder="By">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="postnummer"><strong>Postnummer</strong></label>
-                    <input type="text" class="form-control" id="postnummer"  name="postnummer" placeholder="Postnummer" required>
+                    <input type="text" class="form-control" id="postnummer"  name="postnummer" placeholder="Postnummer">
                 </div>
             </div>
 
