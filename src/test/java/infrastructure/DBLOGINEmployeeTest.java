@@ -4,19 +4,17 @@ import Repoistory.Employee.Exceptions.loginError;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.Exceptions.DBError;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
 /**
  * CREATED BY mathias @ 25-11-2020 - 12:51
  **/
-public class DBLOGINEmployeeTest extends TestCase {
+public class DBLOGINEmployeeTest {
 
-    public void setUp() throws Exception {
-        super.setUp();
-    }
 
+    @Test
     public void testLogin() throws DBError, loginError, SQLException {
         Database db = new Database();
         DBEmployee employee = new DBEmployee(db);
