@@ -1,7 +1,7 @@
 package infrastructure.DatabaseUser;
 
 import Repoistory.User.UserRepo;
-import domain.Users.User;
+import domain.Customers.Customers;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.Exceptions.UnexpectedDbError;
 
@@ -19,45 +19,45 @@ public class DBUser implements UserRepo {
     }
 
     @Override
-    public synchronized User addNewCustomer(User user) {
+    public synchronized Customers addNewCustomer(Customers customers) {
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO kunder (Email,Post_Nummer,City,Adresse,TlfNr) VALUES (?,?,?,?,?)";
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, user.getEmail());
-            preparedStatement.setInt(2, user.getZipCode());
-            preparedStatement.setString(3, user.getCity());
-            preparedStatement.setString(4, user.getAddress());
-            preparedStatement.setInt(5, user.getPhoneNr());
+            preparedStatement.setString(1, customers.getEmail());
+            preparedStatement.setInt(2, customers.getZipCode());
+            preparedStatement.setString(3, customers.getCity());
+            preparedStatement.setString(4, customers.getAddress());
+            preparedStatement.setInt(5, customers.getPhoneNr());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return user;
+        return customers;
     }
 
     @Override
-    public Iterable<User> getAllUsers() throws SQLException {
-        ArrayList<User> users = new ArrayList<>();
+    public Iterable<Customers> getAllUsers() throws SQLException {
+        ArrayList<Customers> customers = new ArrayList<>();
         try (Connection connection = db.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM kunder");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                users.add(parseUsers(resultSet));
+                customers.add(parseUsers(resultSet));
             }
         }
-        return users;
+        return customers;
     }
 
-    private User parseUsers(ResultSet set) throws SQLException {
-            return new User(
-                    set.getInt("kunder.Kunde_Id"),
-                    set.getString("kunder.Email"),
-                    set.getInt("kunder.Post_Nummer"),
-                    set.getString("kunder.City"),
-                    set.getString("kunder.Adresse"),
-                    set.getInt("kunder.TlfNr")
-            );
-        }
+    private Customers parseUsers(ResultSet set) throws SQLException {
+        return new Customers(
+                set.getInt("kunder.Kunde_Id"),
+                set.getString("kunder.Email"),
+                set.getInt("kunder.Post_Nummer"),
+                set.getString("kunder.City"),
+                set.getString("kunder.Adresse"),
+                set.getInt("kunder.TlfNr")
+        );
+    }
 
     @Override
     public boolean checkIfUsersIsInSystem(String mail) {
@@ -81,7 +81,7 @@ public class DBUser implements UserRepo {
     }
 
     @Override
-    public User getExistingUserInfomation(String email) throws SQLException {
+    public Customers getExistingUserInfomation(String email) throws SQLException {
         String SQL = "SELECT * FROM kunder WHERE Email = ?";
         PreparedStatement preparedStatement;
         Connection connection = db.connect();
@@ -91,17 +91,32 @@ public class DBUser implements UserRepo {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return parseUsers(resultSet);
-            }else {
+            } else {
                 return null;
-        }
-        }finally {
+            }
+        } finally {
             preparedStatement.close();
             connection.close();
         }
     }
 
     @Override
-    public User getExistingUserInfomationById(int id) throws SQLException {
-        return null;
+    public Customers getExistingUserInfomationById(int id) throws SQLException {
+        String SQL = "SELECT * FROM kunder WHERE Kunde_Id = ?";
+        PreparedStatement preparedStatement;
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return parseUsers(resultSet);
+            } else {
+                return null;
+            }
+        } finally {
+            preparedStatement.close();
+            connection.close();
+        }
     }
 }

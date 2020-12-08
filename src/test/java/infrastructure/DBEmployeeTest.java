@@ -2,10 +2,8 @@ package infrastructure;
 
 import Repoistory.Employee.Exceptions.EmployeeError;
 import domain.Employees.Employee;
-import domain.Users.User;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
-import infrastructure.DatabaseUser.DBUser;
 import infrastructure.Exceptions.DBError;
 import junit.framework.TestCase;
 

@@ -16,7 +16,7 @@
     </context-param>
 
     <context-param>
-        <param-name>user</param-name>
+        <param-name>customers</param-name>
         <param-value>solidcodefog@gmail.com</param-value>
     </context-param>
 

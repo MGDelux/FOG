@@ -1,7 +1,5 @@
 package domain.Queries;
 
-import domain.Users.User;
-
 /**
  * CREATED BY mathias @ 26-11-2020 - 10:50
  **/

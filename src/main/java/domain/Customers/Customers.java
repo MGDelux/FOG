@@ -1,9 +1,9 @@
-package domain.Users;
+package domain.Customers;
 
 /**
  * CREATED BY mathi @ 23-11-2020 - 15:18
  **/
-public class User {
+public class Customers {
     private int id;
     private String email;
     private int zipCode;
@@ -11,7 +11,7 @@ public class User {
     private String address;
     private int phoneNr;
 
-    public User(int id, String email, int zipCode, String city, String address, int phoneNr) {
+    public Customers(int id, String email, int zipCode, String city, String address, int phoneNr) {
         this.id = id;
         this.email = email;
         this.zipCode = zipCode;

@@ -3,7 +3,7 @@ package infrastructure.DatabaseQuries;
 import Repoistory.Queries.QueriesRepo;
 import domain.Carport.Carport;
 import domain.Queries.Queries;
-import domain.Users.User;
+import domain.Customers.Customers;
 import domain.Shed.Shed;
 import infrastructure.DatabaseConnector.Database;
 
@@ -20,13 +20,13 @@ public class DBQueries implements QueriesRepo {
     }
 
     @Override
-    public synchronized Queries newQuery(User user, Carport carport, Shed shed) throws SQLException {
+    public synchronized Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
         // we only need the Users ID (INT) nothing else from 'user' tyvm
 
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,Redskabsrum_Bredde,Redskabsrum_Længde) VALUES (?,?,?,?,?,?)";
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, user.getId());
+            preparedStatement.setInt(1, customers.getId());
             preparedStatement.setInt(2, carport.getLength());
             preparedStatement.setInt(3, carport.getWidth());
             preparedStatement.setString(4, carport.getRoof().toString());

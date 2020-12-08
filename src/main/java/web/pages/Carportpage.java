@@ -2,7 +2,7 @@ package web.pages;
 
 import api.utils;
 import domain.Carport.Carport;
-import domain.Users.User;
+import domain.Customers.Customers;
 import domain.Shed.Shed;
 import web.BaseServlet;
 
@@ -61,12 +61,12 @@ public class Carportpage extends BaseServlet {
                 address = utils.removeHTML(address); //remove html might be redundant
                 city = utils.removeHTML(city);
                 Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
-                Shed shed = new Shed(shedWidth, shedLength);
-                User user = getUser(eMail, zipCode, city, address, phoneNR);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,shed);
+               Shed carportShed = new Shed(shedWidth,shedLength);
+                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,carportShed);
                 sendMail(eMail,phoneNR); //TBA
-                session.setAttribute("Customer",user);
-                session.setAttribute("Shed",shed);
+                session.setAttribute("Customer", customers);
+                session.setAttribute("Shed",carportShed);
                 session.setAttribute("Carport",carport);
 
 
@@ -80,17 +80,17 @@ public class Carportpage extends BaseServlet {
         }
     }
 
-    private User getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
+    private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
         int count = 1;
         try {
-            for (User user : API.getAllUsers()){
+            for (Customers customers : API.getAllUsers()){
                 count++;
             }
         }catch (NullPointerException | SQLException e){
             e.getMessage();
         }
-        User user;
-        return user = new User(count,eMail,  zipCode,  city,  address,  phoneNR);
+        Customers customers;
+        return customers = new Customers(count,eMail,  zipCode,  city,  address,  phoneNR);
     }
 
     private void sendMail(String eMail, int phoneNR) throws MessagingException {

@@ -1,7 +1,7 @@
 package web.pages;
 
-import Repoistory.Queries.Exceptions.querieError;
 import domain.Queries.Queries;
+import domain.Customers.Customers;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Queue;
 
 /**
  * CREATED BY Emil @ 26-11-2020 - 11:29
@@ -22,11 +20,12 @@ import java.util.Queue;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
-            System.out.println("null");
             ArrayList<Queries> queries = new ArrayList<>();
+            ArrayList<Customers> customers = new ArrayList<>();
             setUp(req, resp);
             try {
                 for (Queries q : API.getAllQueries()){
+                     customers.add(API.getExistingUserInfomationById(q.getUserId()));
                     queries.add(q);
                 }
             }catch (Exception e){
@@ -34,6 +33,9 @@ import java.util.Queue;
 
             }
             req.setAttribute("Queries",queries);
+            req.setAttribute("Customers",customers);
+            System.out.println(queries);
+            System.out.println(customers);
             render("/WEB-INF/pages/adminpage.jsp", resp, req);
 
         }else {

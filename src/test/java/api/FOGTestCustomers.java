@@ -1,6 +1,6 @@
 package api;
 
-import domain.Users.User;
+import domain.Customers.Customers;
 import infrastructure.DatabaseCarport.DBCarport;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 /**
  * CREATED BY mathias @ 30-11-2020 - 16:25
  **/
-public class FOGTestUser extends TestCase {
+public class FOGTestCustomers extends TestCase {
 
     public void testAddCustomer() {
         Database db = new Database();
@@ -37,8 +37,8 @@ public class FOGTestUser extends TestCase {
     public void  testgetAll() throws SQLException {
         Database db = new Database();
         DBUser  dbUser = new DBUser(db);
-        for (User user : dbUser.getAllUsers()) {
-            System.out.println(user.toString());
+        for (Customers customers : dbUser.getAllUsers()) {
+            System.out.println(customers.toString());
         }
     }
     public void  testGetAll2() throws SQLException {
