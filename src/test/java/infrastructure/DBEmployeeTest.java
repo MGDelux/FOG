@@ -5,19 +5,18 @@ import domain.Employees.Employee;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.Exceptions.DBError;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
 /**
  * CREATED BY mathias @ 25-11-2020 - 12:28
  **/
-public class DBEmployeeTest extends TestCase {
+public class DBEmployeeTest  {
 
-    public void setUp() throws Exception {
-        super.setUp();
-    }
 
+    @Test
     public void testCreateEmployee() throws DBError, SQLException {
         try {
             byte[] salt = Employee.genereateSalt();
