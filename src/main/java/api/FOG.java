@@ -5,14 +5,14 @@ import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
 import domain.Carport.Carport;
+import domain.Customers.Customers;
 import domain.Email.Email;
 import domain.Queries.Queries;
 import Repoistory.Employee.EmployeeRepo;
 import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
-import domain.Users.User;
 import Repoistory.Employee.Exceptions.loginError;
-import domain.shed.Shed;
+import domain.Shed.Shed;
 
 import javax.mail.MessagingException;
 import java.sql.SQLException;
@@ -70,11 +70,11 @@ public class FOG {
      * @return
      * @throws SQLException
      */
-    public User addCustomer(String email, int zip, String city, String adress, int phoneNr) throws SQLException {
+    public Customers addCustomer(String email, int zip, String city, String adress, int phoneNr) throws SQLException {
         if (!checkIfNewCustomer(email)) { //checking if user is in our system by taking the mail and finding if it is in the db already if so just get the infomation instead of making it again
             int countIds = 1; //temp and basic way of assigning "id" to users (only in the app tho does not apply it db , db does it automaticly 'auto_increment')
             try {
-                for (User user : getAllUsers()) {
+                for (Customers customers : getAllUsers()) {
                     countIds++; //for every user we have in our db we count +1
                 }
 //TODO: Får vi nogensiden nullpointerException, hvorfor?, burde vi få det?
@@ -83,14 +83,14 @@ public class FOG {
             } catch (NullPointerException e) {
                 e.getMessage();
             }
-            return userRepo.addNewCustomer(new User(countIds, email, zip, city, adress, phoneNr));
+            return userRepo.addNewCustomer(new Customers(countIds, email, zip, city, adress, phoneNr));
         }
         else {
             return userRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
         }
     }
 
-    public Iterable<User> getAllUsers() throws SQLException {
+    public Iterable<Customers> getAllUsers() throws SQLException {
             return userRepo.getAllUsers();
     }
 
@@ -104,8 +104,11 @@ public class FOG {
         }
     }
 
-    public Queries newQuery(User user, Carport carport, Shed shed) throws SQLException {
-        return queriesRepo.newQuery(user, carport,shed );
+    public Customers getExistingUserInfomationById(int id) throws SQLException {
+        return userRepo.getExistingUserInfomationById(id);
+    }
+    public Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
+        return queriesRepo.newQuery(customers,carport,shed );
     }
 
     public Queries getQuery(int id) throws SQLException {

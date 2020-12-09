@@ -4,10 +4,12 @@ package web.SVG;
  * CREATED BY mathias @ 07-12-2020 - 14:13
  **/
 public class svg {
-    private final int carportWidth;
-    private final int carportLength;
-    private final int redskabsRumWidth;
-    private final int redskabRumLength;
+    private static String backGroundWidth = "800";
+    private static String backGroundLength = "600";
+    private  int carportWidth;
+    private  int carportLength;
+    private  int redskabsRumWidth;
+    private  int redskabRumLength;
 
     public svg(int carportWidth, int carportLength, int redskabsRumWidth, int redskabRumLength) {
         this.carportWidth = carportWidth;

@@ -5,6 +5,7 @@
     </g>
     <g>
         <title>Layer 1</title>
+        <rect height="0" width="473" x="150" y="150" color="red" stroke-width="1.5" fill="#fff" stroke="#000" ></rect>
         <rect height="296" width="473" y="141" x="163.5" stroke-width="1.5" stroke="#000" fill="#fff"/>
         <rect stroke="#000" id="svg_13" height="249" width="103" y="162" x="528.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#fff"/>
         <rect height="8" width="474" y="160.45313" x="162" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="#fff"/>

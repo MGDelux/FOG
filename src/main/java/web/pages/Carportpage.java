@@ -1,8 +1,9 @@
 package web.pages;
 
 import api.utils;
-import domain.Queries.Queries;
-import domain.shed.Shed;
+import domain.Carport.Carport;
+import domain.Customers.Customers;
+import domain.Shed.Shed;
 import web.BaseServlet;
 
 import javax.mail.MessagingException;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
  * CREATED BY mathias @ 23-11-2020 - 14:20
  **/
 @WebServlet({"/carport", "/carport/*"})
-public class Carport extends BaseServlet {
+public class Carportpage extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,8 +38,6 @@ public class Carport extends BaseServlet {
 
     /**
      * get the information out of carport page sent with post
-     * TODO: Mathias i dont understand this shit
-     * fuck you
      *
      * @param req
      */
@@ -47,37 +46,51 @@ public class Carport extends BaseServlet {
         /* JA DEN ER ALTID NULL VED MINDRE DEN ER TRYKKET PÅ */
         if (req.getParameter("submitQ") != null) {
             HttpSession session = req.getSession();
-
             log(req, "POST");
             //getting all page infomation (still missig roof type)
             String eMail = req.getParameter("Email");
             String address = req.getParameter("inputAddress");
             String city = req.getParameter("by");
             try {
-            int zipCode = Integer.parseInt(req.getParameter("postnummer"));
-            int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
-            int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
-            int  carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
-            int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
-            int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
-            address = utils.removeHTML(address); //remove html might be redundant
-            city = utils.removeHTML(city);
-
-                domain.Carport.Carport carport = new domain.Carport.Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
-                Shed shed = new Shed(shedWidth, shedLength);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,shed);
+                int zipCode = Integer.parseInt(req.getParameter("postnummer"));
+                int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
+                int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
+                int  carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
+                int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
+                int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
+                address = utils.removeHTML(address); //remove html might be redundant
+                city = utils.removeHTML(city);
+                Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
+               Shed carportShed = new Shed(shedWidth,shedLength);
+                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,carportShed);
                 sendMail(eMail,phoneNR); //TBA
-                session.setAttribute("Shed",shed);
+                session.setAttribute("Customer", customers);
+                session.setAttribute("Shed",carportShed);
                 session.setAttribute("Carport",carport);
 
 
             } catch (NumberFormatException | SQLException | MessagingException e) {
                 //TODO: Should we inform the user about this?
                 /* YES */
+                session.setAttribute("pageError",e.getMessage());
                 e.printStackTrace();
             }
 
         }
+    }
+
+    private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
+        int count = 1;
+        try {
+            for (Customers customers : API.getAllUsers()){
+                count++;
+            }
+        }catch (NullPointerException | SQLException e){
+            e.getMessage();
+        }
+        Customers customers;
+        return customers = new Customers(count,eMail,  zipCode,  city,  address,  phoneNR);
     }
 
     private void sendMail(String eMail, int phoneNR) throws MessagingException {
