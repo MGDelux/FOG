@@ -62,7 +62,7 @@
     <div class="footer">
         <a> SolidCODE: Emil, Janus og Mathias </a>
         <a href="https://github.com/MGDelux/FOG">| Github |</a>
-        <a href="${pageContext.request.contextPath}/adminpage/">Adminpage |</a>
+        <a href="${pageContext.request.contextPath}/salesman">Sælgerside |</a>
     </div>
 </footer>
 </html>
