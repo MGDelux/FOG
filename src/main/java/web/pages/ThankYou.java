@@ -22,12 +22,14 @@ public class ThankYou extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO: tjek om user er logget ind her.
+        int x = 10;
         try {
             int orderid = Integer.parseInt(req.getPathInfo().substring(1));
             Queries q = API.getQuery(orderid);
             req.setAttribute("query", q);
             req.setAttribute("customer", API.getExistingCustomerInfomationById(q.getUserId()));
-            render("/WEB-INF/pages/thankyou.jsp", resp, req);
+            req.setAttribute("style", "/css/forsprøgelse.css");
+            smartrender("/WEB-INF/pages/thankyou.jsp", resp, req);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             resp.sendError(500);

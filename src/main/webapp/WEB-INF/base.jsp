@@ -19,8 +19,13 @@
 
     <title>${requestScope.title}</title>
     <link href="<c:url value="/css/index.css"/>" rel="stylesheet"/>
+    <c:if test="${requestScope.style != null}">
+        <link href="<c:url value="${requestScope.style}"/>" rel="stylesheet"/>
+    </c:if>
 </head>
 <body>
+
+<jsp:include page="/WEB-INF/includes/navbar.jsp" flush="true"/>
 
 <main class="container">
     <div class="content">
