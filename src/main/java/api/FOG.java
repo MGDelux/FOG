@@ -1,5 +1,6 @@
 package api;
 import Repoistory.Carporte.CarpoteRepo;
+import Repoistory.Customer.CustomerRepo;
 import Repoistory.Email.EmailRepo;
 import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Materials.MaterialsRepo;
@@ -9,7 +10,6 @@ import domain.Customers.Customers;
 import domain.Email.Email;
 import domain.Queries.Queries;
 import Repoistory.Employee.EmployeeRepo;
-import Repoistory.User.UserRepo;
 import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Shed.Shed;
@@ -22,7 +22,7 @@ import java.sql.SQLException;
  **/
 public class FOG {
     private final EmployeeRepo employeeRepo;
-    private final UserRepo userRepo;
+    private final CustomerRepo customerRepo;
     private final CarpoteRepo carpoteRepo;
     private final MaterialsRepo materialsRepo;
     private final EmailRepo emailRepo;
@@ -31,9 +31,9 @@ public class FOG {
     /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
      * -mbt */
 
-    public FOG(EmployeeRepo employeeRepo, UserRepo userRepo, CarpoteRepo carpoteRepo, MaterialsRepo materialsRepo, QueriesRepo queriesRepo, EmailRepo emailRepo) {
+    public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, CarpoteRepo carpoteRepo, MaterialsRepo materialsRepo, QueriesRepo queriesRepo, EmailRepo emailRepo) {
         this.employeeRepo = employeeRepo;
-        this.userRepo = userRepo;
+        this.customerRepo = customerRepo;
         this.carpoteRepo = carpoteRepo;
         this.materialsRepo = materialsRepo;
         this.queriesRepo = queriesRepo;
@@ -57,7 +57,7 @@ public class FOG {
 
     //WIP
     public boolean checkIfNewCustomer(String email) throws SQLException {
-        return userRepo.checkIfUsersIsInSystem(email);
+        return customerRepo.checkIfUsersIsInSystem(email);
     }
 
     /**
@@ -83,15 +83,15 @@ public class FOG {
             } catch (NullPointerException e) {
                 e.getMessage();
             }
-            return userRepo.addNewCustomer(new Customers(countIds, email, zip, city, adress, phoneNr));
+            return customerRepo.addNewCustomer(new Customers(countIds, email, zip, city, adress, phoneNr));
         }
         else {
-            return userRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
+            return customerRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
         }
     }
 
     public Iterable<Customers> getAllUsers() throws SQLException {
-            return userRepo.getAllUsers();
+            return customerRepo.getAllUsers();
     }
 
     public Employee login(String email, String password) throws loginError, SQLException, EmployeeError {
@@ -104,8 +104,8 @@ public class FOG {
         }
     }
 
-    public Customers getExistingUserInfomationById(int id) throws SQLException {
-        return userRepo.getExistingUserInfomationById(id);
+    public Customers getExistingCustomerInfomationById(int id) throws SQLException {
+        return customerRepo.getExistingUserInfomationById(id);
     }
     public Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
         return queriesRepo.newQuery(customers,carport,shed );
@@ -126,4 +126,5 @@ public class FOG {
     public Email newMail(String toAdress, String subject, String message) throws MessagingException {
         return emailRepo.newEmail(new Email(toAdress,subject,message));
     }
+
 }

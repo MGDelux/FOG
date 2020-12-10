@@ -55,9 +55,9 @@ CREATE TABLE forespørgsler(
 `Carport_Bredde`INT NOT NULL,
 `Carport_Længde` int NOT NULL,
 `Tag_Type` VARCHAR(45) NOT NULL,
-`has_redskabesrum` bit NOT NULL,
-`Redskabsrum_Bredde` INT,
-`Redskabsrum_Længde` INT,
+`has_shed` bit NOT NULL,
+`shed_width` INT,
+`shed_length` INT,
 PRIMARY KEY (`Order_Id`),
 FOREIGN KEY (Kunde) REFERENCES kunder(`Kunde_Id`)
 

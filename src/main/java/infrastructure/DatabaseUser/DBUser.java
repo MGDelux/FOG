@@ -1,6 +1,6 @@
 package infrastructure.DatabaseUser;
 
-import Repoistory.User.UserRepo;
+import Repoistory.Customer.CustomerRepo;
 import domain.Customers.Customers;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.Exceptions.UnexpectedDbError;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * CREATED BY mathi @ 23-11-2020 - 16:37
  **/
-public class DBUser implements UserRepo {
+public class DBUser implements CustomerRepo {
     private final Database db;
 
     public DBUser(Database db) {

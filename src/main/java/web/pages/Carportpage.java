@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 /**
  * CREATED BY mathias @ 23-11-2020 - 14:20
@@ -57,7 +58,7 @@ public class Carportpage extends BaseServlet {
                 int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
                 int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
                 Shed carportShed = null;
-                if (req.getParameter("includeShed").equals("on")) {
+                if (Objects.equals(req.getParameter("includeShed"), "on")) {
                     int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                     int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
                     carportShed = new Shed(shedWidth, shedLength);

@@ -24,7 +24,8 @@ public class DBQueries implements QueriesRepo {
         // we only need the Users ID (INT) nothing else from 'user' tyvm
 
         try (Connection connection = db.connect()) {
-            String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_redskabsrum,Redskabsrum_Bredde,Redskabsrum_Længde) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length) VALUES (?,?,?,?,?,?,?)";
+
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, customers.getId());
             preparedStatement.setInt(2, carport.getLength());
@@ -47,10 +48,10 @@ public class DBQueries implements QueriesRepo {
     }
     private Queries ParseQueries(ResultSet set) throws SQLException{
         Shed shed = null;
-        if (set.getBoolean("forespørgsler.has_redskabsrum")) {
+        if (set.getBoolean("forespørgsler.has_shed")) {
             shed = new Shed(
-                    set.getInt("forespørgsler.Redskabsrum_Bredde"),
-                    set.getInt("forespørgsler.Redskabsrum_Længde"));
+                    set.getInt("forespørgsler.shed_width"),
+                    set.getInt("forespørgsler.shed_height"));
         }
 
         return new Queries(
@@ -79,7 +80,7 @@ public class DBQueries implements QueriesRepo {
 
     @Override
     public Queries getSpecificQueryByUserID(int id) throws SQLException {
-        String SQL = "SELECT * FROM forespørgsler WHERE ForeSpørglse_Id = ? ";
+        String SQL = "SELECT * FROM forespørgsler WHERE forespørgsler.Order_Id = ? ";
         PreparedStatement preparedStatement;
         Connection connection= db.connect(); preparedStatement = connection.prepareStatement(SQL);
         try{
