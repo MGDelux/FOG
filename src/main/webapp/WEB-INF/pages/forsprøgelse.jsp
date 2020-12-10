@@ -42,14 +42,14 @@
         <p>Tag:  <c:if test="${sessionScope.Carport != null}">
             ${sessionScope.Carport.roof}
         </c:if></p>
+
         <h5>Redskabs rum specifikationer:</h5>
-        <p>Længde:  <c:if test="${sessionScope.Shed != null}">
+        <p>Længde:  <c:if test="${sessionScope.Shed == null}">
             ${sessionScope.Shed.length}
         </c:if></p>
-        <p>Bredde:  <c:if test="${sessionScope.Shed != null}">
+        <p>Bredde:  <c:if test="${sessionScope.Shed == null}">
             ${sessionScope.Shed.width}
         </c:if></p>
-        <p>Redskabs rum?: </p>
         <hr class="solid">
 
     </div>
