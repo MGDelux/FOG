@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 /**
  * CREATED BY mathias @ 23-11-2020 - 14:20
@@ -53,27 +54,30 @@ public class Carportpage extends BaseServlet {
             String city = req.getParameter("by");
             try {
                 int zipCode = Integer.parseInt(req.getParameter("postnummer"));
-                int  phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
-                int  carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
-                int  carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
-                int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
-                int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
+                int phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
+                int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
+                int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
+                Shed carportShed = null;
+                if (Objects.equals(req.getParameter("includeShed"), "on")) {
+                    int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
+                    int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
+                    carportShed = new Shed(shedWidth, shedLength);
+                }
                 address = utils.removeHTML(address); //remove html might be redundant
                 city = utils.removeHTML(city);
                 Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
-               Shed carportShed = new Shed(shedWidth,shedLength);
                 Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR),carport,carportShed);
-                sendMail(eMail,phoneNR); //TBA
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                sendMail(eMail, phoneNR); //TBA
                 session.setAttribute("Customer", customers);
-                session.setAttribute("Shed",carportShed);
-                session.setAttribute("Carport",carport);
+                session.setAttribute("Shed", carportShed);
+                session.setAttribute("Carport", carport);
 
 
-            } catch (NumberFormatException | SQLException | MessagingException e) {
+            } catch ( NumberFormatException | SQLException | MessagingException e) {
                 //TODO: Should we inform the user about this?
                 /* YES */
-                session.setAttribute("pageError",e.getMessage());
+                session.setAttribute("pageError", e.getMessage());
                 e.printStackTrace();
             }
 
@@ -83,14 +87,14 @@ public class Carportpage extends BaseServlet {
     private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
         int count = 1;
         try {
-            for (Customers customers : API.getAllUsers()){
+            for (Customers customers : API.getAllUsers()) {
                 count++;
             }
-        }catch (NullPointerException | SQLException e){
+        } catch (NullPointerException | SQLException e) {
             e.getMessage();
         }
         Customers customers;
-        return customers = new Customers(count,eMail,  zipCode,  city,  address,  phoneNR);
+        return customers = new Customers(count, eMail, zipCode, city, address, phoneNR);
     }
 
     private void sendMail(String eMail, int phoneNR) throws MessagingException {
