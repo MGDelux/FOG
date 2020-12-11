@@ -59,6 +59,13 @@ public class BaseServlet extends HttpServlet {
         request.getRequestDispatcher(content).forward(request, response);
     }
 
+    public void smartrender(String content, HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
+        log(request, "page-loaded");
+        request.setAttribute("content", content);
+        request.setAttribute("title", "Fog");
+        request.getRequestDispatcher("/WEB-INF/base.jsp").forward(request, response);
+    }
+
     protected void log(HttpServletRequest req, String message) {
         System.err.println("(" + LocalDateTime.now() + ") " + this.getClass().getCanonicalName() + " \"" + req.getRequestURI() + "\": " + message);
     }

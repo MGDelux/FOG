@@ -27,10 +27,6 @@
         <jsp:include page="../../css/admin.css"/>
     </style>
     <title>FOG HOMEPAGE</title>
-    <div class="HeaderImage">
-        <img class="headerImage"
-             src="https://fut.dk/wp-content/uploads/job-manager-uploads/company_logo/Fog_100_logo-1024x512.jpg">
-    </div>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
