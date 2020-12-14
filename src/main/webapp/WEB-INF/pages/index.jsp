@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+
 <html>
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -31,24 +32,35 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
+    </li>
 </ul>
 
 </nav>
 <div class="bg">
     <div class="brødtekst">
-         <h1>velkommen til Fog</h1>
-         <p>Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
+         <h1 align="center">Velkommen til Fog</h1>
+         <p align="center">Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
              Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
              Køb nu, men få leveret senere når det passer dig.
          </p>
+        <img class="frontPicture" src="https://media.jardinitis.com/product/almacen-extension-para-garaje-karl-406-m2-sin-pergola-solo-almacen-800x800.jpeg">
+        <p align="center">Klik her og find din nye carport idag.</p>
+
+        <div class="form-row div-wrapper d-flex justify-content-center" align="center" >
+            <form action="${pageContext.request.contextPath}/carport/">
+                <input align="center" class="btn btn-primary" type="submit" value="Gå til carporte" />
+            </form>
+        </div>
+
     </div>
 </div>
+
 </body>
 <footer>
     <div class="footer">
         <a> SolidCODE: Emil, Janus og Mathias </a>
         <a href="https://github.com/MGDelux/FOG">| Github |</a>
-        <a href="${pageContext.request.contextPath}/adminpage/">Adminpage |</a>
+        <a href="${pageContext.request.contextPath}/salesman">Sælgerside |</a>
     </div>
 </footer>
 </html>

@@ -33,9 +33,6 @@
                 </div>
                 <button type="submit">login</button>
             </div>
-
-            <div class="signup-link">
-                Ny Bruger? <a href="${pageContext.request.contextPath}/register/">opret en bruger nu!</a></div>
             <div class="error-text"> <c:if test="${requestScope.error != null}">
                 ${requestScope.error}
             </c:if></div>

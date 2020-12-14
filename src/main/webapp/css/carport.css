@@ -61,6 +61,13 @@ body, html {
     position: relative;
 }
 
+.pic{
+position: center;
+
+}
+
+
+
 .footer {
     border-top: 1px solid #000000;
     background: rgb(64,143,252);
