@@ -31,7 +31,7 @@ public class Carportpage extends BaseServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             getPageInfomation(req);
-            resp.sendRedirect(req.getContextPath() + "/thankyou/");
+            resp.sendRedirect(req.getContextPath() + "/thankyou/1");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,12 +99,12 @@ public class Carportpage extends BaseServlet {
 
     private void sendMail(String eMail, int phoneNR) throws MessagingException {
         API.newMail(eMail, "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
-                "        <p>Din forspørgelse er blevet registeret og vi sender dig denne mail som bekræftelse på din forspørgelse </p>\n" +
-                "        <h4><strong>Forspørgelse detailer:</strong></h4>\n" +
+                "        <p>Din forespørgelse er blevet registreret og vi sender dig denne mail som bekræftelse på din forespørgelse </p>\n" +
+                "        <h4><strong>forespørgelse detaljer:</strong></h4>\n" +
                 "<p>Forspørgelse id# " + "T B D " + " </p>" +
                 "        <h5>Kontakt infomationer:</h5>\n" +
                 "<p>TLF NR:" + phoneNR + "</p>\n" +
                 "<p>E-mail: " + eMail + "</p>" +
-                "<p>Du kan bruge dette link til at se din forspørgelse detailjer: *LINK* </p>");
+                "<p>Du kan bruge dette link til at se din forespørgelses detaljer: *LINK* </p>");
     }
 }
