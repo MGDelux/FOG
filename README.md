@@ -1,3 +1,4 @@
+preview
 <h1 align="center">Project FOG</h1>
 <h3 align="center">By Team "SolidCode"</h3>
 
