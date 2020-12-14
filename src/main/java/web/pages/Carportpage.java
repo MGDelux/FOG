@@ -69,7 +69,7 @@ public class Carportpage extends BaseServlet {
                 Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
                 Queries queries;
                 queries = API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                sendMail(eMail, phoneNR); //TBA
+            //    sendMail(eMail, phoneNR); //TBA
                 Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
                 session.setAttribute("customer", customers);
                 session.setAttribute("Shed",carportShed);
@@ -78,7 +78,7 @@ public class Carportpage extends BaseServlet {
                 session.setAttribute("Carport", carport);
 
 
-            } catch ( NumberFormatException | SQLException | MessagingException e) {
+            } catch ( NumberFormatException | SQLException e) {
                 //TODO: Should we inform the user about this?
                 /* YES */
                 session.setAttribute("pageError", e.getMessage());
