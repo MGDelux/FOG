@@ -60,25 +60,34 @@ public class Carportpage extends BaseServlet {
                 int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
                 Shed carportShed = null;
                 if (Objects.equals(req.getParameter("includeShed"), "on")) {
-                    int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                     int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
+                    int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                     carportShed = new Shed(shedWidth, shedLength);
+                    if (Objects.equals(req.getParameter("fladttag"), "on")) {
+                        System.out.println("shed FLADT : " + carportShed);
+                        Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);
+                        API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                        session.setAttribute("Shed", carportShed);
+                        session.setAttribute("Carport", carport);
+                        System.out.println("FLADT");
+                        Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                        session.setAttribute("customer", customers);
+                        sendMail(customers, getQueryID(), carport, carportShed);
+                    } else {
+                        System.out.println("shed ANGLE : " + carportShed);
+                        Carport carport = new Carport(carPortWidth, carPortLength, Carport.roofType.ANGLE, 90);
+                        API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                        session.setAttribute("Carport", carport);
+                        System.out.println("ANGLE");
+                        session.setAttribute("Shed", carportShed);
+                        Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                        session.setAttribute("customer", customers);
+                        sendMail(customers, getQueryID(), carport, carportShed);
+                    }
+
                 }
-                address = utils.removeHTML(address); //remove html might be redundant
-                city = utils.removeHTML(city);
-                Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
-                Queries queries;
-                queries = API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                sendMail(eMail, phoneNR); //TBA
-                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                session.setAttribute("customer", customers);
-                session.setAttribute("Shed",carportShed);
-                session.setAttribute("Shed", carportShed);
-                session.setAttribute("Carport",carport);
-                session.setAttribute("Carport", carport);
 
-
-            } catch ( NumberFormatException | SQLException | MessagingException e) {
+            } catch (NumberFormatException | SQLException | MessagingException e) {
                 //TODO: Should we inform the user about this?
                 /* YES */
                 session.setAttribute("pageError", e.getMessage());
@@ -86,6 +95,31 @@ public class Carportpage extends BaseServlet {
             }
 
         }
+    }
+
+    private Object getUserId() { // THIS IS FOR TESTING  ADD TO API
+        int count = 0;
+        try {
+            for (Customers c: API.getAllUsers()){
+                count++;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return count;
+    }
+
+    private int getQueryID() { // THIS IS FOR TESTING  ADD TO API
+        int count = 0;
+        try {
+            for (Queries q : API.getAllQueries()) {
+                count++;
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
     private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
@@ -97,18 +131,22 @@ public class Carportpage extends BaseServlet {
         } catch (NullPointerException | SQLException e) {
             e.getMessage();
         }
-        Customers customers;
-        return customers = new Customers(count, eMail, zipCode, city, address, phoneNR);
+        return new Customers(count, eMail, zipCode, city, address, phoneNR);
     }
 
-    private void sendMail(String eMail, int phoneNR) throws MessagingException {
-        API.newMail(eMail, "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
+    private void sendMail(Customers customers, int id, Carport carport, Shed shed) throws MessagingException {
+        API.newMail(customers.getEmail(), "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
                 "        <p>Din forespørgelse er blevet registreret og vi sender dig denne mail som bekræftelse på din forespørgelse </p>\n" +
                 "        <h4><strong>forespørgelse detaljer:</strong></h4>\n" +
-                "<p>Forspørgelse id# " + "T B D " + " </p>" +
-                "        <h5>Kontakt infomationer:</h5>\n" +
-                "<p>TLF NR:" + phoneNR + "</p>\n" +
-                "<p>E-mail: " + eMail + "</p>" +
-                "<p>Du kan bruge dette link til at se din forespørgelses detaljer: *LINK* </p>");
+                "<p>Forspørgelse ID #" + id + " </p>" +
+                "<p>Carport: " + carport.toString() + " </p> \n<p> Skur:" + shed.toString() +
+                "</p> \n  <h5>Kontakt infomationer:</h5>\n" +
+                "<p>TLF NR:" + customers.getPhoneNr() + "</p>\n" +
+                "<p>E-mail: " + customers.getEmail() + "</p>" +
+                "<h5>Leverings infomationer:</h5>" +
+                "<p>Adresse: " + customers.getAddress() +
+                "</p><p>By: " + customers.getCity() +
+                "</p><p>Post Nummer: " + customers.getZipCode() +
+                "</p><p>Du kan bruge dette link til at se din forespørgelses detaljer: *LINK* </p>");
     }
 }

@@ -27,10 +27,6 @@
                 <th scope="row">Tlf.</th>
                 <td>${customer.phoneNr}</td>
             </tr>
-            <tr>
-                <th scope="row">Længde.</th>
-                <td>${query.carport.width}</td>
-            </tr>
             </tbody>
         </table>
     </div>
@@ -46,7 +42,7 @@
 
             <tr>
                 <th scope="row">Længde.</th>
-                <td>${query.carport.width}</td>
+                <td>${query.carport.length}</td>
             </tr>
             <tr>
                 <th scope="row">Tag.</th>

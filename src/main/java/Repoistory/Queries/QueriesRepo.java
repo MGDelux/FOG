@@ -14,4 +14,6 @@ public interface QueriesRepo extends QueriesFactory {
     Queries getSpecificQueryByUserID(int id) throws SQLException;
 
     Queries deleteSpecificQuire(int id);
+
+    Queries getLatestQuery() throws SQLException;
 }

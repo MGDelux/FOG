@@ -85,11 +85,11 @@
         <div class="Carport-tag">
             <div class="row div-wrapper d-flex justify-content-center align-items-center">
                 <div class="column">
-                    <input type="radio" id="radio1" name="radiobox"/>
+                    <input type="radio" id="radio1" name="fladttag"/>
                     <label for="radio1"><img src="https://imgur.com/aQmIU5H.jpg"/></label>
                 </div>
                 <div class="column">
-                    <input type="radio" id="radio2" name="radiobox"/>
+                    <input type="radio" id="radio2" name="tagmedrejsning"/>
                     <label for="radio2"><img src="https://imgur.com/RLPA3wc.jpg" Default checked disabled/></label>
                 </div>
             </div>
@@ -119,17 +119,6 @@
                            id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
                     <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="140" min="140"
                            max="410" oninput="customRange6.value=amount4.value"/>
-                </div>
-            </div>
-            <div class="svgshowcase">
-                <p style="text-align: center"><strong>DIN CARPORTS MÅL:</strong></p>
-                <div align="center">
-                    <svg width="100" height="100">
-                        <rect x="0" y="0" height="90" width="90"
-                              style="stroke:#000000; fill: #ff0000"/>
-                        Sorry, your browser does not support inline SVG.
-                    </svg>
-                    <p>THIS WILL BE A BUTTON THAT WILL SHOW THE CARPORT ON A DIFFRENT PAGE MAYBE?</p>
                 </div>
             </div>
         </div>
