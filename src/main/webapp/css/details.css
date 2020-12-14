@@ -1,0 +1,74 @@
+.container{
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+}
+.dimenstioner{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: auto;
+    width: 80%;
+    border: 3px solid black;
+}
+.tag {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: auto;
+    width: 80%;
+    border: 3px solid black;
+}
+.stykliste{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: auto;
+    width: 80%;
+    border: 3px solid black;
+}
+.styk{
+    padding-top: 2%;
+}
+.styk .stykebutton{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+}
+.styk .table{
+   padding-left: 25px;
+}
+.svgdrawer{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+}
+.final{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: auto;
+    width: 80%;
+    border: 3px solid black;
+}
+.final .flairtext{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.final.finalbutton{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.final .customtext{
+width: 400px;
+    height: 250px;
+    margin:auto;
+    position:relative;
+}
