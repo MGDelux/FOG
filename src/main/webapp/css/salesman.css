@@ -1,0 +1,96 @@
+.navbar{
+    border-top: 1px solid #000000;
+    background: -webkit-linear-gradient(to top, #007BFF, #000000);
+    background: linear-gradient(to bottom, #007BFF, #022896);
+    color: white;
+}
+.navbar-brand{
+
+}
+.bg{
+    color: black;
+    background-color: white;
+    border-radius: 2px;
+    border-color: red;
+    padding-top: 100px;
+}
+.tablecontain{
+    padding-top: 20px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    border-radius: 2px;
+    border-color: red;
+}
+.footer {
+    border-top: 1px solid #000000;
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgb(134, 0, 0) 91%);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+
+}
+.tablecontain .Sbutton{
+    border-color: transparent;
+    text-align: center;
+    font-size: 25px;
+}
+.bg .Sbutton{
+    border-color: transparent;
+    text-align: center;
+    font-size: 15px;
+    color: red;
+}
+.sellingInfo{
+    padding-top: 6px;
+    padding-left: 6px;
+alignment: left;
+    position: relative;
+    width: 350px;
+    height: 250px;
+
+}
+.Selldiv{
+
+    border: #000 solid 1px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+    background: -webkit-linear-gradient(to top, #007BFF, #000000);
+    background: linear-gradient(to bottom, #007BFF, #022896);
+
+}
+.Selldiv .smalltext{
+    line-height: 2px;
+    text-align: left;
+    padding-left: 5.5px;
+    color: white;
+    font-size: 15px;
+}
+.Selldiv .userinfo{
+    line-height: 5px;
+    padding-left: 6.5px;
+    margin-top: 2px;
+}
+.adminref {
+    line-height: 5px;
+    font-size: 15px;
+    padding-left: 5.5px;
+}
+.logger{
+    background:transparent ;
+    border: none !important;
+}
+.adminref a{
+    color: white;
+}
+.adminref a:hover{
+    text-decoration: none;
+}
