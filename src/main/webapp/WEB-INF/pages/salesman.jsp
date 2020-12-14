@@ -48,23 +48,30 @@
     <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
         <thead>
         <tr>
+            <th scope="col">ID:</th>
             <th scope="col">Kunde</th>
             <th scope="col">Forespørgsel</th>
-            <th scope="col">Carport</th>
-            <th scope="col">Skur</th>
+            <th scope="col">Carport dimensioner  </th>
+            <th scope="col">Skur dimensioner </th>
             <th scope="col">Sælger</th>
+            <th scope="col">Vælg</th>
         </tr>
         <c:forEach items="${Queries}" var="items">
-            <c:forEach items="${Customers}" var="customers">
                 <tr>
-                    <td>${customers.email}</td>
-                    <td>${items.roofType} TAG</td>
-                    <td>${items.carPortWidth} x ${items.cartPortLength} </td>
-                    <td>${items.shedWidth} x ${items.shedLength} </td>
+                    <td>${items.getId()}</td>
+                    <td>${items.getEmail()}</td>
+                    <td>${items.carport.getRoof()} TAG</td>
+                    <td>${items.carport.width} x ${items.carport.length} </td>
+                    <td>${items.shed.width} x ${items.shed.length} </td>
                     <td>WIP</td>
+                    <td>
+                    <form method="post">
+                        <input type="hidden" name="CartItemId" value="${items.getEmail()}">
+                        <input type="submit" value="vælg" name="delteOrderLine"/>
+                    </form>
+                    </td>
                 </tr>
             </c:forEach>
-        </c:forEach>
         </thead>
         <tbody>
 

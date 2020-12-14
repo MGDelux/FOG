@@ -27,7 +27,7 @@ public class login extends BaseServlet {
            Employee employee = API.login(email,password);
             req.getSession().setAttribute("employee",employee);
             req.getSession().setAttribute("loggedIn",true);
-            resp.sendRedirect(req.getContextPath() + "/adminpage/");
+            resp.sendRedirect(req.getContextPath() + "/salesman/");
         } catch (SQLException | EmployeeError | loginError e) {
             req.setAttribute("loggedInMSG",e.getMessage());
             e.printStackTrace();

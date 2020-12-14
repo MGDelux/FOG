@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th scope="row">Længde.</th>
-                <td>${query.carPortWidth}</td>
+                <td>${query.carport.width}</td>
             </tr>
             </tbody>
         </table>
@@ -41,16 +41,16 @@
             <tbody>
             <tr>
                 <th scope="row">Bredde</th>
-                <td>${query.cartPortLength}</td>
+                <td>${query.carport.width}</td>
             </tr>
 
             <tr>
                 <th scope="row">Længde.</th>
-                <td>${query.carPortWidth}</td>
+                <td>${query.carport.width}</td>
             </tr>
             <tr>
                 <th scope="row">Tag.</th>
-                <td>${query.roofType}</td>
+                <td>${query.carport.getRoof()}</td>
             </tr>
             <tr>
                 

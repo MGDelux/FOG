@@ -1,6 +1,5 @@
 package web.pages;
 
-import api.FOG;
 import domain.Queries.Queries;
 import web.BaseServlet;
 
@@ -27,7 +26,7 @@ public class ThankYou extends BaseServlet {
             int orderid = Integer.parseInt(req.getPathInfo().substring(1));
             Queries q = API.getQuery(orderid);
             req.setAttribute("query", q);
-            req.setAttribute("customer", API.getExistingCustomerInfomationById(q.getUserId()));
+            req.setAttribute("customer", API.getExistingCustomerInfomationById(1));
             req.setAttribute("style", "/css/forsprøgelse.css");
             smartrender("/WEB-INF/pages/thankyou.jsp", resp, req);
         } catch (SQLException throwables) {

@@ -3,6 +3,7 @@ package web.pages;
 import api.utils;
 import domain.Carport.Carport;
 import domain.Customers.Customers;
+import domain.Queries.Queries;
 import domain.Shed.Shed;
 import web.BaseServlet;
 
@@ -66,11 +67,14 @@ public class Carportpage extends BaseServlet {
                 address = utils.removeHTML(address); //remove html might be redundant
                 city = utils.removeHTML(city);
                 Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 90);
-                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                Queries queries;
+                queries = API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                 sendMail(eMail, phoneNR); //TBA
-                session.setAttribute("Customer", customers);
+                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                session.setAttribute("customer", customers);
+                session.setAttribute("Shed",carportShed);
                 session.setAttribute("Shed", carportShed);
+                session.setAttribute("Carport",carport);
                 session.setAttribute("Carport", carport);
 
 
@@ -85,7 +89,7 @@ public class Carportpage extends BaseServlet {
     }
 
     private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
-        int count = 1;
+        int count = 1; //bad way to do it kekw will fix later
         try {
             for (Customers customers : API.getAllUsers()) {
                 count++;

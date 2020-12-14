@@ -1,68 +1,54 @@
 package domain.Queries;
 
+import domain.Carport.Carport;
 import domain.Shed.Shed;
 
 /**
  * CREATED BY mathias @ 26-11-2020 - 10:50
  **/
 public class Queries {
-    private int userId;
-    private int carPortWidth;
-    private int cartPortLength;
-    private String roofType;
+    private final int id;
+    private final String Email;
+    private Carport carport;
     private Shed shed;
 
-    public Queries(int useriD, int carPortWidth, int cartPortLength, String roofType, Shed shed) {
-        this.userId = useriD;
-        this.carPortWidth = carPortWidth;
-        this.cartPortLength = cartPortLength;
-        this.roofType = roofType;
+    public Queries(int id,String CustomerEmail, Carport carport, Shed shed) {
+        this.id = id;
+        this.Email = CustomerEmail;
+        this.carport = carport;
         this.shed = shed;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String getEmail() {
+        return Email;
     }
 
-    public int getCarPortWidth() {
-        return carPortWidth;
+    public Carport getCarport() {
+        return carport;
     }
 
-    public void setCarPortWidth(int carPortWidth) {
-        this.carPortWidth = carPortWidth;
+    public void setCarport(Carport carport) {
+        this.carport = carport;
     }
 
-    public int getCartPortLength() {
-        return cartPortLength;
-    }
-
-    public void setCartPortLength(int cartPortLength) {
-        this.cartPortLength = cartPortLength;
-    }
-
-    public String getRoofType() {
-        return roofType;
-    }
-
-    public void setRoofType(String roofType) {
-        this.roofType = roofType;
-    }
 
     public Shed getShed() {
         return shed;
     }
 
+    public void setShed(Shed shed) {
+        this.shed = shed;
+    }
+
     @Override
     public String toString() {
         return "Queries{" +
-                "userId=" + userId +
-                ", carPortWidth=" + carPortWidth +
-                ", cartPortLength=" + cartPortLength +
-                ", roofType='" + roofType + '\'' +
+                "CustomerEmail='" + Email + '\'' +
+                ", carport=" + carport +
                 ", shed=" + shed +
                 '}';
     }
