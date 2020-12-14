@@ -27,7 +27,6 @@ public class QueryDetails extends BaseServlet {
             setUp(req, resp);
             try {
                 for (Queries q : API.getAllQueries()){
-                    customers.add(API.getExistingCustomerInfomationById(q.getUserId()));
                     queries.add(q);
                 }
             }catch (Exception e){

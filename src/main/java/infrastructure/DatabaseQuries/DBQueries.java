@@ -55,7 +55,7 @@ public class DBQueries implements QueriesRepo {
         }
 
         return new Queries(
-                set.getInt("forespørgsler.kunde"),
+                set.getString("forespørgsler.kunde"),
                 set.getInt("forespørgsler.Carport_Bredde"),
                 set.getInt("forespørgsler.Carport_Længde"),
                 set.getString("forespørgsler.Tag_Type"),

@@ -2,6 +2,7 @@ package web.pages;
 
 import domain.Queries.Queries;
 import domain.Customers.Customers;
+import domain.Shed.Shed;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -21,21 +22,17 @@ import java.util.ArrayList;
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
             ArrayList<Queries> queries = new ArrayList<>();
-            ArrayList<Customers> customers = new ArrayList<>();
             setUp(req, resp);
             try {
                 for (Queries q : API.getAllQueries()){
-                     customers.add(API.getExistingCustomerInfomationById(q.getUserId()));
                     queries.add(q);
                 }
             }catch (Exception e){
                 e.printStackTrace();
 
             }
-            req.setAttribute("Queries",queries);
-            req.setAttribute("Customers",customers);
+
             System.out.println(queries);
-            System.out.println(customers);
             render("/WEB-INF/pages/adminpage.jsp", resp, req);
 
         }else {

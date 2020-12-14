@@ -6,26 +6,30 @@ import domain.Shed.Shed;
  * CREATED BY mathias @ 26-11-2020 - 10:50
  **/
 public class Queries {
-    private int userId;
+    private String CustomerEmail;
     private int carPortWidth;
     private int cartPortLength;
     private String roofType;
     private Shed shed;
 
-    public Queries(int useriD, int carPortWidth, int cartPortLength, String roofType, Shed shed) {
-        this.userId = useriD;
+    public Queries(String CustomerEmail, int carPortWidth, int cartPortLength, String roofType, Shed shed) {
+        this.CustomerEmail = CustomerEmail;
         this.carPortWidth = carPortWidth;
         this.cartPortLength = cartPortLength;
         this.roofType = roofType;
         this.shed = shed;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getCustomerEmail() {
+        return CustomerEmail;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setCustomerEmail(String customerEmail) {
+        CustomerEmail = customerEmail;
+    }
+
+    public void setShed(Shed shed) {
+        this.shed = shed;
     }
 
     public int getCarPortWidth() {
@@ -59,7 +63,7 @@ public class Queries {
     @Override
     public String toString() {
         return "Queries{" +
-                "userId=" + userId +
+                "CustomerEmail='" + CustomerEmail + '\'' +
                 ", carPortWidth=" + carPortWidth +
                 ", cartPortLength=" + cartPortLength +
                 ", roofType='" + roofType + '\'' +

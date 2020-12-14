@@ -27,7 +27,7 @@ public class ThankYou extends BaseServlet {
             int orderid = Integer.parseInt(req.getPathInfo().substring(1));
             Queries q = API.getQuery(orderid);
             req.setAttribute("query", q);
-            req.setAttribute("customer", API.getExistingCustomerInfomationById(q.getUserId()));
+            req.setAttribute("customer", q.getCustomerEmail());
             req.setAttribute("style", "/css/forsprøgelse.css");
             smartrender("/WEB-INF/pages/thankyou.jsp", resp, req);
         } catch (SQLException throwables) {
