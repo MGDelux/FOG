@@ -15,36 +15,54 @@ import java.util.ArrayList;
 /**
  * CREATED BY Emil @ 26-11-2020 - 11:29
  **/
-@WebServlet({"/salesman", "/salesman/*"})public class salesman extends BaseServlet {
+@WebServlet({"/salesman", "/salesman/*"})
+public class salesman extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
+        if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
             ArrayList<Queries> queries = new ArrayList<>();
             setUp(req, resp);
             try {
-                for (Queries q : API.getAllQueries()){
+                for (Queries q : API.getAllQueries()) {
                     queries.add(q);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
 
             }
-            req.setAttribute("Queries",queries);
+            req.setAttribute("Queries", queries);
             System.out.println(queries);
             render("/WEB-INF/pages/salesman.jsp", resp, req);
 
-        }else {
+        } else {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);
-            session.setAttribute("loggedInMSG","only for employees");
+            session.setAttribute("loggedInMSG", "only for employees");
 
 
         }
 
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        System.out.println("POST");
+        if (req.getParameter("logout") != null) {
+            logout(req, resp);
+        }
+
+    }
+
+    private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        if (getEmployee(req, resp, "error") != null) {
+            HttpSession session = req.getSession();
+            session.setAttribute("loggedIn",false);
+            session.setAttribute("employee",null);
+            resp.sendRedirect(req.getContextPath() + " ");
+
+        }else {
+            //do something set error msg
+        }
     }
 }
