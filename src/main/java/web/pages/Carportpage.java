@@ -70,7 +70,12 @@ public class Carportpage extends BaseServlet {
                 Queries queries;
                 queries = API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                 sendMail(eMail, phoneNR); //TBA
-                session.setAttribute("Qurr",queries);
+                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                session.setAttribute("customer", customers);
+                session.setAttribute("Shed",carportShed);
+                session.setAttribute("Shed", carportShed);
+                session.setAttribute("Carport",carport);
+                session.setAttribute("Carport", carport);
 
 
             } catch ( NumberFormatException | SQLException | MessagingException e) {

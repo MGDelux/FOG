@@ -40,4 +40,14 @@ public class Carport {
         FLAT,
         ANGLE
     }
+
+    @Override
+    public String toString() {
+        return "Carport{" +
+                "width=" + width +
+                ", length=" + length +
+                ", roof=" + roof +
+                ", roofAngle=" + roofAngle +
+                '}';
+    }
 }

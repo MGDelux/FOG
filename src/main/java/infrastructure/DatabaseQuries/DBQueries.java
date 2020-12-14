@@ -15,6 +15,7 @@ import java.util.ArrayList;
  **/
 public class DBQueries implements QueriesRepo {
     private final Database db;
+
     public DBQueries(Database db) {
         this.db = db;
     }
@@ -27,7 +28,7 @@ public class DBQueries implements QueriesRepo {
             String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length) VALUES (?,?,?,?,?,?,?)";
 
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, customers.getId());
+            preparedStatement.setString(1, customers.getEmail());
             preparedStatement.setInt(2, carport.getLength());
             preparedStatement.setInt(3, carport.getWidth());
             preparedStatement.setString(4, carport.getRoof().toString());
@@ -36,39 +37,41 @@ public class DBQueries implements QueriesRepo {
                 preparedStatement.setInt(6, shed.getWidth());
                 preparedStatement.setInt(7, shed.getLength());
             } else {
-                preparedStatement.setNull(6, Types.INTEGER );
-                preparedStatement.setNull(7, Types.INTEGER );
+                preparedStatement.setNull(6, Types.INTEGER);
+                preparedStatement.setNull(7, Types.INTEGER);
             }
             preparedStatement.executeUpdate();
-        }finally {
+        } finally {
             db.closeConnection();
         }
 
-            return null; //fix
+        return null; //fix
     }
-    private Queries ParseQueries(ResultSet set) throws SQLException{
+
+    private Queries ParseQueries(ResultSet set) throws SQLException {
         Shed shed = null;
         if (set.getBoolean("forespørgsler.has_shed")) {
             shed = new Shed(
                     set.getInt("forespørgsler.shed_width"),
                     set.getInt("forespørgsler.shed_height"));
         }
-
-        return new Queries(
-                set.getString("forespørgsler.kunde"),
+        Carport carport = null;
+        carport = new Carport(
                 set.getInt("forespørgsler.Carport_Bredde"),
                 set.getInt("forespørgsler.Carport_Længde"),
-                set.getString("forespørgsler.Tag_Type"),
-                shed);
+               Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")),
+                90);
+        return new Queries(
+              set.getInt("forespørgsler.Order_Id"),  set.getString("forespørgsler.kunde"), carport, shed);
     }
 
     @Override
     public Iterable<Queries> getAllQuires() {
         ArrayList<Queries> queries = new ArrayList<>();
-        try (Connection connection = db.connect()){
+        try (Connection connection = db.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM forespørgsler");
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 queries.add(ParseQueries(resultSet));
             }
         } catch (SQLException throwables) {
@@ -82,15 +85,16 @@ public class DBQueries implements QueriesRepo {
     public Queries getSpecificQueryByUserID(int id) throws SQLException {
         String SQL = "SELECT * FROM forespørgsler WHERE forespørgsler.Order_Id = ? ";
         PreparedStatement preparedStatement;
-        Connection connection= db.connect(); preparedStatement = connection.prepareStatement(SQL);
-        try{
-            preparedStatement.setInt(1,id);
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return ParseQueries(resultSet);
             }
 
-        }finally {
+        } finally {
             connection.close();
             preparedStatement.close();
         }
