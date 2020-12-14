@@ -37,6 +37,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
+            <a class="nav-link"href="${pageContext.request.contextPath}/details/">DETAIL TEST</a>
         </li>
     </ul>
 
@@ -53,6 +54,7 @@
             <th scope="col">Carport</th>
             <th scope="col">Skur</th>
             <th scope="col">Sælger</th>
+            <th SCOPE="col">Select</th>
         </tr>
         <c:forEach items="${Queries}" var="items">
             <c:forEach items="${Customers}" var="customers">
@@ -62,6 +64,12 @@
                     <td>${items.carPortWidth} x ${items.cartPortLength} </td>
                     <td>${items.shedWidth} x ${items.shedLength} </td>
                     <td>WIP</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="CartItemId" value="${customers.email}">
+                            <input type="submit" value="slet" name="delteOrderLine"/>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </c:forEach>
