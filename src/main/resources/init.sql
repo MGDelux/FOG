@@ -37,14 +37,14 @@ CREATE TABLE Carporte (
 CREATE TABLE CartPortMaterialer( /*dette inkl træ og tagplader*/
 `Carportmateriale_Id`INT auto_Increment,
 `Carportmateriale_Navn` VARCHAR(45) NOT NULL,
-`materiale_Beskrivelse` VARCHAR(45) NOT NULL,
+`materiale_Beskrivelse` VARCHAR(256) NOT NULL,
 `materiale_Pris` double not null,
 PRIMARY KEY (`Carportmateriale_Id`)
 );
 CREATE TABLE BeslagOgSkruer( /* beslag&skruer */
 `BeslagOgSkruer_Id`INT auto_Increment,
 `BeslagOgSkruer_Navn` VARCHAR(45) NOT NULL,
-`BeslagOgSkruer_Beskrivelse` VARCHAR(45) NOT NULL,																						
+`BeslagOgSkruer_Beskrivelse` VARCHAR(256) NOT NULL,
 `BeslagOgSkruer_Pris` double not null,
 PRIMARY KEY (`BeslagOgSkruer_Id`)
 );
