@@ -60,7 +60,6 @@ CREATE TABLE forespørgsler(
 `shed_length` INT,
 PRIMARY KEY (`Order_Id`),
 FOREIGN KEY (Kunde) REFERENCES kunder(`Kunde_Id`)
-
 );
 
 CREATE TABLE forespørgsel_Indhold(
