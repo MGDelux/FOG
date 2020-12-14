@@ -60,21 +60,21 @@ public class Carportpage extends BaseServlet {
                 int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
                 Shed carportShed = null;
                 if (Objects.equals(req.getParameter("includeShed"), "on")) {
-                    int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                     int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
+                    int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                     carportShed = new Shed(shedWidth, shedLength);
-                    address = utils.removeHTML(address); //remove html might be redundant
-                    city = utils.removeHTML(city);
                     if (Objects.equals(req.getParameter("fladttag"), "on")) {
+                        System.out.println("shed FLADT : " + carportShed);
                         Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);
                         API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                         session.setAttribute("Shed", carportShed);
+                        session.setAttribute("Carport", carport);
                         System.out.println("FLADT");
                         Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
                         session.setAttribute("customer", customers);
                         sendMail(customers, getQueryID(), carport, carportShed);
-
                     } else {
+                        System.out.println("shed ANGLE : " + carportShed);
                         Carport carport = new Carport(carPortWidth, carPortLength, Carport.roofType.ANGLE, 90);
                         API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                         session.setAttribute("Carport", carport);
@@ -97,8 +97,20 @@ public class Carportpage extends BaseServlet {
         }
     }
 
-    private int getQueryID() {
-        int count = 1;
+    private Object getUserId() { // THIS IS FOR TESTING  ADD TO API
+        int count = 0;
+        try {
+            for (Customers c: API.getAllUsers()){
+                count++;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return count;
+    }
+
+    private int getQueryID() { // THIS IS FOR TESTING  ADD TO API
+        int count = 0;
         try {
             for (Queries q : API.getAllQueries()) {
                 count++;

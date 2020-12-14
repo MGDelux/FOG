@@ -106,4 +106,24 @@ public class DBQueries implements QueriesRepo {
     public Queries deleteSpecificQuire(int id) {
         return null;
     }
+
+    @Override
+    public synchronized Queries getLatestQuery() throws SQLException {
+        String SQL = "SELECT * FROM fog.forespørgsler ORDER  BY Order_Id DESC limit 1";
+        PreparedStatement preparedStatement;
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            ResultSet set = preparedStatement.executeQuery();
+            while (set.next()){
+                return ParseQueries(set);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            connection.close();
+            preparedStatement.close();
+        }
+        return null;
+    }
 }

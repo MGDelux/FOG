@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -23,10 +25,10 @@ public class ThankYou extends BaseServlet {
         //TODO: tjek om user er logget ind her.
         int x = 10;
         try {
-            int orderid = Integer.parseInt(req.getPathInfo().substring(1));
-            Queries q = API.getQuery(orderid);
+            Queries q = API.getLatestQuery();
+            System.out.println(q.toString());
             req.setAttribute("query", q);
-            req.setAttribute("customer", API.getExistingCustomerInfomationById(1));
+            req.setAttribute("customer", API.getExistingUserInfomation(q.getEmail())); //christians code should be fixed?
             req.setAttribute("style", "/css/forsprøgelse.css");
             smartrender("/WEB-INF/pages/thankyou.jsp", resp, req);
         } catch (SQLException throwables) {

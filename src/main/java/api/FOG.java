@@ -89,7 +89,9 @@ public class FOG {
             return customerRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
         }
     }
-
+public Customers getExistingUserInfomation(String email) throws SQLException {
+        return customerRepo.getExistingUserInfomation(email);
+}
     public Iterable<Customers> getAllUsers() throws SQLException {
             return customerRepo.getAllUsers();
     }
@@ -127,5 +129,10 @@ public class FOG {
     public Email newMail(String toAdress, String subject, String message) throws MessagingException {
         return emailRepo.newEmail(new Email(toAdress,subject,message));
     }
+
+    public Queries getLatestQuery() throws SQLException {
+        return queriesRepo.getLatestQuery();
+    }
+
 
 }
