@@ -24,9 +24,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <style>
-        <jsp:include page="../../css/admin.css"/>
+        <jsp:include page="../../css/salesman.css"/>
     </style>
-    <title>FOG HOMEPAGE</title>
+    <title>FOG ADMIN</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
@@ -36,15 +36,32 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
+            <a class="nav-link" href="ADMINPAGE"${pageContext.request.contextPath}/carport/">Bestil carporte</a>
         </li>
     </ul>
 
 </nav>
-<div class="bg">
-    <div class="brødtekst">
-        <h1>Adminpage</h1>
+<div class="sellingInfo">
+    <div class="Selldiv">
+        <p class="smalltext"></p>
+        <p class="smalltext">Medarbejder Info:</p>
+<p class="userinfo"><STRONG>${sessionScope.employee.email} -  ${sessionScope.employee.role}</STRONG></p>
+        <div class="adminref">
+
+            <form method="post">
+            <button type="hidden" style="outline: 0;" class="logger" name="logout">
+                >LOGOUT<     </button>
+            </form>
+            <button type="hidden" style="outline: 0" class="logger" name="adminpage" ><c:if test="${sessionScope.employee.role != 'SALESMAN'}">>ADMIN PAGE<</button></c:if>
+
+        <p class="smalltext"></p>
+        </div>
+        <p class="smalltext"></p>
     </div>
+</div>
+<div class="bg">
+    <div class="tablecontain">
+        <h1>Sælger side:</h1>
     <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
         <thead>
         <tr>
@@ -54,7 +71,8 @@
             <th scope="col">Carport dimensioner  </th>
             <th scope="col">Skur dimensioner </th>
             <th scope="col">Sælger</th>
-            <th scope="col">Vælg</th>
+            <th scope="col">Vælg / Detailjer</th>
+            <th scope="col">Tildel mig</th>
         </tr>
         <c:forEach items="${Queries}" var="items">
                 <tr>
@@ -63,20 +81,30 @@
                     <td>${items.carport.getRoof()} TAG</td>
                     <td>${items.carport.width} x ${items.carport.length} </td>
                     <td>${items.shed.width} x ${items.shed.length} </td>
-                    <td>WIP</td>
+                    <td>${items.getSeller()}</td>
                     <td>
                     <form method="post">
-                        <input type="hidden" name="CartItemId" value="${items.getEmail()}">
-                        <input type="submit" value="vælg" name="delteOrderLine"/>
+                        <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
+                        <input type="submit" value="vælg" name="selectOrder"/>
                     </form>
                     </td>
+                        <td>
+                        <form method="post">
+                            <input class="Sbutton"  type="hidden" name="assignSell" value="${items.getId()}">
+                            <input type="submit" value="vælg" name="assigSellButton"/>
+                        </form>
+                    </td>
+
                 </tr>
             </c:forEach>
         </thead>
         <tbody>
 
     </table>
+    </div>
 </div>
+<hr class="solid">
+
 </body>
 <footer>
     <div class="footer">

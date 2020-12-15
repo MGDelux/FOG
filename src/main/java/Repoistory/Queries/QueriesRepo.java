@@ -1,5 +1,6 @@
 package Repoistory.Queries;
 
+import domain.Employees.Employee;
 import domain.Queries.Queries;
 
 import java.sql.SQLException;
@@ -14,4 +15,8 @@ public interface QueriesRepo extends QueriesFactory {
     Queries getSpecificQueryByUserID(int id) throws SQLException;
 
     Queries deleteSpecificQuire(int id);
+
+    Queries getLatestQuery() throws SQLException;
+
+    Queries assignSellerToQuery(int getQueryValue, Employee employee);
 }
