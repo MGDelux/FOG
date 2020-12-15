@@ -8,6 +8,8 @@
 
 - Project Page: [ ONLINE Project Page](http://solidcode.xyz/)
 
+- Test Users: Sales Employee Email: "employee@mail.com" Password: "password" | Admin Employee Email: "admin@mail.com" Password: "password"
+
 <h4>Team:</h4>
 <a href="https://github.com/Tenz331" rel="nofollow">EMIL</a> - <a href="https://github.com/Janussr" rel="nofollow">Janus</a> - <a href="https://github.com/MGDelux" rel="nofollow">Mathias</a>
 
