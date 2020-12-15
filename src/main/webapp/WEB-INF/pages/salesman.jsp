@@ -53,8 +53,11 @@
                 >LOGOUT<     </button>
             </form>
             <button type="hidden" style="outline: 0" class="logger" name="adminpage" ><c:if test="${sessionScope.employee.role != 'SALESMAN'}">>ADMIN PAGE<</button></c:if>
+            <a href="${pageContext.request.contextPath}/admin">admin</a>
 
-        <p class="smalltext"></p>
+
+
+            <p class="smalltext"></p>
         </div>
         <p class="smalltext"></p>
     </div>
@@ -71,7 +74,7 @@
             <th scope="col">Carport dimensioner  </th>
             <th scope="col">Skur dimensioner </th>
             <th scope="col">Sælger</th>
-            <th scope="col">Vælg / Detaljer</th>
+            <th scope="col">Tilbudsudregner</th>
             <th scope="col">Tildel mig</th>
         </tr>
         <c:forEach items="${Queries}" var="items">
