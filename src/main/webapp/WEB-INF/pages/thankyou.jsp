@@ -27,6 +27,11 @@
                 <th scope="row">Tlf.</th>
                 <td>${customer.phoneNr}</td>
             </tr>
+            <tr>
+                <th scope="row">By.</th>
+                <td>${customer.city}</td>
+
+            </tr>
             </tbody>
         </table>
     </div>
@@ -48,30 +53,19 @@
                 <th scope="row">Tag.</th>
                 <td>${query.carport.getRoof()}</td>
             </tr>
-            <tr>
-                
-                <c:if test="${query.shed != null}">
-                    <h5>Redskabs rum specifikationer:</h5>
-                    <p>Længde: ${query.shed.length}</p>
-                    <p>Bredde: ${query.shed.width}</p>
-                </c:if>
-            </tr>
-
             </tbody>
         </table>
     </div>
-    <h5>Redskabs rum specifikationer:</h5>
-
     <div>
     <c:if test="${query.shed != null}">
     <h5>Redskabs rum specifikationer:</h5>
     <p>Længde: ${query.shed.length}</p>
     <p>Bredde: ${query.shed.width}</p>
+
     </c:if>
     </div>
     <br>
     </table>
-
 
         <a href="${pageContext.request.contextPath}/carport/" class="btn btn-primary btn-lg active" role="button"
            aria-pressed="true">Tilbage</a>

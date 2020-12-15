@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="FOG" options="-endorseddirs C:\Users\mathi\IdeaProjects\FOG\target/endorsed" />
+      <module name="FOG" options="-endorseddirs C:\Users\Janus\Datamatiker\FOG\target/endorsed" />
     </option>
   </component>
 </project>
