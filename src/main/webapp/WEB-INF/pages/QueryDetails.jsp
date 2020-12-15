@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: mathi
@@ -5,7 +6,6 @@
   Time: 12:23
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
@@ -30,24 +30,27 @@
 <body>
 <div class="Container">
     <div CLASS="holder">
-        <h1 style="text-align: center"> KUNDE FORSPRØGELSE Details:</h1>
+        <h1 style="text-align: center"> Kunde-forespørgelse detaljer:</h1>
         <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
             <thead>
             <tr>
                 <th scope="col">Kunde</th>
-                <th>TLF:</th>
-                <th>Email</th>
+                <th>Tlf Nr:</th>
+                <th scope="row">By</th>
                 <th scope="col">Forespørgsel</th>
                 <th scope="col">Carport</th>
                 <th scope="col">Skur</th>
             </tr>
-            <c:forEach items="${Queries}" var="items">
+<c:forEach items="${Queries}" var="items">
                 <c:forEach items="${Customers}" var="customers">
                     <tr>
-                        <td>${customers.email}</td>
-                        <td>${items.roofType} TAG</td>
-                        <td>${items.carPortWidth} x ${items.cartPortLength} </td>
-                        <td>${items.shedWidth} x ${items.shedLength} </td>
+                        <td>${customer.email}</td>
+                        <td>${customer.phoneNr}</td>
+                        <td>${customer.city}</td>
+                        <td>${items.carport.getRoof()} TAG</td>
+                        <td>${items.carport.getRoof()} TAG</td>
+                        <td>${items.carport.width} x ${items.carport.length} </td>
+                        <td>${items.shed.width} x ${items.shed.length} </td>
                     </tr>
                 </c:forEach>
             </c:forEach>

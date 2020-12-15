@@ -36,7 +36,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="ADMINPAGE"${pageContext.request.contextPath}/carport/">Bestil carporte</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
         </li>
     </ul>
 
@@ -71,7 +71,7 @@
             <th scope="col">Carport dimensioner  </th>
             <th scope="col">Skur dimensioner </th>
             <th scope="col">Sælger</th>
-            <th scope="col">Vælg / Detailjer</th>
+            <th scope="col">Vælg / Detaljer</th>
             <th scope="col">Tildel mig</th>
         </tr>
         <c:forEach items="${Queries}" var="items">
@@ -83,9 +83,9 @@
                     <td>${items.shed.width} x ${items.shed.length} </td>
                     <td>${items.getSeller()}</td>
                     <td>
-                    <form method="post">
-                        <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
-                        <input type="submit" value="vælg" name="selectOrder"/>
+                    <form action="${pageContext.request.contextPath}/details">
+                        <input class="Sbutton" type="hidden" name="selectOrder" value=<a></a>
+                        <input type="submit" value="vælg" name="details"/>
                     </form>
                     </td>
                         <td>
