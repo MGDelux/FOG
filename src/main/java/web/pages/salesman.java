@@ -1,6 +1,6 @@
 package web.pages;
 
-import domain.Customers.Customers;
+import domain.Employees.Employee;
 import domain.Queries.Queries;
 import web.BaseServlet;
 
@@ -50,6 +50,15 @@ public class salesman extends BaseServlet {
         System.out.println("POST");
         if (req.getParameter("logout") != null) {
             logout(req, resp);
+        }
+        if(req.getParameter("assigSellButton")!=null){
+            HttpSession session = req.getSession();
+           Employee employee = getEmployee(req,resp,"error in getting employe info");
+            int getQueryValue = Integer.parseInt(req.getParameter("assignSell"));
+            System.out.println(getQueryValue);
+            API.assignSellerToQuery(getQueryValue,employee);
+            resp.sendRedirect(req.getContextPath() + "/salesman/");
+
         }
 
     }

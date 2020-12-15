@@ -135,4 +135,7 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
     }
 
 
+    public Queries assignSellerToQuery(int getQueryValue, Employee employee) {
+        return queriesRepo.assignSellerToQuery(getQueryValue, employee);
+    }
 }
