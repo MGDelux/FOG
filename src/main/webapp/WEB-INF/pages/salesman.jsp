@@ -86,8 +86,8 @@
                     <td>${items.shed.width} x ${items.shed.length} </td>
                     <td>${items.getSeller()}</td>
                     <td>
-                    <form action="${pageContext.request.contextPath}/details">
-                        <input class="Sbutton" type="hidden" name="selectOrder" value=<a></a>
+                    <form method="post">
+               <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
                         <input type="submit" value="vælg" name="details"/>
                     </form>
                     </td>

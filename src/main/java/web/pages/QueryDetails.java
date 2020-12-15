@@ -23,7 +23,6 @@ public class QueryDetails extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
             ArrayList<Queries> queries = new ArrayList<>();
-            ArrayList<Customers> customers = new ArrayList<>();
             setUp(req, resp);
             try {
                 for (Queries q : API.getAllQueries()){
@@ -34,9 +33,7 @@ public class QueryDetails extends BaseServlet {
 
             }
             req.setAttribute("Queries",queries);
-            req.setAttribute("Customers",customers);
             System.out.println(queries);
-            System.out.println(customers);
             render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
 
         }else {

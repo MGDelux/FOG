@@ -133,6 +133,9 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
     public Queries getLatestQuery() throws SQLException {
         return queriesRepo.getLatestQuery();
     }
+    public Queries getQueryById(int id) {
+        return queriesRepo.getSpecificQueryByQueryId(id);
+    }
 
 
     public Queries assignSellerToQuery(int getQueryValue, Employee employee) {
