@@ -19,4 +19,6 @@ public interface QueriesRepo extends QueriesFactory {
     Queries getLatestQuery() throws SQLException;
 
     Queries assignSellerToQuery(int getQueryValue, Employee employee);
+
+    Queries getSpecificQueryByQueryId(int id);
 }

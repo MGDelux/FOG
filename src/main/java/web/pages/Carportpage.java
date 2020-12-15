@@ -58,11 +58,11 @@ public class Carportpage extends BaseServlet {
                 int phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
                 int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
                 int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
-                Shed carportShed = null;
+
                 if (Objects.equals(req.getParameter("includeShed"), "on")) {
                     int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
                     int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
-                    carportShed = new Shed(shedWidth, shedLength);
+                   Shed carportShed = new Shed(shedWidth, shedLength);
                     if (Objects.equals(req.getParameter("fladttag"), "on")) {
                         System.out.println("shed FLADT : " + carportShed);
                         Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);

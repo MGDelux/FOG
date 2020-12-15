@@ -1,20 +1,35 @@
 package web.SVG;
 
+import domain.Carport.Carport;
+import domain.Shed.Shed;
+
 /**
  * CREATED BY mathias @ 07-12-2020 - 14:13
  **/
 public class svg {
-    private static String backGroundWidth = "800";
-    private static String backGroundLength = "600";
-    private  int carportWidth;
-    private  int carportLength;
-    private  int redskabsRumWidth;
-    private  int redskabRumLength;
+    private Shed shed;
+    private Carport carport;
+    private int width = carport.getWidth()+10;
+    private int length = carport.getLength()+10;
 
-    public svg(int carportWidth, int carportLength, int redskabsRumWidth, int redskabRumLength) {
-        this.carportWidth = carportWidth;
-        this.carportLength = carportLength;
-        this.redskabsRumWidth = redskabsRumWidth;
-        this.redskabRumLength = redskabRumLength;
+    public svg(Shed shed, Carport carport) {
+        this.shed = shed;
+        this.carport = carport;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public Shed getShed() {
+        return shed;
+    }
+
+    public Carport getCarport() {
+        return carport;
     }
 }

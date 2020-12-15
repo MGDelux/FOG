@@ -41,18 +41,16 @@
                 <th scope="col">Carport</th>
                 <th scope="col">Skur</th>
             </tr>
-<c:forEach items="${Queries}" var="items">
-                <c:forEach items="${Customers}" var="customers">
+              <c:forEach items="${Queries}" var="items">
                     <tr>
-                        <td>${customer.email}</td>
-                        <td>${customer.phoneNr}</td>
-                        <td>${customer.city}</td>
+                        <td>${items.getEmail()}</td>
+                        <td></td>
+                        <td></td>
                         <td>${items.carport.getRoof()} TAG</td>
                         <td>${items.carport.getRoof()} TAG</td>
                         <td>${items.carport.width} x ${items.carport.length} </td>
                         <td>${items.shed.width} x ${items.shed.length} </td>
                     </tr>
-                </c:forEach>
             </c:forEach>
             </thead>
             <tbody>
