@@ -4,12 +4,15 @@
     background: linear-gradient(to bottom, #007BFF, #022896);
     color: white;
 }
-.navbar-brand{
-
+body {
+    height: 100vh;
+    width: 100%;
+    background: rgb(68,196,193);
+    background: linear-gradient(180deg, rgba(206,255,254,1) 0%, rgba(87,161,244,1) 100%);
 }
+
 .bg{
     color: black;
-    background-color: white;
     border-radius: 2px;
     border-color: red;
     padding-top: 100px;
@@ -27,7 +30,7 @@
 .footer {
     border-top: 1px solid #000000;
     background: rgb(64,143,252);
-    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgb(134, 0, 0) 91%);
+    background: linear-gradient(to bottom, #007BFF, #022896);
     position: fixed;
     left: 0;
     bottom: 0;

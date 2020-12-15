@@ -11,12 +11,18 @@ public class Queries {
     private final String Email;
     private Carport carport;
     private Shed shed;
+    private String seller;
 
-    public Queries(int id,String CustomerEmail, Carport carport, Shed shed) {
+    public Queries(int id,String CustomerEmail, Carport carport, Shed shed, String seller) {
         this.id = id;
         this.Email = CustomerEmail;
         this.carport = carport;
         this.shed = shed;
+        this.seller = seller;
+    }
+
+    public String getSeller() {
+        return seller;
     }
 
     public int getId() {

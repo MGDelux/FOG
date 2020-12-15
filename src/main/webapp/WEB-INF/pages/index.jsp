@@ -43,7 +43,7 @@
              Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
              Køb nu, men få leveret senere når det passer dig.
          </p>
-        <img class="frontPicture" src="https://media.jardinitis.com/product/almacen-extension-para-garaje-karl-406-m2-sin-pergola-solo-almacen-800x800.jpeg">
+        <img class="frontPicture" src="https://lillevilla.com/dk/wp-content/uploads/sites/27/2020/01/Carport-KH-300-ID-5940-scaled.jpg">
         <p align="center">Klik her og find din nye carport idag.</p>
 
         <div class="form-row div-wrapper d-flex justify-content-center" align="center" >

@@ -47,6 +47,7 @@
         <p class="smalltext">Medarbejder Info:</p>
 <p class="userinfo"><STRONG>${sessionScope.employee.email} -  ${sessionScope.employee.role}</STRONG></p>
         <div class="adminref">
+
             <form method="post">
             <button type="hidden" style="outline: 0;" class="logger" name="logout">
                 >LOGOUT<     </button>
@@ -80,7 +81,7 @@
                     <td>${items.carport.getRoof()} TAG</td>
                     <td>${items.carport.width} x ${items.carport.length} </td>
                     <td>${items.shed.width} x ${items.shed.length} </td>
-                    <td>WIP</td>
+                    <td>${items.getSeller()}</td>
                     <td>
                     <form method="post">
                         <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
@@ -90,7 +91,7 @@
                         <td>
                         <form method="post">
                             <input class="Sbutton"  type="hidden" name="assignSell" value="${items.getId()}">
-                            <input type="submit" value="vælg" name="assignSell"/>
+                            <input type="submit" value="vælg" name="assigSellButton"/>
                         </form>
                     </td>
 
