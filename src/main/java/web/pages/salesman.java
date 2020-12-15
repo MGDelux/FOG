@@ -58,7 +58,12 @@ public class salesman extends BaseServlet {
             System.out.println(getQueryValue);
             API.assignSellerToQuery(getQueryValue,employee);
             resp.sendRedirect(req.getContextPath() + "/salesman/");
-
+        }
+        if (req.getParameter("details")!=null){
+            int value = Integer.parseInt(req.getParameter("selectOrder"));
+            System.out.println(value);
+            req.setAttribute("selectedQuery",value);
+            resp.sendRedirect(req.getContextPath()+"/details/");
         }
 
     }

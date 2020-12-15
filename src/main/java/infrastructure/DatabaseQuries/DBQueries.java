@@ -23,7 +23,6 @@ public class DBQueries implements QueriesRepo {
 
     @Override
     public synchronized Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
-        // we only need the Users ID (INT) nothing else from 'user' tyvm
 
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length,assigned_seller) VALUES (?,?,?,?,?,?,?,?)";
@@ -63,25 +62,30 @@ public class DBQueries implements QueriesRepo {
         return null;
 
     }
+
+    @Override
+    public Queries getSpecificQueryByQueryId(int id) {
+        return null;
+    }
+
     private Queries ParseQueries(ResultSet set) throws SQLException {
         Shed shed = null;
         if (set.getBoolean("forespørgsler.has_shed")) {
             shed = new Shed(
                     set.getInt("forespørgsler.shed_width"),
-                    set.getInt("forespørgsler.shed_height"));
+                    set.getInt("forespørgsler.shed_length"));
         }
         Carport carport = null;
         carport = new Carport(
                 set.getInt("forespørgsler.Carport_Bredde"),
                 set.getInt("forespørgsler.Carport_Længde"),
-               Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")),
-                90);
-        return new Queries(
-              set.getInt("forespørgsler.Order_Id"),  set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"));
+               Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")), 90);
+        return new Queries(set.getInt("forespørgsler.Order_Id"),  set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"));
 
     }
 
     @Override
+
     public Iterable<Queries> getAllQuires() {
         ArrayList<Queries> queries = new ArrayList<>();
         try (Connection connection = db.connect()) {
@@ -125,6 +129,7 @@ public class DBQueries implements QueriesRepo {
 
     @Override
     public synchronized Queries getLatestQuery() throws SQLException {
+        System.out.println("GET LATEST Q");
         String SQL = "SELECT * FROM fog.forespørgsler ORDER  BY Order_Id DESC limit 1";
         PreparedStatement preparedStatement;
         Connection connection = db.connect();
