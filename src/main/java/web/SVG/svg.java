@@ -1,20 +1,21 @@
 package web.SVG;
 
 import domain.Carport.Carport;
+import domain.Queries.Queries;
 import domain.Shed.Shed;
 
 /**
  * CREATED BY mathias @ 07-12-2020 - 14:13
  **/
 public class svg {
-    private Shed shed;
-    private Carport carport;
-    private int width = carport.getWidth()+10;
-    private int length = carport.getLength()+10;
+    private Queries queries;
+    private int width;
+    private int length;
 
-    public svg(Shed shed, Carport carport) {
-        this.shed = shed;
-        this.carport = carport;
+    public svg(Queries queries) {
+        this.queries = queries;
+        this.length = queries.getCarport().getLength() +10;
+        this.width = queries.getCarport().getLength() + 10;
     }
 
     public int getWidth() {
@@ -25,11 +26,7 @@ public class svg {
         return length;
     }
 
-    public Shed getShed() {
-        return shed;
-    }
-
-    public Carport getCarport() {
-        return carport;
+    public Queries getQueries() {
+        return queries;
     }
 }
