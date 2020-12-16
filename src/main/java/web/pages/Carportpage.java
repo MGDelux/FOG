@@ -54,34 +54,37 @@ public class Carportpage extends BaseServlet {
             String address = req.getParameter("inputAddress");
             String city = req.getParameter("by");
             try {
+                Shed carportShed;
                 int zipCode = Integer.parseInt(req.getParameter("postnummer"));
                 int phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
                 int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
                 int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
-
                 if (Objects.equals(req.getParameter("includeShed"), "on")) {
                     int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
                     int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
-                   Shed carportShed = new Shed(shedWidth, shedLength);
-                    if (Objects.equals(req.getParameter("fladttag"), "on")) {
-                        Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);
-                        API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                        session.setAttribute("Shed", carportShed);
-                        session.setAttribute("Carport", carport);
-                        Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                        session.setAttribute("customer", customers);
-                        sendMail(customers, getQueryID(), carport, carportShed);
-                    } else {
-                        Carport carport = new Carport(carPortWidth, carPortLength, Carport.roofType.ANGLE, 90);
-                        API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                        session.setAttribute("Carport", carport);
-                        session.setAttribute("Shed", carportShed);
-                        Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                        session.setAttribute("customer", customers);
-                        sendMail(customers, getQueryID(), carport, carportShed);
-                    }
-
+                    carportShed = new Shed(shedWidth, shedLength);
+                } else {
+                    carportShed = new Shed(0,0);
                 }
+
+                if (Objects.equals(req.getParameter("radio"), "on")) {
+                    Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);
+                    API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                    session.setAttribute("Shed", carportShed);
+                    session.setAttribute("Carport", carport);
+                    Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                    session.setAttribute("customer", customers);
+                    sendMail(customers, getQueryID(), carport, carportShed);
+                } else {
+                    Carport carport = new Carport(carPortWidth, carPortLength, Carport.roofType.ANGLE, 25);
+                    API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                    session.setAttribute("Carport", carport);
+                    session.setAttribute("Shed", carportShed);
+                    Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                    session.setAttribute("customer", customers);
+                    sendMail(customers, getQueryID(), carport, carportShed);
+                }
+
 
             } catch (NumberFormatException | SQLException | MessagingException e) {
                 //TODO: Should we inform the user about this?
@@ -96,7 +99,7 @@ public class Carportpage extends BaseServlet {
     private Object getUserId() { // THIS IS FOR TESTING  ADD TO API
         int count = 0;
         try {
-            for (Customers c: API.getAllUsers()){
+            for (Customers c : API.getAllUsers()) {
                 count++;
             }
         } catch (SQLException throwables) {

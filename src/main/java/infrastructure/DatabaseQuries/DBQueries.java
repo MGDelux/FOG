@@ -29,8 +29,8 @@ public class DBQueries implements QueriesRepo {
 
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, customers.getEmail());
-            preparedStatement.setInt(2, carport.getLength());
-            preparedStatement.setInt(3, carport.getWidth());
+            preparedStatement.setInt(2, carport.getWidth());
+            preparedStatement.setInt(3, carport.getLength());
             preparedStatement.setString(4, carport.getRoof().toString());
             preparedStatement.setBoolean(5, shed != null);
             if (shed != null) {
