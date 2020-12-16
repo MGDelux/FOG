@@ -24,4 +24,12 @@
         <param-name>pass</param-name>
         <param-value>O&amp;4#AL+^SF3,</param-value>
     </context-param>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/500.jsp</location>
+    </error-page>
 </web-app>

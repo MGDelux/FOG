@@ -1,3 +1,16 @@
+body {
+    height: 100vh;
+    width: 100%;
+    background: rgb(0,255,201);
+    background: linear-gradient(90deg, rgba(0,255,201,1) 0%, rgba(2,219,255,1) 48%, rgba(0,255,201,1) 100%);
+}
+.navbar{
+    border-top: 1px solid #000000;
+    background: -webkit-linear-gradient(to top, #007BFF, #000000);
+    background: linear-gradient(to bottom, #007BFF, #022896);
+    color: white;
+}
+
 .container{
     margin: auto;
     width: 50%;
@@ -71,4 +84,16 @@ width: 400px;
     height: 250px;
     margin:auto;
     position:relative;
+}
+
+.footer {
+    border-top: 1px solid #000000;
+    background: rgb(64,143,252);
+    background: linear-gradient(to bottom, #007BFF, #022896);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+
 }

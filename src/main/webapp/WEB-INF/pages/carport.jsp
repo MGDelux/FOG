@@ -65,7 +65,6 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
         </li>
     </ul>
-
 </nav>
 <div id="wrapper">
     <h1>Bestil din skrædersyet carport her!</h1>

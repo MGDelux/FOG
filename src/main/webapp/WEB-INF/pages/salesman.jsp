@@ -52,14 +52,15 @@
             <button type="hidden" style="outline: 0;" class="logger" name="logout">
                 >LOGOUT<     </button>
             </form>
-            <button type="hidden" style="outline: 0" class="logger" name="adminpage" ><a href="${pageContext.request.contextPath}/admin"><c:if test="${sessionScope.employee.role != 'SALESMAN'}">>ADMIN PAGE<</a></button></c:if>
-
-
+            <div>
+            <button type="hidden" style="outline: 0" class="logger" name="adminpage" >
+                <c:if test="${sessionScope.employee.role != 'SALESMAN'}"><a href="${pageContext.request.contextPath}/admin">>ADMIN PAGE<</a></button></c:if>
 
 
             <p class="smalltext"></p>
-        </div>
+
         <p class="smalltext"></p>
+        </div>
     </div>
 </div>
 <div class="bg">

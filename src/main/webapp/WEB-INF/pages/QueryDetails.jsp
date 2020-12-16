@@ -24,11 +24,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script>
+        function myFunction() {
+            var checkBox = document.getElementById("gridCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+                $("#text").removeClass('d-none');
+            } else {
+                text.style.display = "none";
+                $("#text").addClass('d-none');
+            }
+        }
+
+    </script>
     <style>
         <jsp:include page="../../css/details.css"/>
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
+    <a class="navbar-brand" href="https://www.johannesfog.dk/globalassets/100-ar/fog-100-logo-animation-flip-126.gAif">FOG</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
+        </li>
+    </ul>
+</nav>
 <div class="Container">
     <div CLASS="holder">
         <h1 style="text-align: center"> Kunde-forespørgelse detaljer:</h1>
@@ -78,8 +103,8 @@
               Redskabsrum
             </label>
         </div>
+        <div class="d-none" style="desplay:none" id="text">
         <p><Strong>Redskabsrum bredde:</Strong></p>
-
         <div class="Redskabsrum-bredde">
             <input required type="range" class="form-control-range" value="${qById.shed.width}" min="240" max="780" step="30"
                    id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
@@ -93,7 +118,8 @@
                    id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
             <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="${qById.shed.length}" min="240"
                    max="780" oninput="customRange6.value=amount4.value"/>
-    </div>
+        </div>
+        </div>
 </div>
 </div>
 <hr class="solid">
@@ -170,4 +196,12 @@
 
 </div>
 </body>
+<footer>
+    <div class="footer">
+        <a> SolidCODE: Emil, Janus og Mathias </a>
+        <a href="https://github.com/MGDelux/FOG">| Github |</a>
+        <a href="${pageContext.request.contextPath}/salesman">Sælgerside |</a>
+
+    </div>
+</footer>
 </html>
