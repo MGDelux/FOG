@@ -52,8 +52,8 @@
             <button type="hidden" style="outline: 0;" class="logger" name="logout">
                 >LOGOUT<     </button>
             </form>
-            <button type="hidden" style="outline: 0" class="logger" name="adminpage" ><c:if test="${sessionScope.employee.role != 'SALESMAN'}">>ADMIN PAGE<</button></c:if>
-            <a href="${pageContext.request.contextPath}/admin">admin</a>
+            <button type="hidden" style="outline: 0" class="logger" name="adminpage" ><a href="${pageContext.request.contextPath}/admin"><c:if test="${sessionScope.employee.role != 'SALESMAN'}">>ADMIN PAGE<</a></button></c:if>
+
 
 
 
