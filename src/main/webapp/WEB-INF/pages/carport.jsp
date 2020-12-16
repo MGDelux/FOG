@@ -87,7 +87,8 @@
                 <div class="column">
                     <input class="searchForChecked" type="radio" id="radio1" name="radio" value="on" checked/>
                     <label class="searchForChecked" for="radio1"><img src="https://imgur.com/aQmIU5H.jpg"/></label>
-
+                </div>
+                <div class="column">
                     <input class="searchForChecked" type="radio" id="radio2" name="radio" value="tagmedrejsning"/>
                     <label class="searchForChecked" for="radio2"><img src="https://imgur.com/RLPA3wc.jpg" /></label>
                 </div>
