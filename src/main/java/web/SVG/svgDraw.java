@@ -1,6 +1,7 @@
 package web.SVG;
 
 import domain.Carport.Carport;
+import domain.Queries.Queries;
 import domain.Shed.Shed;
 
 /**
@@ -20,16 +21,16 @@ public class svgDraw implements SvgFactory {
     private String SVGString = "";
 
     @Override
-    public String drawCarport(Carport carport, Shed shed) {
-        CalculateViewPortSize(carport);
-        GetCarportSize(carport);
-        extraPoles = GetExtraPoles(carport);
-        calculateShedXY(carport, shed);
-        SVGString = SVGString + draw(carport, shed);
-        SVGString = SVGString + drawLeftPoles(extraPoles, carport);
-        SVGString = SVGString + drawRightPoles(extraPoles, carport);
-        SVGString = SVGString + drawCross(carport);
-        SVGString = SVGString + drawText(carport);
+    public String drawCarport(Queries queries) {
+        CalculateViewPortSize(queries.getCarport());
+        GetCarportSize(queries.getCarport());
+        extraPoles = GetExtraPoles(queries.getCarport());
+        calculateShedXY(queries.getCarport(), queries.getShed());
+        SVGString = SVGString + draw(queries.getCarport(), queries.getShed());
+        SVGString = SVGString + drawLeftPoles(extraPoles, queries.getCarport());
+        SVGString = SVGString + drawRightPoles(extraPoles, queries.getCarport());
+        SVGString = SVGString + drawCross(queries.getCarport());
+        SVGString = SVGString + drawText(queries.getCarport());
         System.out.println(SVGString);
         return SVGString;
     }
