@@ -62,7 +62,8 @@ public class salesman extends BaseServlet {
         if (req.getParameter("details")!=null){
             int value = Integer.parseInt(req.getParameter("selectOrder"));
             System.out.println(value);
-            req.setAttribute("selectedQuery",value);
+            HttpSession session = req.getSession();
+            session.setAttribute("selectedQuery",value);
             resp.sendRedirect(req.getContextPath()+"/details/");
         }
 

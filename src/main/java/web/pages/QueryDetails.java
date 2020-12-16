@@ -1,8 +1,12 @@
 package web.pages;
 
+import com.google.protobuf.Api;
+import domain.Carport.Carport;
 import domain.Customers.Customers;
 import domain.Queries.Queries;
 import web.BaseServlet;
+import web.SVG.SvgFactory;
+import web.SVG.svgDraw;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -18,22 +23,20 @@ import java.util.ArrayList;
 
 @WebServlet({"/details", "/details/*"})
 public class QueryDetails extends BaseServlet {
-
+private Queries querybyId;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
-            ArrayList<Queries> queries = new ArrayList<>();
-            setUp(req, resp);
+            HttpSession session = req.getSession();
+            int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
             try {
-                for (Queries q : API.getAllQueries()){
-                    queries.add(q);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-
+                querybyId =  API.getQueryById(id);
+                req.setAttribute("qById",querybyId);
+                System.out.println(querybyId);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
-            req.setAttribute("Queries",queries);
-            System.out.println(queries);
+
             render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
 
         }else {
@@ -43,6 +46,13 @@ public class QueryDetails extends BaseServlet {
 
 
         }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Carport carport = new Carport(querybyId.getCarport(),querybyId.getShed());
+        SvgFactory SVG = new svgDraw();
 
     }
 }
