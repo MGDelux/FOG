@@ -34,7 +34,7 @@ public class BaseServlet extends HttpServlet {
         Database db = new Database();
         return new FOG(new DBEmployee(db),
                 new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),
-                new MailService(System.getenv("EMAIL_PASSWORD")));
+                new MailService("O&4#AL+^SF3,"));
     }
 
     protected static Employee getEmployee(HttpServletRequest request, HttpServletResponse response, String errorMsg) throws IOException {

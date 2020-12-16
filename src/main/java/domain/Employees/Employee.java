@@ -55,7 +55,8 @@ public class Employee {
         return salt;
     }
 
-    public static byte[] calculateSecret(byte[] salt, String password) throws EmployeeError {
+    public static byte[]
+    calculateSecret(byte[] salt, String password) throws EmployeeError {
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt,
                 PASSWORD_ITTERATIONS, PASSWORD_LENGTH);
         try {

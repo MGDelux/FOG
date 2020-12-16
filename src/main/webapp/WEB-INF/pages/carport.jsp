@@ -85,7 +85,7 @@
         <div class="Carport-tag">
             <div class="row div-wrapper d-flex justify-content-center align-items-center">
                 <div class="column">
-                    <input class="searchForChecked" type="radio" id="radio1" name="radio" value="flattag" checked/>
+                    <input class="searchForChecked" type="radio" id="radio1" name="radio" value="on" checked/>
                     <label class="searchForChecked" for="radio1"><img src="https://imgur.com/aQmIU5H.jpg"/></label>
 
                     <input class="searchForChecked" type="radio" id="radio2" name="radio" value="tagmedrejsning"/>
@@ -106,7 +106,7 @@
                 <p><Strong>Redskabsrum bredde:</Strong></p>
 
                 <div class="Redskabsrum-bredde">
-                    <input required type="range" class="form-control-range" value="240" min="240" max="750" step="30"
+                    <input required type="range" class="form-control-range" value="240" min="240" max="370" step="30"
                            id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
                     <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="240" min="240"
                            max="750" oninput="customRange5.value=amount3.value"/>
@@ -114,7 +114,7 @@
                 </div>
                 <p><Strong>Redskabsrum-længde:</Strong></p>
                 <div class="Redskabsrum-længde">
-                    <input required type="range" class="form-control-range" value="140" min="140" max="410" step="30"
+                    <input required type="range" class="form-control-range" value="140" min="140" max="420" step="30"
                            id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
                     <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="140" min="140"
                            max="410" oninput="customRange6.value=amount4.value"/>

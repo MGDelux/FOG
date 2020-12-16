@@ -52,7 +52,6 @@ public class salesman extends BaseServlet {
             logout(req, resp);
         }
         if(req.getParameter("assigSellButton")!=null){
-            HttpSession session = req.getSession();
            Employee employee = getEmployee(req,resp,"error in getting employe info");
             int getQueryValue = Integer.parseInt(req.getParameter("assignSell"));
             System.out.println(getQueryValue);

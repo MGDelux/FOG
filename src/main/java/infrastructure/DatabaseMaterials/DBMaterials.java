@@ -1,6 +1,7 @@
 package infrastructure.DatabaseMaterials;
 
 import Repoistory.Materials.MaterialsRepo;
+import domain.Materials.Materials;
 import infrastructure.DatabaseConnector.Database;
 
 /**
@@ -13,4 +14,8 @@ public class DBMaterials implements MaterialsRepo {
         this.db = db;
     }
 
+    @Override
+    public Materials findMaterial(String s) {
+        return null;
+    }
 }
