@@ -4,7 +4,7 @@
 <head>
 
     <!--@author Mathias .css snips from: CodingNepal -->
-    <title>CupCAKES lohin</title>
+    <title>FOG login</title>
     <style> <jsp:include page="../../css/Loginstyle.css"/></style>
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>

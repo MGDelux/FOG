@@ -114,9 +114,6 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
         return queriesRepo.newQuery(customers,carport,shed );
     }
 
-    public Queries getQuery(int id) throws SQLException {
-        return queriesRepo.getSpecificQueryByUserID(id);
-    }
 
     public Iterable<Queries> getAllQueries() {
         return queriesRepo.getAllQuires();
@@ -133,7 +130,7 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
     public Queries getLatestQuery() throws SQLException {
         return queriesRepo.getLatestQuery();
     }
-    public Queries getQueryById(int id) {
+    public Queries getQueryById(int id) throws SQLException {
         return queriesRepo.getSpecificQueryByQueryId(id);
     }
 
