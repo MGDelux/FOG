@@ -27,11 +27,14 @@ private Queries querybyId;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
+            SvgFactory SVG = new svgDraw();
             HttpSession session = req.getSession();
             int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
             try {
                 querybyId =  API.getQueryById(id);
+                String carportSVG = SVG.drawCarport(querybyId);
                 req.setAttribute("qById",querybyId);
+                req.setAttribute("svgDraw",carportSVG);
                 System.out.println(querybyId);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -51,8 +54,6 @@ private Queries querybyId;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Carport carport = new Carport(querybyId.getCarport(),querybyId.getShed());
-        SvgFactory SVG = new svgDraw();
 
     }
 }

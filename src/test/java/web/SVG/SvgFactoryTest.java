@@ -14,6 +14,6 @@ class SvgFactoryTest {
         Shed shed = new Shed(120, 120);
         Carport carport = new Carport(245, 460, Carport.roofType.FLAT, 90);
         SvgFactory factory = new svgDraw();
-        factory.drawCarport(carport,shed);
+
     }
 }

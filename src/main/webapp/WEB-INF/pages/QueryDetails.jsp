@@ -154,6 +154,8 @@
     <form method="post">
     <button class="GenererSVG" name="GenererSVG" >Generer SVG</button>
     </form>
+    ${svgDraw}
+
 </div>
 <hr class="solid">
 
