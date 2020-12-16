@@ -64,7 +64,23 @@ public class DBQueries implements QueriesRepo {
     }
 
     @Override
-    public Queries getSpecificQueryByQueryId(int id) {
+    public Queries getSpecificQueryByQueryId(int id) throws SQLException {
+        String SQL = "SELECT * FROM forespørgsler WHERE forespørgsler.Order_Id = ? ";
+        PreparedStatement preparedStatement;
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return ParseQueries(resultSet);
+            }
+
+        } finally {
+            connection.close();
+            preparedStatement.close();
+        }
+
         return null;
     }
 
@@ -100,27 +116,6 @@ public class DBQueries implements QueriesRepo {
         return queries;
     }
 
-
-    @Override
-    public Queries getSpecificQueryByUserID(int id) throws SQLException {
-        String SQL = "SELECT * FROM forespørgsler WHERE forespørgsler.Order_Id = ? ";
-        PreparedStatement preparedStatement;
-        Connection connection = db.connect();
-        preparedStatement = connection.prepareStatement(SQL);
-        try {
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return ParseQueries(resultSet);
-            }
-
-        } finally {
-            connection.close();
-            preparedStatement.close();
-        }
-        return null;
-
-    }
 
     @Override
     public Queries deleteSpecificQuire(int id) {

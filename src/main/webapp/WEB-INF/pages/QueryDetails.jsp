@@ -1,3 +1,4 @@
+<jsp:useBean id="qById" scope="request" type="domain.Queries.Queries"/>
 
 <%--
   Created by IntelliJ IDEA.
@@ -35,21 +36,17 @@
             <thead>
             <tr>
                 <th scope="col">Kunde</th>
-                <th>Tlf Nr:</th>
-                <th scope="row">By</th>
                 <th scope="col">Forespørgsel</th>
                 <th scope="col">Carport</th>
                 <th scope="col">Skur</th>
             </tr>
-              <c:forEach items="${Queries}" var="items">
+
+              <c:forEach items="${qById}" var="items">
                     <tr>
-                        <td>${items.getEmail()}</td>
-                        <td></td>
-                        <td></td>
-                        <td>${items.carport.getRoof()} TAG</td>
-                        <td>${items.carport.getRoof()} TAG</td>
-                        <td>${items.carport.width} x ${items.carport.length} </td>
-                        <td>${items.shed.width} x ${items.shed.length} </td>
+                        <td>${qById.email}</td>
+                        <td>${qById.carport.roof} TAG</td>
+                        <td>${qById.carport.length} x ${qById.carport.width}</td>
+                        <td>${qById.shed.length} x ${qById.shed.width}</td>
                     </tr>
             </c:forEach>
             </thead>
@@ -66,14 +63,14 @@
     <div class="">
         <p><Strong>Carport bredde:</strong></p>
 
-        <input required type="range" class="form-control-range" value="240" min="240" max="750" step="30"
+        <input required type="range" class="form-control-range" value=${qById.carport.width} min="240" max="750" step="30"
                id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
-        <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750"
+        <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="${qById.carport.width}" min="240" max="750"
                oninput="customRange3.value=amount.value"/>
         <p><Strong>Carport længde:</strong></p>
-        <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30"
+        <input required type="range" class="form-control-range" value="${qById.carport.length}" min="240" max="780" step="30"
                id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
-        <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780"
+        <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="${qById.carport.length}" min="240" max="780"
                oninput="customRange4.value=amount2.value"/>
         <div class="form-check">
             <input name="includeShed" class="form-check-input" type="checkbox"  id="gridCheck" onclick="myFunction()">
@@ -84,17 +81,17 @@
         <p><Strong>Redskabsrum bredde:</Strong></p>
 
         <div class="Redskabsrum-bredde">
-            <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30"
+            <input required type="range" class="form-control-range" value="${qById.shed.width}" min="240" max="780" step="30"
                    id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
-            <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="240" min="240"
+            <input disabled="disabled" class="outputshowcase" id="amount3" type="number" value="${qById.shed.width}" min="240"
                    max="780" oninput="customRange5.value=amount3.value"/>
 
         </div>
         <p><Strong>Redskabsrum-længde:</Strong></p>
         <div class="Redskabsrum-længde">
-            <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30"
+            <input required type="range" class="form-control-range" value="${qById.shed.length}" min="240" max="780" step="30"
                    id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
-            <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="240" min="240"
+            <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="${qById.shed.length}" min="240"
                    max="780" oninput="customRange6.value=amount4.value"/>
     </div>
 </div>
@@ -105,15 +102,15 @@
     <div class="tbd">
         <p>TAG type:</p>
         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option selected>Tag Type:</option>
+            <option selected>${qById.carport.roof}</option>
             <option value="1">Fladt</option>
             <option value="2">Rejsning</option>
         </select>
         <p><Strong>Tag rejsning grader </Strong></p>
         <div class="Redskabsrum-længde">
-            <input required type="range" class="form-control-range" value="10" min="10" max="90" step="5"
+            <input required type="range" class="form-control-range" value="${qById.carport.roofAngle}" min="10" max="90" step="5"
                    id="rejsning" name="ShedLength" oninput="procent.value=rejsning.value">
-            <input disabled="disabled" class="outputshowcase" id="procent" type="number" value="10" min="10"
+            <input disabled="disabled" class="outputshowcase" id="procent" type="number" value="${qById.carport.roofAngle}" min="10"
                    max="90" oninput="rejsning.value=procent.value"/> grader
     </div>
 </div>
@@ -154,6 +151,9 @@
 <div class="svgdrawer">
     <h1>Tegning:</h1>
     <div class="SVGContainer"></div>
+    <form method="post">
+    <button class="GenererSVG" name="GenererSVG" >Generer SVG</button>
+    </form>
 </div>
 <hr class="solid">
 

@@ -23,7 +23,7 @@ public class ThankYou extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO: tjek om user er logget ind her.
-        int x = 10;
+
         try {
             Queries q = API.getLatestQuery();
             System.out.println(q.toString());
