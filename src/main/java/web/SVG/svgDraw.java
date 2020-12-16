@@ -51,8 +51,10 @@ public class svgDraw implements SvgFactory {
     private String drawRightPoles(int extraPoles, Carport carport) {
         String rightpole = "";
 
-        if (carport.getLength() >= 780) {
+        if (carport.getLength() >= 760) {
+            System.out.println(extraPoles);
             extraPoles = extraPoles - 1;
+            System.out.println(extraPoles);
         }
         int carportWidth = carport.getWidth() - 5;
         int length = 245;
@@ -61,7 +63,7 @@ public class svgDraw implements SvgFactory {
         for (int i = 1; i < extraPoles; i++) {
             poleCounter++;
             if (poleCounter > 1) {
-                length = length + 240;
+                length = length + 245;
             }
             rightpole = rightpole + "<rect x=\"" + carportWidth + "\" y=\"" + length + "\"  width=\"10\" height=\"10\" fill=\"#000000\" stroke=\"#000000\"/>\n";
 
@@ -71,8 +73,8 @@ public class svgDraw implements SvgFactory {
     }
 
     private String drawLeftPoles(int extraPoles, Carport carport) {
-        String leftpole = "";
-        if (carport.getLength() >= 780) {
+        String leftpole = "<rect x=\"5\" y=\"5\"  width=\"10\" height=\"10\" fill=\"#000000\" stroke=\"#000000\"/>\n";
+        if (carport.getLength() >= 760) {
             extraPoles = extraPoles - 1;
         }
         int backPolePlacement = carport.getLength() - 5;
@@ -81,7 +83,7 @@ public class svgDraw implements SvgFactory {
         for (int i = 1; i < extraPoles; i++) {
             poleCounter++;
             if (poleCounter > 1) {
-                length = length + 240;
+                length = length + 245;
             }
             leftpole = leftpole + "<rect x=\"5\" y=\"" + length + "\"  width=\"10\" height=\"10\" fill=\"#000000\" stroke=\"#000000\"/>\n";
 
