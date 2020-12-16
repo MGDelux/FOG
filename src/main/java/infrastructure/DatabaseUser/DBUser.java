@@ -21,6 +21,7 @@ public class DBUser implements CustomerRepo {
     @Override
     public synchronized Customers addNewCustomer(Customers customers) {
         try (Connection connection = db.connect()) {
+            System.out.println("adding NEW USER!");
             String sql = "INSERT INTO kunder (Email,Post_Nummer,City,Adresse,TlfNr) VALUES (?,?,?,?,?)";
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, customers.getEmail());
@@ -30,7 +31,7 @@ public class DBUser implements CustomerRepo {
             preparedStatement.setInt(5, customers.getPhoneNr());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println(throwables.getMessage());
         }
         return customers;
     }

@@ -23,7 +23,7 @@ public class DBQueries implements QueriesRepo {
 
     @Override
     public synchronized Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
-
+        System.out.println("NEW Q");
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length,assigned_seller) VALUES (?,?,?,?,?,?,?,?)";
 
@@ -42,10 +42,9 @@ public class DBQueries implements QueriesRepo {
             }
             preparedStatement.setString(8,"TBA");
             preparedStatement.executeUpdate();
-        } finally {
-            db.closeConnection();
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
         }
-
         return null; //fix
     }
     @Override
@@ -125,7 +124,7 @@ public class DBQueries implements QueriesRepo {
     @Override
     public synchronized Queries getLatestQuery() throws SQLException {
         System.out.println("GET LATEST Q");
-        String SQL = "SELECT * FROM fog.forespørgsler ORDER  BY Order_Id DESC limit 1";
+        String SQL = "SELECT * FROM FOG.forespørgsler ORDER  BY Order_Id DESC limit 1";
         PreparedStatement preparedStatement;
         Connection connection = db.connect();
         preparedStatement = connection.prepareStatement(SQL);

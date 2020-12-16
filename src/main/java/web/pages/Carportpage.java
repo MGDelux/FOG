@@ -64,21 +64,17 @@ public class Carportpage extends BaseServlet {
                     int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                    Shed carportShed = new Shed(shedWidth, shedLength);
                     if (Objects.equals(req.getParameter("fladttag"), "on")) {
-                        System.out.println("shed FLADT : " + carportShed);
                         Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);
                         API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                         session.setAttribute("Shed", carportShed);
                         session.setAttribute("Carport", carport);
-                        System.out.println("FLADT");
                         Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
                         session.setAttribute("customer", customers);
                         sendMail(customers, getQueryID(), carport, carportShed);
                     } else {
-                        System.out.println("shed ANGLE : " + carportShed);
                         Carport carport = new Carport(carPortWidth, carPortLength, Carport.roofType.ANGLE, 90);
                         API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                         session.setAttribute("Carport", carport);
-                        System.out.println("ANGLE");
                         session.setAttribute("Shed", carportShed);
                         Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
                         session.setAttribute("customer", customers);

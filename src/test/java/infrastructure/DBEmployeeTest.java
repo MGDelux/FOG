@@ -5,6 +5,7 @@ import domain.Employees.Employee;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.Exceptions.DBError;
+import org.apiguardian.api.API;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -22,6 +23,8 @@ public class DBEmployeeTest  {
             byte[] salt = Employee.genereateSalt();
             Employee employee1 = new Employee(Employee.Role.SALESMAN, 0, "employee@mail.com", salt, Employee.calculateSecret(salt, "password"));
             Employee employee2 = new Employee(Employee.Role.ADMIN, 1, "admin@mail.com", salt, Employee.calculateSecret(salt, "password"));
+            System.out.println( employee1.toString());
+            System.out.println(employee2.toString());
             Database db = new Database();
             DBEmployee dbEmployee = new DBEmployee(db);
             dbEmployee.createEmployee(employee1);
