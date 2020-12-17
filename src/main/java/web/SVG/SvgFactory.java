@@ -9,4 +9,5 @@ import domain.Shed.Shed;
  **/
 public interface SvgFactory {
     String drawCarport(Queries queries);
+    String updateDrawCarport(Carport carport,Shed shed);
 }

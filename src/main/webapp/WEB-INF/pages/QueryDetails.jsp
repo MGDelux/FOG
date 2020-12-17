@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script>
+        window.onload = function (){
+            myFunction()
+        }
         function myFunction() {
             var checkBox = document.getElementById("gridCheck");
             var text = document.getElementById("text");
@@ -43,6 +46,7 @@
     </style>
 </head>
 <body>
+<form method="post">
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
     <a class="navbar-brand" href="https://www.johannesfog.dk/globalassets/100-ar/fog-100-logo-animation-flip-126.gAif">FOG</a>
     <ul class="navbar-nav">
@@ -91,14 +95,14 @@
         <input required type="range" class="form-control-range" value=${qById.carport.width} min="240" max="750" step="30"
                id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
         <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="${qById.carport.width}" min="240" max="750"
-               oninput="customRange3.value=amount.value"/>
+            oninput="customRange3.value=amount.value"/>
         <p><Strong>Carport længde:</strong></p>
         <input required type="range" class="form-control-range" value="${qById.carport.length}" min="240" max="780" step="30"
                id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
         <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="${qById.carport.length}" min="240" max="780"
                oninput="customRange4.value=amount2.value"/>
         <div class="form-check">
-            <input name="includeShed" class="form-check-input" type="checkbox"  id="gridCheck" onclick="myFunction()">
+            <input name="includeShed" class="form-check-input" type="checkbox" value="on"     id="gridCheck"  ${requestScope.shedCheckbox}   onclick="myFunction()">
             <label class="form-check-label" for="gridCheck">
               Redskabsrum
             </label>
@@ -129,8 +133,8 @@
         <p>TAG type:</p>
         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
             <option selected>${qById.carport.roof}</option>
-            <option value="1">Fladt</option>
-            <option value="2">Rejsning</option>
+            <option value="1">FLAT</option>
+            <option value="2">ANGLE</option>
         </select>
         <p><Strong>Tag rejsning grader </Strong></p>
         <div class="Redskabsrum-længde">
@@ -176,12 +180,11 @@
 
 <div class="svgdrawer">
     <h1>Tegning:</h1>
-    <div class="SVGContainer"></div>
-    <form method="post">
-    <button class="GenererSVG" name="GenererSVG" >Generer SVG</button>
-    </form>
-    ${svgDraw}
 
+    <button class="GenererSVG" name="GenererSVG" >Generer SVG</button>
+</div>
+    <div align="center" class="SVGContainer"></div>
+    ${requestScope.svgDraw}
 </div>
 <hr class="solid">
 
@@ -195,6 +198,7 @@
     </div>
 
 </div>
+</form>
 </body>
 <footer>
     <div class="footer">

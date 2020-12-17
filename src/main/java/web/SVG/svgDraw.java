@@ -30,9 +30,42 @@ public class svgDraw implements SvgFactory {
         SVGString = SVGString + drawLeftPoles(extraPoles, queries.getCarport());
         SVGString = SVGString + drawRightPoles(extraPoles, queries.getCarport());
         SVGString = SVGString + drawCross(queries.getCarport());
+        SVGString = SVGString + drawRoof(queries.getCarport());
         SVGString = SVGString + drawText(queries.getCarport());
         System.out.println(SVGString);
         return SVGString;
+    }
+
+    @Override
+    public String updateDrawCarport(Carport carport, Shed shed) {
+        CalculateViewPortSize(carport);
+        GetCarportSize(carport);
+        extraPoles = GetExtraPoles(carport);
+        calculateShedXY(carport, shed);
+        SVGString = SVGString + draw(carport, shed);
+        SVGString = SVGString + drawLeftPoles(extraPoles, carport);
+        SVGString = SVGString + drawRightPoles(extraPoles, carport);
+        SVGString = SVGString + drawCross(carport);
+        SVGString = SVGString + drawRoof(carport);
+        SVGString = SVGString + drawText(carport);
+
+        System.out.println(SVGString);
+        return SVGString;
+    }
+
+    private String drawRoof(Carport carport) {
+        String supportBeam = "";
+        int x2 = carport.getWidth() + 5;
+        int y1;
+        int y2;
+        supportBeam = "";
+        for (int i = 60; i < carport.getLength(); i = i + 60) {
+            System.out.println(i);
+            y1 = 0 + i;
+            y2 = 0 + i;
+            supportBeam = supportBeam + "<line x1=\"5\" y1=\""+y1+"\" x2=\""+x2+"\" y2=\""+y2+"\" stroke=\"red\" />\n";
+        }
+        return supportBeam;
     }
 
     private String drawText(Carport carport) {
@@ -93,7 +126,7 @@ public class svgDraw implements SvgFactory {
 
 
     private String draw(Carport carport, Shed shed) {
-        return "<svg version=\"1.1\" width=\"" + viewPortWidth + "\" height=\"" + viewPortLength + "\" xmlns=\"http://www.w3.org/2000/svg\">\n" + "<rect x=\"5\" y=\"5\" width=\"" + carport.getWidth() + "\" height=\"" + carport.getLength() + "\" fill=\"none\" stroke=\"#000000\"/>\n" +
+        return "<svg version=\"1.1\" alignment-baseline=\"central\" width=\"" + viewPortWidth + "\" height=\"" + viewPortLength + "\" xmlns=\"http://www.w3.org/2000/svg\">\n" + "<rect x=\"5\" y=\"5\" width=\"" + carport.getWidth() + "\" height=\"" + carport.getLength() + "\" fill=\"none\" stroke=\"#000000\"/>\n" +
                 "<rect x=\"10\" y=\"10\" width=\"" + innerCarportWidth + "\" height=\"" + innerCarportLength + "\" fill=\"none\" stroke=\"#000000\"/>\n" +
                 "<rect x=\"" + shedY + "\" y=\"" + shedX + "\"  width=\"" + shed.getWidth() + "\" height=\"" + shed.getLength() + "\" fill=\"none\" stroke=\"#000000\"/>\n";
     }
