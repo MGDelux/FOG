@@ -1,15 +1,15 @@
 package domain.Materials;
 
 /**
- * CREATED BY mathias @ 25-11-2020 - 14:11
+ * CREATED BY mathias @ 17-12-2020 - 11:05
  **/
 public class Materials {
     private int id;
-    private String name;
+    private  String name;
     private int length;
     private int amount;
     private String description;
-    private  double price;
+    private double price;
 
     public Materials(int id, String name, int length, int amount, String description, double price) {
         this.id = id;
@@ -27,6 +27,14 @@ public class Materials {
     public String getName() {
         return name;
     }
+    public String test(String s){
+        if (name.contains(s)){
+            return name;
+        }
+        else {
+            return null;
+        }
+    }
 
     public int getLength() {
         return length;
@@ -42,5 +50,17 @@ public class Materials {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Materials{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", length=" + length +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

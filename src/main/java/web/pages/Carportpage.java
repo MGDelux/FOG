@@ -96,18 +96,6 @@ public class Carportpage extends BaseServlet {
         }
     }
 
-    private Object getUserId() { // THIS IS FOR TESTING  ADD TO API
-        int count = 0;
-        try {
-            for (Customers c : API.getAllUsers()) {
-                count++;
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return count;
-    }
-
     private int getQueryID() { // THIS IS FOR TESTING  ADD TO API
         int count = 0;
         try {

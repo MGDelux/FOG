@@ -1,26 +1,85 @@
 package domain.BOM;
 
-import Repoistory.Materials.MaterialsRepo;
+import Repoistory.Bom.BomFactory;
+import Repoistory.Employee.Exceptions.EmployeeError;
 import domain.Carport.Carport;
 import domain.Materials.Materials;
 import domain.Shed.Shed;
+import infrastructure.DatabaseConnector.Database;
+import infrastructure.DatabaseMaterials.DBMaterials;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * CREATED BY mathias @ 16-12-2020 - 10:15
+ * CREATED BY mathias @ 17-12-2020 - 11:09
  **/
-public class BomService {
-   private final MaterialsRepo repo;
+public class BomService implements BomFactory {
+    private List<Materials> materials = new ArrayList<>();
+    private List<Materials> BOM = new ArrayList<>();
+    private Carport carport;
+    private Shed shed;
+    Database database = new Database();
+    DBMaterials db = new DBMaterials(database);
+//DETTE ER DEN MEST GHETTO WAY TO DO THIS OWO
 
-    public BomService(MaterialsRepo repo) {
-        this.repo = repo;
+    @Override
+    public List<Materials> newBom(Carport carport, Shed shed) throws EmployeeError, SQLException {
+        materials.addAll(db.getMaterial());
+        if (carport == null || shed == null) {
+            //throw exception
+            throw new EmployeeError("CHANGE TO ACTUAL EXPECTION FOR THIS TYPE");
+        }
+        SetInfomation(carport, shed);
+        if (carport.getRoof() == Carport.roofType.ANGLE) {
+            calcuateAngleRoofParts();
+        } else {
+            calculateFlatRoofParts();
+        }
+        calucateCarportMaterials();
+        calculateShedMaterials();
+        return materials;
     }
 
-    public Bom calculateBom(Carport carport, Shed shed){
-        // Right now we assume. Wood exist in all sizes.
-        // they can figure out screws themselves.
+    private void calculateShedMaterials() {
+    }
 
-       Bom b = new Bom();
-       b.add(new Bom.BomItem(repo.findMaterial("")));
-       return b;
-   }
+    public void calucateCarportMaterials() throws SQLException {
+        //stopler aka poles
+        int poleCounter = 4;
+        int extraPoles = 0;
+
+        if (carport.getLength() <= 480) {
+            poleCounter = 4;
+        } else {
+            for (int i = 240; i < carport.getLength(); i = i + 240) {
+                extraPoles++;
+            }
+            poleCounter = poleCounter + extraPoles;
+        }
+        Materials pole = new Materials(1, "trykimprægneret Stolpe", 300, poleCounter, "k. Stolper nedgraves 90 cm. i jord\t+ skråstiver", 60);
+        BOM.add(pole);
+        int rafter;
+        rafter = carport.getLength() / 30;
+        Materials rafters = new Materials(2, "spær", 300, rafter, "byg-selv spær (skal samles)", 60);
+        BOM.add(rafters);
+        System.out.println(BOM);
+
+
+    }
+
+    private void calculateFlatRoofParts() {
+
+    }
+
+    private void calcuateAngleRoofParts() {
+    }
+
+    private void SetInfomation(Carport carport, Shed shed) {
+        this.carport = carport;
+        this.shed = shed;
+
+    }
+
 }
