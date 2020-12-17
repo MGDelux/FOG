@@ -1,12 +1,8 @@
 package api;
-import Repoistory.Carporte.CarpoteRepo;
 import Repoistory.Customer.CustomerRepo;
 import Repoistory.Email.EmailRepo;
 import Repoistory.Employee.Exceptions.EmployeeError;
-import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
-import domain.BOM.Bom;
-import domain.BOM.BomService;
 import domain.Carport.Carport;
 import domain.Customers.Customers;
 import domain.Email.Email;
@@ -15,36 +11,26 @@ import Repoistory.Employee.EmployeeRepo;
 import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Shed.Shed;
-import infrastructure.DummyMaterialsRepo;
-
 import javax.mail.MessagingException;
 import java.sql.SQLException;
 
 /**
- * CREATED BY mathi @ 23-11-2020 - 15:46
+ * CREATED BY mathias @ 23-11-2020 - 15:46
  **/
 public class FOG {
     private final EmployeeRepo employeeRepo;
     private final CustomerRepo customerRepo;
-    private final CarpoteRepo carpoteRepo;
-    private final MaterialsRepo materialsRepo ;
     private final EmailRepo emailRepo;
     private final QueriesRepo queriesRepo;
-    private final BomService bomService;
-    private final DummyMaterialsRepo dummyMaterialsRepo;
     //TODO: !Important FIGURE OUT WHAT MATS ECT WE NEED TO MAKE A CARPORT OUT OF 'WHAT' MATERIALS AND UPDATE SQL SCRIPT TO ACCOMMODATE THESE CHANGES IF NEEDED. and the required logic
     /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
      * -mbt */
 
-    public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, CarpoteRepo carpoteRepo, MaterialsRepo materialsRepo, QueriesRepo queriesRepo, EmailRepo emailRepo) {
+    public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, QueriesRepo queriesRepo, EmailRepo emailRepo) {
         this.employeeRepo = employeeRepo;
         this.customerRepo = customerRepo;
-        this.carpoteRepo = carpoteRepo;
-        this.materialsRepo = materialsRepo;
         this.queriesRepo = queriesRepo;
         this.emailRepo = emailRepo;
-        this.dummyMaterialsRepo = new DummyMaterialsRepo();
-        this.bomService =  new BomService(this.materialsRepo);
     }
 
     public boolean checkEmployeeEmail(String email) throws SQLException
@@ -146,7 +132,4 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
         return queriesRepo.assignSellerToQuery(getQueryValue, employee);
     }
 
-    public Bom calculateBom(Carport carport, Shed shed) {
-        return bomService.calculateBom(carport, shed);
-    }
 }

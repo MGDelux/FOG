@@ -1,16 +1,14 @@
 package web.SVG;
 
-import domain.Carport.Carport;
 import domain.Queries.Queries;
-import domain.Shed.Shed;
 
 /**
  * CREATED BY mathias @ 07-12-2020 - 14:13
  **/
 public class svg {
-    private Queries queries;
-    private int width;
-    private int length;
+    private final Queries queries;
+    private final int width;
+    private final int length;
 
     public svg(Queries queries) {
         this.queries = queries;

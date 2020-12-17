@@ -2,14 +2,11 @@ package web;
 
 import api.FOG;
 import domain.Employees.Employee;
-import infrastructure.DatabaseCarport.DBCarport;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
-import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
 import web.MailService.MailService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,10 +27,10 @@ public class BaseServlet extends HttpServlet {
         API = initAPI();
     }
 
-    private static FOG initAPI() {
+    private static FOG initAPI()  {
         Database db = new Database();
         return new FOG(new DBEmployee(db),
-                new DBUser(db), new DBCarport(db), new DBMaterials(db), new DBQueries(db),
+                new DBUser(db), new DBQueries(db),
                 new MailService("O&4#AL+^SF3,"));
     }
 

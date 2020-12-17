@@ -23,9 +23,9 @@ import java.util.ArrayList;
 
 @WebServlet({"/details", "/details/*"})
 public class QueryDetails extends BaseServlet {
-private Queries querybyId;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+          Queries querybyId;
         if(getEmployee(req,resp,"NEED TO BE LOGGED IN")!=null){
             SvgFactory SVG = new svgDraw();
             HttpSession session = req.getSession();
