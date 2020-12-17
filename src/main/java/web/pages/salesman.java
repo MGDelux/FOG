@@ -2,6 +2,7 @@ package web.pages;
 
 import domain.Employees.Employee;
 import domain.Queries.Queries;
+import infrastructure.DatabaseConnector.Database;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -66,6 +70,18 @@ public class salesman extends BaseServlet {
             resp.sendRedirect(req.getContextPath()+"/details/");
         }
 
+        if(req.getParameter("deleteOrderButton")!=null){
+            try (Connection conn = Database.connect()) {
+                String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
+                var prepStatement = conn.prepareStatement(sql);
+                prepStatement.setString(1, );
+                prepStatement.executeUpdate();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            finally {}
+        }
     }
 
     private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {

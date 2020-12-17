@@ -12,13 +12,20 @@ public class Queries {
     private Carport carport;
     private Shed shed;
     private String seller;
+    private String orderDelete;
 
-    public Queries(int id,String CustomerEmail, Carport carport, Shed shed, String seller) {
+    public Queries(int id, String CustomerEmail, Carport carport, Shed shed, String seller, String orderDelete) {
         this.id = id;
         this.Email = CustomerEmail;
         this.carport = carport;
         this.shed = shed;
         this.seller = seller;
+        this.orderDelete = orderDelete;
+    }
+
+
+    public String getOrderDelete() {
+        return orderDelete;
     }
 
     public String getSeller() {

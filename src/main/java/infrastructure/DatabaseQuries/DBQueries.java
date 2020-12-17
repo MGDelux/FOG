@@ -83,6 +83,25 @@ public class DBQueries implements QueriesRepo {
         return null;
     }
 
+    @Override
+    public Queries deleteOrderById(int id) throws SQLException {
+            try (Connection conn = db.connect()) {
+                String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
+                var preparedStatement = conn.prepareStatement(sql);
+               // preparedStatement.setString(1,deleteOrderById(1););
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            finally {
+                db.closeConnection();
+            }
+        return null;
+    }
+
+
+
     private Queries ParseQueries(ResultSet set) throws SQLException {
         Shed shed = null;
         if (set.getBoolean("forespørgsler.has_shed")) {
@@ -95,7 +114,7 @@ public class DBQueries implements QueriesRepo {
                 set.getInt("forespørgsler.Carport_Bredde"),
                 set.getInt("forespørgsler.Carport_Længde"),
                Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")), 90);
-        return new Queries(set.getInt("forespørgsler.Order_Id"),  set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"));
+        return new Queries(set.getInt("forespørgsler.Order_Id"),  set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"),"");
 
     }
 
@@ -116,10 +135,10 @@ public class DBQueries implements QueriesRepo {
     }
 
 
-    @Override
-    public Queries deleteSpecificQuire(int id) {
-        return null;
-    }
+    //@Override
+   // public Queries deleteSpecificQuire(int id) {
+     //   return null;
+   // }
 
     @Override
     public synchronized Queries getLatestQuery() throws SQLException {
