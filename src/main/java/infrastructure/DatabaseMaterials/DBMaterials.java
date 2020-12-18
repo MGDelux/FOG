@@ -51,7 +51,7 @@ public class DBMaterials implements MaterialsRepo {
                 resultSet.getInt("CartPortMaterialer.Carportmateriale_Id"),
                 resultSet.getString("CartPortMaterialer.Carportmateriale_Navn"),
                 resultSet.getInt("CartPortMaterialer.Carportmateriale_Length"),
-                1, resultSet.getString("CartPortMaterialer.materiale_Beskrivelse"),
+                resultSet.getInt("CartPortMaterialer.Carportmateriale_antal"), resultSet.getString("CartPortMaterialer.materiale_Beskrivelse"),
                 resultSet.getDouble("CartPortMaterialer.materiale_Pris"));
     }
 

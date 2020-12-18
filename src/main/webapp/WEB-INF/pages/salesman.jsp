@@ -117,7 +117,7 @@
         </div>
     </div>
     <hr class="solid">
-
+</div>
 
 </body>
 <footer>

@@ -4,12 +4,12 @@ package domain.Materials;
  * CREATED BY mathias @ 17-12-2020 - 11:05
  **/
 public class Materials {
-    private int id;
-    private  String name;
-    private int length;
-    private int amount;
-    private String description;
-    private double price;
+    private final int id;
+    private final String name;
+    private final int length;
+    private final int amount;
+    private final String description;
+    private final double price;
 
     public Materials(int id, String name, int length, int amount, String description, double price) {
         this.id = id;

@@ -1,4 +1,4 @@
-<jsp:useBean id="MaTsFoRu" scope="request" type="domain.Materials.Materials"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Janus
@@ -83,18 +83,14 @@
 </tr>
 </thead>
 <tbody>
-
+<c:forEach items="${MaTsFoRu}" var="items">
 <tr>
-    <c:forEach items="${MaTsFoRu}" var="items">
-
-    <td>${MaTsFoRu.id}</td>
-    <td>${MaTsFoRu.length}</td>
-    <td>4</td>
-    <td>bøgetræ</td>
-    <td>@Vindskeder  rejsning</td>
-    <td>420</td>
+    <td>${items.id}</td>
+    <td>${items.getAmount()}</td>
+    <td>${items.getName()}</td>
+    <td>${items.getDescription()}</td>
+    <td>${items.getPrice()}</td>
     </tr>
-
 </c:forEach>
     </tbody>
     </table>

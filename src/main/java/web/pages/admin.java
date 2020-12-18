@@ -1,8 +1,6 @@
 package web.pages;
 
-import domain.Employees.Employee;
 import domain.Materials.Materials;
-import domain.Queries.Queries;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -19,21 +16,22 @@ import java.util.ArrayList;
  **/
 @WebServlet({"/admin", "/admin/*"})
 public class admin extends BaseServlet {
+    ArrayList<Materials> mats = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
-            ArrayList<Materials> materials = new ArrayList<>();
             try {
                 for (Materials m : API.getAllMaterials()) {
-                    materials.add(m);
+                    mats.add(m);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
-            req.setAttribute("MaTsFoRu", materials);
-            System.out.println(materials);
+            req.setAttribute("MaTsFoRu", mats);
+            System.out.println(mats);
             render("/WEB-INF/pages/admin.jsp", resp, req);
 
         } else {

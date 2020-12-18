@@ -24,7 +24,6 @@ public class DBQueries implements QueriesRepo {
 
     @Override
     public synchronized Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
-        System.out.println("NEW Q");
         try (Connection connection = db.connect()) {
             String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length,assigned_seller) VALUES (?,?,?,?,?,?,?,?)";
 
