@@ -4,9 +4,11 @@ import api.FOG;
 import domain.Employees.Employee;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
+import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
 import web.MailService.MailService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,11 +29,13 @@ public class BaseServlet extends HttpServlet {
         API = initAPI();
     }
 
-    private static FOG initAPI()  {
+    private static FOG initAPI() {
         Database db = new Database();
         return new FOG(new DBEmployee(db),
-                new DBUser(db), new DBQueries(db),
-                new MailService("O&4#AL+^SF3,"));
+                new DBUser(db),
+                new MailService("O&4#AL+^SF3,"),
+                new DBQueries(db),
+                new DBMaterials(db));
     }
 
     protected static Employee getEmployee(HttpServletRequest request, HttpServletResponse response, String errorMsg) throws IOException {
@@ -39,7 +43,7 @@ public class BaseServlet extends HttpServlet {
         Employee employee = (Employee) session.getAttribute("employee");
         if (employee == null) {
             session.setAttribute("loggedIn", false);
-            session.setAttribute("loggedInMSG",errorMsg);
+            session.setAttribute("loggedInMSG", errorMsg);
             response.sendRedirect(request.getContextPath() + "/login/");
         }
         return employee;

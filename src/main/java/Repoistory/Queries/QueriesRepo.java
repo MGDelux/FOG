@@ -1,6 +1,7 @@
 package Repoistory.Queries;
 
 import domain.Employees.Employee;
+import domain.Materials.Materials;
 import domain.Queries.Queries;
 
 import java.sql.SQLException;
@@ -21,4 +22,5 @@ public interface QueriesRepo extends QueriesFactory {
     Queries assignSellerToQuery(int getQueryValue, Employee employee);
 
     void deleteOrderById(int id) throws SQLException;
+
 }

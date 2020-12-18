@@ -80,7 +80,7 @@
                     <th scope="col">Sælger</th>
                     <th scope="col">Tilbudsudregner</th>
                     <th scope="col">Tildel mig</th>
-                    <th scope="col">Slet </th>
+                    <th scope="col">Slet</th>
                 </tr>
                 <c:forEach items="${Queries}" var="items">
                     <tr>
@@ -112,14 +112,14 @@
                     </tr>
                 </c:forEach>
                 </thead>
-                <tbody>
 
             </table>
         </div>
     </div>
     <hr class="solid">
 
-    </body>
+
+</body>
 <footer>
     <div class="footer">
         <a> SolidCODE: Emil, Janus og Mathias </a>

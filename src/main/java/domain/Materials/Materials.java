@@ -20,20 +20,12 @@ public class Materials {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
-    public String test(String s){
-        if (name.contains(s)){
-            return name;
-        }
-        else {
-            return null;
-        }
+
+    public int getId() {
+        return id;
     }
 
     public int getLength() {
