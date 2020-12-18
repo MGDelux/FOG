@@ -83,6 +83,8 @@ public class DBQueries implements QueriesRepo {
         return null;
     }
 
+
+
     private Queries ParseQueries(ResultSet set) throws SQLException {
         Shed shed = null;
         if (set.getBoolean("forespørgsler.has_shed")) {
