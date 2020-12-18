@@ -2,6 +2,7 @@ package web.pages;
 
 import domain.Employees.Employee;
 import domain.Queries.Queries;
+import infrastructure.DatabaseConnector.Database;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -51,19 +55,30 @@ public class salesman extends BaseServlet {
         if (req.getParameter("logout") != null) {
             logout(req, resp);
         }
-        if(req.getParameter("assigSellButton")!=null){
-           Employee employee = getEmployee(req,resp,"error in getting employe info");
+        if (req.getParameter("assigSellButton") != null) {
+            Employee employee = getEmployee(req, resp, "error in getting employe info");
             int getQueryValue = Integer.parseInt(req.getParameter("assignSell"));
             System.out.println(getQueryValue);
-            API.assignSellerToQuery(getQueryValue,employee);
+            API.assignSellerToQuery(getQueryValue, employee);
             resp.sendRedirect(req.getContextPath() + "/salesman/");
         }
-        if (req.getParameter("details")!=null){
+        if (req.getParameter("details") != null) {
             int value = Integer.parseInt(req.getParameter("selectOrder"));
             System.out.println(value);
             HttpSession session = req.getSession();
-            session.setAttribute("selectedQuery",value);
-            resp.sendRedirect(req.getContextPath()+"/details/");
+            session.setAttribute("selectedQuery", value);
+            resp.sendRedirect(req.getContextPath() + "/details/");
+        }
+
+        if (req.getParameter("deleteOrderButton") != null) {
+            int value = Integer.parseInt(req.getParameter("deleteOrder"));
+            System.out.println(value);
+            try {
+                API.deleteQuery(value);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            resp.sendRedirect(req.getContextPath() + "/salesman/");
         }
 
     }
@@ -71,11 +86,11 @@ public class salesman extends BaseServlet {
     private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (getEmployee(req, resp, "error") != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("loggedIn",false);
-            session.setAttribute("employee",null);
+            session.setAttribute("loggedIn", false);
+            session.setAttribute("employee", null);
             resp.sendRedirect(req.getContextPath() + " ");
 
-        }else {
+        } else {
             //do something set error msg
         }
     }

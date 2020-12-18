@@ -8,8 +8,8 @@ import java.sql.SQLException;
  **/
 public class Database {
     private static String URL = "jdbc:mysql://localhost/FOG?serverTimezone=CET";
-    private static String USER = "FOG";
-    private static String  PASS = "xY1xf45c1#";
+    private static String USER = "root";
+    private static String  PASS = "root";
     public static String version = "1.1";
     public Database(){
         try {
@@ -18,7 +18,7 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-    public Connection connect() throws SQLException {
+    public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);
     }
     public void closeConnection() throws SQLException{

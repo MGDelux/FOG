@@ -42,6 +42,103 @@
 </head>
 <body>
 
+<div align="center">
+    <!-- table  Buttom laves/-->
+    <h1>Admin side</h1>
+    <table id="buttom" border="1" title="">
+        <thead>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <form method="post">
+        <div class="buttons-buttom">
+            <input name="materialName" type="text" value="navn" required>
+            <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialPrice" type="number" value="pris" required>
+            <button type="submit" name="add-button" class="add-button">Tilføj</button>
+        </div>
+    </form>
+    <form method="post">
+        <div class="buttons-buttom" align="center">
+            <label>ID: </label>
+            <input name="removeButId" type="number" value="0" required>
+            <button type="submit" name="removeBut" class="remove-button">Slet</button>
+        </div>
+    </form>
+
+
+    <h3>Træ</h3>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Antal</th>
+            <th scope="col">Navn</th>
+            <th scope="col">Beskrivelse</th>
+            <th scope="col">Pris</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>4</td>
+            <td>bøgetræ</td>
+            <td>@Vindskeder	på	rejsning</td>
+            <td>420</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <h3>Tagpakken</h3>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Antal</th>
+            <th scope="col">Navn</th>
+            <th scope="col">Beskrivelse</th>
+            <th scope="col">Pris</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>4</td>
+            <td>bøgetræ</td>
+            <td>@Vindskeder	på	rejsning</td>
+            <td>420</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <h3>Beslag & Skruer</h3>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Antal</th>
+            <th scope="col">Navn</th>
+            <th scope="col">Beskrivelse</th>
+            <th scope="col">Pris</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>4</td>
+            <td>bøgetræ</td>
+            <td>@Vindskeder	på	rejsning</td>
+            <td>420</td>
+        </tr>
+
+        </tbody>
+    </table>
+
 
 </body>
 <footer>

@@ -13,13 +13,14 @@ public class Queries {
     private Shed shed;
     private String seller;
 
-    public Queries(int id,String CustomerEmail, Carport carport, Shed shed, String seller) {
+    public Queries(int id, String CustomerEmail, Carport carport, Shed shed, String seller, String orderDelete) {
         this.id = id;
         this.Email = CustomerEmail;
         this.carport = carport;
         this.shed = shed;
         this.seller = seller;
     }
+
 
     public String getSeller() {
         return seller;

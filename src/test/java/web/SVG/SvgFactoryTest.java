@@ -1,5 +1,6 @@
 package web.SVG;
 
+
 import domain.Carport.Carport;
 import domain.Queries.Queries;
 import domain.Shed.Shed;
@@ -8,7 +9,8 @@ import org.junit.jupiter.api.Test;
 /**
  * CREATED BY mathias @ 15-12-2020 - 22:52
  **/
-class SvgFactoryTest {
+//class SvgFactoryTest {
+/*
 
     @Test
     void drawCarport() {
@@ -21,3 +23,5 @@ class SvgFactoryTest {
 
     }
 }
+
+ */

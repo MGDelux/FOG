@@ -45,71 +45,81 @@
     <div class="Selldiv">
         <p class="smalltext"></p>
         <p class="smalltext">Medarbejder Info:</p>
-<p class="userinfo"><STRONG>${sessionScope.employee.email} -  ${sessionScope.employee.role}</STRONG></p>
+        <p class="userinfo"><STRONG>${sessionScope.employee.email} - ${sessionScope.employee.role}</STRONG></p>
         <div class="adminref">
 
             <form method="post">
-            <button type="hidden" style="outline: 0;" class="logger" name="logout">
-                >LOGOUT<     </button>
+                <button type="hidden" style="outline: 0;" class="logger" name="logout">
+                    >LOGOUT<
+                </button>
             </form>
             <div>
-            <button type="hidden" style="outline: 0" class="logger" name="adminpage" >
-                <c:if test="${sessionScope.employee.role != 'SALESMAN'}"><a href="${pageContext.request.contextPath}/admin">>ADMIN PAGE<</a></button></c:if>
+                <button type="hidden" style="outline: 0" class="logger" name="adminpage">
+                    <c:if test="${sessionScope.employee.role != 'SALESMAN'}"><a
+                        href="${pageContext.request.contextPath}/admin">>ADMIN PAGE<</a></button>
+                </c:if>
 
 
-            <p class="smalltext"></p>
+                <p class="smalltext"></p>
 
-        <p class="smalltext"></p>
+                <p class="smalltext"></p>
+            </div>
         </div>
     </div>
-</div>
-<div class="bg">
-    <div class="tablecontain">
-        <h1>Sælger side:</h1>
-    <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
-        <thead>
-        <tr>
-            <th scope="col">ID:</th>
-            <th scope="col">Kunde</th>
-            <th scope="col">Forespørgsel</th>
-            <th scope="col">Carport dimensioner  </th>
-            <th scope="col">Skur dimensioner </th>
-            <th scope="col">Sælger</th>
-            <th scope="col">Tilbudsudregner</th>
-            <th scope="col">Tildel mig</th>
-        </tr>
-        <c:forEach items="${Queries}" var="items">
+    <div class="bg">
+        <div class="tablecontain">
+            <h1>Sælger side:</h1>
+            <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
+                <thead>
                 <tr>
-                    <td>${items.getId()}</td>
-                    <td>${items.getEmail()}</td>
-                    <td>${items.carport.getRoof()} TAG</td>
-                    <td>${items.carport.width} x ${items.carport.length} </td>
-                    <td>${items.shed.width} x ${items.shed.length} </td>
-                    <td>${items.getSeller()}</td>
-                    <td>
-                    <form method="post">
-               <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
-                        <input type="submit" value="vælg" name="details"/>
-                    </form>
-                    </td>
-                        <td>
-                        <form method="post">
-                            <input class="Sbutton"  type="hidden" name="assignSell" value="${items.getId()}">
-                            <input type="submit" value="vælg" name="assigSellButton"/>
-                        </form>
-                    </td>
-
+                    <th scope="col">ID:</th>
+                    <th scope="col">Kunde</th>
+                    <th scope="col">Forespørgsel</th>
+                    <th scope="col">Carport dimensioner</th>
+                    <th scope="col">Skur dimensioner</th>
+                    <th scope="col">Sælger</th>
+                    <th scope="col">Tilbudsudregner</th>
+                    <th scope="col">Tildel mig</th>
+                    <th scope="col">Slet </th>
                 </tr>
-            </c:forEach>
-        </thead>
-        <tbody>
+                <c:forEach items="${Queries}" var="items">
+                    <tr>
+                        <td>${items.getId()}</td>
+                        <td>${items.getEmail()}</td>
+                        <td>${items.carport.getRoof()} TAG</td>
+                        <td>${items.carport.width} x ${items.carport.length} </td>
+                        <td>${items.shed.width} x ${items.shed.length} </td>
+                        <td>${items.getSeller()}</td>
+                        <td>
+                            <form method="post">
+                                <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
+                                <input type="submit" value="Vælg" name="details"/>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input class="Sbutton" type="hidden" name="assignSell" value="${items.getId()}">
+                                <input type="submit" value="Tildel" name="assigSellButton"/>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input class="Sbutton" type="hidden" name="deleteOrder" value="${items.getId()}">
+                                <input type="submit" value="Slet" name="deleteOrderButton"/>
+                            </form>
+                        </td>
 
-    </table>
+                    </tr>
+                </c:forEach>
+                </thead>
+                <tbody>
+
+            </table>
+        </div>
     </div>
-</div>
-<hr class="solid">
+    <hr class="solid">
 
-</body>
+    </body>
 <footer>
     <div class="footer">
         <a> SolidCODE: Emil, Janus og Mathias </a>
