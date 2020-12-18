@@ -99,6 +99,9 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
 
         }
     }
+    public void deleteQurey(int id) throws SQLException {
+        queriesRepo.deleteOrderById(id);
+    }
 
     public Customers getExistingCustomerInfomationById(int id) throws SQLException {
         return customerRepo.getExistingUserInfomationById(id);
