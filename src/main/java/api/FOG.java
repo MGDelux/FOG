@@ -99,6 +99,9 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
 
         }
     }
+    public void deleteQurey(int id) throws SQLException {
+        queriesRepo.deleteOrderById(id);
+    }
 
     public Customers getExistingCustomerInfomationById(int id) throws SQLException {
         return customerRepo.getExistingUserInfomationById(id);
@@ -112,8 +115,8 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
         return queriesRepo.getAllQuires();
     }
 
-    public void deleteQurey(int id) {
-        queriesRepo.deleteSpecificQuire(id);
+    public void deleteQuery(int id) throws SQLException {
+        queriesRepo.deleteOrderById(id);
     }
 
     public Email newMail(String toAdress, String subject, String message) throws MessagingException {

@@ -1,4 +1,7 @@
 package infrastructure.DatabaseConnector;
+
+import infrastructure.Exceptions.DBError;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +12,7 @@ import java.sql.SQLException;
 public class Database {
     private static String URL = "jdbc:mysql://localhost/FOG?serverTimezone=CET";
     private static String USER = "FOG";
-    private static String  PASS = "xY1xf45c1#";
+    private static String  PASS = "xY1xf45c1";
     public static String version = "1.1";
     public Database(){
         try {

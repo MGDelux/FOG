@@ -12,11 +12,13 @@ public interface QueriesRepo extends QueriesFactory {
 
     Iterable<Queries> getAllQuires();
 
-    Queries deleteSpecificQuire(int id);
+    Queries getSpecificQueryByUserID(int id) throws SQLException;
 
     Queries getLatestQuery() throws SQLException;
 
+    Queries getSpecificQueryByQueryId(int id) throws SQLException;
+
     Queries assignSellerToQuery(int getQueryValue, Employee employee);
 
-    Queries getSpecificQueryByQueryId(int id) throws SQLException;
+    void deleteOrderById(int id) throws SQLException;
 }
