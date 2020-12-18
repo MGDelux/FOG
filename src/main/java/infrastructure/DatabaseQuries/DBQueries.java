@@ -61,6 +61,22 @@ public class DBQueries implements QueriesRepo {
         return null;
 
     }
+    @Override
+    public void deleteOrderById(int id) throws SQLException {
+        try (Connection conn = db.connect()) {
+            String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
+            var preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            db.closeConnection();
+        }
+    }
+
 
     @Override
     public Queries getSpecificQueryByQueryId(int id) throws SQLException {
@@ -83,22 +99,6 @@ public class DBQueries implements QueriesRepo {
         return null;
     }
 
-    @Override
-    public Queries deleteOrderById(int id) throws SQLException {
-            try (Connection conn = db.connect()) {
-                String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
-                var preparedStatement = conn.prepareStatement(sql);
-                preparedStatement.setInt(1,id);
-                preparedStatement.executeUpdate();
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            finally {
-                db.closeConnection();
-            }
-        return null;
-    }
 
 
 
@@ -134,11 +134,11 @@ public class DBQueries implements QueriesRepo {
         return queries;
     }
 
+    @Override
+    public Queries getSpecificQueryByUserID(int id) throws SQLException {
+        return null;
+    }
 
-    //@Override
-   // public Queries deleteSpecificQuire(int id) {
-     //   return null;
-   // }
 
     @Override
     public synchronized Queries getLatestQuery() throws SQLException {
