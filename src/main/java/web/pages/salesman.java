@@ -55,43 +55,42 @@ public class salesman extends BaseServlet {
         if (req.getParameter("logout") != null) {
             logout(req, resp);
         }
-        if(req.getParameter("assigSellButton")!=null){
-           Employee employee = getEmployee(req,resp,"error in getting employe info");
+        if (req.getParameter("assigSellButton") != null) {
+            Employee employee = getEmployee(req, resp, "error in getting employe info");
             int getQueryValue = Integer.parseInt(req.getParameter("assignSell"));
             System.out.println(getQueryValue);
-            API.assignSellerToQuery(getQueryValue,employee);
+            API.assignSellerToQuery(getQueryValue, employee);
             resp.sendRedirect(req.getContextPath() + "/salesman/");
         }
-        if (req.getParameter("details")!=null){
+        if (req.getParameter("details") != null) {
             int value = Integer.parseInt(req.getParameter("selectOrder"));
             System.out.println(value);
             HttpSession session = req.getSession();
-            session.setAttribute("selectedQuery",value);
-            resp.sendRedirect(req.getContextPath()+"/details/");
+            session.setAttribute("selectedQuery", value);
+            resp.sendRedirect(req.getContextPath() + "/details/");
         }
 
-        if(req.getParameter("deleteOrderButton")!=null){
-            try (Connection conn = Database.connect()) {
-                String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
-                var prepStatement = conn.prepareStatement(sql);
-                prepStatement.setString(1, );
-                prepStatement.executeUpdate();
-
+        if (req.getParameter("deleteOrderButton") != null) {
+            int value = Integer.parseInt(req.getParameter("deleteOrder"));
+            System.out.println(value);
+            try {
+                API.deleteQuery(value);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-            finally {}
+            resp.sendRedirect(req.getContextPath() + "/salesman/");
         }
+
     }
 
     private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (getEmployee(req, resp, "error") != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("loggedIn",false);
-            session.setAttribute("employee",null);
+            session.setAttribute("loggedIn", false);
+            session.setAttribute("employee", null);
             resp.sendRedirect(req.getContextPath() + " ");
 
-        }else {
+        } else {
             //do something set error msg
         }
     }

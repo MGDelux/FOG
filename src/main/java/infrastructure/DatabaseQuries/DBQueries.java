@@ -88,7 +88,7 @@ public class DBQueries implements QueriesRepo {
             try (Connection conn = db.connect()) {
                 String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
                 var preparedStatement = conn.prepareStatement(sql);
-               // preparedStatement.setString(1,deleteOrderById(1););
+                preparedStatement.setInt(1,id);
                 preparedStatement.executeUpdate();
 
             } catch (SQLException throwables) {

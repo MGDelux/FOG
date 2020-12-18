@@ -90,7 +90,6 @@
                         <td>${items.carport.width} x ${items.carport.length} </td>
                         <td>${items.shed.width} x ${items.shed.length} </td>
                         <td>${items.getSeller()}</td>
-                        <td>${items.getOrderDelete()}</td>
                         <td>
                             <form method="post">
                                 <input class="Sbutton" type="hidden" name="selectOrder" value="${items.getId()}">
