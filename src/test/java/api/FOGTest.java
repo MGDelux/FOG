@@ -4,6 +4,7 @@ import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Employee.Exceptions.loginError;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
+import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,8 @@ class FOGTest {
     @BeforeEach
     public void setupFOG () {
         Database db = new Database();
-        FOG = new FOG(new DBEmployee(db), new DBUser(db), new DBQueries(db), new MailService("hello"));
+        FOG = new FOG(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
+
     }
 
 

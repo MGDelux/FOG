@@ -1,6 +1,7 @@
 package web.pages;
 
 import domain.Employees.Employee;
+import domain.Materials.Materials;
 import domain.Queries.Queries;
 import web.BaseServlet;
 
@@ -22,18 +23,17 @@ public class admin extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
-            ArrayList<Queries> queries = new ArrayList<>();
-            setUp(req, resp);
+            ArrayList<Materials> materials = new ArrayList<>();
             try {
-                for (Queries q : API.getAllQueries()) {
-                    queries.add(q);
+                for (Materials m : API.getAllMaterials()) {
+                    materials.add(m);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
-            req.setAttribute("Queries", queries);
-            System.out.println(queries);
+            req.setAttribute("MaTsFoRu", materials);
+            System.out.println(materials);
             render("/WEB-INF/pages/admin.jsp", resp, req);
 
         } else {
