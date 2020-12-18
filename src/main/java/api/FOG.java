@@ -1,16 +1,20 @@
 package api;
+
 import Repoistory.Customer.CustomerRepo;
 import Repoistory.Email.EmailRepo;
 import Repoistory.Employee.Exceptions.EmployeeError;
+import Repoistory.Materials.MaterialsRepo;
 import Repoistory.Queries.QueriesRepo;
 import domain.Carport.Carport;
 import domain.Customers.Customers;
 import domain.Email.Email;
+import domain.Materials.Materials;
 import domain.Queries.Queries;
 import Repoistory.Employee.EmployeeRepo;
 import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Shed.Shed;
+
 import javax.mail.MessagingException;
 import java.sql.SQLException;
 
@@ -22,19 +26,24 @@ public class FOG {
     private final CustomerRepo customerRepo;
     private final EmailRepo emailRepo;
     private final QueriesRepo queriesRepo;
+    private final MaterialsRepo materialRepo;
     //TODO: !Important FIGURE OUT WHAT MATS ECT WE NEED TO MAKE A CARPORT OUT OF 'WHAT' MATERIALS AND UPDATE SQL SCRIPT TO ACCOMMODATE THESE CHANGES IF NEEDED. and the required logic
-    /**  ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
-     * -mbt */
 
-    public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, QueriesRepo queriesRepo, EmailRepo emailRepo) {
+    public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, EmailRepo emailRepo, QueriesRepo queriesRepo, MaterialsRepo materialRepo) {
         this.employeeRepo = employeeRepo;
         this.customerRepo = customerRepo;
-        this.queriesRepo = queriesRepo;
         this.emailRepo = emailRepo;
+        this.queriesRepo = queriesRepo;
+        this.materialRepo = materialRepo;
     }
 
-    public boolean checkEmployeeEmail(String email) throws SQLException
-     {//this is the same as checkIfNewCustomer lol
+    /**
+     * ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
+     * -mbt
+     */
+
+
+    public boolean checkEmployeeEmail(String email) throws SQLException {//this is the same as checkIfNewCustomer lol
         return employeeRepo.checkMail(email);
     }
 
@@ -55,6 +64,7 @@ public class FOG {
 
     /**
      * adds a costumer to the database if it does not exist already.
+     *
      * @param email
      * @param zip
      * @param city
@@ -77,16 +87,17 @@ public class FOG {
                 e.getMessage();
             }
             return customerRepo.addNewCustomer(new Customers(countIds, email, zip, city, adress, phoneNr));
-        }
-        else {
+        } else {
             return customerRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
         }
     }
-public Customers getExistingUserInfomation(String email) throws SQLException {
+
+    public Customers getExistingUserInfomation(String email) throws SQLException {
         return customerRepo.getExistingUserInfomation(email);
-}
+    }
+
     public Iterable<Customers> getAllUsers() throws SQLException {
-            return customerRepo.getAllUsers();
+        return customerRepo.getAllUsers();
     }
 
     public Employee login(String email, String password) throws loginError, SQLException, EmployeeError {
@@ -99,6 +110,7 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
 
         }
     }
+
     public void deleteQurey(int id) throws SQLException {
         queriesRepo.deleteOrderById(id);
     }
@@ -106,8 +118,9 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
     public Customers getExistingCustomerInfomationById(int id) throws SQLException {
         return customerRepo.getExistingUserInfomationById(id);
     }
+
     public Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
-        return queriesRepo.newQuery(customers,carport,shed );
+        return queriesRepo.newQuery(customers, carport, shed);
     }
 
 
@@ -120,12 +133,13 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
     }
 
     public Email newMail(String toAdress, String subject, String message) throws MessagingException {
-        return emailRepo.newEmail(new Email(toAdress,subject,message));
+        return emailRepo.newEmail(new Email(toAdress, subject, message));
     }
 
     public Queries getLatestQuery() throws SQLException {
         return queriesRepo.getLatestQuery();
     }
+
     public Queries getQueryById(int id) throws SQLException {
         return queriesRepo.getSpecificQueryByQueryId(id);
     }
@@ -135,4 +149,19 @@ public Customers getExistingUserInfomation(String email) throws SQLException {
         return queriesRepo.assignSellerToQuery(getQueryValue, employee);
     }
 
+    public void updateMaterials(Materials materials, int id) throws SQLException {
+        materialRepo.updateCarportMaterial(materials, id);
+    }
+
+    public void addCarportMaterials(Materials materials, int id) throws SQLException {
+        materialRepo.addCarportMaterial(materials, id);
+    }
+
+    public void deleteCarportMaterial(int id) throws SQLException {
+        materialRepo.deleteCarportMaterial(id);
+    }
+
+    public Iterable<Materials> getAllMaterials() {
+        return  materialRepo.getAllMaterials();
+     }
 }

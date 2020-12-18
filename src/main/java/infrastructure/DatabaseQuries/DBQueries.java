@@ -3,6 +3,7 @@ package infrastructure.DatabaseQuries;
 import Repoistory.Queries.QueriesRepo;
 import domain.Carport.Carport;
 import domain.Employees.Employee;
+import domain.Materials.Materials;
 import domain.Queries.Queries;
 import domain.Customers.Customers;
 import domain.Shed.Shed;
@@ -76,6 +77,7 @@ public class DBQueries implements QueriesRepo {
             db.closeConnection();
         }
     }
+
 
 
     @Override
