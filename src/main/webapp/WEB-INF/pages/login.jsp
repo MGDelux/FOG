@@ -5,7 +5,9 @@
 
     <!--@author Mathias .css snips from: CodingNepal -->
     <title>FOG login</title>
-    <style> <jsp:include page="../../css/Loginstyle.css"/></style>
+    <style>
+        <jsp:include page="../../css/Loginstyle.css"/>
+    </style>
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
@@ -13,34 +15,36 @@
 <div class="center">
     <div class="container">
         <div class="text">
-            login
+            Velkommen..
         </div>
 
-        <form method="post" >
+        <form method="post">
             <input type="hidden" name="target" value="login">
             <div class="data">
                 <label>Email:</label>
-                <input type="email" value="EMail" name="email" required>
+                <input type="email" value="EMail@mail.com" name="email" required>
             </div>
             <div class="data">
                 <label>Kodeord:</label>
                 <input type="password" name="password" value="password" required>
             </div>
-            <div class="forgot-pass">
-                <a class="spacer"  type="hidden"> -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  </a></div>
-            <div class="btn">
-                <div class="inner">
-                </div>
-                <button type="submit">login</button>
-            </div>
-            <div class="error-text"> <c:if test="${requestScope.error != null}">
-                ${requestScope.error}
-            </c:if></div>
-            <div class="error-text"> <c:if test="${sessionScope.loggedin != true}">
-                ${sessionScope.loggedInMSG}
-            </c:if></div>
-        </form>
+            <div class="tilbage">
+            <a href="${pageContext.request.contextPath}/">Tilbage</a>
     </div>
+    <div class="forgot-pass">
+    <div class="btn">
+        <div class="inner">
+        </div>
+        <button type="submit">login</button>
+    </div>
+    <div class="error-text"><c:if test="${requestScope.error != null}">
+        ${requestScope.error}
+    </c:if></div>
+    <div class="error-text"><c:if test="${sessionScope.loggedin != true}">
+        ${sessionScope.loggedInMSG}
+    </c:if></div>
+    </form>
+</div>
 </div>
 </body>
 </html>

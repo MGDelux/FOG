@@ -2,6 +2,7 @@ package infrastructure.DatabaseMaterials;
 
 import domain.Materials.Materials;
 import infrastructure.DatabaseConnector.Database;
+import infrastructure.Exceptions.DBError;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DBMaterialsTest {
 
     @Test
-    void getMaterial() throws SQLException {
+    void getMaterial() throws SQLException, DBError {
         List<Materials> x = new ArrayList<>();
         Database database = new Database();
         DBMaterials dbMaterials = new DBMaterials(database);

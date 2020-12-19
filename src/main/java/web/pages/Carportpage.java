@@ -43,8 +43,7 @@ public class Carportpage extends BaseServlet {
      *
      * @param req
      */
-    private synchronized void getPageInfomation(HttpServletRequest req) {
-        // TODO: bliver submitQ nogensinde null?
+    private void getPageInfomation(HttpServletRequest req) {
         /* JA DEN ER ALTID NULL VED MINDRE DEN ER TRYKKET PÅ */
         if (req.getParameter("submitQ") != null) {
             HttpSession session = req.getSession();
@@ -87,8 +86,6 @@ public class Carportpage extends BaseServlet {
 
 
             } catch (NumberFormatException | SQLException | MessagingException e) {
-                //TODO: Should we inform the user about this?
-                /* YES */
                 session.setAttribute("pageError", e.getMessage());
                 e.printStackTrace();
             }

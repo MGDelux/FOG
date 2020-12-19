@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -29,8 +30,10 @@ public class login extends BaseServlet {
             req.getSession().setAttribute("loggedIn",true);
             resp.sendRedirect(req.getContextPath() + "/salesman/");
         } catch (SQLException | EmployeeError | loginError e) {
-            req.setAttribute("loggedInMSG",e.getMessage());
+            HttpSession session = req.getSession();
+            session.setAttribute("loggedInMSG",e.getMessage());
             e.printStackTrace();
+            resp.sendRedirect(req.getContextPath() + "/login/");
         }
     }
 

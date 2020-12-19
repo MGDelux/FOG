@@ -11,7 +11,6 @@ public class svgDraw implements SvgFactory {
 
     // v1 prototype SVG
     private int extraPoles;
-    private final int standartPoles = 4;
     private int viewPortWidth = 10;
     private int viewPortLength = 10;
     private int innerCarportWidth = 0;

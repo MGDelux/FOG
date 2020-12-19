@@ -22,9 +22,14 @@ public class Shed {
 
     @Override
     public String toString() {
-        return "Shed{" +
-                "width=" + width +
-                ", length=" + length +
-                '}';
+        String toString = "";
+        if (width != 0 || length != 0) {
+            toString = toString +
+                    " Brede: " + width +
+                    " Længde: " + length;
+            return toString;
+        }
+        toString = " Intent skur";
+        return toString;
     }
 }

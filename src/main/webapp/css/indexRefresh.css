@@ -1,6 +1,9 @@
 @font-face {
     font-family: 'Bebas Neue', cursive;
 }
+.h1 .p{
+    font-family: "Bebas Neue";
+}
 .navbar {
     font-family: "Bebas Neue";
 }
@@ -42,19 +45,19 @@ html,body
     padding-top: 75px;
     padding-bottom: 130px;
 }
-.brødtekst .intro  p{
-    font-size: 35px;
+.intro  p{
+    font-size: 32px;
 
 }
-.brødtekst .intro h1{
+.intro h1{
     font-size: 65px;
 
 }
 .btn-primary{
     color: white;
     font-size: 22.5px   ;
-    background: rgb(22,55,87);
-    background: linear-gradient(180deg, rgba(22,55,87,1) 0%, rgba(0,37,73,1) 100%);
+    background: rgb(35,147,255);
+    background: linear-gradient(180deg, rgba(35,147,255,1) 0%, rgba(0,68,134,1) 100%);
 }
 .btn-primary:hover{
     color: white;
@@ -65,7 +68,7 @@ html,body
 .bgimg2 {
     font-family: "Bebas Neue";
     background-image: url("https://i.imgur.com/n8cezTz.png");
-    min-height: 500px;
+    min-height: 570px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

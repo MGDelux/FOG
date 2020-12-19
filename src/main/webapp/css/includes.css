@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Bebas Neue', cursive;
+}
+*{
+    font-family: "Bebas Neue";
+}
+.navbar {
+    font-family: "Bebas Neue";
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255 255 255);
+    font-size: 20px
+}
+.navbar .navbar-brand{
+    font-size: 45px;
+    color: white;
+}
+.navbar .nav-link{
+    color: white;
+}
+.nav-link li ul a{
+    color: white;
+}

@@ -19,6 +19,14 @@ body {
    margin: auto;
 
 }
+.tilbage a{
+   text-decoration: none;
+   color: black;
+}
+.tilbage a:hover{
+   text-decoration: underline;
+}
+
 .container {
    margin: auto;
    display: block;

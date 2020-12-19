@@ -43,11 +43,12 @@ public class Carport {
 
     @Override
     public String toString() {
-        return "Carport{" +
-                "width=" + width +
-                ", length=" + length +
-                ", roof=" + roof +
-                ", roofAngle=" + roofAngle +
-                '}';
+        String tostring = ": Længde: " + length +
+                "cm Brede: " + width +
+                "cm ,Tag type: " + roof;
+                if(roof.equals(roofType.ANGLE)) {
+                 tostring = tostring + ", Tag " + roofAngle;
+                }
+        return tostring;
     }
 }

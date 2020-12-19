@@ -64,7 +64,7 @@ public class DBEmployee implements EmployeeRepo {
     }
 
     @Override
-    public Employee login(String email) throws loginError, SQLException {
+    public synchronized Employee login(String email) throws loginError, SQLException {
         PreparedStatement preparedStatement;
         String sql = "SELECT * FROM medarbejder WHERE email = ?";
         Connection conn = db.connect();
@@ -75,7 +75,7 @@ public class DBEmployee implements EmployeeRepo {
             if (resultSet.next()) {
                return parseEmployees(resultSet);
             } else {
-                throw new loginError("Error in the login process");
+                throw new loginError("Fejl i login-processen, prøv igen. check password og mail.");
             }
 
         } catch (SQLException e) {
