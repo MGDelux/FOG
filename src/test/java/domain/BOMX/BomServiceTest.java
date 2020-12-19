@@ -2,6 +2,7 @@ package domain.BOMX;
 
 import Repoistory.Employee.Exceptions.EmployeeError;
 import domain.BOM.BomService;
+import domain.BOM.Exceptions.BomException;
 import domain.Carport.Carport;
 import domain.Shed.Shed;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BomServiceTest {
 
     @Test
-    void newBom() throws EmployeeError, SQLException {
+    void newBom() throws EmployeeError, SQLException, BomException {
         BomService bomService = new BomService();
         Carport carport = new Carport(420,420, Carport.roofType.FLAT,10);
         Shed shed = new Shed(240,400);

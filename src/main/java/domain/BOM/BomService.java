@@ -2,6 +2,7 @@ package domain.BOM;
 
 import Repoistory.Bom.BomFactory;
 import Repoistory.Employee.Exceptions.EmployeeError;
+import domain.BOM.Exceptions.BomException;
 import domain.Carport.Carport;
 import domain.Materials.Materials;
 import domain.Shed.Shed;
@@ -25,11 +26,11 @@ public class BomService implements BomFactory {
 //DETTE ER DEN MEST GHETTO WAY TO DO THIS OWO
 
     @Override
-    public List<Materials> newBom(Carport carport, Shed shed) throws EmployeeError, SQLException {
+    public List<Materials> newBom(Carport carport, Shed shed) throws SQLException, BomException {
         materials.addAll(db.getMaterial());
         if (carport == null || shed == null) {
             //throw exception
-            throw new EmployeeError("CHANGE TO ACTUAL EXPECTION FOR THIS TYPE");
+            throw new BomException("carport / shed was null");
         }
         SetInfomation(carport, shed);
         if (carport.getRoof() == Carport.roofType.ANGLE) {
@@ -61,8 +62,8 @@ public class BomService implements BomFactory {
         Materials pole = new Materials(1, "trykimprægneret Stolpe", 300, poleCounter, "k. Stolper nedgraves 90 cm. i jord\t+ skråstiver", 60);
         BOM.add(pole);
         int rafter;
-        rafter = carport.getLength() / 30;
-        Materials rafters = new Materials(2, "spær", 300, rafter, "byg-selv spær (skal samles)", 60);
+        rafter = carport.getLength() / 60;
+        Materials rafters = new Materials(2, "spær", carport.getWidth(), rafter, "byg-selv spær (skal samles)", 60);
         BOM.add(rafters);
         System.out.println(BOM);
 

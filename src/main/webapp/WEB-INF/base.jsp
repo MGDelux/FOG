@@ -18,7 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <title>${requestScope.title}</title>
-    <link href="<c:url value="/css/index.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/css/base.css"/>" rel="stylesheet"/>
     <c:if test="${requestScope.style != null}">
         <link href="<c:url value="${requestScope.style}"/>" rel="stylesheet"/>
     </c:if>
