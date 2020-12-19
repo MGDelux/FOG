@@ -1,6 +1,9 @@
 @font-face {
     font-family: 'Bebas Neue', cursive;
 }
+.h1 .p{
+    font-family: "Bebas Neue";
+}
 .navbar {
     font-family: "Bebas Neue";
 }

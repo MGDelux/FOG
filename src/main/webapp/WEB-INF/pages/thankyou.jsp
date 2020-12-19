@@ -9,7 +9,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<head>
+    <style>
+        <jsp:include page="../../css/includes.css"/>
+    </style>
+</head>
 <div class="wrapper">
     <h1>Tak for din carport forspørgelse!</h1>
     <p>Din forspørgelse er blevet registreret og du modtager en bekræftelse email snarest.</p>

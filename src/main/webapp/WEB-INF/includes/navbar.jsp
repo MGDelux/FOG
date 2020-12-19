@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div class="fontlife" style="font-family: 'Bebas Neue';">
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
     <a class="navbar-brand" href="<c:url value="/"/>">Fog</a>
     <ul class="navbar-nav">
@@ -18,3 +19,4 @@
     </ul>
 
 </nav>
+</div>
