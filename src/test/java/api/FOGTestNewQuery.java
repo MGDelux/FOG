@@ -6,6 +6,7 @@ import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
+import infrastructure.Exceptions.DBError;
 import org.junit.jupiter.api.Test;
 import web.MailService.MailService;
 
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 public class FOGTestNewQuery {
 
     @Test
-    public void testNewQuery() throws SQLException { // run me for error
+    public void testNewQuery() throws SQLException, DBError { // run me for error
         Database db = new Database();
         FOG FOG = new FOG(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
         Customers testCustomers = new Customers(3,"mathias@gmail.com", 3400, "hillerød", "some where 24", 123432423);

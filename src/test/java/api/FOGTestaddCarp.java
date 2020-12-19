@@ -6,6 +6,7 @@ import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
+import infrastructure.Exceptions.DBError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import web.MailService.MailService;
@@ -21,7 +22,7 @@ class FOGTestaddCarp {
     FOG FOG;
 
     @BeforeEach
-    public void setupFOG () {
+    public void setupFOG () throws DBError {
         Database db = new Database();
         FOG = new FOG(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
     }

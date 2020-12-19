@@ -42,11 +42,11 @@ html,body
     padding-top: 75px;
     padding-bottom: 130px;
 }
-.brødtekst .intro  p{
-    font-size: 35px;
+.intro  p{
+    font-size: 32px;
 
 }
-.brødtekst .intro h1{
+.intro h1{
     font-size: 65px;
 
 }
@@ -65,7 +65,7 @@ html,body
 .bgimg2 {
     font-family: "Bebas Neue";
     background-image: url("https://i.imgur.com/n8cezTz.png");
-    min-height: 500px;
+    min-height: 570px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

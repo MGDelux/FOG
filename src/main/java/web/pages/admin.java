@@ -16,7 +16,7 @@ import java.util.ArrayList;
  **/
 @WebServlet({"/admin", "/admin/*"})
 public class admin extends BaseServlet {
-    ArrayList<Materials> mats = new ArrayList<>();
+    final ArrayList<Materials>  mats = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -64,7 +64,7 @@ public class DBEmployee implements EmployeeRepo {
     }
 
     @Override
-    public Employee login(String email) throws loginError, SQLException {
+    public synchronized Employee login(String email) throws loginError, SQLException {
         PreparedStatement preparedStatement;
         String sql = "SELECT * FROM medarbejder WHERE email = ?";
         Connection conn = db.connect();

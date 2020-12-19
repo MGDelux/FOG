@@ -14,6 +14,7 @@ import Repoistory.Employee.EmployeeRepo;
 import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Shed.Shed;
+import infrastructure.DatabaseUser.Execptions.CustomerExecption;
 
 import javax.mail.MessagingException;
 import java.sql.SQLException;
@@ -27,7 +28,6 @@ public class FOG {
     private final EmailRepo emailRepo;
     private final QueriesRepo queriesRepo;
     private final MaterialsRepo materialRepo;
-    //TODO: !Important FIGURE OUT WHAT MATS ECT WE NEED TO MAKE A CARPORT OUT OF 'WHAT' MATERIALS AND UPDATE SQL SCRIPT TO ACCOMMODATE THESE CHANGES IF NEEDED. and the required logic
 
     public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, EmailRepo emailRepo, QueriesRepo queriesRepo, MaterialsRepo materialRepo) {
         this.employeeRepo = employeeRepo;
@@ -42,19 +42,14 @@ public class FOG {
      * -mbt
      */
 
-
-    public boolean checkEmployeeEmail(String email) throws SQLException {//this is the same as checkIfNewCustomer lol
-        return employeeRepo.checkMail(email);
-    }
-
-    public Employee createSalesManEmployee(String email, String password) throws SQLException, EmployeeError {
+    public void createSalesManEmployee(String email, String password) throws SQLException, EmployeeError {
         byte[] salt = Employee.genereateSalt();
-        return employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN, 0, email, salt, Employee.calculateSecret(salt, password)));
+        employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
-    public Employee createAdminEmployee(String email, String password) throws SQLException, EmployeeError {
+    public void createAdminEmployee(String email, String password) throws SQLException, EmployeeError {
         byte[] salt = Employee.genereateSalt(); // magic space code stuff
-        return employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
+         employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
     //WIP
@@ -77,14 +72,11 @@ public class FOG {
         if (!checkIfNewCustomer(email)) { //checking if user is in our system by taking the mail and finding if it is in the db already if so just get the infomation instead of making it again
             int countIds = 1; //temp and basic way of assigning "id" to users (only in the app tho does not apply it db , db does it automaticly 'auto_increment')
             try {
-                for (Customers customers : getAllUsers()) {
+                for (Customers ignored : getAllUsers()) {
                     countIds++; //for every user we have in our db we count +1
                 }
-//TODO: Får vi nogensiden nullpointerException, hvorfor?, burde vi få det?
-                /**yes if theres no db connection we will get a NPE
-                 * -mbt*/
-            } catch (NullPointerException e) {
-                e.getMessage();
+            } catch (CustomerExecption e) {
+                throw new CustomerExecption("error: " + e);
             }
             return customerRepo.addNewCustomer(new Customers(countIds, email, zip, city, adress, phoneNr));
         } else {
@@ -119,8 +111,8 @@ public class FOG {
         return customerRepo.getExistingUserInfomationById(id);
     }
 
-    public Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
-        return queriesRepo.newQuery(customers, carport, shed);
+    public void newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
+        queriesRepo.newQuery(customers, carport, shed);
     }
 
 
@@ -162,6 +154,6 @@ public class FOG {
     }
 
     public Iterable<Materials> getAllMaterials() {
-        return  materialRepo.getAllMaterials();
-     }
+        return materialRepo.getAllMaterials();
+    }
 }

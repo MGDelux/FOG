@@ -6,6 +6,7 @@ import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
+import infrastructure.Exceptions.DBError;
 import org.junit.jupiter.api.Test;
 import web.MailService.MailService;
 
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 public class FOGTestCustomers {
 
     @Test
-    public void testAddCustomer() {
+    public void testAddCustomer() throws DBError {
         Database db = new Database();
         try {
             FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
@@ -29,7 +30,7 @@ public class FOGTestCustomers {
     }
 
     @Test
-    public void testcheckMail() throws SQLException {
+    public void testcheckMail() throws SQLException, DBError {
         Database db = new Database();
 
         FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
@@ -39,7 +40,7 @@ public class FOGTestCustomers {
     }
 
     @Test
-    public void testgetAll() throws SQLException {
+    public void testgetAll() throws SQLException, DBError {
         Database db = new Database();
         DBUser dbUser = new DBUser(db);
         for (Customers customers : dbUser.getAllUsers()) {
@@ -48,7 +49,7 @@ public class FOGTestCustomers {
     }
 
     @Test
-    public void testGetAll2() throws SQLException {
+    public void testGetAll2() throws SQLException, DBError {
         Database db = new Database();
         FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
         System.out.println(FOG.getAllUsers());

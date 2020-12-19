@@ -8,6 +8,7 @@ import domain.Materials.Materials;
 import domain.Shed.Shed;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseMaterials.DBMaterials;
+import infrastructure.Exceptions.DBError;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

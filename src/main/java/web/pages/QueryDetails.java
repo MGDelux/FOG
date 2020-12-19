@@ -1,14 +1,10 @@
 package web.pages;
-
-import com.google.protobuf.Api;
 import domain.Carport.Carport;
-import domain.Customers.Customers;
 import domain.Queries.Queries;
 import domain.Shed.Shed;
 import web.BaseServlet;
 import web.SVG.SvgFactory;
 import web.SVG.svgDraw;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * CREATED BY mathias @ 14-12-2020 - 12:54
