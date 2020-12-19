@@ -16,9 +16,9 @@ body, html {
 
 .navbar{
     border-top: 1px solid #000000;
-    background: rgb(64,143,252);
-    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgba(5,53,172,1) 91%);
     color: white;
+    background: rgb(2,84,163);
+    background: linear-gradient(180deg, rgba(2,84,163,1) 0%, rgba(0,123,240,1) 100%);
 }
 .navbar-brand{
 
@@ -56,14 +56,13 @@ body, html {
 
 .footer {
     border-top: 1px solid #000000;
-    background: rgb(64,143,252);
-    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgba(5,53,172,1) 91%);
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     color: white;
-
+    background: rgb(2,84,163);
+    background: linear-gradient(180deg, rgba(2,84,163,1) 0%, rgba(0,123,240,1) 100%);
 }
 
 .footer a{
