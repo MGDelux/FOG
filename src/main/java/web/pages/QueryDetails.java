@@ -52,7 +52,7 @@ public class QueryDetails extends BaseServlet {
         } else {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);
-            session.setAttribute("loggedInMSG", "only for employees");
+            session.setAttribute("loggedInMSG", "Kun adgang til medarbejdere");
 
 
         }

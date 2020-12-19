@@ -56,8 +56,8 @@ html,body
 .btn-primary{
     color: white;
     font-size: 22.5px   ;
-    background: rgb(22,55,87);
-    background: linear-gradient(180deg, rgba(22,55,87,1) 0%, rgba(0,37,73,1) 100%);
+    background: rgb(35,147,255);
+    background: linear-gradient(180deg, rgba(35,147,255,1) 0%, rgba(0,68,134,1) 100%);
 }
 .btn-primary:hover{
     color: white;
