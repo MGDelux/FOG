@@ -12,6 +12,7 @@
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/e79609ac4a.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -66,7 +67,8 @@
             </div>
         </div>
     </div>
-    <div class="bg">
+    <div class="Salescontainer">
+
         <div class="tablecontain">
             <h1>Sælger side:</h1>
             <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">

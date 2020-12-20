@@ -1,8 +1,22 @@
-.navbar{
-    border-top: 1px solid #000000;
-    background: -webkit-linear-gradient(to top, #007BFF, #000000);
-    background: linear-gradient(to bottom, #007BFF, #022896);
+@font-face {
+    font-family: 'Bebas Neue', cursive;
+}
+.navbar {
+    font-family: "Bebas Neue";
+}
+.navbar .navbar-brand{
+    font-size: 45px;
     color: white;
+}
+.navbar .nav-link{
+    color: white;
+}
+.nav-link li ul a{
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255 255 255);
+    font-size: 20px;
 }
 body {
     height: 100vh;
@@ -10,13 +24,13 @@ body {
     background: rgb(68,196,193);
     background: linear-gradient(180deg, rgba(206,255,254,1) 0%, rgba(87,161,244,1) 100%);
 }
-
-.bg{
-    color: black;
-    border-radius: 2px;
-    border-color: red;
-    padding-top: 100px;
+.Salescontainer{
+    margin: auto;
+    width: 90%;
+    border: 3px solid green;
+    padding: 10px;
 }
+
 .tablecontain{
     padding-top: 20px;
     text-align: center;
