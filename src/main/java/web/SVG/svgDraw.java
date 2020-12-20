@@ -17,8 +17,8 @@ public class svgDraw implements SvgFactory {
     private int innerCarportLength = 0;
     private int shedY;
     private int shedX;
-    private String SVGString = "";
-
+    private  String SVGString = "";
+//god why lol
     @Override
     public String drawCarport(Queries queries) {
         CalculateViewPortSize(queries.getCarport());
@@ -31,7 +31,6 @@ public class svgDraw implements SvgFactory {
         SVGString = SVGString + drawCross(queries.getCarport());
         SVGString = SVGString + drawRoof(queries.getCarport());
         SVGString = SVGString + drawText(queries.getCarport());
-        System.out.println(SVGString);
         return SVGString;
     }
 

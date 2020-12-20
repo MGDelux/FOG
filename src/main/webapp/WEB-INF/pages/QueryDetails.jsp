@@ -1,4 +1,6 @@
 <jsp:useBean id="qById" scope="request" type="domain.Queries.Queries"/>
+<jsp:useBean id="svgDraw" scope="request" type="java.lang.String"/>
+
 
 <%--
   Created by IntelliJ IDEA.
@@ -59,7 +61,7 @@
     </ul>
 </nav>
 <div class="Container">
-    <div CLASS="holder">
+    <div class="holder">
         <h1 style="text-align: center"> Kunde-forespørgelse detaljer:</h1>
         <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
             <thead>
@@ -123,7 +125,9 @@
             <input disabled="disabled" class="outputshowcase" id="amount4" type="number" value="${qById.shed.length}" min="240"
                    max="780" oninput="customRange6.value=amount4.value"/>
         </div>
+
         </div>
+
 </div>
 </div>
 <hr class="solid">
@@ -144,6 +148,11 @@
                    max="90" oninput="rejsning.value=procent.value"/> grader
     </div>
 </div>
+    <div class="svgdrawer">
+        <h1>Carport Dimensioner</h1>
+
+        <button class="GenererSVG" name="GenererSVG" >Updater carport</button>
+    </div>
 </div>
 <hr class="solid">
 <div class="stykliste">
@@ -178,13 +187,9 @@
 </div>
 <hr class="solid">
 
-<div class="svgdrawer">
-    <h1>Tegning:</h1>
 
-    <button class="GenererSVG" name="GenererSVG" >Generer SVG</button>
-</div>
-    <div align="center" class="SVGContainer"></div>
-    ${requestScope.svgDraw}
+
+    <div align="center" class="SVGContainer">  ${svgDraw}</div>
 </div>
 <hr class="solid">
 
