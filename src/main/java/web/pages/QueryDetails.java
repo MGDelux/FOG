@@ -1,10 +1,12 @@
 package web.pages;
+
 import domain.Carport.Carport;
 import domain.Queries.Queries;
 import domain.Shed.Shed;
 import web.BaseServlet;
 import web.SVG.SvgFactory;
 import web.SVG.svgDraw;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,25 +21,24 @@ import java.sql.SQLException;
 
 @WebServlet({"/details", "/details/*"})
 public class QueryDetails extends BaseServlet {
-    String carportSVG = "";
-    Queries querybyId;
-    SvgFactory SVG = new svgDraw();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
-
-            HttpSession session = req.getSession();
-            int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+            String carportSVG = "";
             try {
+                HttpSession session = req.getSession();
+                 int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+                 Queries querybyId;
                 querybyId = API.getQueryById(id);
                 if (querybyId.getShed().getWidth() != 0 || querybyId.getShed().getLength() != 0) {
                     req.setAttribute("shedCheckbox", "checked ");
                 } else {
                     req.setAttribute("shedCheckbox", "unchecked");
                 }
-                if (carportSVG.isEmpty() || carportSVG.equals("")){
-                    carportSVG = SVG.drawCarport(querybyId);
+                if (carportSVG.isEmpty() || carportSVG.equals("")) {
+                    SvgFactory svgFactory = new svgDraw();
+                    carportSVG = svgFactory.drawCarport(querybyId);
                 }
                 req.setAttribute("svgDraw", carportSVG);
                 req.setAttribute("qById", querybyId);
@@ -66,10 +67,24 @@ public class QueryDetails extends BaseServlet {
             int w = Integer.parseInt(req.getParameter("CarportWidth"));
             int sw = Integer.parseInt(req.getParameter("ShedWidth"));
             int sl = Integer.parseInt(req.getParameter("ShedLength"));
+            SvgFactory svgFactory = new svgDraw();
+            String carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 90), new Shed(sw, sl));
+            req.removeAttribute("svgDraw");
+            req.setAttribute("svgDraw", carportSVG);
+            HttpSession session = req.getSession();
 
-            carportSVG = null;
-            carportSVG = SVG.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 90), new Shed(sw, sl));
+            int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+            Queries querybyId;
+            try {
+                querybyId = API.getQueryById(id);
+                req.setAttribute("qById", querybyId);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+
         }
-        resp.sendRedirect(req.getContextPath() + "/details/");
+        render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
+       // resp.sendRedirect(req.getContextPath() + "/details/");
     }
 }
