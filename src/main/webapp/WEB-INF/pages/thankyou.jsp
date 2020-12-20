@@ -13,6 +13,8 @@
     <style>
         <jsp:include page="../../css/includes.css"/>
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
 </head>
 <div class="wrapper">
     <h1>Tak for din carport forspørgelse!</h1>
