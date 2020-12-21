@@ -63,7 +63,7 @@
     <h1 align="center">har allerede bestilt en carport?</h1>
     <p align="center">Hvis du allerede har bestilt en carport klik knappen nede under og check ud din forspørgelses status!
     </p>
-        <form action="${pageContext.request.contextPath}/carport/">
+        <form action="${pageContext.request.contextPath}/carportDetails/">
             <input align="center" class="btn btn-primary" type="submit" value="CHECK CARPORT STATUS!" />
         </form>
 </div>

@@ -125,3 +125,36 @@ html,body
 .footer .secret{
     float: right;
 }
+.tablekeeper{
+    padding-top: 25px;
+}
+.querytable{
+    padding-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 15px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 25px;
+    border-spacing: 15px;
+}
+.form-group{
+text-align:center;
+display:inline-block;
+}
+.extraInfo a{
+    text-decoration: none;
+    color: #2a53be;
+}
+.extraInfo a:hover{
+    text-decoration: underline;
+    color: #3498db;
+}
+body label{
+    font-size: 25px;
+    color: black;
+}
+table {border-collapse: collapse;}
+td    {padding: 6px;}

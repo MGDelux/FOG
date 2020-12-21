@@ -43,9 +43,9 @@ public class Carport {
 
     @Override
     public String toString() {
-        String tostring = ": Længde: " + length +
+        String tostring = "Længde: " + length +
                 "cm Brede: " + width +
-                "cm ,Tag type: " + roof;
+                "cm , Tag type: " + roof;
                 if(roof.equals(roofType.ANGLE)) {
                  tostring = tostring + ", Tag " + roofAngle;
                 }

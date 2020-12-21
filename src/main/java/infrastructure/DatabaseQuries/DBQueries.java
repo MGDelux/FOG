@@ -3,7 +3,6 @@ package infrastructure.DatabaseQuries;
 import Repoistory.Queries.QueriesRepo;
 import domain.Carport.Carport;
 import domain.Employees.Employee;
-import domain.Materials.Materials;
 import domain.Queries.Queries;
 import domain.Customers.Customers;
 import domain.Shed.Shed;
@@ -11,6 +10,7 @@ import infrastructure.DatabaseConnector.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CREATED BY mathias @ 26-11-2020 - 10:59
@@ -40,7 +40,7 @@ public class DBQueries implements QueriesRepo {
                 preparedStatement.setNull(6, Types.INTEGER);
                 preparedStatement.setNull(7, Types.INTEGER);
             }
-            preparedStatement.setString(8, "TBA");
+            preparedStatement.setString(8, "Ingen sælger tildet inu");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -103,6 +103,27 @@ public class DBQueries implements QueriesRepo {
 
     }
 
+    @Override
+    public List<Queries> getQueryByEmail(String email) throws SQLException {
+        String SQL = "SELECT * FROM forespørgsler WHERE forespørgsler.kunde = ? ";
+        PreparedStatement preparedStatement;
+        ArrayList<Queries> queries = new ArrayList<>();
+        Connection connection = db.connect();
+        preparedStatement = connection.prepareStatement(SQL);
+        try {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                queries.add(ParseQueries(resultSet));
+            }
+
+        } finally {
+            connection.close();
+            preparedStatement.close();
+        }
+
+        return queries;
+    }
 
     @Override
     public Queries getSpecificQueryByQueryId(int id) throws SQLException {
