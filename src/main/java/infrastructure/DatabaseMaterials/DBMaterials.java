@@ -25,26 +25,6 @@ public class DBMaterials implements MaterialsRepo {
         this.db = db;
     }
 
-    public List<Materials> getMaterial() throws SQLException {
-        List<Materials> materials = new ArrayList<>();
-        PreparedStatement preparedStatement;
-        String SQL = "SELECT * FROM cartportmaterialer";
-        Connection conn = db.connect();
-        preparedStatement = conn.prepareStatement(SQL);
-        try {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                materials.add(parseMaterials(resultSet));
-
-            }
-        } catch (SQLException e) {
-            e.getMessage();
-        } finally {
-            db.closeConnection();
-            preparedStatement.close();
-        }
-        return materials;
-    }
 
     private Materials parseMaterials(ResultSet resultSet) throws SQLException {
         return new Materials(
@@ -109,7 +89,7 @@ public class DBMaterials implements MaterialsRepo {
             db.closeConnection();
         }
     }
-
+    @Override
     public void addCarportMaterial(Materials materials, int id) throws SQLException {
         try (Connection conn = db.connect()) {
             String sql = "INSERT INTO CartPortMaterialer (Carportmateriale_Navn, Carportmateriale_Length, Carportmateriale_antal, materiale_Beskrivelse, materiale_Pris) VALUE(?,?,?,?,?) ";
@@ -142,5 +122,63 @@ public class DBMaterials implements MaterialsRepo {
             db.closeConnection();
         }
     }
-}
+
+
+    @Override
+    public void updateFittingsAndScrews(Materials materials, int id) throws SQLException {
+        try (Connection conn = db.connect()) {
+            String sql = "UPDATE BeslagOgSkruer SET BeslagOgSkruer_Navn = ?, BeslagOgSkruer_Length= ?,BeslagOgSkruer_antal= ?, BeslagOgSkruer_Beskrivelse= ?, BeslagOgSkruer_Pris= ?  WHERE BeslagOgSkruer_Id = ?";
+            var preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, materials.getName());
+            preparedStatement.setInt(2, materials.getLength());
+            preparedStatement.setInt(3, materials.getAmount());
+            preparedStatement.setString(4, materials.getDescription());
+            preparedStatement.setDouble(5, materials.getPrice());
+            preparedStatement.setInt(6, id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            db.closeConnection();
+        }
+    }
+    @Override
+    public void addFittingsAndScrews(Materials materials, int id) throws SQLException {
+        try (Connection conn = db.connect()) {
+            String sql = "INSERT INTO CartPortMaterialer (BeslagOgSkruer_Navn, BeslagOgSkruer_Length, BeslagOgSkruer_antal, BeslagOgSkruer_Beskrivelse, BeslagOgSkruer_Pris) VALUE(?,?,?,?,?) ";
+            var preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, materials.getName());
+            preparedStatement.setInt(2, materials.getLength());
+            preparedStatement.setInt(3, materials.getAmount());
+            preparedStatement.setString(4, materials.getDescription());
+            preparedStatement.setDouble(5, materials.getPrice());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            db.closeConnection();
+        }
+    }
+
+    @Override
+    public void deleteFittingsAndScrews(int id) throws SQLException {
+        try (Connection conn = db.connect()) {
+            String sql = "DELETE FROM BeslagOgSkruer WHERE BeslagOgSkruer_Id = ?";
+            var preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            db.closeConnection();
+        }
+    }
+    }
+
+
+
+
 

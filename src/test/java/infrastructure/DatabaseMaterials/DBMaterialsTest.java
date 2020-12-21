@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +22,7 @@ class DBMaterialsTest {
         List<Materials> x = new ArrayList<>();
         Database database = new Database();
         DBMaterials dbMaterials = new DBMaterials(database);
-        x.addAll(dbMaterials.getMaterial());
+        x.addAll((Collection<? extends Materials>) dbMaterials.getAllMaterials());
         for (Materials m :x){
             if (m.toString().contains("trykimprægneret Stolpe")){
                 System.out.println("POGGIES " +m);

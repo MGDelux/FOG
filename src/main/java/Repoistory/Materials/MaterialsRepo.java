@@ -8,7 +8,8 @@ import java.sql.SQLException;
  * CREATED BY mathias @ 25-11-2020 - 13:52
  **/
 public interface MaterialsRepo {
-     Iterable<Materials> getAllMaterials();
+
+    Iterable<Materials> getAllMaterials();
 
     Materials findMaterial(String s) throws SQLException;
 
@@ -17,5 +18,12 @@ public interface MaterialsRepo {
     void addCarportMaterial(Materials materials, int id) throws SQLException;
 
     void deleteCarportMaterial(int id) throws SQLException;
+
+    void updateFittingsAndScrews(Materials materials, int id) throws SQLException;
+
+    void addFittingsAndScrews(Materials materials, int id) throws SQLException;
+
+    void deleteFittingsAndScrews(int id) throws SQLException;
+
 
 }

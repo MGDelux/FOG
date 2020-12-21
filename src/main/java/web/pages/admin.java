@@ -10,29 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * CREATED BY Emil @ 26-11-2020 - 11:29
  **/
 @WebServlet({"/admin", "/admin/*"})
 public class admin extends BaseServlet {
-    final ArrayList<Materials>  mats = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        final ArrayList<Materials>  mats = new ArrayList<>();
+        final ArrayList<Materials>  fittingTheScrew = new ArrayList<>();
 
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
             try {
-                for (Materials m : API.getAllMaterials()) {
-                    mats.add(m);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
             req.setAttribute("MaTsFoRu", mats);
+            mats.addAll((Collection<? extends Materials>) API.getAllMaterials());
+            System.out.println(mats);
+            req.setAttribute("matsScrew",fittingTheScrew);
+            fittingTheScrew.addAll((Collection<? extends Materials>) API.getAllMaterials());
+
             System.out.println(mats);
             render("/WEB-INF/pages/admin.jsp", resp, req);
+
+
 
         } else {
             HttpSession session = req.getSession();

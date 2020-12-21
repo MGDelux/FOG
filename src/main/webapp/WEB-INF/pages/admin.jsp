@@ -53,26 +53,9 @@
 
     </tbody>
 </table>
-<form method="post">
-    <div class="buttons-buttom">
-        <input name="materialName" type="text" value="navn" required>
-        <input name="materialDescription" type="text" value="Beskrivelse" required>
-        <input name="materialPrice" type="number" value="pris" required>
-        <button type="submit" name="add-button" class="add-button">Tilføj</button>
-    </div>
-</form>
-<form method="post">
-    <div class="buttons-buttom" align="center">
-        <label>ID: </label>
-        <input name="removeButId" type="number" value="0" required>
-        <button type="submit" name="removeBut" class="remove-button">Slet</button>
-    </div>
-</form>
-
 
 <h3>Træ</h3>
 <table class="table-md table col-md-11">
-
 <thead class="thead-dark">
 <tr>
     <th scope="col">Id</th>
@@ -82,6 +65,21 @@
     <th scope="col">Pris</th>
 </tr>
 </thead>
+    <form method="post">
+        <div class="buttons-buttom">
+            <input name="materialName" type="text" value="navn" required>
+            <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialPrice" type="number" value="pris" required>
+            <button type="submit" name="add-button" class="add-button">Tilføj</button>
+        </div>
+    </form>
+    <form method="post">
+        <div class="buttons-buttom" align="center">
+            <label>ID: </label>
+            <input name="removeButId" type="number" value="0" required>
+            <button type="submit" name="removeBut" class="remove-button">Slet</button>
+        </div>
+    </form>
 <tbody>
 <c:forEach items="${MaTsFoRu}" var="items">
 <tr>
@@ -97,6 +95,22 @@
 
     <h3>Beslag & Skruer</h3>
 
+    <form method="post">
+        <div class="buttons-buttom">
+            <input name="materialName" type="text" value="navn" required>
+            <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialPrice" type="number" value="pris" required>
+            <button type="submit" name="add-button" class="add-button">Tilføj</button>
+        </div>
+    </form>
+    <form method="post">
+        <div class="buttons-buttom" align="center">
+            <label>ID: </label>
+            <input name="removeButId" type="number" value="0" required>
+            <button type="submit" name="removeBut" class="remove-button">Slet</button>
+        </div>
+    </form>
+
     <table class="table-md table col-md-11">
 
     <thead class="thead-dark">
@@ -110,12 +124,15 @@
     </thead>
     <tbody>
     <tr>
-    <th scope="row">1</th>
-    <td>4</td>
-    <td>bøgetræ</td>
-    <td>@Vindskeder på rejsning</td>
-    <td>420</td>
+<c:forEach items="${matsScrew}" var="items">
+    <tr>
+        <td>${items.id}</td>
+        <td>${items.getAmount()}</td>
+        <td>${items.getName()}</td>
+        <td>${items.getDescription()}</td>
+        <td>${items.getPrice()}</td>
     </tr>
+    </c:forEach>
 
     </tbody>
     </table>
