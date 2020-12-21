@@ -40,19 +40,20 @@ public class DBQueries implements QueriesRepo {
                 preparedStatement.setNull(6, Types.INTEGER);
                 preparedStatement.setNull(7, Types.INTEGER);
             }
-            preparedStatement.setString(8,"TBA");
+            preparedStatement.setString(8, "TBA");
             preparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return null; //fix
     }
+
     @Override
     public Queries assignSellerToQuery(int getQueryValue, Employee employee) {
         try (Connection connection = db.connect()) {
-            String sql = "UPDATE forespørgsler SET assigned_seller = ? WHERE Order_Id = "+getQueryValue;
+            String sql = "UPDATE forespørgsler SET assigned_seller = ? WHERE Order_Id = " + getQueryValue;
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-       preparedStatement.setString(1,employee.getEmail());
+            preparedStatement.setString(1, employee.getEmail());
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -61,22 +62,46 @@ public class DBQueries implements QueriesRepo {
         return null;
 
     }
+
     @Override
     public void deleteOrderById(int id) throws SQLException {
         try (Connection conn = db.connect()) {
             String sql = "DELETE FROM forespørgsler WHERE Order_Id = ?;";
             var preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            db.closeConnection();
+        }
+    }
+
+    @Override
+    public void updateQuery(int id, Carport carport, Shed shed) {
+        try (Connection connection = db.connect()) {
+            String SQL = "UPDATE forespørgsler SET Carport_Bredde = ?,  Carport_Længde = ?, Tag_Type = ?, has_shed = ?, shed_width = ?, shed_length = ? WHERE Order_Id = ? ";
+            var preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, carport.getWidth());
+            preparedStatement.setInt(2, carport.getLength());
+            preparedStatement.setString(3, carport.getRoof().toString());
+            preparedStatement.setBoolean(4, shed != null);
+            if (shed != null) {
+                preparedStatement.setInt(5, shed.getWidth());
+                preparedStatement.setInt(6, shed.getLength());
+            } else {
+                preparedStatement.setNull(5, Types.INTEGER);
+                preparedStatement.setNull(6, Types.INTEGER);
+            }
+            preparedStatement.setInt(7, id);
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        finally {
-            db.closeConnection();
-        }
-    }
 
+    }
 
 
     @Override
@@ -101,8 +126,6 @@ public class DBQueries implements QueriesRepo {
     }
 
 
-
-
     private Queries ParseQueries(ResultSet set) throws SQLException {
         Shed shed = null;
         if (set.getBoolean("forespørgsler.has_shed")) {
@@ -114,8 +137,8 @@ public class DBQueries implements QueriesRepo {
         carport = new Carport(
                 set.getInt("forespørgsler.Carport_Bredde"),
                 set.getInt("forespørgsler.Carport_Længde"),
-               Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")), 90);
-        return new Queries(set.getInt("forespørgsler.Order_Id"),  set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"),"");
+                Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")), 90);
+        return new Queries(set.getInt("forespørgsler.Order_Id"), set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"), "");
 
     }
 
@@ -150,12 +173,12 @@ public class DBQueries implements QueriesRepo {
         preparedStatement = connection.prepareStatement(SQL);
         try {
             ResultSet set = preparedStatement.executeQuery();
-            while (set.next()){
+            while (set.next()) {
                 return ParseQueries(set);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
+        } finally {
             connection.close();
             preparedStatement.close();
         }

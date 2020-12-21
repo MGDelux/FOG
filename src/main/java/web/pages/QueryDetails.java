@@ -62,18 +62,27 @@ public class QueryDetails extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getParameter("GenererSVG") != null) {
+        HttpSession session = req.getSession();
+        if (req.getParameter("CarportUpdate") != null) {
+            int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+
+            req.removeAttribute("svgDraw");
             int l = Integer.parseInt(req.getParameter("CarportLength"));
             int w = Integer.parseInt(req.getParameter("CarportWidth"));
             int sw = Integer.parseInt(req.getParameter("ShedWidth"));
             int sl = Integer.parseInt(req.getParameter("ShedLength"));
             SvgFactory svgFactory = new svgDraw();
-            String carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 90), new Shed(sw, sl));
-            req.removeAttribute("svgDraw");
+            String carportSVG = "";
+            if (Integer.parseInt(req.getParameter("tagChoice")) == 1){
+                //If tagChoice == 1 flat // 0 == angled
+                carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));
+                API.updateQuery(id,new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));
+            }else {
+                //TODO: CUSTOM ANGLE
+                carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.ANGLE, 40), new Shed(sw, sl));
+                API.updateQuery(id, new Carport(w, l, Carport.roofType.ANGLE, 40), new Shed(sw, sl));
+            }
             req.setAttribute("svgDraw", carportSVG);
-            HttpSession session = req.getSession();
-
-            int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
             Queries querybyId;
             try {
                 querybyId = API.getQueryById(id);
@@ -85,6 +94,5 @@ public class QueryDetails extends BaseServlet {
 
         }
         render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
-       // resp.sendRedirect(req.getContextPath() + "/details/");
     }
 }
