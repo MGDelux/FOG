@@ -1,5 +1,7 @@
 <jsp:useBean id="qById" scope="request" type="domain.Queries.Queries"/>
 <jsp:useBean id="svgDraw" scope="request" type="java.lang.String"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 
 <%--
@@ -73,14 +75,12 @@
                 <th scope="col">Skur</th>
             </tr>
 
-              <c:forEach items="${qById}" var="items">
                     <tr>
                         <td>${qById.email}</td>
                         <td>${qById.carport.roof} TAG</td>
                         <td>${qById.carport.length} x ${qById.carport.width}</td>
                         <td>${qById.shed.length} x ${qById.shed.width}</td>
                     </tr>
-            </c:forEach>
             </thead>
             <tbody>
 
@@ -160,17 +160,27 @@
     <h1>STYKLISTE:</h1>
     <div class="styk">
         <div class="stykebutton">
-        <button class="beregnstyk" >Beregn stykliste</button>
+        <button name="beregnstyk" class="beregnstyk" >Beregn stykliste</button>
         </div>
         <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
        <thead>
        <tr>
        <th>Antal</th>
-       <th>ID</th>
+       <th>ID</th><th>Navn</th>
        <th>Beskrivelse</th>
        <th>Længde</th>
-       <th>Brede</th>
+       <th>pris pr. stk</th>
        </tr>
+       <c:forEach items="${BOM}" var="items">
+           <tr>
+               <td>${items.getAmount()}</td>
+               <td>${items.getId()}</td>
+               <td>${items.getName()}</td>
+               <td>${items.getDescription()}</td>
+               <td>${items.getLength()}</td>
+               <td>${items.getPrice()}</td>
+           </tr>
+       </c:forEach>
        </thead>
         </table>
         <div class="stykpris">
@@ -199,8 +209,14 @@
     <div class="flairtext">
         <input class="customtext" type="text" >
     </div>
+    <div class="form-check">
+        <input name="includeShed" class="form-check-input" type="checkbox" value="on"     id="fakturacheck">
+        <label class="form-check-label" for="gridCheck">
+            Inkl. stykliste
+        </label>
+    </div>
     <div class="finalbutton">
-    <button class="SendTilbud" >Send Tilbud</button>
+    <button class="SendTilbud" >Send Tilbud/ Faktura</button>
     </div>
 
 </div>
