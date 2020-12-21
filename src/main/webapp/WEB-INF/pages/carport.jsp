@@ -68,33 +68,51 @@
         </li>
     </ul>
 </nav>
-<div id="wrapper">
-    <h1>Bestil din skrædersyet carport her!</h1>
-    <h3>Carporte med fladt tag:</h3>
-    <p><Strong>Carport bredde:</strong></p>
-    </table>
+
+<div class="bgimg1">
     <form method="post">
+
+    <div class="divspacer"></div>
+<div id="wrapper">
+    <div class="carportchoice">
+
+    <h1>Bestil din skrædersyet carport her!</h1>
+    <h3>Carport:</h3>
+    <p>Carport bredde:</p>
+    </table>
+
         <input required type="range" class="form-control-range" value="240" min="240" max="750" step="30"
                id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
         <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750"
                oninput="customRange3.value=amount.value"/>
-        <p><Strong>Carport længde:</strong></p>
+        <p>Carport længde:</p>
         <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30"
                id="customRange4" name="CarportLength" oninput="amount2.value=customRange4.value">
         <input disabled="disabled" class="outputshowcase" id="amount2" type="number" value="240" min="240" max="780"
                oninput="customRange4.value=amount2.value"/>
-        <p><Strong>Carport tag:</Strong></p>
+        <div class="divspacer"></div>
+        <h3>Carport tag:</h3>
         <div class="Carport-tag">
             <div class="row div-wrapper d-flex justify-content-center align-items-center">
                 <div class="column">
-                    <input class="searchForChecked" type="radio" id="radio1" name="radio" value="on" checked/>
-                    <label class="searchForChecked" for="radio1"><img src="https://imgur.com/aQmIU5H.jpg"/></label>
+                    <p>Faldt tag:</p>
+                    <label>
+                        <input type="radio" value="on" name="radio" >
+                        <img class="radioimage" src="https://i.imgur.com/bp4dryG.png" checked>
+                    </label>
                 </div>
                 <div class="column">
-                    <input class="searchForChecked" type="radio" id="radio2" name="radio" value="tagmedrejsning"/>
-                    <label class="searchForChecked" for="radio2"><img src="https://imgur.com/RLPA3wc.jpg" /></label>
+                    <p>Tag med rejsning:</p>
+
+                    <label>
+                        <input type="radio"  value="off" name="radio" >
+                        <img class="radioimage" src="https://i.imgur.com/QAvkLcm.png">
+                    </label>
                 </div>
+
             </div>
+        </div>
+        <div class="divspacer"></div>
             <h2>Redskabsrum:</h2>
             <div class="form-group">
                 <div class="form-check">
@@ -106,7 +124,7 @@
             </div>
             <div class="d-none" style="desplay:none" id="text">
                 <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
-                <p><Strong>Redskabsrum bredde:</Strong></p>
+                <p>Redskabsrum bredde:</p>
 
                 <div class="Redskabsrum-bredde">
                     <input required type="range" class="form-control-range" value="240" min="240" max="360" step="30"
@@ -115,7 +133,7 @@
                            max="370" oninput="customRange5.value=amount3.value"/>
 
                 </div>
-                <p><Strong>Redskabsrum-længde:</Strong></p>
+                <p>Redskabsrum-længde:</p>
                 <div class="Redskabsrum-længde">
                     <input required type="range" class="form-control-range" value="140" min="140" max="420" step="20"
                            id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
@@ -124,51 +142,60 @@
                 </div>
             </div>
         </div>
+
+</div>
+        <div class="divspacer"></div>
+
+        <div class="customerinput">
         <div align="center" class="container2">
             <div class="form-row  div-wrapper d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="Email"><strong>Email</strong></label>
-                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
+                    <input required type="email" class="form-control" name="Email" id="Email" placeholder="Email">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phoneNR"><strong>TLF NR</strong></label>
-                    <input type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
+                    <input required type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-4">
                     <label for="inputAddress"><strong>Address</strong></label>
-                    <input type="text" class="form-control" name="inputAddress" id="inputAddress"
+                    <input required type="text" class="form-control" name="inputAddress" id="inputAddress"
                            placeholder="Nørrebrogade">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="address"><strong>Address 2</strong></label>
-                    <input type="text" class="form-control" name="adress" id="address"
+                    <input  type="text" class="form-control" name="adress" id="address"
                            placeholder="Opgang, studie, eller sal">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-2">
                     <label for="by"><strong>By</strong></label>
-                    <input type="text" class="form-control" name="by" id="by" placeholder="By">
+                    <input required type="text" class="form-control" name="by" id="by" placeholder="By">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="postnummer"><strong>Postnummer</strong></label>
-                    <input type="text" class="form-control" id="postnummer" name="postnummer" placeholder="Postnummer">
+                    <input required type="text" class="form-control" id="postnummer" name="postnummer" placeholder="Postnummer">
                 </div>
             </div>
 
             <button type="submit" name="submitQ" class="btn btn-primary">Send forespørgsel</button>
-            <hr class="solid">
-            <hr class="solid">
-            <hr class="solid">
-
-
+        </div>
         </div>
     </form>
 
 
 </div>
+        <hr class="solid">
+            <hr class="solid">
+            <hr class="solid">
+
+
+
+</div>
+
 </body>
 <footer>
     <div class="footer">

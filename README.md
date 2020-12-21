@@ -6,7 +6,7 @@
 
 - Webpage [Team WebPage](http://solidcode.xyz/)
 
-- Project Page: [ ONLINE Project Page](http://solidcode.xyz:8080/FOG-1.0-SNAPSHOT/)
+- Project Page: [ ONLINE Project Page](http://solidcode.xyz:8080/FOG-1.0/)
 
 - Test Users: Sales Employee Email: "employee@mail.com" Password: "password" | Admin Employee Email: "admin@mail.com" Password: "password"
 

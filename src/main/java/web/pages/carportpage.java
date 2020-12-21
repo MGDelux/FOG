@@ -21,7 +21,7 @@ import java.util.Objects;
  * CREATED BY mathias @ 23-11-2020 - 14:20
  **/
 @WebServlet({"/carport", "/carport/*"})
-public class Carportpage extends BaseServlet {
+public class carportpage extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

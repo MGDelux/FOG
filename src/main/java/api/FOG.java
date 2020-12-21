@@ -17,6 +17,7 @@ import domain.Shed.Shed;
 import infrastructure.DatabaseUser.Execptions.CustomerExecption;
 import javax.mail.MessagingException;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * CREATED BY mathias @ 23-11-2020 - 15:46
@@ -169,7 +170,7 @@ public class FOG {
         materialRepo.deleteFittingsAndScrews(id);
     }
 
-   public Iterable<Materials> findScrews(){
-       return materialRepo.getAllScrews();
+    public List<Queries> getQueryByEmail(String email) throws SQLException {
+       return queriesRepo.getQueryByEmail(email);
     }
 }
