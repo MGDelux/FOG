@@ -10,6 +10,7 @@ import infrastructure.DatabaseMaterials.DBMaterials;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class BomService implements BomFactory {
 
     @Override
     public List<Materials> newBom(Carport carport, Shed shed) throws SQLException, BomException {
-        materials.addAll(db.getMaterial());
+        materials.addAll((Collection<? extends Materials>) db.getAllMaterials());
         if (carport == null || shed == null) {
             //throw exception
             throw new BomException("carport / shed was null");

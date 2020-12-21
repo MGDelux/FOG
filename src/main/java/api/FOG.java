@@ -155,4 +155,17 @@ public class FOG {
     public void updateQuery(int id, Carport carport, Shed shed) {
         queriesRepo.updateQuery(id,carport,shed);
     }
+
+
+    public void updateFittingsAndScrews(Materials materials, int id) throws SQLException {
+        materialRepo.updateFittingsAndScrews(materials, id);
+    }
+
+    public void addFittingsAndScrews(Materials materials, int id) throws SQLException {
+        materialRepo.addFittingsAndScrews(materials, id);
+    }
+
+    public void deleteFittingsAndScrews(int id) throws SQLException {
+        materialRepo.deleteFittingsAndScrews(id);
+    }
 }
