@@ -1,12 +1,10 @@
 package web.pages;
-
 import domain.Carport.Carport;
 import domain.Queries.Queries;
 import domain.Shed.Shed;
 import web.BaseServlet;
 import web.SVG.SvgFactory;
 import web.SVG.svgDraw;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
