@@ -4,6 +4,18 @@
 *{
     font-family: "Bebas Neue";
 }
+body td {
+    font-size: 20px;
+}
+body th {
+    font-size: 22px;
+}
+body p {
+    font-size: 22px;
+}
+body h5{
+    font-size: 25px;
+}
 .navbar {
     font-family: "Bebas Neue";
 }
