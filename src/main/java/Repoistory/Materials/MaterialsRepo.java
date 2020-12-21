@@ -25,5 +25,7 @@ public interface MaterialsRepo {
 
     void deleteFittingsAndScrews(int id) throws SQLException;
 
+    Iterable<Materials> getAllScrews();
+
 
 }

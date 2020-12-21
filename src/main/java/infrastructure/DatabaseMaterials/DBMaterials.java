@@ -34,6 +34,14 @@ public class DBMaterials implements MaterialsRepo {
                 resultSet.getInt("CartPortMaterialer.Carportmateriale_antal"), resultSet.getString("CartPortMaterialer.materiale_Beskrivelse"),
                 resultSet.getDouble("CartPortMaterialer.materiale_Pris"));
     }
+    private Materials parseScrews(ResultSet resultSet) throws SQLException {
+        return new Materials(
+                resultSet.getInt("BeslagOgSkruer.BeslagOgSkruer_Id"),
+                resultSet.getString("BeslagOgSkruer.BeslagOgSkruer_Navn"),
+                resultSet.getInt("BeslagOgSkruer.BeslagOgSkruer_Length"),
+                resultSet.getInt("BeslagOgSkruer.BeslagOgSkruer_antal"), resultSet.getString("BeslagOgSkruer.BeslagOgSkruer_Beskrivelse"),
+                resultSet.getDouble("BeslagOgSkruer.BeslagOgSkruer_Pris"));
+    }
 
     @Override
     public Iterable<Materials> getAllMaterials() {
@@ -175,6 +183,21 @@ public class DBMaterials implements MaterialsRepo {
         } finally {
             db.closeConnection();
         }
+    }
+
+    @Override
+    public Iterable<Materials> getAllScrews() {
+        ArrayList<Materials> screw = new ArrayList<>();
+        try (Connection connection = db.connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM BeslagOgSkruer");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                screw.add(parseScrews(resultSet));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return screw;
     }
     }
 
