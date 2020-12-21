@@ -116,7 +116,7 @@ public class svgDraw implements SvgFactory {
             if (poleCounter > 1) {
                 length = length + 245;
             }
-            leftpole = leftpole + "<rect x=\"5\" y=\" 5 \"  width=\"10\" height=\"10\" fill=\"#000000\" stroke=\"#000000\"/>\n";
+            leftpole = leftpole + "<rect x=\"5\" y=\""+length+"\"  width=\"10\" height=\"10\" fill=\"#000000\" stroke=\"#000000\"/>\n";
 
         }
         return leftpole + "<rect x=\"5\" y=\"" + backPolePlacement + "\"  width=\"10\" height=\"10\" fill=\"#000000\" stroke=\"#000000\"/>\n";
