@@ -173,4 +173,7 @@ public class FOG {
     public List<Queries> getQueryByEmail(String email) throws SQLException {
        return queriesRepo.getQueryByEmail(email);
     }
+    public Iterable<Materials> findScrews(){
+        return materialRepo.getAllScrews();
+    }
 }

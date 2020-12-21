@@ -75,6 +75,16 @@
         </div>
     </form>
     <form method="post">
+        <div class="buttons-buttom">
+            <input name="materialeID" type="number" value="antal" placeholder="Id" required>
+            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
+            <input name="materialName" type="text" value="navn" required>
+            <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
+            <button type="submit" name="add-button" class="add-button">Erstat</button>
+        </div>
+    </form>
+    <form method="post">
         <div class="buttons-buttom" align="center">
             <label>ID: </label>
             <input name="removeMaterialById" type="number" value="0" required>
@@ -98,17 +108,28 @@
 
     <form method="post">
         <div class="buttons-buttom">
+            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
             <input name="materialName" type="text" value="navn" required>
             <input name="materialDescription" type="text" value="Beskrivelse" required>
-            <input name="materialPrice" type="number" value="pris" required>
+            <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
             <button type="submit" name="add-button" class="add-button">Tilføj</button>
+        </div>
+    </form>
+    <form method="post">
+        <div class="buttons-buttom">
+            <input name="materialeID" type="number" value="antal" placeholder="Id" required>
+            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
+            <input name="materialName" type="text" value="navn" required>
+            <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
+            <button type="submit" name="add-button" class="add-button">Erstat</button>
         </div>
     </form>
     <form method="post">
         <div class="buttons-buttom" align="center">
             <label>ID: </label>
-            <input name="removeButId" type="number" value="0" required>
-            <button type="submit" name="removeBut" class="remove-button">Slet</button>
+            <input name="removeMaterialById" type="number" value="0" required>
+            <button type="submit" name="removeMaterial" class="remove-button">Slet</button>
         </div>
     </form>
 

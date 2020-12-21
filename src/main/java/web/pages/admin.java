@@ -76,13 +76,17 @@ public class admin extends BaseServlet {
         int price = Integer.parseInt(req.getParameter("materialPrice"));
         System.out.println(amount + name + description + price);
         try {
-            API.addCarportMaterials(new Materials(2,"awe",4,24, "we",23));
+          //  API.addCarportMaterials(new Materials(2,"awe",4,24, "we",23));
 
         } finally {
 
         }
     }
+    private void replaceTreeMats (HttpServletRequest req, HttpServletResponse resp) {
 
+
+
+    }
 
 
     private void removeMaterialById(HttpServletRequest req, HttpServletResponse resp) throws IOException {
