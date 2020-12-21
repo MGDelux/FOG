@@ -43,19 +43,38 @@ body, html {
     position: center;
 
 }
-
+body, html {
+    height: 100%;
+}
 .outputshowcase{
     background-color: transparent;
     border: none;
     text-align: center;
-    color: red;
+    color: #ffffff;
+    font-size: 15px;
 }
 .column {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
-}
+    padding: 2%;
+    text-align: center;
+    display: inline-block; vertical-align: top;
 
+}
+.radioimage{
+    width: 425px;
+    height: 325px;
+}
+.bgimg1 {
+    background-image: url("https://i.imgur.com/2pRWn8F.png");
+    /* The image used */
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* Clearfix (clear floats) */
 .row::after {
     content: "";
@@ -67,8 +86,12 @@ body, html {
 
 }
 #wrapper {
+    padding: 25px;
     width: 50%;
     margin: 0 auto;
+}
+#wrapper h1{
+    text-align: center;
 }
 
 .p{
@@ -107,4 +130,87 @@ position: center;
 }
 .footer .secret {
     float: right;
+}
+
+.carportchoice{
+
+    color: white;
+    padding-bottom: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgb(0, 44, 105) 0%, rgba(5,53,172,1) 91%);
+    border-radius: 50px 15px
+}
+.carportchoice h3{
+    padding-top: 5px;
+    text-align: center;
+}
+.carportchoice p{
+    font-family: "Bebas Neue";
+    font-size: 25px;
+}
+.form-check-label{
+    padding-top: 6px;
+    font-size: 25px;
+}
+.divspacer{
+    padding-top: 10px;
+}
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+[type=radio] + img {
+    cursor: pointer;
+    outline: 3px solid #000000;
+
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    outline: 5px solid #00d1ff;
+}
+.carporttagdiv{
+    color: white;
+    padding-bottom: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgb(3, 39, 95) 0%, rgba(5,53,172,1) 91%);
+
+    border-color: #3498db;
+    border-width: 5px;
+    border-radius: 15px 50px
+}
+.redskabsrumdiv{
+    color: white;
+    padding-bottom: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgba(5,53,172,1) 91%);
+    border-radius: 15px 50px
+}
+.redskabsrumdiv label{
+    font-size: 25px;
+    text-decoration: underline;
+}
+.redskabsrumdiv h2{
+    text-align: center;
+}
+.customerinput{
+    margin: auto;
+    width: 50%;
+    color: white;
+    padding: 25px 25px 50px;
+    background: rgb(64,143,252);
+    background: linear-gradient(180deg, rgba(64,143,252,1) 0%, rgba(5,53,172,1) 91%);
+    border-radius: 15px
+}
+.centercarports{
+    margin: auto;
+    width: 50%;
 }
