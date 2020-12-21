@@ -59,6 +59,7 @@ public class admin extends BaseServlet {
         System.out.println("POST");
         if (req.getParameter("logout") != null) {
             logout(req, resp);
+
         }
         if (req.getParameter("removeMaterial") != null) {
             removeMaterialById(req, resp);

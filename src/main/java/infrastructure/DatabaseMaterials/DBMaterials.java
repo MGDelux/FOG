@@ -34,6 +34,7 @@ public class DBMaterials implements MaterialsRepo {
                 resultSet.getInt("CartPortMaterialer.Carportmateriale_antal"), resultSet.getString("CartPortMaterialer.materiale_Beskrivelse"),
                 resultSet.getDouble("CartPortMaterialer.materiale_Pris"));
     }
+
     private Materials parseScrews(ResultSet resultSet) throws SQLException {
         return new Materials(
                 resultSet.getInt("BeslagOgSkruer.BeslagOgSkruer_Id"),
@@ -97,6 +98,7 @@ public class DBMaterials implements MaterialsRepo {
             db.closeConnection();
         }
     }
+
     @Override
     public void addCarportMaterial(Materials materials, int id) throws SQLException {
         try (Connection conn = db.connect()) {
@@ -151,6 +153,7 @@ public class DBMaterials implements MaterialsRepo {
             db.closeConnection();
         }
     }
+
     @Override
     public void addFittingsAndScrews(Materials materials, int id) throws SQLException {
         try (Connection conn = db.connect()) {
@@ -199,8 +202,7 @@ public class DBMaterials implements MaterialsRepo {
         }
         return screw;
     }
-    }
-
+}
 
 
 

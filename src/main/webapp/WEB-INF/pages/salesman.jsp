@@ -71,7 +71,7 @@
     <div class="overskrift text-center">
     <h1>Sælger side:</h1>
     </div>
-    <div class="Salescontainer d-flex align-items-center min-vh-100">
+
 
         <div class="tablecontain flex-box justify-content-md-center align-items-center">
 
@@ -121,7 +121,7 @@
 
             </table>
         </div>
-    </div>
+
     <hr class="solid">
 
 </body>
