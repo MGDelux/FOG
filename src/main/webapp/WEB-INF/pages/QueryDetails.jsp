@@ -136,8 +136,8 @@
     <h1>TAG:</h1>
     <div class="tbd">
         <p>TAG type:</p>
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option selected>${qById.carport.roof}</option>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required name="tagChoice">
+            <option value="0" selected>${qById.carport.roof}</option>
             <option value="1">FLAT</option>
             <option value="2">ANGLE</option>
         </select>
@@ -152,7 +152,7 @@
     <div class="svgdrawer">
         <h1>Carport Dimensioner</h1>
 
-        <button class="GenererSVG" name="GenererSVG" >Updater carport</button>
+        <button class="GenererSVG" name="CarportUpdate">Updater carport</button>
     </div>
 </div>
 <hr class="solid">

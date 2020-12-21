@@ -1,8 +1,10 @@
 package Repoistory.Queries;
 
+import domain.Carport.Carport;
 import domain.Employees.Employee;
 import domain.Materials.Materials;
 import domain.Queries.Queries;
+import domain.Shed.Shed;
 
 import java.sql.SQLException;
 
@@ -23,4 +25,5 @@ public interface QueriesRepo extends QueriesFactory {
 
     void deleteOrderById(int id) throws SQLException;
 
+    void updateQuery(int id, Carport carport, Shed shed);
 }

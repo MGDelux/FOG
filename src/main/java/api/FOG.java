@@ -15,7 +15,6 @@ import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Shed.Shed;
 import infrastructure.DatabaseUser.Execptions.CustomerExecption;
-
 import javax.mail.MessagingException;
 import java.sql.SQLException;
 
@@ -37,10 +36,6 @@ public class FOG {
         this.materialRepo = materialRepo;
     }
 
-    /**
-     * ^I cannot continue with the program until the SQL is fixed and i cannot figure it out ... the error is in our SQL script set - up via our constraints ^
-     * -mbt
-     */
 
     public void createSalesManEmployee(String email, String password) throws SQLException, EmployeeError {
         byte[] salt = Employee.genereateSalt();
@@ -155,5 +150,9 @@ public class FOG {
 
     public Iterable<Materials> getAllMaterials() {
         return materialRepo.getAllMaterials();
+    }
+
+    public void updateQuery(int id, Carport carport, Shed shed) {
+        queriesRepo.updateQuery(id,carport,shed);
     }
 }
