@@ -66,12 +66,16 @@
                 <p class="smalltext"></p>
             </div>
         </div>
+        </div>
     </div>
-    <div class="Salescontainer">
+    <div class="overskrift text-center">
+    <h1>Sælger side:</h1>
+    </div>
+    <div class="Salescontainer d-flex align-items-center min-vh-100">
 
-        <div class="tablecontain">
-            <h1>Sælger side:</h1>
-            <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
+        <div class="tablecontain flex-box justify-content-md-center align-items-center">
+
+            <table class="table-striped table-dark table-md table-bordered table-hover table col-md-11 text-center">
                 <thead>
                 <tr>
                     <th scope="col">ID:</th>
@@ -119,7 +123,6 @@
         </div>
     </div>
     <hr class="solid">
-</div>
 
 </body>
 <footer>

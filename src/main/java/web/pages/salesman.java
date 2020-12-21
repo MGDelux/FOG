@@ -58,11 +58,7 @@ public class salesman extends BaseServlet {
         if (req.getParameter("assigSellButton") != null) {
             Employee employee = getEmployee(req, resp, "error in getting employe info");
             int getQueryValue = Integer.parseInt(req.getParameter("assignSell"));
-            try {
-                API.deleteQurey(getQueryValue);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            API.assignSellerToQuery(getQueryValue,employee);
             System.out.println(getQueryValue);
             API.assignSellerToQuery(getQueryValue, employee);
             resp.sendRedirect(req.getContextPath() + "/salesman/");
