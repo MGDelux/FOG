@@ -67,13 +67,14 @@
     <h5>Redskabs rum specifikationer:</h5>
     <p>Længde: ${query.shed.length}</p>
     <p>Bredde: ${query.shed.width}</p>
-
     </c:if>
     </div>
     <br>
     </table>
-
-        <a href="${pageContext.request.contextPath}/carport/" class="btn btn-primary btn-lg active" role="button"
+    <div align="center" class="SVGContainer">  ${svgDraw}</div>
+</div>
+<div align="center">
+        <a  href="${pageContext.request.contextPath}/carport/" class="btn btn-primary btn-lg active" role="button"
            aria-pressed="true">Tilbage</a>
         <div class="extraInfo">
             <hr class="solid">
@@ -81,4 +82,5 @@
 ?subject=vedrforsprøgelse&body=Message">solidcodefog@gmail.com
             </a></p>
         </div>
+</div>
 </div>

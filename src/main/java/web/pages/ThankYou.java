@@ -2,6 +2,8 @@ package web.pages;
 
 import domain.Queries.Queries;
 import web.BaseServlet;
+import web.SVG.SvgFactory;
+import web.SVG.svgDraw;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +30,10 @@ public class ThankYou extends BaseServlet {
             Queries q = API.getLatestQuery();
             System.out.println(q.toString());
             req.setAttribute("query", q);
+            String carportSVG = "";
+            SvgFactory svgFactory = new svgDraw();
+            carportSVG = svgFactory.drawCarport(q);
+            req.setAttribute("svgDraw", carportSVG);
             req.setAttribute("customer", API.getExistingUserInfomation(q.getEmail())); //christians code should be fixed?
             req.setAttribute("style", "/css/forsprøgelse.css");
             smartrender("/WEB-INF/pages/thankyou.jsp", resp, req);
