@@ -168,4 +168,8 @@ public class FOG {
     public void deleteFittingsAndScrews(int id) throws SQLException {
         materialRepo.deleteFittingsAndScrews(id);
     }
+
+   public Iterable<Materials> findScrews(){
+       return materialRepo.getAllScrews();
+    }
 }
