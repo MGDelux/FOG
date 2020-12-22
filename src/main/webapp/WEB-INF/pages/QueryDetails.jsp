@@ -211,7 +211,7 @@
         <input class="customtext" type="text" >
     </div>
     <div class="form-check">
-        <input name="includeShed" class="form-check-input" type="checkbox" value="on"     id="fakturacheck">
+        <input name="includeShed" class="form-check-input" type="checkbox" value="on" id="fakturacheck">
         <label class="form-check-label" for="gridCheck">
             Inkl. stykliste
         </label>

@@ -108,6 +108,7 @@ public class FOG {
     }
 
     public void newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
+        System.out.println("API  new q: "+customers + " " +carport + " " + shed);
         queriesRepo.newQuery(customers, carport, shed);
     }
 
@@ -124,7 +125,7 @@ public class FOG {
         return emailRepo.newEmail(new Email(toAdress, subject, message));
     }
 
-    public Queries getLatestQuery() throws SQLException {
+    public  synchronized Queries  getLatestQuery() throws SQLException {
         return queriesRepo.getLatestQuery();
     }
 
