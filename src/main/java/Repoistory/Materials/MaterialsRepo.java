@@ -15,7 +15,7 @@ public interface MaterialsRepo {
 
     void updateCarportMaterial(Materials materials, int id) throws SQLException;
 
-    void addCarportMaterial(Materials materials,int id) throws SQLException;
+    void addCarportMaterial(Materials materials) throws SQLException;
 
     void deleteCarportMaterial(int id) throws SQLException;
 
