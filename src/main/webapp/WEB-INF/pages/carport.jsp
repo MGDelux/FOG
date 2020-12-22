@@ -70,7 +70,7 @@
 </nav>
 
 <div class="bgimg1">
-    <form onsubmit="submitQ.disable = true; return true" method="post">
+    <form method="post">
 
     <div class="divspacer"></div>
 <div id="wrapper">
@@ -116,7 +116,7 @@
             <h2>Redskabsrum:</h2>
             <div class="form-group">
                 <div class="form-check">
-                    <input name="includeShed" class="form-check-input" type="checkbox"  value="on" id="gridCheck" onclick="myFunction()">
+                    <input name="includeShed" class="form-check-input" type="checkbox"  id="gridCheck" onclick="myFunction()">
                     <label class="form-check-label" for="gridCheck">
                         Ja tak
                     </label>
@@ -181,7 +181,7 @@
                 </div>
             </div>
 
-            <button type="submit"  name="submitQ" id="btnSubmit" class="btn btn-primary">Send forespørgsel</button>
+            <button type="submit" name="submitQ" value="submit" class="btn btn-primary">Send forespørgsel</button>
         </div>
         </div>
     </form>
