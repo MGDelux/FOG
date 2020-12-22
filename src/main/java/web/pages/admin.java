@@ -64,31 +64,58 @@ public class admin extends BaseServlet {
         if (req.getParameter("removeMaterial") != null) {
             removeMaterialById(req, resp);
         }
-        if (req.getParameter("add-button") != null) {
-            addTreeMats(req, resp);
+        if (req.getParameter("add-material") != null) {
+            try {
+                addTreeMats(req, resp);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
 
         }
+        if (req.getParameter("replace-material") != null) {
+            replaceTreeMats(req, resp);
+        }
+        if (req.getParameter("add-screw") != null){
+            addFittingsAndScrews(req, resp);
+        }
+        if (req.getParameter("replace-screw") != null){
+            replaceFittingsAndScrews(req, resp);
+        }
+        if (req.getParameter("removeScrew") != null){
+            removeFittingsAndScrews(req, resp);
+        }
+
     }
 
-    private void addTreeMats(HttpServletRequest req, HttpServletResponse resp) {
-        int amount = Integer.parseInt(req.getParameter("materialantal"));
+    private void addTreeMats(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
+        int id = Integer.parseInt(req.getParameter("materialId"));
+        int amount = Integer.parseInt(req.getParameter("materialAntal"));
         String name = (req.getParameter("materialName"));
         String description = (req.getParameter("materialDescription"));
+        int length = Integer.parseInt(req.getParameter("materialLength"));
         int price = Integer.parseInt(req.getParameter("materialPrice"));
-        System.out.println(amount + name + description + price);
         try {
-        API.addCarportMaterials(new Materials(2,"awe",4,24, "we",23));
-
+           API.addCarportMaterials(new Materials(id,name,length,amount,description,price),id);
+            resp.sendRedirect(req.getContextPath() + "/admin/");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     private void replaceTreeMats (HttpServletRequest req, HttpServletResponse resp) {
-
-
-
+        int id = Integer.parseInt(req.getParameter("materialId"));
+        int amount = Integer.parseInt(req.getParameter("materialAntal"));
+        String name = (req.getParameter("materialName"));
+        String description = (req.getParameter("materialDescription"));
+        int length = Integer.parseInt(req.getParameter("materialLength"));
+        int price = Integer.parseInt(req.getParameter("materialPrice"));
+        try {
+        API.updateMaterials(new Materials(id,name,length,amount,description,price),id);
+        resp.sendRedirect(req.getContextPath() + "/admin/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -104,8 +131,50 @@ public class admin extends BaseServlet {
         }
 
     }
+    private void addFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("screwId"));
+        int amount = Integer.parseInt(req.getParameter("screwAntal"));
+        String name = (req.getParameter("screwName"));
+        String description = (req.getParameter("screwDescription"));
+        int length = Integer.parseInt(req.getParameter("screwLength"));
+        int price = Integer.parseInt(req.getParameter("screwPrice"));
+        try {
+            API.addFittingsAndScrews(new Materials(id, name, length, amount, description, price), id);
+            resp.sendRedirect(req.getContextPath() + "/admin/");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void replaceFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("screwId"));
+        int amount = Integer.parseInt(req.getParameter("screwAntal"));
+        String name = (req.getParameter("screwName"));
+        String description = (req.getParameter("screwDescription"));
+        int length = Integer.parseInt(req.getParameter("screwLength"));
+        int price = Integer.parseInt(req.getParameter("screwPrice"));
+        try {
+            API.updateFittingsAndScrews(new Materials(id, name, length, amount, description, price), id);
+            resp.sendRedirect(req.getContextPath() + "/admin/");
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void removeFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
+        int value = Integer.parseInt(req.getParameter("removeScrewById"));
+        try {
+            API.deleteFittingsAndScrews(value);
+            resp.sendRedirect(req.getContextPath() + "/admin/");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (getEmployee(req, resp, "error") != null) {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);

@@ -44,8 +44,9 @@
 <body>
 
 <div align="center">
-<!-- table Buttom laves/-->
+
 <h1>Admin side</h1>
+
 <table id="buttom" border="1" title="">
     <thead>
     </thead>
@@ -62,26 +63,30 @@
     <th scope="col">Antal</th>
     <th scope="col">Navn</th>
     <th scope="col">Beskrivelse</th>
+    <th scope="col">længde</th>
     <th scope="col">Pris</th>
 </tr>
 </thead>
     <form method="post">
         <div class="buttons-buttom">
-            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
+            <input name="materialId" type="number" value="Id" placeholder="Id" required>
+            <input name="materialAntal" type="number" value="antal" placeholder="antal" required>
             <input name="materialName" type="text" value="navn" required>
             <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialLength" type="number" value="length" placeholder="angiv i mm" required>
             <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
-            <button type="submit" name="add-button" class="add-button">Tilføj</button>
+            <button type="submit" name="add-material" class="add-button">Tilføj</button>
         </div>
     </form>
     <form method="post">
         <div class="buttons-buttom">
-            <input name="materialeID" type="number" value="antal" placeholder="Id" required>
-            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
+            <input name="materialId" type="number" value="antal" placeholder="Id" required>
+            <input name="materialAntal" type="number" value="antal" placeholder="antal" required>
             <input name="materialName" type="text" value="navn" required>
             <input name="materialDescription" type="text" value="Beskrivelse" required>
+            <input name="materialLength" type="number" value="length" placeholder="angiv i mm" required>
             <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
-            <button type="submit" name="add-button" class="add-button">Erstat</button>
+            <button type="submit" name="replace-material" class="add-button">Erstat</button>
         </div>
     </form>
     <form method="post">
@@ -98,6 +103,7 @@
     <td>${items.getAmount()}</td>
     <td>${items.getName()}</td>
     <td>${items.getDescription()}</td>
+    <td>${items.length}</td>
     <td>${items.getPrice()}</td>
     </tr>
 </c:forEach>
@@ -108,28 +114,31 @@
 
     <form method="post">
         <div class="buttons-buttom">
-            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
-            <input name="materialName" type="text" value="navn" required>
-            <input name="materialDescription" type="text" value="Beskrivelse" required>
-            <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
-            <button type="submit" name="add-button" class="add-button">Tilføj</button>
+            <input name="screwId" type="number" value="Id" placeholder="Id" required>
+            <input name="screwAntal" type="number" value="antal" placeholder="antal" required>
+            <input name="screwName" type="text" value="navn" required>
+            <input name="screwDescription" type="text" value="Beskrivelse" required>
+            <input name="screwLength" type="number" value="længde" placeholder="Angiv i mm" required>
+            <input name="screwPrice" type="number" value="pris" placeholder="pris" required>
+            <button type="submit" name="add-screw" class="add-button">Tilføj</button>
         </div>
     </form>
     <form method="post">
         <div class="buttons-buttom">
-            <input name="materialeID" type="number" value="antal" placeholder="Id" required>
-            <input name="materialantal" type="number" value="antal" placeholder="antal" required>
-            <input name="materialName" type="text" value="navn" required>
-            <input name="materialDescription" type="text" value="Beskrivelse" required>
-            <input name="materialPrice" type="number" value="pris" placeholder="pris" required>
-            <button type="submit" name="add-button" class="add-button">Erstat</button>
+            <input name="screwId" type="number" value="antal" placeholder="Id" required>
+            <input name="screwAntal" type="number" value="antal" placeholder="antal" required>
+            <input name="screwName" type="text" value="navn" required>
+            <input name="screwDescription" type="text" value="Beskrivelse" required>
+            <input name="screwLength" type="number" value="længde" placeholder="Angiv i mm" required>
+            <input name="screwPrice" type="number" value="pris" placeholder="pris" required>
+            <button type="submit" name="replace-screw" class="add-button">Erstat</button>
         </div>
     </form>
     <form method="post">
         <div class="buttons-buttom" align="center">
             <label>ID: </label>
-            <input name="removeMaterialById" type="number" value="0" required>
-            <button type="submit" name="removeMaterial" class="remove-button">Slet</button>
+            <input name="removeScrewById" type="number" value="0" required>
+            <button type="submit" name="removeScrew" class="remove-button">Slet</button>
         </div>
     </form>
 
@@ -141,6 +150,7 @@
     <th scope="col">Antal</th>
     <th scope="col">Navn</th>
     <th scope="col">Beskrivelse</th>
+    <th scope="col">længde</th>
     <th scope="col">Pris</th>
     </tr>
     </thead>
@@ -152,6 +162,7 @@
         <td>${screws.getAmount()}</td>
         <td>${screws.getName()}</td>
         <td>${screws.getDescription()}</td>
+        <td>${screws.length}</td>
         <td>${screws.getPrice()}</td>
     </tr>
     </c:forEach>
@@ -159,7 +170,13 @@
     </tbody>
     </table>
 
-
+    <div class="breaks">
+    <br>
+        <br>
+        <br>
+    </div>
+</div>
+</div>
     </body>
     <footer>
     <div class="footer">

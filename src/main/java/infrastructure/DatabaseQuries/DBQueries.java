@@ -40,7 +40,7 @@ public class DBQueries implements QueriesRepo {
                 preparedStatement.setNull(6, Types.INTEGER);
                 preparedStatement.setNull(7, Types.INTEGER);
             }
-            preparedStatement.setString(8, "Ingen sælger tildet inu");
+            preparedStatement.setString(8, "Ingen sælger tildelt endnu");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
