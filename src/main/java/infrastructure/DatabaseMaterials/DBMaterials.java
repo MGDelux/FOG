@@ -48,7 +48,7 @@ public class DBMaterials implements MaterialsRepo {
     public Iterable<Materials> getAllMaterials() {
         ArrayList<Materials> materials = new ArrayList<>();
         try (Connection connection = db.connect()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cartportmaterialer");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM CartPortMaterialer");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 materials.add(parseMaterials(resultSet));
