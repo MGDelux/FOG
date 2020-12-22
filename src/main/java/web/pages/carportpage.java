@@ -43,7 +43,7 @@ public class carportpage extends BaseServlet {
      *
      * @param req
      */
-    private void getPageInfomation(HttpServletRequest req) {
+    private synchronized void getPageInfomation(HttpServletRequest req) {
         /* JA DEN ER ALTID NULL VED MINDRE DEN ER TRYKKET PÅ */
         if (req.getParameter("submitQ") != null) {
             HttpSession session = req.getSession();
@@ -54,38 +54,39 @@ public class carportpage extends BaseServlet {
             String city = req.getParameter("by");
             try {
                 Shed carportShed;
+                Carport.roofType roofType;
                 int zipCode = Integer.parseInt(req.getParameter("postnummer"));
                 int phoneNR = Integer.parseInt(req.getParameter("phoneNR"));
                 int carPortLength = Integer.parseInt(req.getParameter("CarportLength"));
                 int carPortWidth = Integer.parseInt(req.getParameter("CarportWidth"));
+                System.out.println(req.getParameter("includeShed"));
                 if (Objects.equals(req.getParameter("includeShed"), "on")) {
+                    System.out.println("SHED ON");
                     int shedWidth = Integer.parseInt(req.getParameter("ShedWidth"));
                     int shedLength = Integer.parseInt(req.getParameter("ShedLength"));
                     carportShed = new Shed(shedWidth, shedLength);
                 } else {
-                    carportShed = new Shed(0,0);
+                    System.out.println("SHED OFF");
+
+                    carportShed = new Shed(0, 0);
                 }
 
                 if (Objects.equals(req.getParameter("radio"), "on")) {
-                    Carport carport = new Carport(carPortWidth, carPortLength, domain.Carport.Carport.roofType.FLAT, 0);
-                    API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                    session.setAttribute("Shed", carportShed);
-                    session.setAttribute("Carport", carport);
-                    Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                    session.setAttribute("customer", customers);
-                    sendMail(customers, getQueryID(), carport, carportShed);
+                    roofType = Carport.roofType.FLAT;
+                    System.out.println("FLAT TAG");
+
                 } else {
-                    Carport carport = new Carport(carPortWidth, carPortLength, Carport.roofType.ANGLE, 25);
-                    API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                    session.setAttribute("Carport", carport);
-                    session.setAttribute("Shed", carportShed);
-                    Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                    session.setAttribute("customer", customers);
-                    sendMail(customers, getQueryID(), carport, carportShed);
+                    roofType = Carport.roofType.ANGLE;
+                    System.out.println("ANGLE TAG");
+
                 }
-
-
-            } catch (NumberFormatException | SQLException | MessagingException e) {
+                Carport carport = new Carport(carPortWidth, carPortLength, roofType, 0);
+                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                session.setAttribute("Shed", carportShed);
+                session.setAttribute("Carport", carport);
+                session.setAttribute("customer", customers);
+            } catch (NumberFormatException | SQLException e) {
                 session.setAttribute("pageError", e.getMessage());
                 e.printStackTrace();
             }
@@ -93,18 +94,6 @@ public class carportpage extends BaseServlet {
         }
     }
 
-    private int getQueryID() { // THIS IS FOR TESTING  ADD TO API
-        int count = 0;
-        try {
-            for (Queries q : API.getAllQueries()) {
-                count++;
-            }
-
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
 
     private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
         int count = 1; //bad way to do it kekw will fix later
@@ -116,21 +105,5 @@ public class carportpage extends BaseServlet {
             e.getMessage();
         }
         return new Customers(count, eMail, zipCode, city, address, phoneNR);
-    }
-
-    private void sendMail(Customers customers, int id, Carport carport, Shed shed) throws MessagingException {
-        API.newMail(customers.getEmail(), "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
-                "        <p>Din forespørgelse er blevet registreret og vi sender dig denne mail som bekræftelse på din forespørgelse </p>\n" +
-                "        <h4><strong>forespørgelse detaljer:</strong></h4>\n" +
-                "<p>Forspørgelse ID #" + id + " </p>" +
-                "<p>Carport: " + carport.toString() + " </p> \n<p> Skur:" + shed.toString() +
-                "</p> \n  <h5>Kontakt infomationer:</h5>\n" +
-                "<p>TLF NR:" + customers.getPhoneNr() + "</p>\n" +
-                "<p>E-mail: " + customers.getEmail() + "</p>" +
-                "<h5>Leverings infomationer:</h5>" +
-                "<p>Adresse: " + customers.getAddress() +
-                "</p><p>By: " + customers.getCity() +
-                "</p><p>Post Nummer: " + customers.getZipCode() +
-                "</p><p>Du kan bruge dette link til at se din forespørgelses detaljer: *LINK* </p>");
     }
 }

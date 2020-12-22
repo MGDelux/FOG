@@ -125,6 +125,7 @@ public class QueryDetails extends BaseServlet {
         int sw = 0;
         int sl = 0;
         if (Objects.equals(req.getParameter("includeShed"), "on")) {
+            System.out.println((req.getParameter("includeShed")));
             sw = Integer.parseInt(req.getParameter("ShedWidth"));
             sl = Integer.parseInt(req.getParameter("ShedLength"));
         }
