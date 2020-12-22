@@ -196,8 +196,7 @@
         <div class="custemstykpris"></div>
         <p>Ialt med moms: ${requestScope.sumWithMoms} kr.</p>
         <p>fortjeneste ${requestScope.fortjeneste} kr.</p>
-        <p>Custom pris:</p>
-        <input type="number"id="custompris" name="custompris " value="${requestScope.sumWithMoms}">
+        <p><strong> Kundens pris: ${requestScope.sumWithMoms}</strong></p>
     </div>
 </div>
 <hr class="solid">

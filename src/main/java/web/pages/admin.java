@@ -29,7 +29,6 @@ public class admin extends BaseServlet {
             try {
             } catch (Exception e) {
                 e.printStackTrace();
-
             }
             req.setAttribute("MaTsFoRu", mats);
             mats.addAll((Collection<? extends Materials>) API.getAllMaterials());
