@@ -68,7 +68,6 @@ public class BomService implements BomFactory {
             Materials customCutSSternBoard = new Materials(12, "Bræt", remainingLength, shedPlanks, "Sternbrædder til siderne Skur(Længde) (Factory cut)", 350);
             BOM.add(customCutSSternBoard);
         }
-
     }
 
     public void calculateCarportMaterials() {
