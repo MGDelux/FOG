@@ -157,7 +157,7 @@ public class DBMaterials implements MaterialsRepo {
     @Override
     public void addFittingsAndScrews(Materials materials, int id) throws SQLException {
         try (Connection conn = db.connect()) {
-            String sql = "INSERT INTO CartPortMaterialer (BeslagOgSkruer_Navn, BeslagOgSkruer_Length, BeslagOgSkruer_antal, BeslagOgSkruer_Beskrivelse, BeslagOgSkruer_Pris) VALUE(?,?,?,?,?) ";
+            String sql = "INSERT INTO BeslagOgSkruer (BeslagOgSkruer_Navn, BeslagOgSkruer_Length, BeslagOgSkruer_antal, BeslagOgSkruer_Beskrivelse, BeslagOgSkruer_Pris) VALUE(?,?,?,?,?) ";
             var preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, materials.getName());
             preparedStatement.setInt(2, materials.getLength());

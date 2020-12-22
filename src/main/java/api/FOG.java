@@ -142,7 +142,7 @@ public class FOG {
     }
 
     public void addCarportMaterials(Materials materials, int id) throws SQLException {
-        materialRepo.addCarportMaterial(materials, id);
+        materialRepo.addCarportMaterial(materials,id);
     }
 
     public void deleteCarportMaterial(int id) throws SQLException {
