@@ -63,6 +63,6 @@ public class ThankYou extends BaseServlet {
                 "<p>Adresse: " + customers.getAddress() +
                 "</p><p>By: " + customers.getCity() +
                 "</p><p>Post Nummer: " + customers.getZipCode() +
-                "</p><p>Du kan bruge dette link til at se din forespørgelses detaljer: *LINK* </p>");
+                "</p><p>Du kan bruge dette link til at se din forespørgelses detaljer: http://solidcode.xyz/FOG-1.0/carportDetails/ </p>");
     }
 }

@@ -25,8 +25,8 @@ public class Shed {
         String toString = "";
         if (width != 0 || length != 0) {
             toString = toString +
-                    " Brede: " + width +
-                    " Længde: " + length;
+                    "cm Brede: " + width +
+                    " Længde: " + length + "cm";
             return toString;
         }
         toString = " Intent skur";

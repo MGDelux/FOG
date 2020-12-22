@@ -10,6 +10,7 @@ import web.BaseServlet;
 import web.SVG.SvgFactory;
 import web.SVG.svgDraw;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -79,8 +80,38 @@ public class QueryDetails extends BaseServlet {
                 e.getMessage();
             }
         }
+        if (req.getParameter("CarportUpdate") != null) {
+            updateCarport(req);
+        }
+        if (req.getParameter("SendTilbud") != null) {
+            try {
+                createFinalOffer(req);
+            } catch (SQLException | MessagingException | BomException throwables) {
+                throwables.printStackTrace();
+            }
+        }
         updateCarport(req);
         render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
+    }
+
+    private void createFinalOffer(HttpServletRequest req) throws SQLException, MessagingException, BomException {
+        BomService bomService = new BomService();
+
+        HttpSession session = req.getSession();
+        double offerSum = Double.parseDouble(req.getParameter("customvalue"));
+        int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+        Queries queries = API.getQueryById(id);
+        String extraText = "<p>Plukliste: </p>";
+        extraText = extraText + bomService.newBom(queries.getCarport(), queries.getShed()).toString();
+        API.newMail(queries.getEmail(), "Carport Forespørgelse Tilbud", "<h1>Vi har et tilbud til dig:</h1>" +
+                "<h2>Vedr din. forespørgelse #" + id + "</h2> " +
+                "<p>Vi sender dig denne mail som svar på din forespørgelse og vi har lavet dette tilbud til dem: </p>" +
+                "<p>Vi kan tilbyde dig carporten til:</p> <h5> " + offerSum + "</h5><p>kr</p>" +
+                "<h4>Carport Details:</h4>" +
+                "<p>" + queries.getCarport() + "</p> <h4> Skur:</h4> <p> " + queries.getShed() + "</p>" +
+                "<h4>MVH. - FOG </h4>" + extraText);
+
+
     }
 
     private void calculateBOM(HttpServletRequest req) throws SQLException, BomException {
@@ -91,6 +122,7 @@ public class QueryDetails extends BaseServlet {
         BomService bomService = new BomService();
         materials.addAll(bomService.newBom(querybyId.getCarport(), querybyId.getShed()));
         req.setAttribute("BOM", materials);
+        System.out.println("set B O M " + materials);
         calculateSum(materials, req);
     }
 
@@ -111,28 +143,30 @@ public class QueryDetails extends BaseServlet {
         double fortjeneste = sumWithOutMoms - kostPris;
         req.setAttribute("sumWithOutMoms", numberFormat.format(sumWithOutMoms));
         req.setAttribute("kostPris", numberFormat.format(kostPris));
-        req.setAttribute("sumWithMoms",numberFormat.format(sumWithMoms));
-        req.setAttribute("fortjeneste",numberFormat.format(fortjeneste));
+        req.setAttribute("sumWithMoms", numberFormat.format(sumWithMoms));
+        req.setAttribute("fortjeneste", numberFormat.format(fortjeneste));
     }
 
 
     private void updateCarport(HttpServletRequest req) {
         HttpSession session = req.getSession();
-        int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+        final int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
         req.removeAttribute("svgDraw");
         int l = Integer.parseInt(req.getParameter("CarportLength"));
         int w = Integer.parseInt(req.getParameter("CarportWidth"));
-        int sw = 0;
-        int sl = 0;
+        int sw;
+        int sl;
         if (Objects.equals(req.getParameter("includeShed"), "on")) {
             System.out.println((req.getParameter("includeShed")));
             sw = Integer.parseInt(req.getParameter("ShedWidth"));
             sl = Integer.parseInt(req.getParameter("ShedLength"));
+        } else {
+            sw = 0;
+            sl = 0;
         }
         SvgFactory svgFactory = new svgDraw();
         String carportSVG = "";
         if (Integer.parseInt(req.getParameter("tagChoice")) == 1) {
-            //If tagChoice == 1 flat // 0 == angled
             carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));
             API.updateQuery(id, new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));
         } else {

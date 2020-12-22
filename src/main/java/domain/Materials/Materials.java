@@ -46,13 +46,9 @@ public class Materials {
 
     @Override
     public String toString() {
-        return "Materials{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", length=" + length +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
+        return "\nmateriale: " + name +
+                "\n, Længde: " + length +
+                "\n, Mængde: " + amount +
+                "\n, Matriale Beskrivelse: " + description;
     }
 }
