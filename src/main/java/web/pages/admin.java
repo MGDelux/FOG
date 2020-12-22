@@ -95,10 +95,8 @@ public class admin extends BaseServlet {
         int length = Integer.parseInt(req.getParameter("materialLength"));
         int price = Integer.parseInt(req.getParameter("materialPrice"));
         try {
-           API.addCarportMaterials(new Materials(id,name,length,amount,description,price),id);
+           API.addCarportMaterials(new Materials(id,name,length,amount,description,price));
             resp.sendRedirect(req.getContextPath() + "/admin/");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

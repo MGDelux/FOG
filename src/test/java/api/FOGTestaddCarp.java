@@ -29,7 +29,7 @@ class FOGTestaddCarp {
     @Test
     void addCarportMaterials() throws SQLException {
         Materials materials = new Materials(1,"smt træ", 17,2,"Det er  langt træ",2.24);
-        FOG.addCarportMaterials(materials,1);
+        FOG.addCarportMaterials(materials);
         FOG.deleteCarportMaterial(5);
     }
 }

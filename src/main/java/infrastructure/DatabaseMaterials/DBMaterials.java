@@ -99,8 +99,9 @@ public class DBMaterials implements MaterialsRepo {
         }
     }
 
+
     @Override
-    public void addCarportMaterial(Materials materials, int id) throws SQLException {
+    public void addCarportMaterial(Materials materials) throws SQLException {
         try (Connection conn = db.connect()) {
             String sql = "INSERT INTO CartPortMaterialer (Carportmateriale_Navn, Carportmateriale_Length, Carportmateriale_antal, materiale_Beskrivelse, materiale_Pris) VALUE(?,?,?,?,?) ";
             var preparedStatement = conn.prepareStatement(sql);

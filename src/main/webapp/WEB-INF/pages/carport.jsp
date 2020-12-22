@@ -81,9 +81,9 @@
     <p>Carport bredde:</p>
     </table>
 
-        <input required type="range" class="form-control-range" value="240" min="240" max="750" step="30"
+        <input required type="range" class="form-control-range" value="240" min="240" max="720" step="30"
                id="customRange3" name="CarportWidth" oninput="amount.value=customRange3.value">
-        <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="750"
+        <input disabled="disabled" class="outputshowcase" id="amount" type="number" value="240" min="240" max="720"
                oninput="customRange3.value=amount.value"/>
         <p>Carport længde:</p>
         <input required type="range" class="form-control-range" value="240" min="240" max="780" step="30"
@@ -97,7 +97,7 @@
                 <div class="column">
                     <p>Faldt tag:</p>
                     <label>
-                        <input type="radio" value="on" name="radio" >
+                        <input type="radio" value="on" name="radio" checked >
                         <img class="radioimage" src="https://i.imgur.com/bp4dryG.png" checked>
                     </label>
                 </div>

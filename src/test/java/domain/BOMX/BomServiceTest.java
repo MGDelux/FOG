@@ -20,7 +20,7 @@ class BomServiceTest {
     @Test
     void newBom() throws EmployeeError, SQLException, BomException, DBError {
         BomService bomService = new BomService();
-        Carport carport = new Carport(420,420, Carport.roofType.FLAT,10);
+        Carport carport = new Carport(420,690, Carport.roofType.FLAT,10);
         Shed shed = new Shed(240,400);
         bomService.newBom(carport,shed);
     }
