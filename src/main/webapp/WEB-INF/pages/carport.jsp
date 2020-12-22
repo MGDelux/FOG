@@ -181,7 +181,7 @@
                 </div>
             </div>
 
-            <button type="submit" name="submitQ" class="btn btn-primary">Send forespørgsel</button>
+            <button type="submit" name="submitQ" value="submit" class="btn btn-primary">Send forespørgsel</button>
         </div>
         </div>
     </form>
