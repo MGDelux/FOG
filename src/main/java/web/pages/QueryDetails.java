@@ -17,8 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * CREATED BY mathias @ 14-12-2020 - 12:54
@@ -88,8 +90,31 @@ public class QueryDetails extends BaseServlet {
         Queries querybyId = API.getQueryById(id);
         BomService bomService = new BomService();
         materials.addAll(bomService.newBom(querybyId.getCarport(), querybyId.getShed()));
-        req.setAttribute("BOM",materials);
+        req.setAttribute("BOM", materials);
+        calculateSum(materials, req);
     }
+
+    private void calculateSum(ArrayList<Materials> materials, HttpServletRequest req) {
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        double sumWithOutMoms = 0;
+        double kostPris = 0;
+        double sumWithMoms = 0;
+
+        for (Materials m : materials) {
+            sumWithOutMoms = sumWithOutMoms + m.getPrice();
+            System.out.println(sumWithOutMoms);
+
+        }
+        kostPris = sumWithOutMoms;
+        sumWithOutMoms = sumWithOutMoms * 1.65;
+        sumWithMoms = sumWithOutMoms * 1.25;
+        double fortjeneste = sumWithOutMoms - kostPris;
+        req.setAttribute("sumWithOutMoms", numberFormat.format(sumWithOutMoms));
+        req.setAttribute("kostPris", numberFormat.format(kostPris));
+        req.setAttribute("sumWithMoms",numberFormat.format(sumWithMoms));
+        req.setAttribute("fortjeneste",numberFormat.format(fortjeneste));
+    }
+
 
     private void updateCarport(HttpServletRequest req) {
         HttpSession session = req.getSession();
@@ -97,8 +122,12 @@ public class QueryDetails extends BaseServlet {
         req.removeAttribute("svgDraw");
         int l = Integer.parseInt(req.getParameter("CarportLength"));
         int w = Integer.parseInt(req.getParameter("CarportWidth"));
-        int sw = Integer.parseInt(req.getParameter("ShedWidth"));
-        int sl = Integer.parseInt(req.getParameter("ShedLength"));
+        int sw = 0;
+        int sl = 0;
+        if (Objects.equals(req.getParameter("includeShed"), "on")) {
+            sw = Integer.parseInt(req.getParameter("ShedWidth"));
+            sl = Integer.parseInt(req.getParameter("ShedLength"));
+        }
         SvgFactory svgFactory = new svgDraw();
         String carportSVG = "";
         if (Integer.parseInt(req.getParameter("tagChoice")) == 1) {

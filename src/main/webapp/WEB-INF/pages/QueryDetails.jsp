@@ -156,6 +156,9 @@
     </div>
 </div>
 <hr class="solid">
+    <div align="center" class="SVGContainer">  ${svgDraw}</div>
+    </div>
+    <hr class="solid">
 <div class="stykliste">
     <h1>STYKLISTE:</h1>
     <div class="styk">
@@ -184,25 +187,23 @@
        </thead>
         </table>
         <div class="stykpris">
+            <p>Kostpris:  ${requestScope.kostPris} kr.</p>
             <h5>Pris forslag med dæknings grad:</h5>
-            <p>Ialt uden moms:</p>
-            <p>Kostpris:</p>
+            <p>Dæknignsgrad: 65%</p>
+            <p>Ialt uden moms: ${requestScope.sumWithOutMoms} kr.</p>
             <hr class="solid">
-            <p>Dæknignsgrad:</p>
         </div>
         <div class="custemstykpris"></div>
-        <p>Ialt med moms:</p>
+        <p>Ialt med moms: ${requestScope.sumWithMoms} kr.</p>
+        <p>fortjeneste ${requestScope.fortjeneste} kr.</p>
         <p>Custom pris:</p>
-        <input type="number">
+        <input type="number"id="custompris" name="custompris " value="${requestScope.sumWithMoms}">
     </div>
 </div>
 <hr class="solid">
 
 
 
-    <div align="center" class="SVGContainer">  ${svgDraw}</div>
-</div>
-<hr class="solid">
 
 <div class="final">
     <h1>FINAL STUFF:</h1>
