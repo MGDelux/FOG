@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="customer" scope="request" type="domain.Customers.Customers"/>
+<jsp:useBean id="customer" scope="session" type="domain.Customers.Customers"/>
 <jsp:useBean id="query" scope="request" type="domain.Queries.Queries"/>
 <%--
   Created by IntelliJ IDEA.
