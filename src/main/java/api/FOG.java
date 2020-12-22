@@ -141,8 +141,8 @@ public class FOG {
         materialRepo.updateCarportMaterial(materials, id);
     }
 
-    public void addCarportMaterials(Materials materials, int id) throws SQLException {
-        materialRepo.addCarportMaterial(materials, id);
+    public void addCarportMaterials(Materials materials) throws SQLException {
+        materialRepo.addCarportMaterial(materials);
     }
 
     public void deleteCarportMaterial(int id) throws SQLException {

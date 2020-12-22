@@ -77,8 +77,10 @@ public class admin extends BaseServlet {
         int price = Integer.parseInt(req.getParameter("materialPrice"));
         System.out.println(amount + name + description + price);
         try {
-          //  API.addCarportMaterials(new Materials(2,"awe",4,24, "we",23));
+        API.addCarportMaterials(new Materials(2,"awe",4,24, "we",23));
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         } finally {
 
         }
