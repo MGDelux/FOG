@@ -2,15 +2,18 @@
 <h1 align="center">Project FOG</h1>
 <h3 align="center">By Team "SolidCode"</h3>
 
-- Rapport [LINK](http://solidcode.xyz/solidcodeFOGrapport/)
+<h4>Links & information:</h4>
+
+- Rapport [LINK](http://solidcode.xyz/Rapports/) soon™
 
 - Webpage [Team WebPage](http://solidcode.xyz/)
 
 - Project Page: [ ONLINE Project Page](http://solidcode.xyz/FOG-1.0/)
 
--<p> Test Users: Sales Employee Email: "employee@mail.com" Password: "password"</p>
+<h4>Test users:</h4>
+<p> Test Users: Sales Employee Email: "employee@mail.com" Password: "password"</p>
 
--<p>Admin Employee Email: "admin@mail.com" Password: "password"</p>
+<p>Admin Employee Email: "admin@mail.com" Password: "password"</p>
 
 <h4>Team:</h4>
 <a href="https://github.com/Tenz331" rel="nofollow">Emil</a> - <a href="https://github.com/Janussr" rel="nofollow">Janus</a> - <a href="https://github.com/MGDelux" rel="nofollow">Mathias</a>
