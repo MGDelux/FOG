@@ -8,8 +8,8 @@
 
 - Project Page: [ ONLINE Project Page](http://solidcode.xyz/FOG-1.0/)
 
--<p> Test Users: Sales Employee Email: "employee@mail.com" Password: "password"</
-p>
+-<p> Test Users: Sales Employee Email: "employee@mail.com" Password: "password"</p>
+
 -<p>Admin Employee Email: "admin@mail.com" Password: "password"</p>
 <h4>Team:</h4>
 <a href="https://github.com/Tenz331" rel="nofollow">Emil</a> - <a href="https://github.com/Janussr" rel="nofollow">Janus</a> - <a href="https://github.com/MGDelux" rel="nofollow">Mathias</a>
