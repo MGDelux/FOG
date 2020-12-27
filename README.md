@@ -6,8 +6,6 @@
 
 - Rapport [LINK](http://solidcode.xyz/Rapports/) soon™
 
-- Webpage [Team WebPage](http://solidcode.xyz/)
-
 - Project Page: [ ONLINE Project Page](http://solidcode.xyz/FOG-1.0/)
 
 <h4>Test users:</h4>
