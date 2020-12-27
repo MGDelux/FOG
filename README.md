@@ -8,7 +8,7 @@
 
 - Project Page: [ ONLINE Project Page](http://solidcode.xyz/FOG-1.0/)
 
--ScrumBoard / [taiga](https://tree.taiga.io/project/mgdelux-fog/)
+- ScrumBoard / [Taiga Board](https://tree.taiga.io/project/mgdelux-fog/)
 
 <h4>Test users:</h4>
 <p> Test Users: Sales Employee Email: "employee@mail.com" Password: "password"</p>
