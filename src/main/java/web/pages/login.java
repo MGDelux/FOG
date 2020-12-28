@@ -1,11 +1,8 @@
 package web.pages;
-
 import Repoistory.Employee.Exceptions.EmployeeError;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Employees.Employee;
 import web.BaseServlet;
-
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +18,7 @@ import java.sql.SQLException;
 
 public class login extends BaseServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         try {

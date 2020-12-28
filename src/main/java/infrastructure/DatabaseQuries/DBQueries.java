@@ -23,9 +23,9 @@ public class DBQueries implements QueriesRepo {
     }
 
     @Override
-    public synchronized Queries newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
+    public synchronized Queries newQuery(Customers customers, Carport carport, Shed shed) {
         try (Connection connection = db.connect()) {
-            String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length,assigned_seller) VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO forespørgsler (kunde,Carport_Bredde,Carport_Længde,Tag_Type,has_shed,shed_width,shed_length) VALUES (?,?,?,?,?,?,?)";
 
             var preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, customers.getEmail());
@@ -40,7 +40,6 @@ public class DBQueries implements QueriesRepo {
                 preparedStatement.setNull(6, Types.INTEGER);
                 preparedStatement.setNull(7, Types.INTEGER);
             }
-            preparedStatement.setString(8, "Ingen sælger tildelt endnu");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -150,16 +149,15 @@ public class DBQueries implements QueriesRepo {
     private Queries ParseQueries(ResultSet set) throws SQLException {
         Shed shed = null;
         if (set.getBoolean("forespørgsler.has_shed")) {
-            shed = new Shed(
+              shed = new Shed(
                     set.getInt("forespørgsler.shed_width"),
                     set.getInt("forespørgsler.shed_length"));
         }
-        Carport carport = null;
-        carport = new Carport(
+        Carport carport = new Carport(
                 set.getInt("forespørgsler.Carport_Bredde"),
                 set.getInt("forespørgsler.Carport_Længde"),
                 Carport.roofType.valueOf(set.getString("forespørgsler.Tag_Type")), 90);
-        return new Queries(set.getInt("forespørgsler.Order_Id"), set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"), "");
+        return new Queries(set.getInt("forespørgsler.Order_Id"), set.getString("forespørgsler.kunde"), carport, shed, set.getString("forespørgsler.assigned_seller"));
 
     }
 
@@ -179,10 +177,6 @@ public class DBQueries implements QueriesRepo {
         return queries;
     }
 
-    @Override
-    public Queries getSpecificQueryByUserID(int id) throws SQLException {
-        return null;
-    }
 
 
     @Override
@@ -194,7 +188,7 @@ public class DBQueries implements QueriesRepo {
         preparedStatement = connection.prepareStatement(SQL);
         try {
             ResultSet set = preparedStatement.executeQuery();
-            while (set.next()) {
+            if (set.next()) {
                 return ParseQueries(set);
             }
         } catch (SQLException throwables) {

@@ -4,12 +4,12 @@ package domain.Customers;
  * CREATED BY mathi @ 23-11-2020 - 15:18
  **/
 public class Customers {
-    private int id;
-    private String email;
-    private int zipCode;
-    private String city;
-    private String address;
-    private int phoneNr;
+    private final int id;
+    private final String email;
+    private final int zipCode;
+    private final String city;
+    private final String address;
+    private final int phoneNr;
 
     public Customers(int id, String email, int zipCode, String city, String address, int phoneNr) {
         this.id = id;

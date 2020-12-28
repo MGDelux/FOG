@@ -5,14 +5,11 @@ import domain.Queries.Queries;
 import web.BaseServlet;
 import web.SVG.SvgFactory;
 import web.SVG.svgDraw;
-
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -26,14 +23,12 @@ public class ThankYou extends BaseServlet {
     // private final System.Logger logger = LoggerFactory.
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO: tjek om user er logget ind her.
-
         try {
             Queries q = API.getLatestQuery();
             Customers customers = API.getExistingUserInfomation(q.getEmail());
             System.out.println(q.toString());
             req.setAttribute("query", q);
-            String carportSVG = "";
+            String carportSVG;
             SvgFactory svgFactory = new svgDraw();
             carportSVG = svgFactory.drawCarport(q);
             req.setAttribute("svgDraw", carportSVG);

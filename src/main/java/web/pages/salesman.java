@@ -2,6 +2,7 @@ package web.pages;
 
 import domain.Employees.Employee;
 import domain.Queries.Queries;
+import infrastructure.DatabaseUser.Execptions.CustomerExecption;
 import web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -47,10 +48,18 @@ public class salesman extends BaseServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("POST");
         if (req.getParameter("logout") != null) {
-            logout(req, resp);
+            try {
+                logout(req, resp);
+            } catch (CustomerExecption throwables) {
+                try {
+                    throw new CustomerExecption(throwables.toString());
+                } catch (CustomerExecption customerExecption) {
+                    customerExecption.printStackTrace();
+                }
+            }
         }
         if (req.getParameter("assigSellButton") != null) {
             Employee employee = getEmployee(req, resp, "error in getting employe info");
@@ -81,7 +90,7 @@ public class salesman extends BaseServlet {
 
     }
 
-    private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException, CustomerExecption {
         if (getEmployee(req, resp, "error") != null) {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);
@@ -89,7 +98,7 @@ public class salesman extends BaseServlet {
             resp.sendRedirect(req.getContextPath() + " ");
 
         } else {
-            //do something set error msg
+            throw new CustomerExecption("not logged in?");
         }
     }
 }

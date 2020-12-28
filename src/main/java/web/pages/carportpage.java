@@ -1,13 +1,9 @@
 package web.pages;
-
-import api.utils;
 import domain.Carport.Carport;
 import domain.Customers.Customers;
-import domain.Queries.Queries;
 import domain.Shed.Shed;
+import infrastructure.DatabaseUser.Execptions.CustomerExecption;
 import web.BaseServlet;
-
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +25,7 @@ public class carportpage extends BaseServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
             getPageInfomation(req);
             resp.sendRedirect(req.getContextPath() + "/thankyou/1");
@@ -95,14 +91,14 @@ public class carportpage extends BaseServlet {
     }
 
 
-    private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) {
+    private Customers getUser(String eMail, int zipCode, String city, String address, int phoneNR) throws CustomerExecption {
         int count = 1; //bad way to do it kekw will fix later
         try {
-            for (Customers customers : API.getAllUsers()) {
+            for (Customers ignored : API.getAllUsers()) {
                 count++;
             }
         } catch (NullPointerException | SQLException e) {
-            e.getMessage();
+            throw new CustomerExecption(e.getMessage());
         }
         return new Customers(count, eMail, zipCode, city, address, phoneNR);
     }

@@ -33,7 +33,7 @@ public class QueryDetails extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
-            String carportSVG = "";
+            String carportSVG;
             List<Materials> materials = new ArrayList<>();
             req.setAttribute("BOM", materials);
 
@@ -47,10 +47,9 @@ public class QueryDetails extends BaseServlet {
                 } else {
                     req.setAttribute("shedCheckbox", "unchecked");
                 }
-                if (carportSVG.isEmpty() || carportSVG.equals("")) {
                     SvgFactory svgFactory = new svgDraw();
                     carportSVG = svgFactory.drawCarport(querybyId);
-                }
+
                 req.setAttribute("svgDraw", carportSVG);
                 req.setAttribute("qById", querybyId);
 
@@ -77,7 +76,11 @@ public class QueryDetails extends BaseServlet {
             try {
                 calculateBOM(req);
             } catch (SQLException | BomException e) {
-                e.getMessage();
+                try {
+                    throw new  BomException(e.getMessage());
+                } catch (BomException bomException) {
+                    bomException.printStackTrace();
+                }
             }
         }
         if (req.getParameter("CarportUpdate") != null) {
@@ -106,7 +109,7 @@ public class QueryDetails extends BaseServlet {
         API.newMail(queries.getEmail(), "Carport Forespørgelse Tilbud", "<h1>Vi har et tilbud til dig:</h1>" +
                 "<h2>Vedr din. forespørgelse #" + id + "</h2> " +
                 "<p>Vi sender dig denne mail som svar på din forespørgelse og vi har lavet dette tilbud til dem: </p>" +
-                "<p>Vi kan tilbyde dig carporten til:</p> <h5> " + offerSum + "</h5><p>kr</p>" +
+                "<p>Vi kan tilbyde dig carporten til:</p> <h5> " + offerSum + " kr.</h5>" +
                 "<h4>Carport Details:</h4>" +
                 "<p>" + queries.getCarport() + "</p> <h4> Skur:</h4> <p> " + queries.getShed() + "</p>" +
                 "<h4>MVH. - FOG </h4>" + extraText);
@@ -115,22 +118,20 @@ public class QueryDetails extends BaseServlet {
     }
 
     private void calculateBOM(HttpServletRequest req) throws SQLException, BomException {
-        ArrayList<Materials> materials = new ArrayList<>();
         HttpSession session = req.getSession();
         int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
         Queries querybyId = API.getQueryById(id);
         BomService bomService = new BomService();
-        materials.addAll(bomService.newBom(querybyId.getCarport(), querybyId.getShed()));
+        ArrayList<Materials> materials = new ArrayList<>(bomService.newBom(querybyId.getCarport(), querybyId.getShed()));
         req.setAttribute("BOM", materials);
-        System.out.println("set B O M " + materials);
         calculateSum(materials, req);
     }
 
     private void calculateSum(ArrayList<Materials> materials, HttpServletRequest req) {
         DecimalFormat numberFormat = new DecimalFormat("#.00");
         double sumWithOutMoms = 0;
-        double kostPris = 0;
-        double sumWithMoms = 0;
+        double kostPris;
+        double sumWithMoms;
 
         for (Materials m : materials) {
             sumWithOutMoms = sumWithOutMoms + m.getPrice();
@@ -165,12 +166,11 @@ public class QueryDetails extends BaseServlet {
             sl = 0;
         }
         SvgFactory svgFactory = new svgDraw();
-        String carportSVG = "";
+        String carportSVG;
         if (Integer.parseInt(req.getParameter("tagChoice")) == 1) {
             carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));
             API.updateQuery(id, new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));
         } else {
-            //TODO: CUSTOM ANGLE
             carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.ANGLE, 40), new Shed(sw, sl));
             API.updateQuery(id, new Carport(w, l, Carport.roofType.ANGLE, 40), new Shed(sw, sl));
         }

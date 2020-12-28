@@ -46,24 +46,6 @@ public class DBEmployee implements EmployeeRepo {
     }
 
     @Override
-    public boolean checkMail(String mail) throws SQLException {
-        Connection connection = db.connect();
-        PreparedStatement ps = connection.prepareStatement("SELECT * From medarbejder where email = ?");
-        try {
-            ps.setString(1, mail);
-            ResultSet resultSet = ps.executeQuery();
-                return resultSet.next();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
-        } finally {
-            db.closeConnection();
-            ps.close();
-        }
-
-    }
-
-    @Override
     public synchronized Employee login(String email) throws loginError, SQLException {
         PreparedStatement preparedStatement;
         String sql = "SELECT * FROM medarbejder WHERE email = ?";

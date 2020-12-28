@@ -13,9 +13,9 @@ import java.util.Properties;
  * CREATED BY mathias @ 02-12-2020 - 16:17
  **/
 public class MailService implements EmailRepo {
-    private static String host = "smtp.gmail.com" ;
-    private static String port = "587";
-    private static String fromAddress = "solidcodefog@gmail.com";
+    private static final String host = "smtp.gmail.com" ;
+    private static final String port = "587";
+    private static final String fromAddress = "solidcodefog@gmail.com";
     private final String password;
 
     public MailService(String password) {

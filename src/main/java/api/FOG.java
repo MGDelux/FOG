@@ -15,12 +15,14 @@ import domain.Employees.Employee;
 import Repoistory.Employee.Exceptions.loginError;
 import domain.Shed.Shed;
 import infrastructure.DatabaseUser.Execptions.CustomerExecption;
+
 import javax.mail.MessagingException;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  * CREATED BY mathias @ 23-11-2020 - 15:46
+ * API should handle all our methods from Servlet(s)
  **/
 public class FOG {
     private final EmployeeRepo employeeRepo;
@@ -29,6 +31,7 @@ public class FOG {
     private final QueriesRepo queriesRepo;
     private final MaterialsRepo materialRepo;
 
+    //Constructor -
     public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, EmailRepo emailRepo, QueriesRepo queriesRepo, MaterialsRepo materialRepo) {
         this.employeeRepo = employeeRepo;
         this.customerRepo = customerRepo;
@@ -39,16 +42,16 @@ public class FOG {
 
 
     public void createSalesManEmployee(String email, String password) throws SQLException, EmployeeError {
-        byte[] salt = Employee.genereateSalt();
+        byte[] salt = Employee.genereateSalt(); // magic space code stuff
         employeeRepo.createEmployee(new Employee(Employee.Role.SALESMAN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
     public void createAdminEmployee(String email, String password) throws SQLException, EmployeeError {
         byte[] salt = Employee.genereateSalt(); // magic space code stuff
-         employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
+        employeeRepo.createEmployee(new Employee(Employee.Role.ADMIN, 0, email, salt, Employee.calculateSecret(salt, password)));
     }
 
-    //WIP
+
     public boolean checkIfNewCustomer(String email) throws SQLException {
         return customerRepo.checkIfUsersIsInSystem(email);
     }
@@ -61,7 +64,7 @@ public class FOG {
      * @param city
      * @param adress
      * @param phoneNr
-     * @return
+     * @return domain.Customers
      * @throws SQLException
      */
     public Customers addCustomer(String email, int zip, String city, String adress, int phoneNr) throws SQLException {
@@ -76,7 +79,7 @@ public class FOG {
             }
             return customerRepo.addNewCustomer(new Customers(countIds, email, zip, city, adress, phoneNr));
         } else {
-            return customerRepo.getExistingUserInfomation(email); //note ca. @10:11- what is more interesting? results will not surprise you: WoW > project
+            return customerRepo.getExistingUserInfomation(email); //basic implementation should replace adress phone nr ect if new, might be the same custemor but at a new adress
         }
     }
 
@@ -99,16 +102,8 @@ public class FOG {
         }
     }
 
-    public void deleteQurey(int id) throws SQLException {
-        queriesRepo.deleteOrderById(id);
-    }
-
-    public Customers getExistingCustomerInfomationById(int id) throws SQLException {
-        return customerRepo.getExistingUserInfomationById(id);
-    }
-
     public void newQuery(Customers customers, Carport carport, Shed shed) throws SQLException {
-        System.out.println("API  new q: "+customers + " " +carport + " " + shed);
+        System.out.println("API  new q: " + customers + " " + carport + " " + shed);
         queriesRepo.newQuery(customers, carport, shed);
     }
 
@@ -125,7 +120,7 @@ public class FOG {
         return emailRepo.newEmail(new Email(toAdress, subject, message));
     }
 
-    public  synchronized Queries  getLatestQuery() throws SQLException {
+    public synchronized Queries getLatestQuery() throws SQLException {
         return queriesRepo.getLatestQuery();
     }
 
@@ -142,8 +137,8 @@ public class FOG {
         materialRepo.updateCarportMaterial(materials, id);
     }
 
-    public void addCarportMaterials(Materials materials, int id) throws SQLException{
-        materialRepo.addCarportMaterial(materials,id);
+    public void addCarportMaterials(Materials materials, int id) throws SQLException {
+        materialRepo.addCarportMaterial(materials, id);
     }
 
     public void deleteCarportMaterial(int id) throws SQLException {
@@ -155,7 +150,7 @@ public class FOG {
     }
 
     public void updateQuery(int id, Carport carport, Shed shed) {
-        queriesRepo.updateQuery(id,carport,shed);
+        queriesRepo.updateQuery(id, carport, shed);
     }
 
 
@@ -172,9 +167,10 @@ public class FOG {
     }
 
     public List<Queries> getQueryByEmail(String email) throws SQLException {
-       return queriesRepo.getQueryByEmail(email);
+        return queriesRepo.getQueryByEmail(email);
     }
-    public Iterable<Materials> findScrews(){
+
+    public Iterable<Materials> findScrews() {
         return materialRepo.getAllScrews();
     }
 }

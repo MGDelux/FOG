@@ -27,8 +27,7 @@ public class carportDetails extends BaseServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("Email");
         try {
-            ArrayList<Queries> queries = new ArrayList<>();
-            queries.addAll(API.getQueryByEmail(email));
+            ArrayList<Queries> queries = new ArrayList<>(API.getQueryByEmail(email));
             req.setAttribute("Query",queries);
             System.out.println(queries);
         } catch (SQLException throwables) {
