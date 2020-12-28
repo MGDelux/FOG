@@ -1,10 +1,7 @@
 package web.pages;
-
+import Repoistory.Employee.Exceptions.EmployeeError;
 import domain.Materials.Materials;
 import web.BaseServlet;
-import infrastructure.DatabaseMaterials.DBMaterials;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,26 +18,26 @@ import java.util.Collection;
 public class admin extends BaseServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final ArrayList<Materials> mats = new ArrayList<>();
         final ArrayList<Materials> fittingTheScrew = new ArrayList<>();
 
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
             try {
+
+                req.setAttribute("MaTsFoRu", mats);
+                mats.addAll((Collection<? extends Materials>) API.getAllMaterials());
+                System.out.println(mats);
+
+                req.setAttribute("matsScrew", fittingTheScrew);
+                fittingTheScrew.addAll((Collection<? extends Materials>) API.findScrews());
+                System.out.println(fittingTheScrew);
+
+                System.out.println(mats);
+                render("/WEB-INF/pages/admin.jsp", resp, req);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            req.setAttribute("MaTsFoRu", mats);
-            mats.addAll((Collection<? extends Materials>) API.getAllMaterials());
-            System.out.println(mats);
-
-            req.setAttribute("matsScrew", fittingTheScrew);
-            fittingTheScrew.addAll((Collection<? extends Materials>) API.findScrews());
-            System.out.println(fittingTheScrew);
-
-            System.out.println(mats);
-            render("/WEB-INF/pages/admin.jsp", resp, req);
-
 
         } else {
             HttpSession session = req.getSession();
@@ -53,11 +50,15 @@ public class admin extends BaseServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         System.out.println("POST");
         if (req.getParameter("logout") != null) {
-            logout(req, resp);
+            try {
+                logout(req, resp);
+            } catch (EmployeeError employeeError) {
+                employeeError.printStackTrace();
+            }
 
         }
         if (req.getParameter("removeMaterial") != null) {
@@ -74,19 +75,19 @@ public class admin extends BaseServlet {
         if (req.getParameter("replace-material") != null) {
             replaceTreeMats(req, resp);
         }
-        if (req.getParameter("add-screw") != null){
+        if (req.getParameter("add-screw") != null) {
             addFittingsAndScrews(req, resp);
         }
-        if (req.getParameter("replace-screw") != null){
+        if (req.getParameter("replace-screw") != null) {
             replaceFittingsAndScrews(req, resp);
         }
-        if (req.getParameter("removeScrew") != null){
+        if (req.getParameter("removeScrew") != null) {
             removeFittingsAndScrews(req, resp);
         }
 
     }
 
-    private void addTreeMats(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
+    private void addTreeMats(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         int id = Integer.parseInt(req.getParameter("materialId"));
         int amount = Integer.parseInt(req.getParameter("materialAntal"));
         String name = (req.getParameter("materialName"));
@@ -94,13 +95,14 @@ public class admin extends BaseServlet {
         int length = Integer.parseInt(req.getParameter("materialLength"));
         int price = Integer.parseInt(req.getParameter("materialPrice"));
         try {
-           API.addCarportMaterials(new Materials(id,name,length,amount,description,price),id);
+            API.addCarportMaterials(new Materials(id, name, length, amount, description, price), id);
             resp.sendRedirect(req.getContextPath() + "/admin/");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private void replaceTreeMats (HttpServletRequest req, HttpServletResponse resp) {
+
+    private void replaceTreeMats(HttpServletRequest req, HttpServletResponse resp) {
         int id = Integer.parseInt(req.getParameter("materialId"));
         int amount = Integer.parseInt(req.getParameter("materialAntal"));
         String name = (req.getParameter("materialName"));
@@ -108,8 +110,8 @@ public class admin extends BaseServlet {
         int length = Integer.parseInt(req.getParameter("materialLength"));
         int price = Integer.parseInt(req.getParameter("materialPrice"));
         try {
-        API.updateMaterials(new Materials(id,name,length,amount,description,price),id);
-        resp.sendRedirect(req.getContextPath() + "/admin/");
+            API.updateMaterials(new Materials(id, name, length, amount, description, price), id);
+            resp.sendRedirect(req.getContextPath() + "/admin/");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,6 +130,7 @@ public class admin extends BaseServlet {
         }
 
     }
+
     private void addFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
         int id = Integer.parseInt(req.getParameter("screwId"));
         int amount = Integer.parseInt(req.getParameter("screwAntal"));
@@ -138,12 +141,11 @@ public class admin extends BaseServlet {
         try {
             API.addFittingsAndScrews(new Materials(id, name, length, amount, description, price), id);
             resp.sendRedirect(req.getContextPath() + "/admin/");
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
+
     private void replaceFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
         int id = Integer.parseInt(req.getParameter("screwId"));
         int amount = Integer.parseInt(req.getParameter("screwAntal"));
@@ -158,20 +160,19 @@ public class admin extends BaseServlet {
             throwables.printStackTrace();
         }
     }
+
     private void removeFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
         int value = Integer.parseInt(req.getParameter("removeScrewById"));
         try {
             API.deleteFittingsAndScrews(value);
             resp.sendRedirect(req.getContextPath() + "/admin/");
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
 
-        private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException, EmployeeError {
         if (getEmployee(req, resp, "error") != null) {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);
@@ -179,7 +180,7 @@ public class admin extends BaseServlet {
             resp.sendRedirect(req.getContextPath() + " ");
 
         } else {
-            //do something set error msg
+           throw new EmployeeError("error in log out, not logged in?");
         }
     }
 

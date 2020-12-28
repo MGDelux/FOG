@@ -36,7 +36,7 @@ public class Carport {
         this.roofAngle = roofAngle;
     }
 
-    public static enum roofType{
+    public enum roofType{
         FLAT,
         ANGLE
     }

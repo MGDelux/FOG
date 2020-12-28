@@ -11,8 +11,6 @@ public interface MaterialsRepo {
 
     Iterable<Materials> getAllMaterials();
 
-    Materials findMaterial(String s) throws SQLException;
-
     void updateCarportMaterial(Materials materials, int id) throws SQLException;
 
     void addCarportMaterial(Materials materials, int id) throws SQLException;

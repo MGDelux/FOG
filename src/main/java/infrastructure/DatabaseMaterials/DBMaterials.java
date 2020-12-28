@@ -1,16 +1,12 @@
 package infrastructure.DatabaseMaterials;
-
 import Repoistory.Materials.MaterialsRepo;
 import domain.Materials.Materials;
-import domain.Queries.Queries;
 import infrastructure.DatabaseConnector.Database;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * CREATED BY mathias @ 26-11-2020 - 11:35
@@ -59,25 +55,6 @@ public class DBMaterials implements MaterialsRepo {
         return materials;
     }
 
-    public Materials findMaterial(String s) throws SQLException {
-        PreparedStatement preparedStatement;
-        String SQL = "SELECT * FROM cartportmaterialer WHERE Carportmateriale_Navn = ?";
-        Connection conn = db.connect();
-        preparedStatement = conn.prepareStatement(SQL);
-        preparedStatement.setString(1, s);
-        try {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return parseMaterials(resultSet);
-            }
-        } catch (SQLException e) {
-            e.getMessage();
-        } finally {
-            db.closeConnection();
-            preparedStatement.close();
-        }
-        return null;
-    }
 
     @Override
     public void updateCarportMaterial(Materials materials, int id) throws SQLException {

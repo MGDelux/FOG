@@ -28,7 +28,7 @@ public class Employee {
         PASSWORD_FACTORY = factory;
     }
 
-    private Role role;
+    private final Role role;
 
     public enum Role {
         ADMIN,
@@ -73,10 +73,6 @@ public class Employee {
 
     public Role getRole() {
         return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public int getId() {

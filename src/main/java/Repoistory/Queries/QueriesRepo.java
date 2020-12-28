@@ -15,7 +15,6 @@ public interface QueriesRepo extends QueriesFactory {
 
     Iterable<Queries> getAllQuires();
 
-    Queries getSpecificQueryByUserID(int id) throws SQLException;
 
     Queries getLatestQuery() throws SQLException;
 

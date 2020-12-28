@@ -4,9 +4,9 @@ package domain.Email;
  * CREATED BY mathias @ 02-12-2020 - 16:08
  **/
 public class Email {
-    private String toAdress;
+    private final String toAdress;
     private String subject;
-    private String message;
+    private final String message;
 
     public Email( String toAdress, String subject, String message) {
         this.toAdress = toAdress;
@@ -28,9 +28,6 @@ public class Email {
         return toAdress;
     }
 
-    public void setToAdress(String toAdress) {
-        this.toAdress = toAdress;
-    }
 
     public String getSubject() {
         return subject;
@@ -44,7 +41,4 @@ public class Email {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
