@@ -30,7 +30,7 @@
         <a class="navbar-brand" href="${pageContext.request.contextPath}/">FOG</a>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/">Forside</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
@@ -63,7 +63,7 @@
     <th scope="col">Antal</th>
     <th scope="col">Navn</th>
     <th scope="col">Beskrivelse</th>
-    <th scope="col">længde</th>
+    <th scope="col">Længde</th>
     <th scope="col">Pris</th>
 </tr>
 </thead>
@@ -150,7 +150,7 @@
     <th scope="col">Antal</th>
     <th scope="col">Navn</th>
     <th scope="col">Beskrivelse</th>
-    <th scope="col">længde</th>
+    <th scope="col">Længde</th>
     <th scope="col">Pris</th>
     </tr>
     </thead>

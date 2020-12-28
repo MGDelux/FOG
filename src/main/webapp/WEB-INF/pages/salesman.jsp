@@ -34,7 +34,7 @@
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">FOG</a>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Forside</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
@@ -84,7 +84,7 @@
                     <th scope="col">Carport dimensioner</th>
                     <th scope="col">Skur dimensioner</th>
                     <th scope="col">Sælger</th>
-                    <th scope="col">Tilbudsudregner</th>
+                    <th scope="col">Tilbudsberegner</th>
                     <th scope="col">Tildel mig</th>
                     <th scope="col">Slet</th>
                 </tr>
