@@ -76,7 +76,7 @@
 <div id="wrapper">
     <div class="carportchoice">
 
-    <h1>Bestil din skrædersyet carport her!</h1>
+    <h1>Bestil din skræddersyet carport her!</h1>
     <h3>Carport:</h3>
     <p>Carport bredde:</p>
     </table>
@@ -95,7 +95,7 @@
         <div class="Carport-tag">
             <div class="row div-wrapper d-flex justify-content-center align-items-center">
                 <div class="column">
-                    <p>Faldt tag:</p>
+                    <p>Fladt tag:</p>
                     <label>
                         <input type="radio" value="on" name="radio" checked >
                         <img class="radioimage" src="https://i.imgur.com/bp4dryG.png" checked>
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="d-none" style="desplay:none" id="text">
-                <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
+                <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet</p>
                 <p>Redskabsrum bredde:</p>
 
                 <div class="Redskabsrum-bredde">
@@ -133,7 +133,7 @@
                            max="370" oninput="customRange5.value=amount3.value"/>
 
                 </div>
-                <p>Redskabsrum-længde:</p>
+                <p>Redskabsrum længde:</p>
                 <div class="Redskabsrum-længde">
                     <input required type="range" class="form-control-range" value="140" min="140" max="420" step="20"
                            id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
@@ -154,18 +154,18 @@
                     <input required type="email" class="form-control" name="Email" id="Email" placeholder="Email">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="phoneNR"><strong>TLF NR</strong></label>
+                    <label for="phoneNR"><strong>Telefon nr</strong></label>
                     <input required type="number" class="form-control" name="phoneNR" id="phoneNR" placeholder="TLFNR">
                 </div>
             </div>
             <div class="form-row  div-wrapper d-flex justify-content-center align-items-center">
                 <div class="form-group col-md-4">
-                    <label for="inputAddress"><strong>Address</strong></label>
+                    <label for="inputAddress"><strong>Addresse</strong></label>
                     <input required type="text" class="form-control" name="inputAddress" id="inputAddress"
                            placeholder="Nørrebrogade">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="address"><strong>Address 2</strong></label>
+                    <label for="address"><strong>Addresse 2</strong></label>
                     <input  type="text" class="form-control" name="adress" id="address"
                            placeholder="Opgang, studie, eller sal">
                 </div>

@@ -71,12 +71,12 @@
     </nav>
     <div class="Container">
         <div class="holder">
-            <h1 style="text-align: center"> Kunde-forespørgelse detaljer:</h1>
+            <h1 style="text-align: center"> Kunde forespørgelse detaljer:</h1>
             <table class="table table-striped table-dark table-md table-bordered table-hover table col-md-11">
                 <thead>
                 <tr>
                     <th scope="col">Kunde</th>
-                    <th scope="col">Forespørgsel</th>
+                    <th scope="col">Tag</th>
                     <th scope="col">Carport</th>
                     <th scope="col">Skur</th>
                 </tr>
@@ -132,7 +132,7 @@
                            max="780" oninput="customRange5.value=amount3.value"/>
 
                 </div>
-                <p><Strong>Redskabsrum-længde:</Strong></p>
+                <p><Strong>Redskabsrum længde:</Strong></p>
                 <div class="Redskabsrum-længde">
                     <input required type="range" class="form-control-range" value="${qById.shed.length}" min="240"
                            max="780" step="30"
@@ -150,7 +150,7 @@
     <div class="tag">
         <h1>TAG:</h1>
         <div class="tbd">
-            <p>TAG type:</p>
+            <p>Tag type:</p>
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required
                     name="tagChoice">
                 <option value="0" selected>${qById.carport.roof}</option>
@@ -170,7 +170,7 @@
         <div class="svgdrawer">
             <h1>Carport Dimensioner</h1>
 
-            <button class="GenererSVG" name="CarportUpdate">Updater carport</button>
+            <button class="GenererSVG" name="CarportUpdate">Opdater carport</button>
         </div>
     </div>
     <hr class="solid">
@@ -209,12 +209,12 @@
                 <p>Kostpris: ${requestScope.kostPris} kr.</p>
                 <h5>Pris forslag med dæknings grad:</h5>
                 <p>Dæknignsgrad: 65%</p>
-                <p>Ialt uden moms: ${requestScope.sumWithOutMoms} kr.</p>
+                <p>I alt uden moms: ${requestScope.sumWithOutMoms} kr.</p>
                 <hr class="solid">
             </div>
             <div class="custemstykpris"></div>
-            <p>Ialt med moms: ${requestScope.sumWithMoms} kr.</p>
-            <p>fortjeneste ${requestScope.fortjeneste} kr.</p>
+            <p>I alt med moms: ${requestScope.sumWithMoms} kr.</p>
+            <p>Fortjeneste ${requestScope.fortjeneste} kr.</p>
             <p><strong> Kundens pris: ${requestScope.sumWithMoms}</strong></p>
             <input name="customvalue" id="customvalue" type="number" value="${requestScope.sumWithMoms}">
         </div>

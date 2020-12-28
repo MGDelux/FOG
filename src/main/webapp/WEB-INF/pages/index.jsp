@@ -31,7 +31,7 @@
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">FOG</a>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Forside</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/carport/">Bestil carporte</a>
@@ -61,7 +61,7 @@
 <div class="bgimg2">
     <div class="brødtekst2">
     <h1 align="center">har allerede bestilt en carport?</h1>
-    <p align="center">Hvis du allerede har bestilt en carport klik knappen nede under og check ud din forspørgelses status!
+    <p align="center">Hvis du allerede har bestilt en carport så klik på knappen nedenunder og check din forspørgelses status!
     </p>
         <form action="${pageContext.request.contextPath}/carportDetails/">
             <input align="center" class="btn btn-primary" type="submit" value="CHECK CARPORT STATUS!" />

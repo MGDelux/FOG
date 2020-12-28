@@ -17,8 +17,8 @@
 
 </head>
 <div class="wrapper">
-    <h1>Tak for din carport forspørgelse!</h1>
-    <p>Din forspørgelse er blevet registreret og du modtager en bekræftelse email snarest.</p>
+    <h1>Tak for din carport forespørgelse!</h1>
+    <p>Din forespørgelse er blevet registreret og du modtager en bekræftelse email snarest.</p>
     <p>Du vil blive kontaktet af en af vores sælgere hurtigst muligt.</p>
     <h4><strong>Forespørgelses detaljer:</strong></h4>
     <h5> Kontakt informationer: </h5>
@@ -26,7 +26,7 @@
         <table class="table">
             <tbody>
             <tr>
-                <th scope="row">EMAIL</th>
+                <th scope="row">EMAIL.</th>
                 <td>${customer.email}</td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
         <table class="table">
             <tbody>
             <tr>
-                <th scope="row">Bredde</th>
+                <th scope="row">Bredde.</th>
                 <td>${query.carport.width}</td>
             </tr>
 
@@ -64,7 +64,7 @@
     </div>
     <div>
     <c:if test="${query.shed != null}">
-    <h5>Redskabs rum specifikationer:</h5>
+    <h5>Redskabsrum specifikationer:</h5>
     <p>Længde: ${query.shed.length}</p>
     <p>Bredde: ${query.shed.width}</p>
     </c:if>
