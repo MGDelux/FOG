@@ -72,6 +72,7 @@ public class QueryDetails extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         if (req.getParameter("beregnstyk") != null) {
             try {
                 calculateBOM(req);
@@ -92,6 +93,18 @@ public class QueryDetails extends BaseServlet {
             } catch (SQLException | MessagingException | BomException throwables) {
                 throwables.printStackTrace();
             }
+        }
+        Queries querybyId = null;
+        int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
+        try {
+            querybyId = API.getQueryById(id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        if (querybyId.getShed().getWidth() != 0 || querybyId.getShed().getLength() != 0) {
+            req.setAttribute("shedCheckbox", "checked");
+        } else {
+            req.setAttribute("shedCheckbox", "unchecked");
         }
         updateCarport(req);
         render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
@@ -125,6 +138,7 @@ public class QueryDetails extends BaseServlet {
         ArrayList<Materials> materials = new ArrayList<>(bomService.newBom(querybyId.getCarport(), querybyId.getShed()));
         req.setAttribute("BOM", materials);
         calculateSum(materials, req);
+        updateCarport(req);
     }
 
     private void calculateSum(ArrayList<Materials> materials, HttpServletRequest req) {
