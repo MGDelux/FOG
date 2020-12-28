@@ -4,16 +4,32 @@
 
 <h4>Links & information:</h4>
 
-- Rapport [LINK](http://solidcode.xyz/Rapports/) soon™
+- Rapport [LINK soon™](https://github.com/MGDelux/FOG/tree/master/src/main/resources)
 
-- Project Page: [ ONLINE Project Page](http://solidcode.xyz/FOG-1.0/)
+- Project Page: [ONLINE Project Page](http://solidcode.xyz/FOG/)
 
-- ScrumBoard / [Taiga Board](https://tree.taiga.io/project/mgdelux-fog/)
+- ScrumBoard: [Taiga Board](https://tree.taiga.io/project/mgdelux-fog/)
 
 <h4>Test users:</h4>
-<p> Test Users: Sales Employee Email: "employee@mail.com" Password: "password"</p>
-
-<p>Admin Employee Email: "admin@mail.com" Password: "password"</p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+    <tr>
+        <td>Sales Employee:</td>
+      <td>employee@mail.com</td>
+       <td>password</td>
+    </tr>
+    <tr>
+        <td>Admin Employee:</td>
+      <td>admin@mail.com</td>
+       <td>password</td>
+    </tr>
+     </thead>
+     </table>
 
 <h4>Team:</h4>
 <a href="https://github.com/Tenz331" rel="nofollow">Emil</a> - <a href="https://github.com/Janussr" rel="nofollow">Janus</a> - <a href="https://github.com/MGDelux" rel="nofollow">Mathias</a>
@@ -26,4 +42,5 @@
 Java 11,
 Maven, 
 Tomcat 8.
+MYSQL
 bla bla..
