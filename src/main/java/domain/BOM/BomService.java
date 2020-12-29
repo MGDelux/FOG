@@ -211,20 +211,19 @@ public class BomService implements BomFactory {
                 extraPoles++;
             }
             poleCounter = poleCounter + extraPoles;
-            if (poleCounter % 2 == 0) {
-                poleCounter = poleCounter; //idc
-            } else
+            if (poleCounter % 2 != 0) {
                 poleCounter = poleCounter + 1;
+            }
         }
         Materials pole = new Materials(1, "Trykimprægneret Stolpe", 300, poleCounter, "k. Stolper nedgraves 90 cm. i jord\t+ skråstiver", 250);
         BOM.add(pole);
     }
-
+    //todo:
     private void calculateFlatRoofParts() {
         //Plastmo	Ecolite	blåtone
 
     }
-
+//todo:
     private void calcuateAngleRoofParts() {
         //taglægte gavl
     }

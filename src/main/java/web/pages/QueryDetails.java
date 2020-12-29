@@ -94,17 +94,18 @@ public class QueryDetails extends BaseServlet {
                 throwables.printStackTrace();
             }
         }
-        Queries querybyId = null;
+        Queries querybyId;
         int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
         try {
             querybyId = API.getQueryById(id);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
         if (querybyId.getShed().getWidth() != 0 || querybyId.getShed().getLength() != 0) {
             req.setAttribute("shedCheckbox", "checked");
         } else {
             req.setAttribute("shedCheckbox", "unchecked");
+        }
+    } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         updateCarport(req);
         render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
