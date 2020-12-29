@@ -36,7 +36,9 @@ public class hackerman extends BaseServlet {
         } catch (EmployeeError employeeError) {
             employeeError.printStackTrace();
         }
+        assert employee1 != null;
         System.out.println( employee1.toString());
+        assert employee2 != null;
         System.out.println(employee2.toString());
         Database db = new Database();
         DBEmployee dbEmployee = new DBEmployee(db);

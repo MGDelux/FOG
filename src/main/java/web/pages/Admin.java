@@ -15,7 +15,7 @@ import java.util.Collection;
  * CREATED BY Emil @ 26-11-2020 - 11:29
  **/
 @WebServlet({"/admin", "/admin/*"})
-public class admin extends BaseServlet {
+public class Admin extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

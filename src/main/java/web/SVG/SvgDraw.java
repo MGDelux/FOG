@@ -7,7 +7,7 @@ import domain.Shed.Shed;
 /**
  * CREATED BY mathias @ 15-12-2020 - 11:13
  **/
-public class svgDraw implements SvgFactory {
+public class SvgDraw implements SvgFactory {
 
     // v1 prototype SVG
     //setting default values and creating required ints, strings.

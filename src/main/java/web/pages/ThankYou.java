@@ -4,7 +4,7 @@ import domain.Customers.Customers;
 import domain.Queries.Queries;
 import web.BaseServlet;
 import web.SVG.SvgFactory;
-import web.SVG.svgDraw;
+import web.SVG.SvgDraw;
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +29,7 @@ public class ThankYou extends BaseServlet {
             System.out.println(q.toString());
             req.setAttribute("query", q);
             String carportSVG;
-            SvgFactory svgFactory = new svgDraw();
+            SvgFactory svgFactory = new SvgDraw();
             carportSVG = svgFactory.drawCarport(q);
             req.setAttribute("svgDraw", carportSVG);
             req.setAttribute("customer", customers); //christians code should be fixed?

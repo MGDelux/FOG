@@ -24,7 +24,7 @@ import java.util.List;
  * CREATED BY mathias @ 23-11-2020 - 15:46
  * API should handle all our methods from Servlet(s)
  **/
-public class FOG {
+public class Fog {
     private final EmployeeRepo employeeRepo;
     private final CustomerRepo customerRepo;
     private final EmailRepo emailRepo;
@@ -32,7 +32,7 @@ public class FOG {
     private final MaterialsRepo materialRepo;
 
     //Constructor -
-    public FOG(EmployeeRepo employeeRepo, CustomerRepo customerRepo, EmailRepo emailRepo, QueriesRepo queriesRepo, MaterialsRepo materialRepo) {
+    public Fog(EmployeeRepo employeeRepo, CustomerRepo customerRepo, EmailRepo emailRepo, QueriesRepo queriesRepo, MaterialsRepo materialRepo) {
         this.employeeRepo = employeeRepo;
         this.customerRepo = customerRepo;
         this.emailRepo = emailRepo;

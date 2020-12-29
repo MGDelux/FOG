@@ -16,7 +16,7 @@ import java.util.ArrayList;
  **/
 @WebServlet({"/carportDetails", "/carportDetails/*"})
 
-public class carportDetails extends BaseServlet {
+public class CarportDetails extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         render("/WEB-INF/pages/carportDetails.jsp", resp, req);
