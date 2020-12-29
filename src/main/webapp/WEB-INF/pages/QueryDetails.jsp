@@ -125,7 +125,7 @@
                 <p><Strong>Redskabsrum bredde:</Strong></p>
                 <div class="Redskabsrum-bredde">
                     <input required type="range" class="form-control-range" value="${qById.shed.width}" min="240"
-                           max="780" step="30"
+                           max="360" step="30"
                            id="customRange5" name="ShedWidth" oninput="amount3.value=customRange5.value">
                     <input disabled="disabled" class="outputshowcase" id="amount3" type="number"
                            value="${qById.shed.width}" min="240"
@@ -134,12 +134,12 @@
                 </div>
                 <p><Strong>Redskabsrum længde:</Strong></p>
                 <div class="Redskabsrum-længde">
-                    <input required type="range" class="form-control-range" value="${qById.shed.length}" min="240"
-                           max="780" step="30"
+                    <input required type="range" class="form-control-range" value="${qById.shed.length}" min="140"
+                           max="420" step="20"
                            id="customRange6" name="ShedLength" oninput="amount4.value=customRange6.value">
                     <input disabled="disabled" class="outputshowcase" id="amount4" type="number"
-                           value="${qById.shed.length}" min="240"
-                           max="780" oninput="customRange6.value=amount4.value"/>
+                           value="${qById.shed.length}" min="140"
+                           max="420" oninput="customRange6.value=amount4.value"/>
                 </div>
 
             </div>
