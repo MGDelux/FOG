@@ -131,7 +131,7 @@ public class admin extends BaseServlet {
 
     }
 
-    private void addFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) {
+    private void addFittingsAndScrews(HttpServletRequest req, HttpServletResponse resp) { //duplicate code would should make smarter
         int id = Integer.parseInt(req.getParameter("screwId"));
         int amount = Integer.parseInt(req.getParameter("screwAntal"));
         String name = (req.getParameter("screwName"));

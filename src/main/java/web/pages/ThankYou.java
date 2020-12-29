@@ -25,7 +25,7 @@ public class ThankYou extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             Queries q = API.getLatestQuery();
-            Customers customers = API.getExistingUserInfomation(q.getEmail());
+            Customers customers = API.getExistingCustomerInfomation(q.getEmail());
             System.out.println(q.toString());
             req.setAttribute("query", q);
             String carportSVG;

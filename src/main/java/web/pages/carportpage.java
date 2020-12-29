@@ -37,7 +37,7 @@ public class carportpage extends BaseServlet {
     /**
      * get the information out of carport page sent with post
      *
-     * @param req
+     * @param req current session request scope
      */
     private synchronized void getPageInfomation(HttpServletRequest req) {
         /* JA DEN ER ALTID NULL VED MINDRE DEN ER TRYKKET PÅ */

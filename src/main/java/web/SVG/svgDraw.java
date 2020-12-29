@@ -10,6 +10,17 @@ import domain.Shed.Shed;
 public class svgDraw implements SvgFactory {
 
     // v1 prototype SVG
+    //setting default values and creating required ints, strings.
+/**
+ * current set "rules" of creating carport drawing until we get more accurate information:
+ * svg view port is always 10'cm'+ larger than carport length and shed
+ * "eaves" (tagudhæng) is the set value from the customer  note: 'should be 15cm'
+ * and "inner carport" the "carport structure" is 10'cm' less than the selected carport width x length (x,y)
+ * poles: extra poles are only added if the carport length exceeds 480cm else it will always be 4 poles
+ * the roof *flat*: (Support beams) is set every 60cm of the carports length and are the same length as the carports width.
+ * flat roof sheets not yet calculated
+ * angled roof todo.
+ ***/
     private int extraPoles;
     private int viewPortWidth = 10;
     private int viewPortLength = 10;
@@ -19,7 +30,8 @@ public class svgDraw implements SvgFactory {
     private int shedX;
     private  String SVGString = "";
 //god why lol
-    @Override
+
+    @Override //calculation values based on entered infomation and set rules
     public String drawCarport(Queries queries) {
         CalculateViewPortSize(queries.getCarport());
         GetCarportSize(queries.getCarport());
@@ -33,7 +45,6 @@ public class svgDraw implements SvgFactory {
         SVGString = SVGString + drawText(queries.getCarport());
         return SVGString;
     }
-
     @Override
     public String updateDrawCarport(Carport carport, Shed shed) {
         CalculateViewPortSize(carport);
@@ -46,8 +57,6 @@ public class svgDraw implements SvgFactory {
         SVGString = SVGString + drawCross(carport);
         SVGString = SVGString + drawRoof(carport);
         SVGString = SVGString + drawText(carport);
-
-        System.out.println(SVGString);
         return SVGString;
     }
 
@@ -136,6 +145,7 @@ public class svgDraw implements SvgFactory {
 
     private int GetExtraPoles(Carport carport) {
         int count = 0;
+        if (carport.getLength() >= 480) {
             for (int i = 240; i < carport.getLength(); i = i + 240) {
                 count++;
             }
@@ -144,6 +154,8 @@ public class svgDraw implements SvgFactory {
             } else {
                 count = count + 1;
             }
+            return count;
+        }
         return count;
     }
 
