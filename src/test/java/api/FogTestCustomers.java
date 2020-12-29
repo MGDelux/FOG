@@ -15,13 +15,13 @@ import java.sql.SQLException;
 /**
  * CREATED BY mathias @ 30-11-2020 - 16:25
  **/
-public class FOGTestCustomers {
+public class FogTestCustomers {
 
     @Test
     public void testAddCustomer() throws DBError {
         Database db = new Database();
         try {
-            FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
+            Fog FOG = new Fog(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
             FOG.addCustomer("mathias@gmail.com", 3400, "hillerød", "some where 24", 123432423);
 
         } catch (Exception e) {
@@ -33,7 +33,7 @@ public class FOGTestCustomers {
     public void testcheckMail() throws SQLException, DBError {
         Database db = new Database();
 
-        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
+        Fog FOG = new Fog(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
 
         FOG.checkIfNewCustomer("mailx");
 
@@ -51,7 +51,7 @@ public class FOGTestCustomers {
     @Test
     public void testGetAll2() throws SQLException, DBError {
         Database db = new Database();
-        FOG FOG = new FOG(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
+        Fog FOG = new Fog(new DBEmployee(db), new DBUser(db), new MailService("hello"), new DBQueries(db), new DBMaterials(db));
         System.out.println(FOG.getAllUsers());
     }
 

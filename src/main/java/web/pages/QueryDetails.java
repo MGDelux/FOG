@@ -8,7 +8,7 @@ import domain.Queries.Queries;
 import domain.Shed.Shed;
 import web.BaseServlet;
 import web.SVG.SvgFactory;
-import web.SVG.svgDraw;
+import web.SVG.SvgDraw;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -47,7 +47,7 @@ public class QueryDetails extends BaseServlet {
                 } else {
                     req.setAttribute("shedCheckbox", "unchecked");
                 }
-                    SvgFactory svgFactory = new svgDraw();
+                    SvgFactory svgFactory = new SvgDraw();
                     carportSVG = svgFactory.drawCarport(querybyId);
 
                 req.setAttribute("svgDraw", carportSVG);
@@ -180,7 +180,7 @@ public class QueryDetails extends BaseServlet {
             sw = 0;
             sl = 0;
         }
-        SvgFactory svgFactory = new svgDraw();
+        SvgFactory svgFactory = new SvgDraw();
         String carportSVG;
         if (Integer.parseInt(req.getParameter("tagChoice")) == 1) {
             carportSVG = svgFactory.updateDrawCarport(new Carport(w, l, Carport.roofType.FLAT, 0), new Shed(sw, sl));

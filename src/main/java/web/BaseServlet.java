@@ -1,6 +1,6 @@
 package web;
 
-import api.FOG;
+import api.Fog;
 import domain.Employees.Employee;
 import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
@@ -23,15 +23,15 @@ import java.time.LocalDateTime;
  **/
 
 public class BaseServlet extends HttpServlet {
-    protected static final FOG API;
+    protected static final Fog API;
 
     static {
         API = initAPI();
     }
 
-    private static FOG initAPI() {
+    private static Fog initAPI() {
         Database db = new Database();
-        return new FOG(new DBEmployee(db),
+        return new Fog(new DBEmployee(db),
                 new DBUser(db),
                 new MailService("O&4#AL+^SF3,"),
                 new DBQueries(db),

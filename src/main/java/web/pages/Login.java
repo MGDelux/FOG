@@ -16,7 +16,7 @@ import java.sql.SQLException;
  **/
 @WebServlet({"/login", "/login/*"})
 
-public class login extends BaseServlet {
+public class Login extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String email = req.getParameter("email");

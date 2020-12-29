@@ -18,14 +18,14 @@ import java.sql.SQLException;
 /**
  * CREATED BY mathias @ 27-11-2020 - 12:17
  **/
-class FOGTest {
+class FogTest {
 
-    FOG FOG;
+    Fog FOG;
 
     @BeforeEach
     public void setupFOG () throws DBError {
         Database db = new Database();
-        FOG = new FOG(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
+        FOG = new Fog(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
 
     }
 

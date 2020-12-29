@@ -5,12 +5,12 @@ import domain.Queries.Queries;
 /**
  * CREATED BY mathias @ 07-12-2020 - 14:13
  **/
-public class svg {
+public class Svg {
     private final Queries queries;
     private final int width;
     private final int length;
 
-    public svg(Queries queries) {
+    public Svg(Queries queries) {
         this.queries = queries;
         this.length = queries.getCarport().getLength() +10;
         this.width = queries.getCarport().getLength() + 10;

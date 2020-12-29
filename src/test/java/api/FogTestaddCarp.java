@@ -13,24 +13,21 @@ import web.MailService.MailService;
 
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
- * CREATED BY Janus @ 2020-12-18 - 11:58
+ * CREATED BY Janus @ 2020-12-18 - 12:59
  **/
-class FOGMaterialsTest {
-    FOG FOG;
+class FogTestaddCarp {
+    Fog FOG;
 
     @BeforeEach
     public void setupFOG () throws DBError {
         Database db = new Database();
-        FOG = new FOG(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
+        FOG = new Fog(new DBEmployee(db), new DBUser(db),  new MailService("hello"),new DBQueries(db), new DBMaterials(db));
     }
-
     @Test
-    void updateMaterials() throws SQLException {
-        Materials materials = new Materials(1,"impregneret træ", 25,4,"Det er træ",25.55);
-        FOG.updateMaterials(materials,1);
+    void addCarportMaterials() throws SQLException {
+        Materials materials = new Materials(1,"smt træ", 17,2,"Det er  langt træ",2.24);
+        FOG.addCarportMaterials(materials,1);
+        FOG.deleteCarportMaterial(5);
     }
-
 }
