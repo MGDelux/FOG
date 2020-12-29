@@ -11,7 +11,7 @@
 
 - Scrum board: [Taiga Board](https://tree.taiga.io/project/mgdelux-fog/)
 
-- Docs: [JavaDocs](https://mgdelux.github.io/FOG/)
+- Docs (Outdated): [JavaDocs](https://mgdelux.github.io/FOG/)
 
 - Dependencies [Maven dependencies](https://github.com/MGDelux/FOG/network/dependencies)
 
