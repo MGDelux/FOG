@@ -179,14 +179,13 @@ public class Fog {
     /**
      * Sends a email based on the parameters
      *
-     * @param toAdress reciver of email
+     * @param toAddress reciver of email
      * @param subject  subject of mail
      * @param message  message of mail
-     * @return Email
      * @throws MessagingException exception
      */
-    public Email newMail(String toAdress, String subject, String message) throws MessagingException {
-        return emailRepo.newEmail(new Email(toAdress, subject, message));
+    public void newMail(String toAddress, String subject, String message) throws MessagingException {
+        emailRepo.newEmail(new Email(toAddress, subject, message));
     }
 
     /**
