@@ -6,11 +6,9 @@ import infrastructure.DatabaseConnector.Database;
 import infrastructure.DatabaseEmployees.DBEmployee;
 import web.BaseServlet;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -18,12 +16,11 @@ import java.sql.SQLException;
  **/
 @WebServlet({"/hackerman", "/hackerman/*"})
 
-public class hackerman extends BaseServlet {
+public class HackerMan extends BaseServlet {
     @Override
-
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//temp should be deleted...
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         byte[] salt = Employee.genereateSalt();
-//dELTE LOL
         Employee employee1 = null;
         try {
             employee1 = new Employee(Employee.Role.SALESMAN, 0, "employee@mail.com", salt, Employee.calculateSecret(salt, "password"));
@@ -37,7 +34,7 @@ public class hackerman extends BaseServlet {
             employeeError.printStackTrace();
         }
         assert employee1 != null;
-        System.out.println( employee1.toString());
+        System.out.println(employee1.toString());
         assert employee2 != null;
         System.out.println(employee2.toString());
         Database db = new Database();

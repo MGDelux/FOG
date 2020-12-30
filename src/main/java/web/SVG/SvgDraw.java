@@ -28,36 +28,36 @@ public class SvgDraw implements SvgFactory {
     private int innerCarportLength = 0;
     private int shedY;
     private int shedX;
-    private  String SVGString = "";
+    private  String svgString = "";
 //god why lol
 
     @Override //calculation values based on entered infomation and set rules
     public String drawCarport(Queries queries) {
-        CalculateViewPortSize(queries.getCarport());
-        GetCarportSize(queries.getCarport());
-        extraPoles = GetExtraPoles(queries.getCarport());
+        calculateViewPortSize(queries.getCarport());
+        getCarportSize(queries.getCarport());
+        extraPoles = getExtraPoles(queries.getCarport());
         calculateShedXY(queries.getCarport(), queries.getShed());
-        SVGString = SVGString + draw(queries.getCarport(), queries.getShed());
-        SVGString = SVGString + drawLeftPoles(extraPoles, queries.getCarport());
-        SVGString = SVGString + drawRightPoles(extraPoles, queries.getCarport());
-        SVGString = SVGString + drawCross(queries.getCarport());
-        SVGString = SVGString + drawRoof(queries.getCarport());
-        SVGString = SVGString + drawText(queries.getCarport());
-        return SVGString;
+        svgString = svgString + draw(queries.getCarport(), queries.getShed());
+        svgString = svgString + drawLeftPoles(extraPoles, queries.getCarport());
+        svgString = svgString + drawRightPoles(extraPoles, queries.getCarport());
+        svgString = svgString + drawCross(queries.getCarport());
+        svgString = svgString + drawRoof(queries.getCarport());
+        svgString = svgString + drawText(queries.getCarport());
+        return svgString;
     }
     @Override
     public String updateDrawCarport(Carport carport, Shed shed) {
-        CalculateViewPortSize(carport);
-        GetCarportSize(carport);
-        extraPoles = GetExtraPoles(carport);
+        calculateViewPortSize(carport);
+        getCarportSize(carport);
+        extraPoles = getExtraPoles(carport);
         calculateShedXY(carport, shed);
-        SVGString = SVGString + draw(carport, shed);
-        SVGString = SVGString + drawLeftPoles(extraPoles, carport);
-        SVGString = SVGString + drawRightPoles(extraPoles, carport);
-        SVGString = SVGString + drawCross(carport);
-        SVGString = SVGString + drawRoof(carport);
-        SVGString = SVGString + drawText(carport);
-        return SVGString;
+        svgString = svgString + draw(carport, shed);
+        svgString = svgString + drawLeftPoles(extraPoles, carport);
+        svgString = svgString + drawRightPoles(extraPoles, carport);
+        svgString = svgString + drawCross(carport);
+        svgString = svgString + drawRoof(carport);
+        svgString = svgString + drawText(carport);
+        return svgString;
     }
 
     private String drawRoof(Carport carport) {
@@ -143,7 +143,7 @@ public class SvgDraw implements SvgFactory {
         shedY = carport.getWidth() - shed.getWidth();
     }
 
-    private int GetExtraPoles(Carport carport) {
+    private int getExtraPoles(Carport carport) {
         int count = 0;
         if (carport.getLength() >= 480) {
             for (int i = 240; i < carport.getLength(); i = i + 240) {
@@ -159,12 +159,12 @@ public class SvgDraw implements SvgFactory {
         return count;
     }
 
-    private void GetCarportSize(Carport carport) {
+    private void getCarportSize(Carport carport) {
         innerCarportLength = carport.getLength() - 10;
         innerCarportWidth = carport.getWidth() - 10;
     }
 
-    private void CalculateViewPortSize(Carport carport) {
+    private void calculateViewPortSize(Carport carport) {
         this.viewPortLength = viewPortLength + carport.getLength();
         this.viewPortWidth = viewPortWidth + carport.getWidth();
 
