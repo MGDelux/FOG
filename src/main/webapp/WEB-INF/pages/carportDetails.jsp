@@ -48,7 +48,7 @@
 <div class="intro">
     <form method="post">
         <div class="brødtekst">
-            <h1 align="center">Forespørgelse(r): </h1>
+            <h1 align="center">Check din(e) forespørgelse(r): </h1>
             <div align="center" class="form-group col-md-4" style="text-align: center">
                 <label for="Email"><strong>Din Email:</strong></label>
                 <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
@@ -87,7 +87,7 @@
         <div style="text-align: center" class="extraInfo">
             <hr class="solid">
             <p style="text-decoration: none">Hvis informationen ovenfor ikke er korrekt kan de kontakte os via mail: <a href="mailto:solidcodefog@gmail.com
-?subject=vedrforsprøgelse&body=Message">solidcodefog@gmail.com
+?subject=vedr. forsprøgelse&body=Message">solidcodefog@gmail.com
             </a></p>
         </div>
     </div>
