@@ -67,7 +67,6 @@ public class SvgDraw implements SvgFactory {
         int y2;
         supportBeam = new StringBuilder();
         for (int i = 60; i < carport.getLength(); i = i + 60) {
-            System.out.println(i);
             y1 = i;
             y2 = i; //should be a string builder but aint got time for that
             supportBeam.append("<line x1=\"5\" y1=\"").append(y1).append("\" x2=\"").append(x2).append("\" y2=\"").append(y2).append("\" stroke=\"red\" />\n");
@@ -92,9 +91,7 @@ public class SvgDraw implements SvgFactory {
         StringBuilder rightpole = new StringBuilder();
 
         if (carport.getLength() >= 760) {
-            System.out.println(extraPoles);
             extraPoles = extraPoles - 1;
-            System.out.println(extraPoles);
         }
         int carportWidth = carport.getWidth() - 5;
         int length = 245;

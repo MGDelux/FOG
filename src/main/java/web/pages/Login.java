@@ -25,6 +25,7 @@ public class Login extends BaseServlet {
            Employee employee = API.login(email,password);
             req.getSession().setAttribute("employee",employee);
             req.getSession().setAttribute("loggedIn",true);
+            log(req,"EMPLOYEE: "+employee.getEmail() + " Logged in");
             resp.sendRedirect(req.getContextPath() + "/salesman/");
         } catch (SQLException | EmployeeError | loginError e) {
             HttpSession session = req.getSession();

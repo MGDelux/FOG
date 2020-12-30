@@ -44,7 +44,6 @@ public class CarportPage extends BaseServlet {
         /* JA DEN ER ALTID NULL VED MINDRE DEN ER TRYKKET PÅ */
         if (req.getParameter("submitQ") != null) {
             HttpSession session = req.getSession();
-            log(req, "POST");
             //getting all page infomation (still missig roof type)
             String eMail = req.getParameter("Email");
             String address = req.getParameter("inputAddress");
@@ -79,8 +78,10 @@ public class CarportPage extends BaseServlet {
                 }
                 if (carportShed.getLength() > carPortLength || carportShed.getWidth() > carPortWidth){
                     session.setAttribute("pageError","Skuret kan ikke være størrer end selve carporten.");
+                    log(req, "ERROR: shed larger than carport");
                     render("/WEB-INF/pages/carport.jsp", response, req);
                 }else {
+                   log(req, "customer new query successful: (" + eMail+")");
                     Carport carport = new Carport(carPortWidth, carPortLength, roofType, 0);
                     API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
                     Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
@@ -91,6 +92,7 @@ public class CarportPage extends BaseServlet {
                 }
             } catch (NumberFormatException | SQLException | IOException | ServletException e) {
                 session.setAttribute("pageError", e.getMessage());
+                log(req,"ERROR: " + e.getMessage());
                 e.printStackTrace();
             }
 

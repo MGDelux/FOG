@@ -68,6 +68,6 @@ public class BaseServlet extends HttpServlet {
     }
 
     protected void log(HttpServletRequest req, String message) {
-        System.err.println("(" + LocalDateTime.now() + ") " + this.getClass().getCanonicalName() + " \"" + req.getRequestURI() + "\": " + message);
+        System.err.println("[HTTP/SERVER] (" + LocalDateTime.now() + ") " + this.getClass().getCanonicalName() + " \"" + req.getRequestURI() + "\": " + message);
     }
 }

@@ -29,7 +29,7 @@ public class CarportDetails extends BaseServlet {
         try {
             ArrayList<Queries> queries = new ArrayList<>(API.getQueryByEmail(email));
             req.setAttribute("Query",queries);
-            System.out.println(queries);
+           log(req,"Email: "+ email + " Requested their queries");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
