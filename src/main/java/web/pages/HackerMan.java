@@ -20,6 +20,7 @@ public class HackerMan extends BaseServlet {
     @Override
 //temp should be deleted...
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        log(req,"hackerman jsp run");
         byte[] salt = Employee.genereateSalt();
         Employee employee1 = null;
         try {

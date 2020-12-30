@@ -46,7 +46,7 @@ public class ThankYou extends BaseServlet {
 
     }
 
-    private void sendMail(Queries q, Customers customers) throws MessagingException {
+    private void sendMail(Queries q, Customers customers) throws MessagingException { ;
         API.newMail(customers.getEmail(), "Forspørgelse", "<h1>Tak for din Carport forspørgelse!</h1>\n" +
                 "        <p>Din forespørgelse er blevet registreret og vi sender dig denne mail som bekræftelse på din forespørgelse </p>\n" +
                 "        <h4><strong>forespørgelse detaljer:</strong></h4>\n" +

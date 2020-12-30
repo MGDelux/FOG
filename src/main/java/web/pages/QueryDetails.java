@@ -36,7 +36,6 @@ public class QueryDetails extends BaseServlet {
             String carportSVG;
             List<Materials> materials = new ArrayList<>();
             req.setAttribute("BOM", materials);
-
             try {
                 HttpSession session = req.getSession();
                 int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
@@ -53,7 +52,6 @@ public class QueryDetails extends BaseServlet {
                 req.setAttribute("svgDraw", carportSVG);
                 req.setAttribute("qById", querybyId);
 
-                System.out.println(querybyId);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -89,7 +87,7 @@ public class QueryDetails extends BaseServlet {
         }
         if (req.getParameter("SendTilbud") != null) {
             try {
-                createFinalOffer(req);
+                createFinalOffer(req,resp);
             } catch (SQLException | MessagingException | BomException throwables) {
                 throwables.printStackTrace();
             }
@@ -111,15 +109,16 @@ public class QueryDetails extends BaseServlet {
         render("/WEB-INF/pages/QueryDetails.jsp", resp, req);
     }
 
-    private void createFinalOffer(HttpServletRequest req) throws SQLException, MessagingException, BomException {
+    private void createFinalOffer(HttpServletRequest req, HttpServletResponse resp) throws SQLException, MessagingException, BomException, IOException {
         BomService bomService = new BomService();
-
         HttpSession session = req.getSession();
         double offerSum = Double.parseDouble(req.getParameter("customvalue"));
         int id = Integer.parseInt(session.getAttribute("selectedQuery").toString());
         Queries queries = API.getQueryById(id);
         String extraText = "<p>Plukliste: </p>";
         extraText = extraText + bomService.newBom(queries.getCarport(), queries.getShed()).toString();
+        log(req,"Employee:" +getEmployee(req,resp,"Log").getEmail() + " Has send an offer to: "+ queries.getEmail());
+
         API.newMail(queries.getEmail(), "Carport Forespørgelse Tilbud", "<h1>Vi har et tilbud til dig:</h1>" +
                 "<h2>Vedr din. forespørgelse #" + id + "</h2> " +
                 "<p>Vi sender dig denne mail som svar på din forespørgelse og vi har lavet dette tilbud til dem: </p>" +
@@ -150,7 +149,6 @@ public class QueryDetails extends BaseServlet {
 
         for (Materials m : materials) {
             sumWithOutMoms = sumWithOutMoms + m.getPrice();
-            System.out.println(sumWithOutMoms);
 
         }
         kostPris = sumWithOutMoms;
@@ -173,7 +171,6 @@ public class QueryDetails extends BaseServlet {
         int sw;
         int sl;
         if (Objects.equals(req.getParameter("includeShed"), "on")) {
-            System.out.println((req.getParameter("includeShed")));
             sw = Integer.parseInt(req.getParameter("ShedWidth"));
             sl = Integer.parseInt(req.getParameter("ShedLength"));
         } else {

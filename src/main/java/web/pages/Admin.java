@@ -24,7 +24,7 @@ public class Admin extends BaseServlet {
 
         if (getEmployee(req, resp, "NEED TO BE LOGGED IN") != null) {
             try {
-
+                log(req,"Employee: " +getEmployee(req,resp,"reply").getEmail() + " logged in:");
                 req.setAttribute("MaTsFoRu", mats);
                 mats.addAll((Collection<? extends Materials>) API.getAllMaterials());
                 System.out.println(mats);
@@ -43,6 +43,7 @@ public class Admin extends BaseServlet {
             HttpSession session = req.getSession();
             session.setAttribute("loggedIn", false);
             session.setAttribute("loggedInMSG", "Kun adgang til medarbejdere");
+            log(req,"Employee Login attempt");
 
 
         }
