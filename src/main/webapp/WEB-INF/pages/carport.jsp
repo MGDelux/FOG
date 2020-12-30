@@ -180,7 +180,9 @@
                     <input required type="text" class="form-control" id="postnummer" name="postnummer" placeholder="Postnummer">
                 </div>
             </div>
-
+            <div class="error-text"><c:if test="${sessionScope.pageError != null}">
+                ${sessionScope.pageError}
+            </c:if></div>
             <button type="submit" name="submitQ" value="submit" class="btn btn-primary">Send forespørgsel</button>
         </div>
         </div>

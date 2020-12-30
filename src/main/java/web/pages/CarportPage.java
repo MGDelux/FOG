@@ -1,9 +1,11 @@
 package web.pages;
+
 import domain.Carport.Carport;
 import domain.Customers.Customers;
 import domain.Shed.Shed;
 import infrastructure.DatabaseUser.Execptions.CustomerExecption;
 import web.BaseServlet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +29,7 @@ public class CarportPage extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            getPageInfomation(req);
-            resp.sendRedirect(req.getContextPath() + "/thankyou/1");
+            getPageInfomation(req,resp);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,7 +40,7 @@ public class CarportPage extends BaseServlet {
      *
      * @param req current session request scope
      */
-    private synchronized void getPageInfomation(HttpServletRequest req) {
+    private synchronized void getPageInfomation(HttpServletRequest req, HttpServletResponse response) {
         /* JA DEN ER ALTID NULL VED MINDRE DEN ER TRYKKET PÅ */
         if (req.getParameter("submitQ") != null) {
             HttpSession session = req.getSession();
@@ -76,13 +77,19 @@ public class CarportPage extends BaseServlet {
                     System.out.println("ANGLE TAG");
 
                 }
-                Carport carport = new Carport(carPortWidth, carPortLength, roofType, 0);
-                API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
-                Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
-                session.setAttribute("Shed", carportShed);
-                session.setAttribute("Carport", carport);
-                session.setAttribute("customer", customers);
-            } catch (NumberFormatException | SQLException e) {
+                if (carportShed.getLength() > carPortLength || carportShed.getWidth() > carPortWidth){
+                    session.setAttribute("pageError","Skuret kan ikke være størrer end selve carporten.");
+                    render("/WEB-INF/pages/carport.jsp", response, req);
+                }else {
+                    Carport carport = new Carport(carPortWidth, carPortLength, roofType, 0);
+                    API.newQuery(API.addCustomer(eMail, zipCode, city, address, phoneNR), carport, carportShed);
+                    Customers customers = getUser(eMail, zipCode, city, address, phoneNR);
+                    session.setAttribute("Shed", carportShed);
+                    session.setAttribute("Carport", carport);
+                    session.setAttribute("customer", customers);
+                    response.sendRedirect(req.getContextPath() + "/thankyou/1");
+                }
+            } catch (NumberFormatException | SQLException | IOException | ServletException e) {
                 session.setAttribute("pageError", e.getMessage());
                 e.printStackTrace();
             }
