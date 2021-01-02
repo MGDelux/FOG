@@ -13,7 +13,7 @@
 
 - Docs (Outdated): [JavaDocs](https://mgdelux.github.io/FOG/)
 
-- Dependencies [Maven dependencies](https://github.com/MGDelux/FOG/network/dependencies)
+- Dependencies: [Maven dependencies](https://github.com/MGDelux/FOG/network/dependencies)
 
 <hr>
 
