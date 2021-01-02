@@ -1,4 +1,4 @@
-package domain.BOM;
+package infrastructure.BOM;
 
 import Repoistory.Bom.BomFactory;
 import domain.BOM.Exceptions.BomException;

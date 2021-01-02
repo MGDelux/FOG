@@ -1,4 +1,4 @@
-package web.MailService;
+package infrastructure.MailService;
 
 import Repoistory.Email.EmailRepo;
 import domain.Email.Email;
