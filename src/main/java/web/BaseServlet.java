@@ -7,7 +7,7 @@ import infrastructure.DatabaseEmployees.DBEmployee;
 import infrastructure.DatabaseMaterials.DBMaterials;
 import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
-import web.MailService.MailService;
+import infrastructure.MailService.MailService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -8,7 +8,7 @@ import infrastructure.DatabaseQuries.DBQueries;
 import infrastructure.DatabaseUser.DBUser;
 import infrastructure.Exceptions.DBError;
 import org.junit.jupiter.api.Test;
-import web.MailService.MailService;
+import infrastructure.MailService.MailService;
 
 import java.sql.SQLException;
 

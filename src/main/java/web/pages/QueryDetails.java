@@ -1,6 +1,6 @@
 package web.pages;
 
-import domain.BOM.BomService;
+import infrastructure.BOM.BomService;
 import domain.BOM.Exceptions.BomException;
 import domain.Carport.Carport;
 import domain.Materials.Materials;
