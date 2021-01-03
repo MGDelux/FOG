@@ -25,11 +25,11 @@ public class Shed {
         String toString = "";
         if (width != 0 || length != 0) {
             toString = toString +
-                    "cm Brede: " + width +
+                    "cm Bredde: " + width +
                     " Længde: " + length + "cm";
             return toString;
         }
-        toString = " Intent skur";
+        toString = "intet skur";
         return toString;
     }
 }
