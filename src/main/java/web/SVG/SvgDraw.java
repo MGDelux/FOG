@@ -77,7 +77,7 @@ public class SvgDraw implements SvgFactory {
     private String drawText(Carport carport) {
         int length = carport.getLength() / 100;
         int width = carport.getWidth() / 100;
-        return "<text x=\"50%\" y=\"5%\" dominant-baseline=\"middle\" text-anchor=\"middle\">-- Brede " + width + "meter --</text>\n" + " <text x=\"5%\" y=\"35%\" style=\"writing-mode: tb; glyph-orientation-vertical: 90;\">\n " + "-- Længde " + length + "meter --" + "\n</text></svg>\n";
+        return "<text x=\"50%\" y=\"5%\" dominant-baseline=\"middle\" text-anchor=\"middle\">-- Bredde " + width + "meter --</text>\n" + " <text x=\"5%\" y=\"35%\" style=\"writing-mode: tb; glyph-orientation-vertical: 90;\">\n " + "-- Længde " + length + "meter --" + "\n</text></svg>\n";
 
     }
 
