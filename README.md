@@ -5,7 +5,7 @@
 <hr>
 <h4>Links & information:</h4>
 
-- Rapport: [LINK soon™](https://github.com/MGDelux/FOG/tree/master/src/main/resources)
+- Rapport: On WISEflow
 
 - Project Page: [ONLINE Project Page](http://solidcode.xyz/FOG/)
 
