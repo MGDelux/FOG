@@ -58,6 +58,7 @@ CREATE TABLE BeslagOgSkruer
 ( /* beslag&skruer */
     `BeslagOgSkruer_Id`          INT auto_Increment,
     `BeslagOgSkruer_Navn`        VARCHAR(45)  NOT NULL,
+    `BeslagOgSkruer_Length`      INT,
     `BeslagOgSkruer_antal`       INT,
     `BeslagOgSkruer_Beskrivelse` VARCHAR(256) NOT NULL,
     `BeslagOgSkruer_Pris`        double       not null,
